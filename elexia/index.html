@@ -4,101 +4,119 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ELEXIA</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Raleway:wght@300;400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',sans-serif;background:#f9f7f7;color:#2d2d2d;overflow-x:hidden}
+.fade-up{opacity:0;transform:translateY(40px);transition:opacity 0.7s ease,transform 0.7s ease}
+.fade-up.visible{opacity:1;transform:translateY(0)}
+</style>
 </head>
-<body style="margin:0;padding:0;font-family:'Raleway',sans-serif;background:#f9f7fb;color:#333;">
+<body>
 
-<section style="min-height:100vh;background:url('https://image.pollinations.ai/prompt/modern%20hair%20salon%20interior%2C%20warm%20ambient%20light%2C%20clean%20design%2C%20stylish%20chairs%2C%20mirrors%2C%20photorealistic%2C%20welcoming%20atmosphere?width=1600&height=900&nologo=true') center/cover no-repeat;display:flex;align-items:center;justify-content:center;position:relative;">
-<div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(72,52,99,0.82) 0%,rgba(120,90,150,0.6) 60%,rgba(30,20,50,0.75) 100%);"></div>
-<div style="position:relative;z-index:1;text-align:center;padding:2rem;max-width:700px;">
-<p style="font-family:'Raleway',sans-serif;font-weight:300;color:#d9c8f0;letter-spacing:6px;text-transform:uppercase;font-size:0.9rem;margin-bottom:1rem;">Salon de Coiffure — Neuilly-sur-Seine</p>
-<h1 style="font-family:'Playfair Display',serif;font-size:clamp(3rem,8vw,6rem);color:#fff;margin:0 0 1rem 0;letter-spacing:4px;text-shadow:0 2px 20px rgba(0,0,0,0.4);">ELEXIA</h1>
-<p style="font-family:'Raleway',sans-serif;font-weight:300;color:#e8ddf5;font-size:clamp(1rem,2.5vw,1.3rem);margin-bottom:2.5rem;line-height:1.7;">L'élégance de votre style, réinventée à chaque visite.</p>
-<a href="#contact" style="background:linear-gradient(90deg,#7b4fa6,#a678d4);color:#fff;text-decoration:none;padding:0.9rem 2.5rem;border-radius:50px;font-family:'Raleway',sans-serif;font-weight:600;font-size:1rem;letter-spacing:2px;text-transform:uppercase;box-shadow:0 4px 20px rgba(123,79,166,0.5);transition:all 0.3s;">Prendre Rendez-vous</a>
+<!-- HERO -->
+<section style="position:relative;height:100vh;min-height:500px;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden">
+<img src="https://image.pollinations.ai/prompt/modern%20hair%20salon%20interior%2C%20warm%20ambient%20light%2C%20clean%20design%2C%20stylish%20chairs%2C%20mirrors%2C%20photorealistic%2C%20welcoming%20atmosphere?width=1600&height=900&nologo=true" alt="Salon ELEXIA" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0">
+<div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(30,10,50,0.78),rgba(80,40,110,0.55));z-index:1"></div>
+<div style="position:relative;z-index:2;padding:0 20px;max-width:700px">
+<p style="font-family:'Inter',sans-serif;font-weight:300;font-size:0.85rem;letter-spacing:4px;text-transform:uppercase;color:#d4b8f0;margin-bottom:16px">Salon de coiffure · Paris 8e</p>
+<h1 style="font-family:'Playfair Display',serif;font-size:clamp(3rem,8vw,6rem);color:#fff;letter-spacing:2px;line-height:1;margin-bottom:20px">ELEXIA</h1>
+<p style="font-size:clamp(1rem,2.5vw,1.25rem);color:#e8d8ff;font-weight:300;margin-bottom:36px;line-height:1.6">L'excellence capillaire au cœur de Paris.<br>Votre beauté, sublimée avec passion.</p>
+<a href="https://cal.com/leman-nova-0zwvun/rendez-vous-15-minutes" style="display:inline-block;background:linear-gradient(135deg,#7c3aed,#a855f7);color:#fff;text-decoration:none;padding:16px 38px;border-radius:50px;font-size:1rem;font-weight:500;letter-spacing:1px;transition:transform 0.2s,box-shadow 0.2s;box-shadow:0 4px 24px rgba(124,58,237,0.4)" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 8px 32px rgba(124,58,237,0.6)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 4px 24px rgba(124,58,237,0.4)'">Prendre rendez-vous</a>
 </div>
 </section>
 
-<section style="padding:5rem 1.5rem;background:#f9f7fb;text-align:center;">
-<p style="color:#a678d4;font-weight:600;letter-spacing:4px;text-transform:uppercase;font-size:0.85rem;margin-bottom:0.5rem;">Nos Prestations</p>
-<h2 style="font-family:'Playfair Display',serif;font-size:clamp(1.8rem,4vw,2.5rem);color:#3a2450;margin:0 0 3rem 0;">Un savoir-faire d'exception</h2>
-<div style="display:flex;flex-wrap:wrap;gap:2rem;justify-content:center;max-width:1100px;margin:0 auto;">
-
-<div style="background:#fff;border-radius:16px;padding:2.5rem 2rem;flex:1;min-width:240px;max-width:320px;box-shadow:0 4px 30px rgba(120,80,160,0.1);border-top:4px solid #a678d4;">
-<div style="font-size:2.5rem;margin-bottom:1rem;">✂️</div>
-<h3 style="font-family:'Playfair Display',serif;color:#3a2450;font-size:1.4rem;margin:0 0 0.8rem 0;">Coupe & Brushing</h3>
-<p style="color:#777;line-height:1.7;font-size:0.95rem;margin:0 0 1.2rem 0;">Coupe personnalisée selon votre morphologie, sublimée par un brushing professionnel.</p>
-<p style="color:#a678d4;font-weight:700;font-size:1.1rem;">À partir de 55 €</p>
+<!-- NOTE GOOGLE + AVIS -->
+<section style="background:#fff;padding:70px 20px">
+<div style="max-width:960px;margin:0 auto">
+<div class="fade-up" style="text-align:center;margin-bottom:48px">
+<p style="font-size:0.8rem;letter-spacing:3px;text-transform:uppercase;color:#7c3aed;margin-bottom:8px">Avis clients</p>
+<h2 style="font-family:'Playfair Display',serif;font-size:2.2rem;color:#1a1a2e">Ce que disent nos clients</h2>
+<div style="margin-top:20px;display:flex;align-items:center;justify-content:center;gap:12px">
+<div style="font-size:2rem;color:#f59e0b">★★★★☆</div>
+<div>
+<span style="font-size:2.5rem;font-weight:700;color:#1a1a2e">3.7</span>
+<span style="color:#888;font-size:0.9rem">/5 · 63 avis Google</span>
 </div>
-
-<div style="background:#fff;border-radius:16px;padding:2.5rem 2rem;flex:1;min-width:240px;max-width:320px;box-shadow:0 4px 30px rgba(120,80,160,0.1);border-top:4px solid #7b4fa6;">
-<div style="font-size:2.5rem;margin-bottom:1rem;">🎨</div>
-<h3 style="font-family:'Playfair Display',serif;color:#3a2450;font-size:1.4rem;margin:0 0 0.8rem 0;">Coloration & Mèches</h3>
-<p style="color:#777;line-height:1.7;font-size:0.95rem;margin:0 0 1.2rem 0;">Balayages, ombré hair ou colorations tendance réalisés avec des produits haute gamme.</p>
-<p style="color:#7b4fa6;font-weight:700;font-size:1.1rem;">À partir de 90 €</p>
 </div>
-
-<div style="background:#fff;border-radius:16px;padding:2.5rem 2rem;flex:1;min-width:240px;max-width:320px;box-shadow:0 4px 30px rgba(120,80,160,0.1);border-top:4px solid #c4a0e0;">
-<div style="font-size:2.5rem;margin-bottom:1rem;">💆</div>
-<h3 style="font-family:'Playfair Display',serif;color:#3a2450;font-size:1.4rem;margin:0 0 0.8rem 0;">Soin & Kératine</h3>
-<p style="color:#777;line-height:1.7;font-size:0.95rem;margin:0 0 1.2rem 0;">Traitements restructurants pour redonner brillance, douceur et vitalité à vos cheveux.</p>
-<p style="color:#c4a0e0;font-weight:700;font-size:1.1rem;">À partir de 75 €</p>
 </div>
-
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px">
+<div class="fade-up" style="background:#f9f5ff;border-left:4px solid #7c3aed;padding:24px;border-radius:12px">
+<div style="color:#f59e0b;font-size:1.1rem;margin-bottom:10px">★★★★★</div>
+<p style="font-size:0.95rem;color:#444;line-height:1.6;margin-bottom:14px">"parfait."</p>
+<p style="font-weight:500;font-size:0.85rem;color:#7c3aed">— Jeremie</p>
 </div>
-</section>
-
-<section style="padding:5rem 1.5rem;background:linear-gradient(135deg,#f3edfb,#ede4f7);text-align:center;">
-<p style="color:#a678d4;font-weight:600;letter-spacing:4px;text-transform:uppercase;font-size:0.85rem;margin-bottom:0.5rem;">Témoignages</p>
-<h2 style="font-family:'Playfair Display',serif;font-size:clamp(1.8rem,4vw,2.5rem);color:#3a2450;margin:0 0 3rem 0;">Ce que disent nos clientes</h2>
-<div style="display:flex;flex-wrap:wrap;gap:2rem;justify-content:center;max-width:900px;margin:0 auto;">
-
-<div style="background:#fff;border-radius:16px;padding:2rem;flex:1;min-width:260px;max-width:400px;box-shadow:0 4px 20px rgba(120,80,160,0.1);text-align:left;">
-<div style="color:#a678d4;font-size:1.5rem;margin-bottom:0.8rem;">★★★★★</div>
-<p style="color:#555;line-height:1.8;font-style:italic;margin:0 0 1.2rem 0;">"Une adresse incontournable à Neuilly. Mon coloriste a parfaitement su interpréter mes envies. Je ressors toujours radieuse et confiante. Je recommande vivement !"</p>
-<p style="font-weight:700;color:#3a2450;margin:0;">Sophie M.</p>
-<p style="color:#aaa;font-size:0.85rem;margin:0.2rem 0 0 0;">Cliente fidèle depuis 3 ans</p>
+<div class="fade-up" style="background:#f9f5ff;border-left:4px solid #7c3aed;padding:24px;border-radius:12px">
+<div style="color:#f59e0b;font-size:1.1rem;margin-bottom:10px">★★★★★</div>
+<p style="font-size:0.95rem;color:#444;line-height:1.6;margin-bottom:14px">"I was fortunate enough to complete a two-month internship at Elexia, and the experience was extremely positive. The teams are simply fantastic, supportive, and always ready to share their expertise."</p>
+<p style="font-weight:500;font-size:0.85rem;color:#7c3aed">— Planaguma</p>
 </div>
-
-<div style="background:#fff;border-radius:16px;padding:2rem;flex:1;min-width:260px;max-width:400px;box-shadow:0 4px 20px rgba(120,80,160,0.1);text-align:left;">
-<div style="color:#a678d4;font-size:1.5rem;margin-bottom:0.8rem;">★★★★★</div>
-<p style="color:#555;line-height:1.8;font-style:italic;margin:0 0 1.2rem 0;">"Ambiance chaleureuse, équipe aux petits soins et résultat bluffant. Mon balayage est exactement ce que je cherchais. Le salon ELEXIA est une vraie pépite !"</p>
-<p style="font-weight:700;color:#3a2450;margin:0;">Camille R.</p>
-<p style="color:#aaa;font-size:0.85rem;margin:0.2rem 0 0 0;">Cliente depuis 2022</p>
+<div class="fade-up" style="background:#f9f5ff;border-left:4px solid #7c3aed;padding:24px;border-radius:12px">
+<div style="color:#f59e0b;font-size:1.1rem;margin-bottom:10px">★★★★★</div>
+<p style="font-size:0.95rem;color:#444;line-height:1.6;margin-bottom:14px">"Responsive service, I'm happy. A special thank you to Anissa for taking the time to look at my case. We found a solution quickly."</p>
+<p style="font-weight:500;font-size:0.85rem;color:#7c3aed">— Backin</p>
 </div>
-
+</div>
 </div>
 </section>
 
-<section style="padding:5rem 1.5rem;background:#f9f7fb;text-align:center;" id="contact">
-<p style="color:#a678d4;font-weight:600;letter-spacing:4px;text-transform:uppercase;font-size:0.85rem;margin-bottom:0.5rem;">Informations</p>
-<h2 style="font-family:'Playfair Display',serif;font-size:clamp(1.8rem,4vw,2.5rem);color:#3a2450;margin:0 0 3rem 0;">Horaires & Contact</h2>
-<div style="display:flex;flex-wrap:wrap;gap:2rem;justify-content:center;max-width:900px;margin:0 auto;">
-
-<div style="background:#fff;border-radius:16px;padding:2.5rem;flex:1;min-width:260px;box-shadow:0 4px 20px rgba(120,80,160,0.08);">
-<h3 style="font-family:'Playfair Display',serif;color:#3a2450;font-size:1.3rem;margin:0 0 1.5rem 0;">🕐 Nos Horaires</h3>
-<table style="width:100%;border-collapse:collapse;font-size:0.95rem;">
-<tr style="border-bottom:1px solid #f0eaf8;"><td style="padding:0.5rem 0;color:#777;text-align:left;">Mardi – Vendredi</td><td style="padding:0.5rem 0;color:#3a2450;font-weight:600;text-align:right;">9h – 19h</td></tr>
-<tr style="border-bottom:1px solid #f0eaf8;"><td style="padding:0.5rem 0;color:#777;text-align:left;">Samedi</td><td style="padding:0.5rem 0;color:#3a2450;font-weight:600;text-align:right;">9h – 18h</td></tr>
-<tr><td style="padding:0.5rem 0;color:#bbb;text-align:left;">Dimanche – Lundi</td><td style="padding:0.5rem 0;color:#ccc;font-weight:600;text-align:right;">Fermé</td></tr>
-</table>
+<!-- SERVICES -->
+<section style="background:linear-gradient(135deg,#1a1a2e,#2d1b4e);padding:70px 20px">
+<div style="max-width:960px;margin:0 auto">
+<div class="fade-up" style="text-align:center;margin-bottom:48px">
+<p style="font-size:0.8rem;letter-spacing:3px;text-transform:uppercase;color:#a78bfa;margin-bottom:8px">Nos prestations</p>
+<h2 style="font-family:'Playfair Display',serif;font-size:2.2rem;color:#fff">Nos Services</h2>
 </div>
-
-<div style="background:#fff;border-radius:16px;padding:2.5rem;flex:1;min-width:260px;box-shadow:0 4px 20px rgba(120,80,160,0.08);">
-<h3 style="font-family:'Playfair Display',serif;color:#3a2450;font-size:1.3rem;margin:0 0 1.5rem 0;">📍 Nous Trouver</h3>
-<p style="color:#777;line-height:1.8;margin:0 0 0.5rem 0;">14 avenue Charles de Gaulle<br>92200 Neuilly-sur-Seine</p>
-<p style="color:#777;margin:0 0 0.5rem 0;">📞 <a href="tel:+33147383020" style="color:#a678d4;text-decoration:none;font-weight:600;">01 47 38 30 20</a></p>
-<p style="color:#777;margin:0 0 1.5rem 0;">✉️ <a href="mailto:contact@elexia-coiffure.fr" style="color:#a678d4;text-decoration:none;font-weight:600;">contact@elexia-coiffure.fr</a></p>
-<a href="#contact" style="background:linear-gradient(90deg,#7b4fa6,#a678d4);color:#fff;text-decoration:none;padding:0.75rem 2rem;border-radius:50px;font-weight:600;font-size:0.9rem;letter-spacing:1px;display:inline-block;">Réserver en ligne</a>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px">
+<div class="fade-up" style="background:rgba(255,255,255,0.06);border:1px solid rgba(167,139,250,0.2);padding:30px 20px;border-radius:16px;text-align:center">
+<div style="font-size:2.2rem;margin-bottom:14px">✂️</div>
+<h3 style="font-family:'Playfair Display',serif;color:#e9d5ff;font-size:1.15rem;margin-bottom:8px">Coupe & Styling</h3>
+<p style="color:#c4b5fd;font-size:0.88rem;line-height:1.5">Coupes tendance pour femmes, hommes et enfants.</p>
 </div>
-
+<div class="fade-up" style="background:rgba(255,255,255,0.06);border:1px solid rgba(167,139,250,0.2);padding:30px 20px;border-radius:16px;text-align:center">
+<div style="font-size:2.2rem;margin-bottom:14px">🎨</div>
+<h3 style="font-family:'Playfair Display',serif;color:#e9d5ff;font-size:1.15rem;margin-bottom:8px">Couleur & Balayage</h3>
+<p style="color:#c4b5fd;font-size:0.88rem;line-height:1.5">Colorations sublimées par des experts passionnés.</p>
+</div>
+<div class="fade-up" style="background:rgba(255,255,255,0.06);border:1px solid rgba(167,139,250,0.2);padding:30px 20px;border-radius:16px;text-align:center">
+<div style="font-size:2.2rem;margin-bottom:14px">💆</div>
+<h3 style="font-family:'Playfair Display',serif;color:#e9d5ff;font-size:1.15rem;margin-bottom:8px">Soins Capillaires</h3>
+<p style="color:#c4b5fd;font-size:0.88rem;line-height:1.5">Traitements nourrissants pour des cheveux en santé.</p>
+</div>
+<div class="fade-up" style="background:rgba(255,255,255,0.06);border:1px solid rgba(167,139,250,0.2);padding:30px 20px;border-radius:16px;text-align:center">
+<div style="font-size:2.2rem;margin-bottom:14px">💍</div>
+<h3 style="font-family:'Playfair Display',serif;color:#e9d5ff;font-size:1.15rem;margin-bottom:8px">Coiffure Mariée</h3>
+<p style="color:#c4b5fd;font-size:0.88rem;line-height:1.5">Des créations uniques pour votre grand jour.</p>
+</div>
+</div>
+<div class="fade-up" style="text-align:center;margin-top:40px">
+<a href="https://cal.com/leman-nova-0zwvun/rendez-vous-15-minutes" style="display:inline-block;background:linear-gradient(135deg,#7c3aed,#a855f7);color:#fff;text-decoration:none;padding:14px 34px;border-radius:50px;font-size:0.95rem;font-weight:500;box-shadow:0 4px 24px rgba(124,58,237,0.4)">Prendre rendez-vous</a>
+</div>
 </div>
 </section>
 
-<footer style="background:#1a1a2e;color:#aaa;text-align:center;padding:2rem 1.5rem;">
-<p style="font-family:'Playfair Display',serif;color:#d9c8f0;font-size:1.3rem;letter-spacing:3px;margin:0 0 0.5rem 0;">ELEXIA</p>
-<p style="font-size:0.85rem;margin:0 0 1rem 0;">14 avenue Charles de Gaulle — 92200 Neuilly-sur-Seine</p>
-<p style="font-size:0.8rem;color:#666;margin:0;border-top:1px solid #2e2e4e;padding-top:1rem;">Maquette de demonstration realisee par Leman Nova</p>
-</footer>
-
+<!-- HORAIRES + CONTACT -->
+<section style="background:#fff;padding:70px 20px">
+<div style="max-width:960px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:40px">
+<div class="fade-up">
+<p style="font-size:0.8rem;letter-spacing:3px;text-transform:uppercase;color:#7c3aed;margin-bottom:8px">Horaires</p>
+<h2 style="font-family:'Playfair Display',serif;font-size:2rem;color:#1a1a2e;margin-bottom:24px">Nos Horaires</h2>
+<div style="display:flex;flex-direction:column;gap:10px">
+<div style="display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid #f0e8ff"><span style="color:#444">Lundi</span><span style="color:#7c3aed;font-weight:500">9h – 19h</span></div>
+<div style="display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid #f0e8ff"><span style="color:#444">Mardi</span><span style="color:#7c3aed;font-weight:500">9h – 19h</span></div>
+<div style="display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid #f0e8ff"><span style="color:#444">Mercredi</span><span style="color:#7c3aed;font-weight:500">9h – 19h</span></div>
+<div style="display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid #f0e8ff"><span style="color:#444">Jeudi</span><span style="color:#7c3aed;font-weight:500">9h – 19h</span></div>
+<div style="display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid #f0e8ff"><span style="color:#444">Vendredi</span><span style="color:#7c3aed;font-weight:500">9h – 19h</span></div>
+<div style="display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid #f0e8ff"><span style="color:#444">Samedi</span><span style="color:#ef4444;font-weight:500">Fermé</span></div>
+<div style="display:flex;justify-content:space-between;padding:10px 0"><span style="color:#444">Dimanche</span><span style="color:#ef4444;font-weight:500">Fermé</span></div>
+</div>
+</div>
+<div class="fade-up">
+<p style="font-size:0.8rem;letter-spacing:3px;text-transform:uppercase;color:#7c3aed;margin-bottom:8px">Contact</p>
+<h2 style="font-family:'Playfair Display',serif;font-size:2rem;color:#1a1a2e;margin-bottom:24px">Nous Trouver</h2>
+<div style="display:flex;flex-direction:column;gap:20px">
+<div style="display:flex;align-items:flex-start;gap:14px">
+<div style="width:40px;height:40px;background:#f3e8ff;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink
+<footer style="background:#1a1a2e;color:#e0e0e0;text-align:center;padding:30px 20px;font-family:sans-serif;">ELEXIA - NEUILLY-SUR-SEINE<br>Maquette de demonstration realisee par Leman Nova</footer>
 </body>
 </html>
