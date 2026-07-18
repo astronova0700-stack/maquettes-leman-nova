@@ -4,86 +4,143 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>ELEXIA - NEUILLY-SUR-SEINE</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
 <style>
-:root{--noir:#1e1e24;--blanc:#ffffff;--accent:#8e44ad;--gris:#f4f4f4}
+body{font-family:'Inter',sans-serif}
+h1,h2,h3{font-family:'Playfair Display',serif}
+
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{font-family:'Inter',sans-serif;background:var(--blanc);color:var(--noir)}
-h1,h2,h3{font-family:'Playfair Display',serif}
-.hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr}
-.hero-text{display:flex;flex-direction:column;justify-content:center;padding:60px 8vw;background:var(--noir);color:var(--blanc)}
-.hero-text h1{font-size:clamp(3rem,6vw,6rem);line-height:.95;margin-bottom:25px}
-.hero-text p{font-size:1.2rem;margin-bottom:35px;color:#ccc}
-.hero-img{background:linear-gradient(135deg,rgba(0,0,0,.35),rgba(0,0,0,.1)),url('https://image.pollinations.ai/prompt/modern%20hair%20salon%20interior%2C%20warm%20ambient%20light%2C%20clean%20design%2C%20stylish%20chairs%2C%20mirrors%2C%20photorealistic%2C%20welcoming%20atmosphere?width=1600&height=900&nologo=true') center/cover no-repeat;min-height:50vh}
-.cta{display:inline-block;background:var(--accent);color:var(--noir);padding:16px 38px;text-decoration:none;font-weight:600;letter-spacing:.5px;width:fit-content}
-section{padding:90px 8vw;max-width:1400px;margin:0 auto}
-section h2{font-size:2.8rem;margin-bottom:45px}
-.note-inline{font-size:1.1rem;border-left:4px solid var(--accent);padding-left:18px;margin-bottom:45px}
-.services{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:30px}
-.service-card{background:var(--gris);padding:35px}
-.service-card h3{font-size:1.6rem;margin-bottom:10px}
-.avis-section{background:var(--noir);color:var(--blanc)}
-.avis-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:30px}
-.avis-card{border:1px solid #333;padding:30px}
-.avis-card .stars{color:var(--accent);margin-bottom:14px}
-.galerie{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:15px}
-.galerie img{width:100%;height:320px;object-fit:cover;filter:grayscale(20%)}
-.infos{display:grid;grid-template-columns:repeat(3,1fr);gap:30px}
-.info-item{text-align:center;padding:30px;border-top:3px solid var(--accent)}
-.horaires{white-space:pre-wrap;font-family:'Inter',sans-serif;font-size:.95rem}
-footer{background:var(--noir);color:#aaa;text-align:center;padding:50px 20px}
-@media(max-width:800px){.hero{grid-template-columns:1fr}.hero-img{min-height:40vh}.infos{grid-template-columns:1fr}}
+body{font-family:'Inter',system-ui,-apple-system,sans-serif;line-height:1.6;color:#222}
+img{max-width:100%;display:block}
+a{text-decoration:none;color:inherit}
+.container{width:min(1200px,92vw);margin:0 auto}
+#navbar{position:fixed;top:0;left:0;right:0;z-index:1000;padding:18px 0;transition:background .3s,border-color .3s}
+#navbar.scrolled{background:rgba(255,255,255,.96);backdrop-filter:blur(10px);border-bottom:1px solid rgba(0,0,0,.08)}
+.nav-inner{display:flex;justify-content:space-between;align-items:center;width:min(1200px,92vw);margin:0 auto}
+.nav-logo{font-weight:800;font-size:1.3rem}
+.nav-links{display:flex;gap:28px}
+.nav-links a{font-weight:500;font-size:.95rem;position:relative}
+.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:2px;transition:width .3s}
+.nav-links a:hover::after{width:100%}
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background-size:cover;background-position:center;z-index:-1;will-change:transform}
+.hero-content{position:relative;z-index:2;max-width:800px;padding:20px}
+.hero-title{font-size:clamp(3rem,8vw,6.5rem);font-weight:900;line-height:1;margin-bottom:22px}
+.hero-subtitle{font-size:clamp(1.1rem,2.5vw,1.5rem);margin-bottom:38px;opacity:.95}
+.hero-ctas{display:flex;gap:18px;justify-content:center;flex-wrap:wrap}
+.cta-primary,.cta-secondary{display:inline-block;padding:16px 34px;border-radius:50px;font-weight:700;transition:transform .2s,box-shadow .2s}
+.cta-primary:hover,.cta-secondary:hover{transform:translateY(-3px)}
+.pulse{animation:pulse 2.5s infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(255,255,255,.4)}50%{box-shadow:0 0 0 12px rgba(255,255,255,0)}}
+.section-title{font-size:clamp(2rem,5vw,3rem);font-weight:800;margin-bottom:45px;text-align:center}
+.reveal{opacity:1;transform:none;transition:opacity .8s ease,transform .8s ease}
+.reveal.visible{opacity:1;transform:none}
+.reveal-text{display:inline-block;opacity:1;transform:none;transition:opacity .8s ease,transform .8s ease}
+.reveal-text.visible{opacity:1;transform:none}
+.services-section,.reservation-section,.avis-section,.galerie-section,.infos-section{padding:90px 20px}
+.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:28px}
+.service-card{background:#fff;padding:34px 28px;border-radius:20px;transition:transform .3s,box-shadow .3s;cursor:pointer}
+.service-card:hover{box-shadow:0 20px 50px rgba(0,0,0,.12)}
+.service-icon{width:52px;height:52px;margin-bottom:18px}
+.service-icon svg{width:100%;height:100%}
+.service-card h3{font-size:1.25rem;margin-bottom:10px}
+.service-card p{font-size:.95rem;color:#555;margin-bottom:14px}
+.service-price{font-weight:800;font-size:1.1rem}
+.reservation-section{background:#f8f9fa}
+.reservation-sub{text-align:center;color:#666;margin-bottom:30px}
+.reservation-list{max-width:700px;margin:0 auto;display:flex;flex-direction:column;gap:14px}
+.reservation-item{display:flex;justify-content:space-between;align-items:center;background:#fff;padding:20px 26px;border-radius:14px;transition:transform .2s,box-shadow .2s}
+.reservation-item:hover{transform:translateX(8px);box-shadow:0 10px 30px rgba(0,0,0,.08)}
+.reservation-name{font-weight:700}
+.reservation-price{font-weight:800}
+.reservation-arrow{font-size:1.3rem}
+.avis-section{background:#fff}
+.avis-header{display:flex;align-items:center;justify-content:center;gap:30px;margin-bottom:45px;flex-wrap:wrap}
+.avis-score{font-size:4.5rem;font-weight:900;line-height:1}
+.avis-score span{font-size:1.5rem;font-weight:500;opacity:.7}
+.avis-stars{color:#f4c430;letter-spacing:2px}
+.avis-stars.big{font-size:1.8rem}
+.avis-count{font-size:1.1rem;color:#555}
+.avis-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px}
+.avis-card{background:#f8f9fa;padding:28px;border-radius:18px}
+.avis-text{font-style:italic;margin:14px 0}
+.avis-author{font-weight:700;color:#555}
+.galerie-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px}
+.galerie-item{border-radius:16px;overflow:hidden}
+.galerie-item img{width:100%;height:280px;object-fit:cover;transition:transform .4s}
+.galerie-item:hover img{transform:scale(1.05)}
+.infos-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px;margin-bottom:40px}
+.info-card{background:#fff;padding:28px;border-radius:18px;text-align:center;box-shadow:0 8px 30px rgba(0,0,0,.06)}
+.info-icon{width:44px;height:44px;margin:0 auto 14px}
+.info-card h3{margin-bottom:10px;font-size:1.1rem}
+.horaires{white-space:pre-wrap;font-family:inherit;text-align:left;font-size:.95rem;color:#555}
+.tel a{font-weight:800;color:inherit}
+.map-wrapper{border-radius:16px;overflow:hidden;box-shadow:0 10px 40px rgba(0,0,0,.1)}
+.site-footer{background:#111827;color:#e5e7eb;text-align:center;padding:50px 20px}
+.site-footer strong{color:#fff}
+@media(max-width:700px){.nav-links{gap:14px;font-size:.85rem}.hero-title{font-size:2.4rem}.avis-score{font-size:3rem}}
 
-.animate-on-scroll{opacity:1;transform:none;transition:opacity .8s ease,transform .8s ease}
-.animate-on-scroll.animated{opacity:1;transform:none}
+body{background:#f4f4f4;color:#222}
+#navbar{color:#fff} #navbar.scrolled{color:#222}
+.nav-links a::after{background:#8e44ad}
+.hero{color:#fff;text-align:left}
+.hero-bg{filter:grayscale(30%)}
+.hero-content{margin:0;text-align:left;max-width:700px}
+.cta-primary{background:#8e44ad;color:#fff}
+.cta-secondary{border:2px solid #fff;color:#fff}
+.section-title{color:#1e1e24;text-align:left}
+.services-section .container,.reservation-section .container,.avis-section .container,.infos-section .container{text-align:left}
+.services-grid,.reservation-list,.avis-header,.infos-grid{justify-content:start}
+.service-card{border-left:4px solid #8e44ad}
+.service-icon{color:#8e44ad}
+.service-price{color:#8e44ad}
+.reservation-section{background:#1e1e24;color:#fff}
+.reservation-item{background:rgba(255,255,255,.08);color:#fff}
+.reservation-price{color:#8e44ad}
+.avis-score{color:#8e44ad}
+.info-card h3{color:#8e44ad}
+.info-icon{color:#8e44ad}
+
 
 </style>
 </head>
 <body>
-<section class="hero">
-<div class="hero-text animate-on-scroll">
-<h1>ELEXIA</h1>
-<p>Votre salon de coiffure au coeur du 8e arrondissement, à deux pas des Champs-Élysées, pour des coupes soignées au quotidien.</p>
-<a class="cta" href="https://cal.com/leman-nova-0zwvun/rendez-vous-15-minutes">Reserver</a>
+<nav id="navbar"><div class="nav-inner"><a href="#accueil" class="nav-logo">ELEXIA</a><div class="nav-links"><a href="#accueil">Accueil</a><a href="#prestations">Prestations</a><a href="#avis">Avis</a><a href="#contact">Contact</a></div></div></nav>
+<header id="accueil" class="hero">
+<div class="hero-bg" style="background-image:linear-gradient(135deg,rgba(0,0,0,.65),rgba(0,0,0,.35)),url('https://image.pollinations.ai/prompt/modern%20hair%20salon%20interior%2C%20warm%20ambient%20light%2C%20clean%20design%2C%20stylish%20chairs%2C%20mirrors%2C%20photorealistic%2C%20welcoming%20atmosphere?width=1600&height=900&nologo=true')"></div>
+<div class="hero-content">
+<h1 class="hero-title"><span class="reveal-text">ELEXIA</span></h1>
+<p class="hero-subtitle reveal-text">Votre salon de coiffure de confiance au coeur du 8e arrondissement, à deux pas des Champs-Élysées.</p>
+<div class="hero-ctas">
+<a href="https://cal.com/leman-nova-0zwvun/rendez-vous-15-minutes" class="cta-primary pulse">Prendre rendez-vous</a>
+<a href="#prestations" class="cta-secondary">Decouvrir</a>
 </div>
-<div class="hero-img"></div>
-</section>
-<section class="avis-section"><h2>Avis clients</h2>
-<div class="avis-grid"><div class="avis-card animate-on-scroll"><div class="stars">★★★★★</div><p>"parfait."</p><p><strong>Jeremie</strong> — 5/5</p></div>
-<div class="avis-card animate-on-scroll"><div class="stars">★★★★★</div><p>"I was fortunate enough to complete a two-month internship at Elexia, and the experience was extremely positive. The teams are simply fantastic, supportive, and always ready to share their expertise. What impressed me most was the management style: very human, pleasant, and genuinely close to its employees, which is incredibly motivating as an in..."</p><p><strong>Planaguma</strong> — 5/5</p></div>
-<div class="avis-card animate-on-scroll"><div class="stars">★★★★★</div><p>"Responsive service, I'm happy. A special thank you to Anissa for taking the time to look at my case. We found a solution quickly. She deserves all the 10 minutes she spent with me!"</p><p><strong>Backin</strong> — 5/5</p></div></div>
-</section>
-<section><h2>Prestations</h2><div class="services"><div class="service-card animate-on-scroll"><h3>Coupe et coiffage</h3><p>Une coupe adaptée à votre morphologie et à votre style, réalisée avec soin par nos coiffeurs expérimentés.</p></div>
-<div class="service-card animate-on-scroll"><h3>Coloration et mèches</h3><p>Techniques de coloration sur mesure pour révéler l'éclat naturel de vos cheveux, du balayage aux teintes franches.</p></div>
-<div class="service-card animate-on-scroll"><h3>Soin et entretien</h3><p>Des soins capillaires ciblés pour nourrir, réparer et sublimer vos cheveux en profondeur, à chaque visite.</p></div></div></section>
-<section>
-<div class="note-inline animate-on-scroll"><strong>3.7/5</strong> sur Google — 63 avis</div>
-<h2>Prestations</h2>
-<div class="services"><div class="service-card animate-on-scroll"><h3>Coupe et coiffage</h3><p>Une coupe adaptée à votre morphologie et à votre style, réalisée avec soin par nos coiffeurs expérimentés.</p></div>
-<div class="service-card animate-on-scroll"><h3>Coloration et mèches</h3><p>Techniques de coloration sur mesure pour révéler l'éclat naturel de vos cheveux, du balayage aux teintes franches.</p></div>
-<div class="service-card animate-on-scroll"><h3>Soin et entretien</h3><p>Des soins capillaires ciblés pour nourrir, réparer et sublimer vos cheveux en profondeur, à chaque visite.</p></div></div>
-</section>
-<section><h2>Galerie</h2><div class="galerie"><img src="https://image.pollinations.ai/prompt/modern%20hair%20salon%20interior%2C%20warm%20ambient%20light%2C%20clean%20design%2C%20stylish%20chairs%2C%20mirrors%2C%20photorealistic%2C%20welcoming%20atmosphere?width=1600&height=900&nologo=true" alt="Photo" loading="lazy" class="animate-on-scroll"></div></section>
-<section style="background:var(--gris)">
-<h2>Infos</h2>
-<div class="infos">
-<div class="info-item"><h3>Adresse</h3><p>49 Rue de Ponthieu, 75008 Paris, France</p></div>
-<div class="info-item"><h3>Telephone</h3><p>01 56 64 11 11</p></div>
-<div class="info-item"><h3>Horaires</h3><p class="horaires">Monday: 9:00 AM – 7:00 PM
-Tuesday: 9:00 AM – 7:00 PM
-Wednesday: 9:00 AM – 7:00 PM
-Thursday: 9:00 AM – 7:00 PM
-Friday: 9:00 AM – 7:00 PM
-Saturday: Closed
-Sunday: Closed</p></div>
 </div>
-</section>
+</header>
+<section id="avis" class="avis-section"><div class="container"><h2 class="section-title reveal">Avis Google</h2><div class="avis-header reveal"><div class="avis-score">3.7<span>/5</span></div><div class="avis-meta"><div class="avis-stars big">★★★</div><div class="avis-count"><span class="counter" data-target="63">63</span> avis</div></div></div><div class="avis-grid"><div class="avis-card reveal"><div class="avis-stars">★★★★★</div><p class="avis-text">"parfait."</p><p class="avis-author">— Jeremie</p></div><div class="avis-card reveal"><div class="avis-stars">★☆☆☆☆</div><p class="avis-text">"zero service"</p><p class="avis-author">— anonyme</p></div><div class="avis-card reveal"><div class="avis-stars">★★★★★</div><p class="avis-text">"I was fortunate enough to complete a two-month internship at Elexia, and the experience was extremely positive. The teams are simply fantastic, supportive, and always ready to share their expertise. What impressed me most was the management style: very human, pleasant, and genuinely close to its employees, which is incredibly motivating as an in..."</p><p class="avis-author">— Planaguma</p></div></div></div></section>
+<section id="prestations" class="services-section"><div class="container"><h2 class="section-title reveal">Nos prestations</h2><div class="services-grid"><div class="service-card tilt" data-delay="0"><div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="6" cy="6" r="3"/><circle cx="18" cy="18" r="3"/><path d="M6 9l12 9M18 9L6 18"/></svg></div><h3>Coupe et coiffage</h3><p>Coupe personnalisée pour femme ou homme, avec shampoing et brushing inclus.</p><div class="service-price">à partir de 55 EUR</div></div><div class="service-card tilt" data-delay="1"><div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="6" cy="6" r="3"/><circle cx="18" cy="18" r="3"/><path d="M6 9l12 9M18 9L6 18"/></svg></div><h3>Coloration et mèches</h3><p>Coloration complète, balayage ou mèches pour révéler l'éclat naturel de vos cheveux.</p><div class="service-price">à partir de 90 EUR</div></div><div class="service-card tilt" data-delay="2"><div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="6" cy="6" r="3"/><circle cx="18" cy="18" r="3"/><path d="M6 9l12 9M18 9L6 18"/></svg></div><h3>Soin et traitement capillaire</h3><p>Soins restructurants adaptés à chaque type de cheveu, sur bilan capillaire préalable.</p><div class="service-price">sur devis</div></div></div></div></section>
+<section class="reservation-section"><div class="container"><h2 class="section-title reveal">Reservez votre creneau</h2><p class="reservation-sub">Maquette : ce lien mene au createur du site</p><div class="reservation-list"><a href="https://cal.com/leman-nova-0zwvun/rendez-vous-15-minutes" class="reservation-item" target="_blank"><span class="reservation-name">Coupe et coiffage</span><span class="reservation-price">à partir de 55 EUR</span><span class="reservation-arrow">→</span></a><a href="https://cal.com/leman-nova-0zwvun/rendez-vous-15-minutes" class="reservation-item" target="_blank"><span class="reservation-name">Coloration et mèches</span><span class="reservation-price">à partir de 90 EUR</span><span class="reservation-arrow">→</span></a><a href="https://cal.com/leman-nova-0zwvun/rendez-vous-15-minutes" class="reservation-item" target="_blank"><span class="reservation-name">Soin et traitement capillaire</span><span class="reservation-price">sur devis</span><span class="reservation-arrow">→</span></a></div></div></section>
+<section id="contact" class="infos-section"><div class="container"><h2 class="section-title reveal">Informations pratiques</h2><div class="infos-grid"><div class="info-card reveal"><div class="info-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div><h3>Adresse</h3><p>49 Rue de Ponthieu, 75008 Paris, France</p></div><div class="info-card reveal"><div class="info-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div><h3>Horaires</h3><pre class="horaires">Lundi: 9:00 AM – 7:00 PM
+Mardi: 9:00 AM – 7:00 PM
+Mercredi: 9:00 AM – 7:00 PM
+Jeudi: 9:00 AM – 7:00 PM
+Vendredi: 9:00 AM – 7:00 PM
+Samedi: Ferme
+Dimanche: Ferme</pre></div><div class="info-card reveal"><div class="info-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div><h3>Telephone</h3><p class="tel"><a href="tel:0156641111">01 56 64 11 11</a></p></div></div><div class="map-wrapper reveal"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1!2d0!3d0!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0!2s49%20Rue%20de%20Ponthieu%2C%2075008%20Paris%2C%20France!5e0!3m2!1sfr!2sfr!4v1" width="100%" height="350" style="border:0;border-radius:16px" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div></div></section>
+<footer class="site-footer"><div class="container"><p>Maquette de demonstration realisee par <strong>Leman Nova</strong></p><p>ELEXIA — NEUILLY-SUR-SEINE</p></div></footer>
 
-<footer>Maquette de demonstration realisee par Leman Nova — ELEXIA NEUILLY-SUR-SEINE</footer>
 <script>
-const obs=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('animated');obs.unobserve(e.target)}})},{threshold:.12});
-document.querySelectorAll('.animate-on-scroll').forEach(el=>obs.observe(el));
+(function(){
+  const nav=document.getElementById('navbar');
+  window.addEventListener('scroll',function(){if(window.scrollY>60){nav.classList.add('scrolled')}else{nav.classList.remove('scrolled')}});
+  document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',function(e){e.preventDefault();const t=document.querySelector(this.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth'})})});
+  const hero=document.querySelector('.hero');
+  if(hero){window.addEventListener('scroll',function(){const y=window.scrollY;const bg=hero.querySelector('.hero-bg');if(bg)bg.style.transform='translateY('+(y*0.4)+'px)'}});
+  const observer=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');if(e.target.classList.contains('counter')){const target=parseInt(e.target.dataset.target||'0',10);let cur=0;const step=Math.max(1,Math.floor(target/30));const int=setInterval(()=>{cur+=step;if(cur>=target){cur=target;clearInterval(int)}e.target.textContent=cur},30)}observer.unobserve(e.target)}})},{threshold:0.12});
+  document.querySelectorAll('.reveal,.counter').forEach(el=>observer.observe(el));
+  document.querySelectorAll('.tilt').forEach(card=>{card.addEventListener('mousemove',e=>{const r=card.getBoundingClientRect();const x=e.clientX-r.left;const y=e.clientY-r.top;const cx=x-r.width/2;const cy=y-r.height/2;card.style.transform='perspective(800px) rotateY('+(cx/20)+'deg) rotateX('+(-cy/20)+'deg) translateY(-8px)'});card.addEventListener('mouseleave',()=>{card.style.transform=''})});
+})();
 </script>
 </body>
 </html>
