@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SOREFICO</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Raleway:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Raleway',sans-serif;color:#2d2d2d;background:#fff}
+.fade-in{opacity:0;transform:translateY(30px);transition:opacity 0.7s ease,transform 0.7s ease}
+.fade-in.visible{opacity:1;transform:translateY(0)}
+section{padding:60px 20px}
+.container{max-width:1100px;margin:0 auto}
+h2{font-family:'Playfair Display',serif;font-size:2rem;color:#5b3fa0;margin-bottom:30px;text-align:center}
+/* HERO */
+#hero{min-height:100vh;background:linear-gradient(rgba(30,10,60,0.65),rgba(30,10,60,0.75)),url('https://maps.googleapis.com/maps/api/place/photo?maxwidth=1200&photo_reference=AWCwydjb-_fhzTe8xk1YRIiUmtA5m6u85xZ0YAVGdhoFJnr12NaTaj35idSEFBhXfIAHRZWqIxKaR4YZa6tKixVqJw4mEBMOEZRiYbu0ssKSPfkC2PAxQxk9QBCJeAaThTpew9FjrOaGv1WCD3wO2NZqEwntXfNVKbAD_9pltFC8d3_wZ1h69e-RSo9aqslgy4g0ms2gE0ORgXIXkc7iYYZMfPqEjRx1Zy0G-DP1KE0TTg7gX49hi42XcQUvbRpnrLrsSy_s1IUp8uu1k-M3mb0dpyyrQzFd6ta2QviUvYQjxFHmvWL6men19ZrUScZFGQQx2tLCypxUyjZRQv4gbCFp5_62zbWQe2aITJxNFPx-hcAN_8r8ugQlLw3uQu77dkEmNwH4vgeVncYdgqqYaWB6FnEKWvPFnH23K-w-a2z2i_lmGVQXxVRGH3TSMUy9XQ&key=AIzaSyBM-CLXoGETNkX3Zv2-ml8_DJKZKfIx0S8') center/cover no-repeat;display:flex;align-items:center;justify-content:center;text-align:center}
+#hero .hero-content{color:#fff;padding:20px}
+#hero h1{font-family:'Playfair Display',serif;font-size:clamp(2.8rem,7vw,5rem);letter-spacing:3px;margin-bottom:12px}
+#hero p{font-size:1.2rem;font-weight:300;margin-bottom:10px;opacity:0.9}
+#hero .sub{font-size:1rem;opacity:0.75;margin-bottom:35px}
+.btn-cta{display:inline-block;background:linear-gradient(135deg,#7c3aed,#5b21b6);color:#fff;padding:15px 38px;border-radius:50px;text-decoration:none;font-weight:600;font-size:1rem;letter-spacing:1px;transition:transform 0.3s,box-shadow 0.3s;box-shadow:0 4px 20px rgba(124,58,237,0.4)}
+.btn-cta:hover{transform:translateY(-3px);box-shadow:0 8px 30px rgba(124,58,237,0.6)}
+/* AVIS */
+#avis{background:#f9f6ff}
+.stars{color:#f59e0b;font-size:1.4rem;margin-bottom:5px}
+.note-global{text-align:center;margin-bottom:40px}
+.note-global .big{font-family:'Playfair Display',serif;font-size:3.5rem;color:#5b3fa0;font-weight:700}
+.note-global .count{color:#888;font-size:0.9rem}
+.avis-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
+.avis-card{background:#fff;border-radius:16px;padding:24px;box-shadow:0 4px 20px rgba(91,63,160,0.1)}
+.avis-card .prenom{font-weight:600;color:#5b3fa0;margin-bottom:6px}
+.avis-card p{font-size:0.9rem;color:#555;line-height:1.5}
+/* SERVICES */
+#services{background:#fff}
+.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px}
+.service-card{background:linear-gradient(135deg,#f5f0ff,#ede9fe);border-radius:14px;padding:28px 20px;text-align:center}
+.service-card .icon{font-size:2.2rem;margin-bottom:12px}
+.service-card h3{font-family:'Playfair Display',serif;color:#5b3fa0;font-size:1.1rem;margin-bottom:8px}
+.service-card p{font-size:0.85rem;color:#666}
+/* GALERIE */
+#galerie{background:#f9f6ff}
+.galerie-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+.galerie-grid img{width:100%;height:220px;object-fit:cover;border-radius:12px;transition:transform 0.3s}
+.galerie-grid img:hover{transform:scale(1.03)}
+/* COMPARAISON */
+#comparaison{background:linear-gradient(135deg,#1e0a3c,#3b1a6e);color:#fff}
+#comparaison h2{color:#d8b4fe}
+.comp-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:800px;margin:0 auto}
+@media(max-width:600px){.comp-grid{grid-template-columns:1fr}}
+.comp-card{border-radius:14px;padding:24px}
+.comp-old{background:rgba(255,255,255,0.08);border:2px solid #ef4444}
+.comp-new{background:rgba(255,255,255,0.08);border:2px solid #22c55e}
+.comp-card h3{font-size:1rem;margin-bottom:14px;font-weight:700}
+.comp-card ul{list-style:none;font-size:0.88rem;line-height:2}
+.comp-old h3{color:#f87171}
+.comp-new h3{color:#4ade80}
+.badge{display:inline-block;font-size:0.7rem;padding:2px 8px;border-radius:20px;margin-left:6px;background:#ef4444;color:#fff}
+/* HORAIRES */
+#horaires{background:#fff}
+.horaires-table{max-width:480px;margin:0 auto;border-radius:14px;overflow:hidden;box-shadow:0 4px 20px rgba(91,63,160,0.1)}
+.horaire-row{display:flex;justify-content:space-between;padding:13px 24px;font-size:0.95rem}
+.horaire-row:nth-child(odd){background:#f5f0ff}
+.horaire-row:nth-child(even){background:#ede9fe}
+.horaire-row .jour{font-weight:600;color:#5b3fa0}
+.horaire-row .heure{color:#444}
+.ferme{color:#ef4444!important}
+/* CONTACT */
+#contact{background:#f9f6ff;text-align:center}
+.contact-info{display:flex;flex-wrap:wrap;justify-content:center;gap:24px;margin-bottom:36px}
+.contact-item{background:#fff;border-radius:12px;padding:20px 30px;box-shadow:0 4px 16px rgba(91,63,160,0.1);font-size:0.95rem}
+.contact-item .label{color:#5b3fa0;font-weight:600;margin-bottom:4px}
+/* FOOTER */
+footer{background:#1a1a2e;color:#ccc;text-align:center;padding:24px 20px;font-size:0.85rem}
+footer a{color:#d8b4fe;text-decoration:none}
+</style>
+</head>
+<body>
+
+<section id="hero">
+<div class="hero-content">
+<h1>SOREFICO</h1>
+<p>Salon de coiffure — Neuilly-sur-Seine</p>
+<p class="sub">99 Av. Achille Peretti, 92200 Neuilly-sur-Seine</p>
+<a href="https://cal.com/leman-nova-0zwvun/rendez-vous-15-minutes" class="btn-cta">Prendre rendez-vous</a>
+</div>
+</section>
+
+<section id="avis">
+<div class="container">
+<div class="note-global fade-in">
+<div class="big">5.0</div>
+<div class="stars">★★★★★</div>
+<div class="count">44 avis Google</div>
+</div>
+<div class="avis-grid">
+<div class="avis-card fade-in">
+<div class="stars">★★★★★</div>
+<div class="prenom">Ulysse</div>
+<p>Highly competent automotive expert; the report met my expectations. Thank you!</p>
+</div>
+<div class="avis-card fade-in">
+<div class="stars">★★★★★</div>
+<div class="prenom">Brison</div>
+<p>I am delighted to have found a favorable resolution to my dispute thanks to your services. I would particularly like to thank Henry for his clarity and professionalism.</p>
+</div>
+<div class="avis-card fade-in">
+<div class="stars">★★★★★</div>
+<div class="prenom">Maxime</div>
+<p>Excellent service! I was greeted by a helpful advisor who guided me through my dispute. I highly recommend them!</p>
+</div>
+</div>
+</div>
+</section>
+
+<section id="services">
+<div class="container">
+<h2 class="fade-in">Nos Services</h2>
+<div class="services-grid">
+<div class="service-card fade-in">
+<div class="icon">✂️</div>
+<h3>Coupe Femme</h3>
+<p>Coupe personnalisée selon votre morphologie et vos envies.</p>
+</div>
+<div class="service-card fade-in">
+<div class="icon">💇</div>
+<h3>Coupe Homme</h3>
+<p>Dégradé, classique ou moderne, un style soigné garanti.</p>
+</div>
+<div class="service-card fade-in">
+<div class="icon">🎨</div>
+<h3>Coloration</h3>
+<p>Balayage, mèches, couleur pleine — sublimez vos cheveux.</p>
+</div>
+<div class="service-card fade-in">
+<div class="icon">💆</div>
+<h3>Soin & Traitement</h3>
+<p>Masques nourrissants et soins profonds pour des cheveux éclatants.</p>
+</div>
+<div class="service-card fade-in">
+<div class="icon">💍</div>
+<h3>Coiffure Mariée</h3>
+<p>Mise en beauté et coiffure pour votre jour spécial.</p>
+</div>
+<div class="service-card fade-in">
+<div class="icon">🌿</div>
+<h3>Lissage Brésilien</h3>
+<p>Lissage longue durée pour une chevelure soyeuse et disciplinée.</p>
+</div>
+</div>
+</div>
+</section>
+
+<section id="galerie">
+<div class="container">
+<h2 class="fade-in">Notre Salon</h2>
+<div class="galerie-grid">
+<img src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=1200&photo_reference=AWCwydjb-_fhzTe8xk1YRIiUmtA5m6u85xZ0YAVGdhoFJnr12NaTaj35idSEFBhXfIAHRZWqIxKaR4YZa6tKixVqJw4mEBMOEZRiYbu0ssKSPfkC2PAxQxk9QBCJeAaThTpew9FjrOaGv1WCD3wO2NZqEwntXfNVKbAD_9pltFC8d3_wZ1h69e-RSo9aqslgy4g0ms2gE0ORgXIXkc7iYYZMfPqEjRx1Zy0G-DP1KE0TTg7gX49hi42XcQUvbRpnrLrsSy_s1IUp8uu1k-M3mb0dpyyrQzFd6ta2QviUvYQjxFHmvWL6men19ZrUScZFGQQx2tLCypxUyjZRQv4gbCFp5_62zbWQe2aITJxNFPx-hcAN_8r8ugQlLw3uQu77dkEmNwH4vgeVncYdgqqYaWB6FnEKWvPFnH23K-w-a2z2i_lmGVQXxVRGH3TSMUy9XQ&key=AIzaSyBM-CLXoGETNkX3Zv2-ml8_DJKZKfIx0S8" alt="Salon SOREFICO" class="fade-in">
+<img src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=1200&photo_reference=AWCwydhPF6EOiBV3H2zNXYn8R6P-JDRc1kb-1nbCvsk8j_0AHraJwFi3M-Yk4gx8UrSp7iZCwPvGG
+<footer style="background:#1a1a2e;color:#e0e0e0;text-align:center;padding:30px 20px;font-family:sans-serif;">SOREFICO - NEUILLY-SUR-SEINE<br>Maquette de demonstration realisee par Leman Nova</footer>
+</body>
+</html>
