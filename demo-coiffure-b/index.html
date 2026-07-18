@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Atelier Coupe Éditorial - Lyon</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+<style>
+
+:root{--primary:#0d0d0d;--secondary:#f4f4f4;--accent:#d4a017;--dark:#0d0d0d;--light:#ffffff}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',system-ui,-apple-system,sans-serif;line-height:1.6;color:var(--dark)}
+img{max-width:100%;display:block}
+a{text-decoration:none;color:inherit}
+.container{width:min(1200px,92vw);margin:0 auto}
+#navbar{position:fixed;top:0;left:0;right:0;z-index:1000;padding:12px 0;background:var(--primary);color:var(--light);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,.1)}
+.nav-inner{display:flex;justify-content:space-between;align-items:center;width:min(1200px,92vw);margin:0 auto}
+.nav-logo{font-weight:800;font-size:1.25rem}
+.nav-links{display:flex;align-items:center;gap:26px}
+.nav-links a{font-weight:500;font-size:.93rem}
+.nav-cta{background:var(--accent);color:#fff!important;padding:11px 24px;border-radius:50px;font-weight:700;transition:transform .2s,box-shadow .2s;white-space:nowrap}
+.nav-cta:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(0,0,0,.2)}
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden;padding-top:80px}
+.hero-bg{position:absolute;inset:0;background-size:cover;background-position:center;z-index:-1;will-change:transform}
+.hero-content{position:relative;z-index:2;max-width:800px;padding:20px}
+.hero-title{font-size:clamp(3rem,8vw,6.5rem);font-weight:900;line-height:1;margin-bottom:22px}
+.hero-subtitle{font-size:clamp(1.1rem,2.5vw,1.5rem);margin-bottom:38px;opacity:.95}
+.hero-ctas{display:flex;gap:18px;justify-content:center;flex-wrap:wrap}
+.cta-primary,.cta-secondary{display:inline-block;padding:16px 34px;border-radius:50px;font-weight:700;transition:transform .2s,box-shadow .2s}
+.cta-primary:hover,.cta-secondary:hover{transform:translateY(-3px)}
+.pulse{animation:pulse 2.5s infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(255,255,255,.4)}50%{box-shadow:0 0 0 12px rgba(255,255,255,0)}}
+.section-title{font-size:clamp(2rem,5vw,3rem);font-weight:800;margin-bottom:45px}
+.reveal{opacity:1;transform:none;transition:opacity .8s ease,transform .8s ease}
+.reveal.visible{opacity:1;transform:none}
+.reveal-text{display:inline-block;opacity:1;transform:none;transition:opacity .8s ease,transform .8s ease}
+.services-section,.reservation-section,.avis-section,.galerie-section,.infos-section{padding:90px 20px}
+.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:28px}
+.service-card{background:var(--light);padding:34px 28px;border-radius:20px;transition:transform .3s,box-shadow .3s;cursor:pointer;border:1px solid rgba(0,0,0,.06)}
+.service-card:hover{transform:translateY(-8px);box-shadow:0 20px 50px rgba(0,0,0,.12)}
+.service-icon{width:50px;height:50px;margin-bottom:16px;color:var(--primary)}
+.service-icon svg{width:100%;height:100%}
+.service-card h3{font-size:1.2rem;margin-bottom:8px}
+.service-card p{font-size:.92rem;color:#555;margin-bottom:12px}
+.service-price{font-weight:800;color:var(--primary)}
+.reservation-section{background:var(--secondary)}
+.reservation-flow{display:grid;gap:28px;max-width:900px;margin:0 auto}
+.reservation-step{background:var(--light);padding:30px;border-radius:20px;box-shadow:0 8px 30px rgba(0,0,0,.06)}
+.step-num{display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:50%;background:var(--primary);color:var(--light);font-weight:800;margin-bottom:12px}
+.reservation-choices{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;margin-top:18px}
+.reservation-card{border:2px solid #e5e7eb;border-radius:16px;padding:22px;cursor:pointer;transition:all .2s}
+.reservation-card:hover,.reservation-card.selected{border-color:var(--primary);transform:translateY(-5px);box-shadow:0 12px 30px rgba(0,0,0,.1)}
+.reservation-card h4{font-size:1.05rem;margin-bottom:6px}
+.reservation-card p{font-size:.88rem;color:#666;margin-bottom:10px}
+.reservation-price{font-weight:800;color:var(--primary)}
+.summary-step{opacity:.6;transition:opacity .3s}
+.summary-step.active{opacity:1}
+.reservation-summary-text{font-size:1.15rem;font-weight:700}
+.reservation-confirm{display:inline-block}
+.reservation-confirm.disabled{opacity:.5;pointer-events:none}
+.reservation-note{font-size:.82rem;color:#666;margin-top:12px}
+.avis-section{background:var(--light)}
+.avis-header{display:flex;align-items:center;gap:30px;margin-bottom:45px;flex-wrap:wrap}
+.avis-score{font-size:4.5rem;font-weight:900;line-height:1;color:var(--primary)}
+.avis-score span{font-size:1.5rem;font-weight:500;opacity:.7}
+.avis-stars{color:#f4c430;letter-spacing:2px}
+.avis-stars.big{font-size:1.8rem}
+.avis-count{font-size:1.1rem;color:#555}
+.avis-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px}
+.avis-card{background:var(--secondary);padding:28px;border-radius:18px}
+.avis-text{font-style:italic;margin:14px 0}
+.avis-author{font-weight:700;color:#555}
+.galerie-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px}
+.galerie-item{border-radius:16px;overflow:hidden}
+.galerie-item img{width:100%;height:280px;object-fit:cover;transition:transform .4s}
+.galerie-item:hover img{transform:scale(1.05)}
+.infos-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px;margin-bottom:40px}
+.info-card{background:var(--light);padding:28px;border-radius:18px;text-align:center;box-shadow:0 8px 30px rgba(0,0,0,.06)}
+.info-icon{width:44px;height:44px;margin:0 auto 14px;color:var(--primary)}
+.info-card h3{margin-bottom:10px;font-size:1.05rem}
+.horaires{white-space:pre-wrap;font-family:inherit;text-align:left;font-size:.92rem;color:#555}
+.tel a{font-weight:800;color:var(--primary)}
+.map-wrapper{border-radius:16px;overflow:hidden;box-shadow:0 10px 40px rgba(0,0,0,.1)}
+.site-footer{background:var(--dark);color:#e5e7eb;text-align:center;padding:50px 20px}
+.site-footer strong{color:#fff}
+@media(max-width:760px){.nav-links a:not(.nav-cta){display:none}.nav-cta{padding:9px 16px;font-size:.8rem}.hero-title{font-size:2.4rem}.avis-header{justify-content:center}}
+
+h1,h2,h3{font-family:'Playfair Display:wght@700;900',sans-serif}
+
+.arch-B .hero{justify-content:flex-start;text-align:left;padding-left:8vw}
+.arch-B .hero-content{margin:0;text-align:left;max-width:650px}
+.arch-B .hero-ctas{justify-content:flex-start}
+.arch-B .section-title{text-align:left}
+.arch-B .services-section .container,.arch-B .reservation-section .container,.arch-B .avis-section .container,.arch-B .infos-section .container{display:grid;grid-template-columns:280px 1fr;gap:50px;align-items:start}
+.arch-B .section-title{grid-column:1/-1}
+.arch-B .services-grid{grid-template-columns:1fr}
+.arch-B .reservation-flow{max-width:none}
+.arch-B .avis-header{grid-column:2;justify-content:flex-start}
+.arch-B .avis-grid{grid-column:2}
+.arch-B .infos-grid{grid-column:2;grid-template-columns:1fr}
+.arch-B .map-wrapper{grid-column:2}
+@media(max-width:900px){.arch-B .services-section .container,.arch-B .reservation-section .container,.arch-B .avis-section .container,.arch-B .infos-section .container{grid-template-columns:1fr}.arch-B .hero{justify-content:center;padding-left:20px}.arch-B .hero-content{text-align:center}.arch-B .hero-ctas{justify-content:center}}
+
+</style>
+</head>
+<body class="arch-B cat-coiffure">
+<nav id="navbar"><div class="nav-inner"><a href="#accueil" class="nav-logo">Atelier Coupe Éditorial</a><div class="nav-links"><a href="#accueil">Accueil</a><a href="#prestations">Prestations</a><a href="#avis">Avis</a><a href="#contact">Contact</a><a href="https://cal.com/leman-nova-0zwvun/rendez-vous-15-minutes" class="nav-cta" target="_blank">Prendre rendez-vous</a></div></div></nav>
+<header id="accueil" class="hero arch-B cat-coiffure"><div class="hero-bg" style="background-image:linear-gradient(135deg,rgba(0,0,0,.6),rgba(0,0,0,.3)),url('https://image.pollinations.ai/prompt/modern%20hair%20salon%20interior%2C%20warm%20ambient%20light%2C%20clean%20design%2C%20stylish%20chairs%2C%20mirrors%2C%20photorealistic%2C%20welcoming%20atmosphere?width=1600&height=900&nologo=true')"></div><div class="hero-content"><h1 class="hero-title"><span class="reveal-text">Atelier Coupe Éditorial</span></h1><p class="hero-subtitle reveal-text">Atelier Coupe Éditorial vous accueille à Lyon pour une coupe sur mesure.</p><div class="hero-ctas"><a href="https://cal.com/leman-nova-0zwvun/rendez-vous-15-minutes" class="cta-primary pulse" target="_blank">Prendre rendez-vous</a><a href="#prestations" class="cta-secondary">Découvrir</a></div></div></header>
+<section id="prestations" class="services-section arch-B"><div class="container"><h2 class="section-title reveal">Nos prestations</h2><div class="services-grid"><div class="service-card" data-service="Coupe femme" data-price="à partir de 45 EUR"><div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="6" cy="6" r="3"/><circle cx="18" cy="18" r="3"/><path d="M6 9l12 9M18 9L6 18"/></svg></div><h3>Coupe femme</h3><p>Coupe personnalisée selon votre morphologie.</p><span class="service-price">à partir de 45 EUR</span></div><div class="service-card" data-service="Coloration" data-price="à partir de 75 EUR"><div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="6" cy="6" r="3"/><circle cx="18" cy="18" r="3"/><path d="M6 9l12 9M18 9L6 18"/></svg></div><h3>Coloration</h3><p>Coloration végétale ou traditionnelle.</p><span class="service-price">à partir de 75 EUR</span></div><div class="service-card" data-service="Forfait mariage" data-price="sur devis"><div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="6" cy="6" r="3"/><circle cx="18" cy="18" r="3"/><path d="M6 9l12 9M18 9L6 18"/></svg></div><h3>Forfait mariage</h3><p>Chignon et mise en beauté le jour J.</p><span class="service-price">sur devis</span></div></div></div></section>
+<section class="reservation-section arch-B"><div class="container"><h2 class="section-title reveal">Réservez votre créneau</h2>
+<div class="reservation-flow">
+  <div class="reservation-step"><span class="step-num">1</span><h3>Choisissez votre prestation</h3><div class="reservation-choices"><div class="reservation-card" data-service="Coupe femme" data-price="à partir de 45 EUR" tabindex="0"><h4>Coupe femme</h4><p>Coupe personnalisée selon votre morphologie.</p><span class="reservation-price">à partir de 45 EUR</span></div><div class="reservation-card" data-service="Coloration" data-price="à partir de 75 EUR" tabindex="0"><h4>Coloration</h4><p>Coloration végétale ou traditionnelle.</p><span class="reservation-price">à partir de 75 EUR</span></div><div class="reservation-card" data-service="Forfait mariage" data-price="sur devis" tabindex="0"><h4>Forfait mariage</h4><p>Chignon et mise en beauté le jour J.</p><span class="reservation-price">sur devis</span></div></div></div>
+  <div class="reservation-step summary-step" id="reservation-summary"><span class="step-num">2</span><h3>Votre choix</h3><p class="reservation-summary-text">Aucune prestation sélectionnée</p></div>
+  <div class="reservation-step"><span class="step-num">3</span><a href="https://cal.com/leman-nova-0zwvun/rendez-vous-15-minutes" class="cta-primary reservation-confirm" id="reservation-confirm" target="_blank">Confirmer mon créneau</a><p class="reservation-note">Maquette : ce lien mène au créateur du site. À la livraison, il sera branché sur le Google Calendar du client.</p></div>
+</div>
+<noscript><a href="https://cal.com/leman-nova-0zwvun/rendez-vous-15-minutes" class="cta-primary" target="_blank">Prendre rendez-vous</a></noscript>
+</div></section>
+
+<section id="avis" class="avis-section arch-B"><div class="container"><h2 class="section-title reveal">Avis Google</h2><div class="avis-header reveal"><div class="avis-score">4,7<span>/5</span></div><div class="avis-meta"><div class="avis-stars big">★★★★</div><div class="avis-count"><span class="counter" data-target="128">128</span> avis</div></div></div><div class="avis-grid"><div class="avis-card reveal"><div class="avis-stars">★★★★★</div><p class="avis-text">"Excellent salon, accueil chaleureux et coupe parfaite. Je recommande !"</p><p class="avis-author">— Sophie</p></div><div class="avis-card reveal"><div class="avis-stars">★★★★★</div><p class="avis-text">"Très professionnel, le coiffeur a su me conseiller."</p><p class="avis-author">— Julien</p></div><div class="avis-card reveal"><div class="avis-stars">★★★★☆</div><p class="avis-text">"Superbe expérience, je reviendrai sans hésiter."</p><p class="avis-author">— Emma</p></div></div></div></section>
+<section id="contact" class="infos-section arch-B"><div class="container"><h2 class="section-title reveal">Informations pratiques</h2><div class="infos-grid"><div class="info-card reveal"><div class="info-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div><h3>Adresse</h3><p>15 Rue de la République, Lyon</p></div><div class="info-card reveal"><div class="info-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div><h3>Horaires</h3><pre class="horaires">Lundi: Fermé
+Mardi: 9h00 - 19h00
+Mercredi: 9h00 - 19h00
+Jeudi: 9h00 - 19h00
+Vendredi: 9h00 - 19h00
+Samedi: 9h00 - 18h00
+Dimanche: Fermé</pre></div><div class="info-card reveal"><div class="info-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div><h3>Téléphone</h3><p class="tel"><a href="tel:0123456789">01 23 45 67 89</a></p></div></div><div class="map-wrapper reveal"><iframe src="https://www.google.com/maps?q=15%20Rue%20de%20la%20R%C3%A9publique%2C%20Lyon&z=16&output=embed" width="100%" height="380" style="border:0;border-radius:16px" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div></div></section>
+<footer class="site-footer"><div class="container"><p>Maquette de démonstration réalisée par <strong>Leman Nova</strong></p><p>Atelier Coupe Éditorial — Lyon</p></div></footer>
+
+<script>
+(function(){
+  document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',function(e){if(this.getAttribute('href').length>1){e.preventDefault();const t=document.querySelector(this.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth'})}})});
+  const hero=document.querySelector('.hero');
+  if(hero){window.addEventListener('scroll',function(){const y=window.scrollY;const bg=hero.querySelector('.hero-bg');if(bg)bg.style.transform='translateY('+(y*0.4)+'px)'}});
+  const observer=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');if(e.target.classList.contains('counter')){const target=parseInt(e.target.dataset.target||'0',10);let cur=0;const step=Math.max(1,Math.floor(target/30));const int=setInterval(()=>{cur+=step;if(cur>=target){cur=target;clearInterval(int)}e.target.textContent=cur},30)}observer.unobserve(e.target)}})},{threshold:0.12});
+  document.querySelectorAll('.reveal,.counter').forEach(el=>observer.observe(el));
+  document.querySelectorAll('.service-card').forEach(card=>{card.addEventListener('mousemove',e=>{const r=card.getBoundingClientRect();const x=e.clientX-r.left;const y=e.clientY-r.top;const cx=x-r.width/2;const cy=y-r.height/2;card.style.transform='perspective(800px) rotateY('+(cx/25)+'deg) rotateX('+(-cy/25)+'deg) translateY(-8px)'});card.addEventListener('mouseleave',()=>{card.style.transform=''})});
+  const cards=document.querySelectorAll('.reservation-card');
+  const summary=document.getElementById('reservation-summary');
+  const summaryText=summary?summary.querySelector('.reservation-summary-text'):null;
+  const confirm=document.getElementById('reservation-confirm');
+  if(cards.length && confirm){
+    confirm.classList.add('disabled');
+    cards.forEach(card=>{card.addEventListener('click',()=>{cards.forEach(c=>c.classList.remove('selected'));card.classList.add('selected');summary&&summary.classList.add('active');if(summaryText){summaryText.textContent='Votre choix : '+card.dataset.service+' - '+card.dataset.price;}confirm.textContent='Confirmer mon créneau';confirm.classList.remove('disabled');})});
+  }
+})();
+</script>
+</body>
+</html>

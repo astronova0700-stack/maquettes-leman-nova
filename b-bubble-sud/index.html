@@ -6,24 +6,22 @@
 <title>B BUBBLE SUD - PARIS</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
 <style>
-body{font-family:'Inter',sans-serif}
-h1,h2,h3{font-family:'Playfair Display',serif}
 
+:root{--primary:#0d0d0d;--secondary:#f4f4f4;--accent:#d4a017;--dark:#0d0d0d;--light:#ffffff}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{font-family:'Inter',system-ui,-apple-system,sans-serif;line-height:1.6;color:#222}
+body{font-family:'Inter',system-ui,-apple-system,sans-serif;line-height:1.6;color:var(--dark)}
 img{max-width:100%;display:block}
 a{text-decoration:none;color:inherit}
 .container{width:min(1200px,92vw);margin:0 auto}
-#navbar{position:fixed;top:0;left:0;right:0;z-index:1000;padding:18px 0;transition:background .3s,border-color .3s}
-#navbar.scrolled{background:rgba(255,255,255,.96);backdrop-filter:blur(10px);border-bottom:1px solid rgba(0,0,0,.08)}
+#navbar{position:fixed;top:0;left:0;right:0;z-index:1000;padding:12px 0;background:var(--primary);color:var(--light);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,.1)}
 .nav-inner{display:flex;justify-content:space-between;align-items:center;width:min(1200px,92vw);margin:0 auto}
-.nav-logo{font-weight:800;font-size:1.3rem}
-.nav-links{display:flex;gap:28px}
-.nav-links a{font-weight:500;font-size:.95rem;position:relative}
-.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:2px;transition:width .3s}
-.nav-links a:hover::after{width:100%}
-.hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden}
+.nav-logo{font-weight:800;font-size:1.25rem}
+.nav-links{display:flex;align-items:center;gap:26px}
+.nav-links a{font-weight:500;font-size:.93rem}
+.nav-cta{background:var(--accent);color:#fff!important;padding:11px 24px;border-radius:50px;font-weight:700;transition:transform .2s,box-shadow .2s;white-space:nowrap}
+.nav-cta:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(0,0,0,.2)}
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden;padding-top:80px}
 .hero-bg{position:absolute;inset:0;background-size:cover;background-position:center;z-index:-1;will-change:transform}
 .hero-content{position:relative;z-index:2;max-width:800px;padding:20px}
 .hero-title{font-size:clamp(3rem,8vw,6.5rem);font-weight:900;line-height:1;margin-bottom:22px}
@@ -33,37 +31,44 @@ a{text-decoration:none;color:inherit}
 .cta-primary:hover,.cta-secondary:hover{transform:translateY(-3px)}
 .pulse{animation:pulse 2.5s infinite}
 @keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(255,255,255,.4)}50%{box-shadow:0 0 0 12px rgba(255,255,255,0)}}
-.section-title{font-size:clamp(2rem,5vw,3rem);font-weight:800;margin-bottom:45px;text-align:center}
+.section-title{font-size:clamp(2rem,5vw,3rem);font-weight:800;margin-bottom:45px}
 .reveal{opacity:1;transform:none;transition:opacity .8s ease,transform .8s ease}
 .reveal.visible{opacity:1;transform:none}
 .reveal-text{display:inline-block;opacity:1;transform:none;transition:opacity .8s ease,transform .8s ease}
-.reveal-text.visible{opacity:1;transform:none}
 .services-section,.reservation-section,.avis-section,.galerie-section,.infos-section{padding:90px 20px}
 .services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:28px}
-.service-card{background:#fff;padding:34px 28px;border-radius:20px;transition:transform .3s,box-shadow .3s;cursor:pointer}
-.service-card:hover{box-shadow:0 20px 50px rgba(0,0,0,.12)}
-.service-icon{width:52px;height:52px;margin-bottom:18px}
+.service-card{background:var(--light);padding:34px 28px;border-radius:20px;transition:transform .3s,box-shadow .3s;cursor:pointer;border:1px solid rgba(0,0,0,.06)}
+.service-card:hover{transform:translateY(-8px);box-shadow:0 20px 50px rgba(0,0,0,.12)}
+.service-icon{width:50px;height:50px;margin-bottom:16px;color:var(--primary)}
 .service-icon svg{width:100%;height:100%}
-.service-card h3{font-size:1.25rem;margin-bottom:10px}
-.service-card p{font-size:.95rem;color:#555;margin-bottom:14px}
-.service-price{font-weight:800;font-size:1.1rem}
-.reservation-section{background:#f8f9fa}
-.reservation-sub{text-align:center;color:#666;margin-bottom:30px}
-.reservation-list{max-width:700px;margin:0 auto;display:flex;flex-direction:column;gap:14px}
-.reservation-item{display:flex;justify-content:space-between;align-items:center;background:#fff;padding:20px 26px;border-radius:14px;transition:transform .2s,box-shadow .2s}
-.reservation-item:hover{transform:translateX(8px);box-shadow:0 10px 30px rgba(0,0,0,.08)}
-.reservation-name{font-weight:700}
-.reservation-price{font-weight:800}
-.reservation-arrow{font-size:1.3rem}
-.avis-section{background:#fff}
-.avis-header{display:flex;align-items:center;justify-content:center;gap:30px;margin-bottom:45px;flex-wrap:wrap}
-.avis-score{font-size:4.5rem;font-weight:900;line-height:1}
+.service-card h3{font-size:1.2rem;margin-bottom:8px}
+.service-card p{font-size:.92rem;color:#555;margin-bottom:12px}
+.service-price{font-weight:800;color:var(--primary)}
+.reservation-section{background:var(--secondary)}
+.reservation-flow{display:grid;gap:28px;max-width:900px;margin:0 auto}
+.reservation-step{background:var(--light);padding:30px;border-radius:20px;box-shadow:0 8px 30px rgba(0,0,0,.06)}
+.step-num{display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:50%;background:var(--primary);color:var(--light);font-weight:800;margin-bottom:12px}
+.reservation-choices{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;margin-top:18px}
+.reservation-card{border:2px solid #e5e7eb;border-radius:16px;padding:22px;cursor:pointer;transition:all .2s}
+.reservation-card:hover,.reservation-card.selected{border-color:var(--primary);transform:translateY(-5px);box-shadow:0 12px 30px rgba(0,0,0,.1)}
+.reservation-card h4{font-size:1.05rem;margin-bottom:6px}
+.reservation-card p{font-size:.88rem;color:#666;margin-bottom:10px}
+.reservation-price{font-weight:800;color:var(--primary)}
+.summary-step{opacity:.6;transition:opacity .3s}
+.summary-step.active{opacity:1}
+.reservation-summary-text{font-size:1.15rem;font-weight:700}
+.reservation-confirm{display:inline-block}
+.reservation-confirm.disabled{opacity:.5;pointer-events:none}
+.reservation-note{font-size:.82rem;color:#666;margin-top:12px}
+.avis-section{background:var(--light)}
+.avis-header{display:flex;align-items:center;gap:30px;margin-bottom:45px;flex-wrap:wrap}
+.avis-score{font-size:4.5rem;font-weight:900;line-height:1;color:var(--primary)}
 .avis-score span{font-size:1.5rem;font-weight:500;opacity:.7}
 .avis-stars{color:#f4c430;letter-spacing:2px}
 .avis-stars.big{font-size:1.8rem}
 .avis-count{font-size:1.1rem;color:#555}
 .avis-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px}
-.avis-card{background:#f8f9fa;padding:28px;border-radius:18px}
+.avis-card{background:var(--secondary);padding:28px;border-radius:18px}
 .avis-text{font-style:italic;margin:14px 0}
 .avis-author{font-weight:700;color:#555}
 .galerie-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px}
@@ -71,76 +76,67 @@ a{text-decoration:none;color:inherit}
 .galerie-item img{width:100%;height:280px;object-fit:cover;transition:transform .4s}
 .galerie-item:hover img{transform:scale(1.05)}
 .infos-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px;margin-bottom:40px}
-.info-card{background:#fff;padding:28px;border-radius:18px;text-align:center;box-shadow:0 8px 30px rgba(0,0,0,.06)}
-.info-icon{width:44px;height:44px;margin:0 auto 14px}
-.info-card h3{margin-bottom:10px;font-size:1.1rem}
-.horaires{white-space:pre-wrap;font-family:inherit;text-align:left;font-size:.95rem;color:#555}
-.tel a{font-weight:800;color:inherit}
+.info-card{background:var(--light);padding:28px;border-radius:18px;text-align:center;box-shadow:0 8px 30px rgba(0,0,0,.06)}
+.info-icon{width:44px;height:44px;margin:0 auto 14px;color:var(--primary)}
+.info-card h3{margin-bottom:10px;font-size:1.05rem}
+.horaires{white-space:pre-wrap;font-family:inherit;text-align:left;font-size:.92rem;color:#555}
+.tel a{font-weight:800;color:var(--primary)}
 .map-wrapper{border-radius:16px;overflow:hidden;box-shadow:0 10px 40px rgba(0,0,0,.1)}
-.site-footer{background:#111827;color:#e5e7eb;text-align:center;padding:50px 20px}
+.site-footer{background:var(--dark);color:#e5e7eb;text-align:center;padding:50px 20px}
 .site-footer strong{color:#fff}
-@media(max-width:700px){.nav-links{gap:14px;font-size:.85rem}.hero-title{font-size:2.4rem}.avis-score{font-size:3rem}}
+@media(max-width:760px){.nav-links a:not(.nav-cta){display:none}.nav-cta{padding:9px 16px;font-size:.8rem}.hero-title{font-size:2.4rem}.avis-header{justify-content:center}}
 
-body{background:#f4f4f4;color:#222}
-#navbar{color:#fff} #navbar.scrolled{color:#222}
-.nav-links a::after{background:#8e44ad}
-.hero{color:#fff;text-align:left}
-.hero-bg{filter:grayscale(30%)}
-.hero-content{margin:0;text-align:left;max-width:700px}
-.cta-primary{background:#8e44ad;color:#fff}
-.cta-secondary{border:2px solid #fff;color:#fff}
-.section-title{color:#1e1e24;text-align:left}
-.services-section .container,.reservation-section .container,.avis-section .container,.infos-section .container{text-align:left}
-.services-grid,.reservation-list,.avis-header,.infos-grid{justify-content:start}
-.service-card{border-left:4px solid #8e44ad}
-.service-icon{color:#8e44ad}
-.service-price{color:#8e44ad}
-.reservation-section{background:#1e1e24;color:#fff}
-.reservation-item{background:rgba(255,255,255,.08);color:#fff}
-.reservation-price{color:#8e44ad}
-.avis-score{color:#8e44ad}
-.info-card h3{color:#8e44ad}
-.info-icon{color:#8e44ad}
+h1,h2,h3{font-family:'Playfair Display:wght@700;900',sans-serif}
 
+.arch-A .hero-content{text-align:center}
+.arch-A .section-title{text-align:center}
+.arch-A .services-section,.arch-A .reservation-section,.arch-A .avis-section,.arch-A .infos-section{text-align:center}
 
 </style>
 </head>
-<body>
-<nav id="navbar"><div class="nav-inner"><a href="#accueil" class="nav-logo">B BUBBLE SUD</a><div class="nav-links"><a href="#accueil">Accueil</a><a href="#prestations">Prestations</a><a href="#galerie">Galerie</a><a href="#avis">Avis</a><a href="#contact">Contact</a></div></div></nav>
-<header id="accueil" class="hero">
-<div class="hero-bg" style="background-image:linear-gradient(135deg,rgba(0,0,0,.65),rgba(0,0,0,.35)),url('https://maps.googleapis.com/maps/api/place/photo?maxwidth=1200&photo_reference=AWCwydjbzcTEV9zSdjz-3JqC9aNVZKQ0SN-tCU17b59HQ8RGyljV_f0QKIFJq0LvLO5TxlVmWusA6N6Xf14f35rkU_86ubR0YQekeGYl9amrudfwniZ-f4tA8XJzVLbIjdlkyLb-momxFCb07IIIcecEzPWW7MoIJYr61ziPEaW9DFn-km3UG2vzC338aiglCwXaLRTcs20FowZsikwnzpAj9KuW_MZ6gSbm9qoH_6rjgJLD8WviPglIutffW0b7jn_YYE5XahAoOMFgpJ5XGIFsXT6WlOX8i96ZDHufFPgG9JAUPf73q5sBbkK8gD19gnCjCyrieFR5JtvoX6HXoA1zW2_KR4znSwD8lIcDzYirQovoXaWzT3HwEcWCb9RaL6EPTksmjbfzBTH7STIlghvNbIPCyyAJ5g6cKAig1JgtlFjZzLCh&key=AIzaSyBM-CLXoGETNkX3Zv2-ml8_DJKZKfIx0S8')"></div>
-<div class="hero-content">
-<h1 class="hero-title"><span class="reveal-text">B BUBBLE SUD</span></h1>
-<p class="hero-subtitle reveal-text">Votre salon de coiffure de confiance au coeur du 13e arrondissement, pour des coupes soignées et des colorations sur mesure.</p>
-<div class="hero-ctas">
-<a href="https://cal.com/leman-nova-0zwvun/rendez-vous-15-minutes" class="cta-primary pulse">Prendre rendez-vous</a>
-<a href="#prestations" class="cta-secondary">Decouvrir</a>
+<body class="arch-A cat-coiffure">
+<nav id="navbar"><div class="nav-inner"><a href="#accueil" class="nav-logo">B BUBBLE SUD</a><div class="nav-links"><a href="#accueil">Accueil</a><a href="#prestations">Prestations</a><a href="#galerie">Galerie</a><a href="#avis">Avis</a><a href="#contact">Contact</a><a href="https://cal.com/leman-nova-0zwvun/rendez-vous-15-minutes" class="nav-cta" target="_blank">Prendre rendez-vous</a></div></div></nav>
+<header id="accueil" class="hero arch-A cat-coiffure"><div class="hero-bg" style="background-image:linear-gradient(135deg,rgba(0,0,0,.6),rgba(0,0,0,.3)),url('https://maps.googleapis.com/maps/api/place/photo?maxwidth=1200&photo_reference=AWCwydgDdgfz_574isLaXZ-OL806hhowOtJux90G7ExPumMW2Ys5AhDd1CsfN5Mv5nEzH5Oq41QMlctAa7-F7KVBWxNU6bTjxqEQRSizKGTRc1SvGIrDsVleD4LlZPI5cEhuqORhV6Bl9ivn4tShCdViDGp6lbfP4Dd_nwqkYidRxmIrchfHkV3VXUd0lJvHWiF7kKIBM0mW8hEm4Oj7E1LxTuorNHsuuBhb_-kciSwcN_o09Zc1N56jYouu1Y1buC2YgwgwrXnK2CfWbUkShug3uohu-PMy1hog7FJC4lUrmvJtPJSHd9zsQgPufP_07fxSrcwAG8OZzWZ1TCT96bzY6fVehfAKzhDfExWkGkm0e2wjQCNLXMqwl6ApIGBd_y_dU2czJhrAIoDMN8zxL0Nfsyc6JTC3ug3JXib1Y11nCYxJ5ERV&key=AIzaSyBM-CLXoGETNkX3Zv2-ml8_DJKZKfIx0S8')"></div><div class="hero-content"><h1 class="hero-title"><span class="reveal-text">B BUBBLE SUD</span></h1><p class="hero-subtitle reveal-text">Votre salon de coiffure de quartier au coeur du 9e arrondissement, pour des coupes soignées et des colorations sur mesure.</p><div class="hero-ctas"><a href="https://cal.com/leman-nova-0zwvun/rendez-vous-15-minutes" class="cta-primary pulse" target="_blank">Prendre rendez-vous</a><a href="#prestations" class="cta-secondary">Découvrir</a></div></div></header>
+<section id="prestations" class="services-section arch-A"><div class="container"><h2 class="section-title reveal">Nos prestations</h2><div class="services-grid"><div class="service-card" data-service="Coupe et coiffage" data-price="à partir de 45 EUR"><div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="6" cy="6" r="3"/><circle cx="18" cy="18" r="3"/><path d="M6 9l12 9M18 9L6 18"/></svg></div><h3>Coupe et coiffage</h3><p>Coupe femme ou homme adaptée à votre morphologie, suivie d'un brushing ou d'un coiffage soigné.</p><span class="service-price">à partir de 45 EUR</span></div><div class="service-card" data-service="Coloration et mèches" data-price="à partir de 75 EUR"><div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="6" cy="6" r="3"/><circle cx="18" cy="18" r="3"/><path d="M6 9l12 9M18 9L6 18"/></svg></div><h3>Coloration et mèches</h3><p>Coloration complète ou balayage réalisés avec des produits respectueux de vos cheveux.</p><span class="service-price">à partir de 75 EUR</span></div><div class="service-card" data-service="Soin et traitement capillaire" data-price="sur devis"><div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="6" cy="6" r="3"/><circle cx="18" cy="18" r="3"/><path d="M6 9l12 9M18 9L6 18"/></svg></div><h3>Soin et traitement capillaire</h3><p>Protocole de soin personnalisé pour restaurer l'éclat et la santé de vos cheveux abîmés.</p><span class="service-price">sur devis</span></div></div></div></section>
+<section class="reservation-section arch-A"><div class="container"><h2 class="section-title reveal">Réservez votre créneau</h2>
+<div class="reservation-flow">
+  <div class="reservation-step"><span class="step-num">1</span><h3>Choisissez votre prestation</h3><div class="reservation-choices"><div class="reservation-card" data-service="Coupe et coiffage" data-price="à partir de 45 EUR" tabindex="0"><h4>Coupe et coiffage</h4><p>Coupe femme ou homme adaptée à votre morphologie, suivie d'un brushing ou d'un coiffage soigné.</p><span class="reservation-price">à partir de 45 EUR</span></div><div class="reservation-card" data-service="Coloration et mèches" data-price="à partir de 75 EUR" tabindex="0"><h4>Coloration et mèches</h4><p>Coloration complète ou balayage réalisés avec des produits respectueux de vos cheveux.</p><span class="reservation-price">à partir de 75 EUR</span></div><div class="reservation-card" data-service="Soin et traitement capillaire" data-price="sur devis" tabindex="0"><h4>Soin et traitement capillaire</h4><p>Protocole de soin personnalisé pour restaurer l'éclat et la santé de vos cheveux abîmés.</p><span class="reservation-price">sur devis</span></div></div></div>
+  <div class="reservation-step summary-step" id="reservation-summary"><span class="step-num">2</span><h3>Votre choix</h3><p class="reservation-summary-text">Aucune prestation sélectionnée</p></div>
+  <div class="reservation-step"><span class="step-num">3</span><a href="https://cal.com/leman-nova-0zwvun/rendez-vous-15-minutes" class="cta-primary reservation-confirm" id="reservation-confirm" target="_blank">Confirmer mon créneau</a><p class="reservation-note">Maquette : ce lien mène au créateur du site. À la livraison, il sera branché sur le Google Calendar du client.</p></div>
 </div>
-</div>
-</header>
-<section id="galerie" class="galerie-section"><div class="container"><h2 class="section-title reveal">Galerie</h2><div class="galerie-grid"><div class="galerie-item reveal"><img src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=1200&photo_reference=AWCwydjbzcTEV9zSdjz-3JqC9aNVZKQ0SN-tCU17b59HQ8RGyljV_f0QKIFJq0LvLO5TxlVmWusA6N6Xf14f35rkU_86ubR0YQekeGYl9amrudfwniZ-f4tA8XJzVLbIjdlkyLb-momxFCb07IIIcecEzPWW7MoIJYr61ziPEaW9DFn-km3UG2vzC338aiglCwXaLRTcs20FowZsikwnzpAj9KuW_MZ6gSbm9qoH_6rjgJLD8WviPglIutffW0b7jn_YYE5XahAoOMFgpJ5XGIFsXT6WlOX8i96ZDHufFPgG9JAUPf73q5sBbkK8gD19gnCjCyrieFR5JtvoX6HXoA1zW2_KR4znSwD8lIcDzYirQovoXaWzT3HwEcWCb9RaL6EPTksmjbfzBTH7STIlghvNbIPCyyAJ5g6cKAig1JgtlFjZzLCh&key=AIzaSyBM-CLXoGETNkX3Zv2-ml8_DJKZKfIx0S8" alt="Photo" loading="lazy"></div><div class="galerie-item reveal"><img src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=1200&photo_reference=AWCwydhIUbZHrY5pan6qcQuQ9z6pMVxi_psCDIovORcgPvMgDONlso4C035W1CKi5gRPqxz3T7250KtZiTGZhBpKRPsT6ys47Odim5y6w9KdmJb2RvSCHRs6N945M8MXk3R9xq04z2kuwGw2HZzvC1ecn2dVaZqljWQn5CLT9IlJd3TqH-X0h0ktixy2T9YhoZUErEfNYRn0x37ZufMFuzpi41pajP_NU6wT68Lj5OQRbPHMPoTOAzrHgaXdcq6u3RawEgTuv8R0jNWmfGKd-hHmUd8aS6huxvtp3PyPiDTFedmyRoxGvxd2wW9B6DYJfe0pxtu7_-9GY-EIcmlCr1Z_dKL1raM0kSXPDywIwt6wkWBHMEm9mjUIUDNRADKHQSIjXDxr5DUUJIhdxBTXnLlM5E4Oc1OiB4zSFcFTJOeCr1iMe574&key=AIzaSyBM-CLXoGETNkX3Zv2-ml8_DJKZKfIx0S8" alt="Photo" loading="lazy"></div><div class="galerie-item reveal"><img src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=1200&photo_reference=AWCwydijnHuTOKakiO-68oN5pUOXwmsyD4B7C_Ff_gpsP31PszqiuYehl6K3yCBF7BMgE41M6ABB6OdFul-YQE-_rAdCHHYFm4l2N7I_WhLSVoPnMXTXnjNhPCMu7TsxxGBd3bPdNkjCOSqgHxzCL50PVDrao548ebnh_hJshkZaj_k0Zyh2TuoxkmnGErd6IKch_OvvAtRls1ALq20qLLAzvn3nkVvvyjJG__MUvEbw6x2kgraKAmmDEm9TTMBQGblGURpb89UK15Ru7XmKnWT__X5C3nb22Gc-Qdf_7Av02hG8jGRpn2hCn0i7JBKciH2ZXN-0afbDR1Hcskb9_hQfqCVO-255kjD9Vok6k-ttJ-6IImNNahQ-sLmLfK6AuAXbIW5zcHRiccflWYWHMZONToqCrbLWam_5bvQjGyD65pVZNw&key=AIzaSyBM-CLXoGETNkX3Zv2-ml8_DJKZKfIx0S8" alt="Photo" loading="lazy"></div></div></div></section>
-<section id="prestations" class="services-section"><div class="container"><h2 class="section-title reveal">Nos prestations</h2><div class="services-grid"><div class="service-card tilt" data-delay="0"><div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="6" cy="6" r="3"/><circle cx="18" cy="18" r="3"/><path d="M6 9l12 9M18 9L6 18"/></svg></div><h3>Coupe et coiffage</h3><p>Coupe femme ou homme avec shampoing, soin et brushing inclus, adaptée à votre morphologie.</p><div class="service-price">à partir de 45 EUR</div></div><div class="service-card tilt" data-delay="1"><div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="6" cy="6" r="3"/><circle cx="18" cy="18" r="3"/><path d="M6 9l12 9M18 9L6 18"/></svg></div><h3>Coloration et mèches</h3><p>Coloration complète, balayage ou mèches réalisés avec des produits de qualité, sur cheveux secs ou humides.</p><div class="service-price">à partir de 75 EUR</div></div><div class="service-card tilt" data-delay="2"><div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="6" cy="6" r="3"/><circle cx="18" cy="18" r="3"/><path d="M6 9l12 9M18 9L6 18"/></svg></div><h3>Soin et traitement capillaire</h3><p>Traitement personnalisé selon l'état de vos cheveux : kératine, lissage ou soin restructurant en profondeur.</p><div class="service-price">sur devis</div></div></div></div></section>
-<section id="avis" class="avis-section"><div class="container"><h2 class="section-title reveal">Avis Google</h2><div class="avis-header reveal"><div class="avis-score">4.1<span>/5</span></div><div class="avis-meta"><div class="avis-stars big">★★★★</div><div class="avis-count"><span class="counter" data-target="1628">1628</span> avis</div></div></div><div class="avis-grid"><div class="avis-card reveal"><div class="avis-stars">★★★★★</div><p class="avis-text">"Nice place! I tried the bubble cup where you can add lots of different stuff! It was super yummy, and a lot easier to eat than a regular bubble waffle 👌👌"</p><p class="avis-author">— Gro</p></div><div class="avis-card reveal"><div class="avis-stars">★★★★☆</div><p class="avis-text">"Nice spot for a quick bite, expect to wait a bit for the queue tends to be long. Good price/quality/quantity ratio."</p><p class="avis-author">— Rúben</p></div><div class="avis-card reveal"><div class="avis-stars">★☆☆☆☆</div><p class="avis-text">"Very bad shopping experience.  The service attitude is very poor, and the waiter's face is full of unwelcome.  Maybe they are more welcoming of young people nearby than Asians.  We ordered a large bubble cup, it was made quickly and put on the counter, but the waiter didn't give it to us, we waited for a long time, many customers who came later ..."</p><p class="avis-author">— JING</p></div></div></div></section>
-<section class="reservation-section"><div class="container"><h2 class="section-title reveal">Reservez votre creneau</h2><p class="reservation-sub">Maquette : ce lien mene au createur du site</p><div class="reservation-list"><a href="https://cal.com/leman-nova-0zwvun/rendez-vous-15-minutes" class="reservation-item" target="_blank"><span class="reservation-name">Coupe et coiffage</span><span class="reservation-price">à partir de 45 EUR</span><span class="reservation-arrow">→</span></a><a href="https://cal.com/leman-nova-0zwvun/rendez-vous-15-minutes" class="reservation-item" target="_blank"><span class="reservation-name">Coloration et mèches</span><span class="reservation-price">à partir de 75 EUR</span><span class="reservation-arrow">→</span></a><a href="https://cal.com/leman-nova-0zwvun/rendez-vous-15-minutes" class="reservation-item" target="_blank"><span class="reservation-name">Soin et traitement capillaire</span><span class="reservation-price">sur devis</span><span class="reservation-arrow">→</span></a></div></div></section>
-<section id="contact" class="infos-section"><div class="container"><h2 class="section-title reveal">Informations pratiques</h2><div class="infos-grid"><div class="info-card reveal"><div class="info-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div><h3>Adresse</h3><p>81 Quai Panhard et Levassor, 75013 Paris, France</p></div><div class="info-card reveal"><div class="info-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div><h3>Horaires</h3><pre class="horaires">Lundi: 14h00 - 01h00
-Mardi: 14h00 - 01h30
-Mercredi: 14h00 - 01h30
-Jeudi: 14h00 - 01h30
-Vendredi: 16h00 - 01h30
-Samedi: 14h00 - 01h30
-Dimanche: 14h00 - 01h30</pre></div><div class="info-card reveal"><div class="info-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div><h3>Telephone</h3><p class="tel">Non renseigne</p></div></div><div class="map-wrapper reveal"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1!2d0!3d0!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0!2s81%20Quai%20Panhard%20et%20Levassor%2C%2075013%20Paris%2C%20France!5e0!3m2!1sfr!2sfr!4v1" width="100%" height="350" style="border:0;border-radius:16px" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div></div></section>
-<footer class="site-footer"><div class="container"><p>Maquette de demonstration realisee par <strong>Leman Nova</strong></p><p>B BUBBLE SUD — PARIS</p></div></footer>
+<noscript><a href="https://cal.com/leman-nova-0zwvun/rendez-vous-15-minutes" class="cta-primary" target="_blank">Prendre rendez-vous</a></noscript>
+</div></section>
+<section id="galerie" class="galerie-section arch-A"><div class="container"><h2 class="section-title reveal">Galerie</h2><div class="galerie-grid"><div class="galerie-item reveal"><img src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=1200&photo_reference=AWCwydgDdgfz_574isLaXZ-OL806hhowOtJux90G7ExPumMW2Ys5AhDd1CsfN5Mv5nEzH5Oq41QMlctAa7-F7KVBWxNU6bTjxqEQRSizKGTRc1SvGIrDsVleD4LlZPI5cEhuqORhV6Bl9ivn4tShCdViDGp6lbfP4Dd_nwqkYidRxmIrchfHkV3VXUd0lJvHWiF7kKIBM0mW8hEm4Oj7E1LxTuorNHsuuBhb_-kciSwcN_o09Zc1N56jYouu1Y1buC2YgwgwrXnK2CfWbUkShug3uohu-PMy1hog7FJC4lUrmvJtPJSHd9zsQgPufP_07fxSrcwAG8OZzWZ1TCT96bzY6fVehfAKzhDfExWkGkm0e2wjQCNLXMqwl6ApIGBd_y_dU2czJhrAIoDMN8zxL0Nfsyc6JTC3ug3JXib1Y11nCYxJ5ERV&key=AIzaSyBM-CLXoGETNkX3Zv2-ml8_DJKZKfIx0S8" alt="Photo" loading="lazy"></div><div class="galerie-item reveal"><img src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=1200&photo_reference=AWCwydiqJiuU0iPW0K3HSJcb5-u46FbVbDsyBt1kIIZjLFON3H1leDax9K0k-SQXWDDZxQOaPnacCwzc_IcH_hUIl-xqdDXkP0uMzNb-z4GLbgV101RSvyQkOivVp9YKoeT8AzuB54WOiVJ1LzsgIpgooLM4Hf90OV1trTuC1DJc_Bm20Ee5k1-ZG6JkUF63ZnUKvXLWF1pyA-aFfZXw53Gl80Xd-IfMfKCmEmFNKpov12LvgP5PyRJRKPqmjb2NPd8kCvaM4tSetGUuyTqvMR13OTLHs4_TCJhV3l2kQ_Vc8GSsTVUz8hIkYppzP7Y87-XuM4j8pyyq22lLEEdnITX5cQbBT4sQkq3aoPv2u31885WcTm-Zgs-BS-g1rsseJaTKNftC8nk8L30WaOF2nQyxkBhSKi7G5vTYilQpIrjisgBkkX8&key=AIzaSyBM-CLXoGETNkX3Zv2-ml8_DJKZKfIx0S8" alt="Photo" loading="lazy"></div></div></div></section>
+<section id="avis" class="avis-section arch-A"><div class="container"><h2 class="section-title reveal">Avis Google</h2><div class="avis-header reveal"><div class="avis-score">4.3<span>/5</span></div><div class="avis-meta"><div class="avis-stars big">★★★★</div><div class="avis-count"><span class="counter" data-target="39">39</span> avis</div></div></div><div class="avis-grid"><div class="avis-card reveal"><div class="avis-stars">★★★★★</div><p class="avis-text">"Excellent customer service.
+
+I accidentally broke a beautiful pearl necklace, and they offered to repair it free of charge. I didn't know such honest companies still existed; I highly recommend them, not only for that but also for the beauty of their products!"</p><p class="avis-author">— Marianne</p></div><div class="avis-card reveal"><div class="avis-stars">★★★★★</div><p class="avis-text">"A beautiful personalized bracelet made of ceramic beads and a yellow gold charm that I've worn constantly for many years. It hasn't budged and is a part of me. I can't imagine being without it! I regularly change the color of the cord to match my outfits or the seasons!
+Thank you for this delicate and unique little piece of jewelry!"</p><p class="avis-author">— Helene</p></div><div class="avis-card reveal"><div class="avis-stars">★★★★★</div><p class="avis-text">"A wonderful discovery! Beautiful handmade jewelry from a small Parisian workshop. I was able to personalize my bracelets there. Top quality, gorgeous pieces with many different variations, perfect for Christmas gifts or just to treat yourself.
+I highly recommend them and a big thank you to the designers and assemblers!"</p><p class="avis-author">— Gabrielle</p></div></div></div></section>
+<section id="contact" class="infos-section arch-A"><div class="container"><h2 class="section-title reveal">Informations pratiques</h2><div class="infos-grid"><div class="info-card reveal"><div class="info-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div><h3>Adresse</h3><p>au fond de la cour à gauche, 59 Rue Condorcet, 75009 Paris, France</p></div><div class="info-card reveal"><div class="info-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div><h3>Horaires</h3><pre class="horaires">Lundi: 12h00 - 15h00
+Mardi: Fermé
+Mercredi: 12h00 - 15h00
+Jeudi: Fermé
+Vendredi: 12h00 - 15h00
+Samedi: Fermé
+Dimanche: Fermé</pre></div><div class="info-card reveal"><div class="info-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div><h3>Téléphone</h3><p class="tel"><a href="tel:0686891261">06 86 89 12 61</a></p></div></div><div class="map-wrapper reveal"><iframe src="https://www.google.com/maps?q=au%20fond%20de%20la%20cour%20%C3%A0%20gauche%2C%2059%20Rue%20Condorcet%2C%2075009%20Paris%2C%20France&z=16&output=embed" width="100%" height="380" style="border:0;border-radius:16px" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div></div></section>
+<footer class="site-footer"><div class="container"><p>Maquette de démonstration réalisée par <strong>Leman Nova</strong></p><p>B BUBBLE SUD — PARIS</p></div></footer>
 
 <script>
 (function(){
-  const nav=document.getElementById('navbar');
-  window.addEventListener('scroll',function(){if(window.scrollY>60){nav.classList.add('scrolled')}else{nav.classList.remove('scrolled')}});
-  document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',function(e){e.preventDefault();const t=document.querySelector(this.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth'})})});
+  document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',function(e){if(this.getAttribute('href').length>1){e.preventDefault();const t=document.querySelector(this.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth'})}})});
   const hero=document.querySelector('.hero');
   if(hero){window.addEventListener('scroll',function(){const y=window.scrollY;const bg=hero.querySelector('.hero-bg');if(bg)bg.style.transform='translateY('+(y*0.4)+'px)'}});
   const observer=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');if(e.target.classList.contains('counter')){const target=parseInt(e.target.dataset.target||'0',10);let cur=0;const step=Math.max(1,Math.floor(target/30));const int=setInterval(()=>{cur+=step;if(cur>=target){cur=target;clearInterval(int)}e.target.textContent=cur},30)}observer.unobserve(e.target)}})},{threshold:0.12});
   document.querySelectorAll('.reveal,.counter').forEach(el=>observer.observe(el));
-  document.querySelectorAll('.tilt').forEach(card=>{card.addEventListener('mousemove',e=>{const r=card.getBoundingClientRect();const x=e.clientX-r.left;const y=e.clientY-r.top;const cx=x-r.width/2;const cy=y-r.height/2;card.style.transform='perspective(800px) rotateY('+(cx/20)+'deg) rotateX('+(-cy/20)+'deg) translateY(-8px)'});card.addEventListener('mouseleave',()=>{card.style.transform=''})});
+  document.querySelectorAll('.service-card').forEach(card=>{card.addEventListener('mousemove',e=>{const r=card.getBoundingClientRect();const x=e.clientX-r.left;const y=e.clientY-r.top;const cx=x-r.width/2;const cy=y-r.height/2;card.style.transform='perspective(800px) rotateY('+(cx/25)+'deg) rotateX('+(-cy/25)+'deg) translateY(-8px)'});card.addEventListener('mouseleave',()=>{card.style.transform=''})});
+  const cards=document.querySelectorAll('.reservation-card');
+  const summary=document.getElementById('reservation-summary');
+  const summaryText=summary?summary.querySelector('.reservation-summary-text'):null;
+  const confirm=document.getElementById('reservation-confirm');
+  if(cards.length && confirm){
+    confirm.classList.add('disabled');
+    cards.forEach(card=>{card.addEventListener('click',()=>{cards.forEach(c=>c.classList.remove('selected'));card.classList.add('selected');summary&&summary.classList.add('active');if(summaryText){summaryText.textContent='Votre choix : '+card.dataset.service+' - '+card.dataset.price;}confirm.textContent='Confirmer mon créneau';confirm.classList.remove('disabled');})});
+  }
 })();
 </script>
 </body>
