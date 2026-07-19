@@ -19,16 +19,18 @@ a{text-decoration:none;color:inherit}
 .nav-logo{font-weight:800;font-size:1.25rem}
 .nav-links{display:flex;align-items:center;gap:26px}
 .nav-links a{font-weight:500;font-size:.93rem}
-.nav-cta{background:var(--accent);color:#fff!important;padding:11px 24px;border-radius:50px;font-weight:700;transition:transform .2s,box-shadow .2s;white-space:nowrap}
+.nav-cta{background:var(--accent);color:#fff!important;padding:11px 24px;border-radius:50px;font-weight:700;transition:transform .2s,box-shadow .2s;white-space:nowrap;text-shadow:0 1px 2px rgba(0,0,0,.6);border:1px solid rgba(255,255,255,.25)}
 .nav-cta:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(0,0,0,.2)}
-.hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden;padding-top:80px}
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden;padding-top:80px;color:#fff}
 .hero-bg{position:absolute;inset:0;background-size:cover;background-position:center;z-index:-1;will-change:transform}
-.hero-content{position:relative;z-index:2;max-width:800px;padding:20px}
-.hero-title{font-size:clamp(3rem,8vw,6.5rem);font-weight:900;line-height:1;margin-bottom:22px}
-.hero-subtitle{font-size:clamp(1.1rem,2.5vw,1.5rem);margin-bottom:38px;opacity:.95}
+.hero-content{position:relative;z-index:2;max-width:800px;padding:20px;color:#fff}
+.hero-title{font-size:clamp(3rem,8vw,6.5rem);font-weight:900;line-height:1;margin-bottom:22px;color:#fff;text-shadow:0 2px 10px rgba(0,0,0,.4)}
+.hero-subtitle{font-size:clamp(1.1rem,2.5vw,1.5rem);margin-bottom:38px;opacity:.95;color:#fff;text-shadow:0 1px 6px rgba(0,0,0,.4)}
 .hero-ctas{display:flex;gap:18px;justify-content:center;flex-wrap:wrap}
-.cta-primary,.cta-secondary{display:inline-block;padding:16px 34px;border-radius:50px;font-weight:700;transition:transform .2s,box-shadow .2s}
+.cta-primary,.cta-secondary{display:inline-block;padding:16px 34px;border-radius:50px;font-weight:700;transition:transform .2s,box-shadow .2s;color:#fff}
+.cta-primary{background:var(--accent);box-shadow:0 4px 20px rgba(0,0,0,.3)}
 .cta-primary:hover,.cta-secondary:hover{transform:translateY(-3px)}
+.cta-secondary{border:2px solid rgba(255,255,255,.85);background:rgba(255,255,255,.1);backdrop-filter:blur(4px)}
 .pulse{animation:pulse 2.5s infinite}
 @keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(255,255,255,.4)}50%{box-shadow:0 0 0 12px rgba(255,255,255,0)}}
 .section-title{font-size:clamp(2rem,5vw,3rem);font-weight:800;margin-bottom:45px}
@@ -60,6 +62,14 @@ a{text-decoration:none;color:inherit}
 .reservation-confirm{display:inline-block}
 .reservation-confirm.disabled{opacity:.5;pointer-events:none}
 .reservation-note{font-size:.82rem;color:#666;margin-top:12px}
+.reservation-intro{text-align:center;margin-bottom:10px;color:#555}
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.7);display:none;align-items:center;justify-content:center;z-index:2000;padding:20px}
+.modal-overlay.active{display:flex}
+.modal{background:var(--light);padding:38px;border-radius:24px;max-width:460px;width:100%;text-align:center;position:relative;box-shadow:0 25px 80px rgba(0,0,0,.3)}
+.modal-close{position:absolute;top:14px;right:18px;background:none;border:none;font-size:2rem;cursor:pointer;color:#777}
+.modal h3{margin-bottom:18px}
+.modal-choice{font-size:1.2rem;font-weight:700;margin-bottom:24px}
+.modal .cta-primary{display:inline-block}
 .avis-section{background:var(--light)}
 .avis-header{display:flex;align-items:center;gap:30px;margin-bottom:45px;flex-wrap:wrap}
 .avis-score{font-size:4.5rem;font-weight:900;line-height:1;color:var(--primary)}
@@ -75,7 +85,7 @@ a{text-decoration:none;color:inherit}
 .galerie-item{border-radius:16px;overflow:hidden}
 .galerie-item img{width:100%;height:280px;object-fit:cover;transition:transform .4s}
 .galerie-item:hover img{transform:scale(1.05)}
-.infos-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px;margin-bottom:40px}
+.infos-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px;margin-bottom:40px}
 .info-card{background:var(--light);padding:28px;border-radius:18px;text-align:center;box-shadow:0 8px 30px rgba(0,0,0,.06)}
 .info-icon{width:44px;height:44px;margin:0 auto 14px;color:var(--primary)}
 .info-card h3{margin-bottom:10px;font-size:1.05rem}
@@ -104,6 +114,7 @@ a{text-decoration:none;color:inherit}
 .coiffure-tarif tr:nth-child(even){background:rgba(0,0,0,.03)}
 .coiffure-tarif .tarif{font-weight:800;color:var(--primary);white-space:nowrap}
 .cocktail-card .signature-img{height:240px}
+@media(max-width:900px){.infos-grid{grid-template-columns:1fr}}
 @media(max-width:760px){.nav-links a:not(.nav-cta){display:none}.nav-cta{padding:9px 16px;font-size:.8rem}.hero-title{font-size:2.4rem}.avis-header{justify-content:center}.coiffure-tarif th,.coiffure-tarif td{padding:12px 14px;font-size:.9rem}}
 
 h1,h2,h3{font-family:'Bebas Neue',sans-serif}
@@ -116,17 +127,15 @@ h1,h2,h3{font-family:'Bebas Neue',sans-serif}
 </head>
 <body class="arch-A cat-bar">
 <nav id="navbar"><div class="nav-inner"><a href="#accueil" class="nav-logo">Le Speakeasy</a><div class="nav-links"><a href="#accueil">Accueil</a><a href="#prestations">Prestations</a><a href="#avis">Avis</a><a href="#contact">Contact</a><a href="https://cal.com/leman-nova-0zwvun/rendez-vous-15-minutes" class="nav-cta" target="_blank">Prendre rendez-vous</a></div></div></nav>
-<header id="accueil" class="hero arch-A cat-bar"><div class="hero-bg" style="background-image:linear-gradient(135deg,rgba(0,0,0,.6),rgba(0,0,0,.3)),url('https://image.pollinations.ai/prompt/sophisticated%20cocktail%20bar%20interior%2C%20dim%20warm%20light%2C%20bottles%20on%20shelves%2C%20photorealistic%2C%20cozy%20atmosphere?width=1600&height=900&nologo=true')"></div><div class="hero-content"><h1 class="hero-title"><span class="reveal-text">Le Speakeasy</span></h1><p class="hero-subtitle reveal-text">Le Speakeasy vous accueille à Marseille pour une expérience unique.</p><div class="hero-ctas"><a href="https://cal.com/leman-nova-0zwvun/rendez-vous-15-minutes" class="cta-primary pulse" target="_blank">Prendre rendez-vous</a><a href="#prestations" class="cta-secondary">Découvrir</a></div></div></header>
+<header id="accueil" class="hero arch-A cat-bar"><div class="hero-bg" style="background-image:linear-gradient(135deg,#0b0c15,#c9a227)"></div><div class="hero-content"><h1 class="hero-title"><span class="reveal-text">Le Speakeasy</span></h1><p class="hero-subtitle reveal-text">Le Speakeasy vous accueille à Marseille pour une expérience unique.</p><div class="hero-ctas"><a href="https://cal.com/leman-nova-0zwvun/rendez-vous-15-minutes" class="cta-primary pulse" target="_blank">Prendre rendez-vous</a><a href="#prestations" class="cta-secondary">Découvrir</a></div></div></header>
 <section id="cocktails" class="signature-section arch-A"><div class="container"><h2 class="section-title reveal">Cocktails Signature</h2><div class="signature-grid"><div class="signature-card cocktail-card"><div class="signature-img"><img src="https://image.pollinations.ai/prompt/elegant%20Old%20Fashioned%20on%20a%20bar%20counter%2C%20dark%20moody%20lighting%2C%20cocktail%20photography?width=800&height=600&nologo=true" alt="Old Fashioned" loading="lazy"></div><div class="signature-body"><h4>Old Fashioned</h4><p>Bourbon, sucre, bitter d'orange.</p><span class="signature-price">14 EUR</span></div></div><div class="signature-card cocktail-card"><div class="signature-img"><img src="https://image.pollinations.ai/prompt/elegant%20Mojito%20maison%20on%20a%20bar%20counter%2C%20dark%20moody%20lighting%2C%20cocktail%20photography?width=800&height=600&nologo=true" alt="Mojito maison" loading="lazy"></div><div class="signature-body"><h4>Mojito maison</h4><p>Rhum, menthe fraîche, citron vert.</p><span class="signature-price">12 EUR</span></div></div><div class="signature-card cocktail-card"><div class="signature-img"><img src="https://image.pollinations.ai/prompt/elegant%20Negroni%20on%20a%20bar%20counter%2C%20dark%20moody%20lighting%2C%20cocktail%20photography?width=800&height=600&nologo=true" alt="Negroni" loading="lazy"></div><div class="signature-body"><h4>Negroni</h4><p>Gin, Campari, vermouth rouge.</p><span class="signature-price">13 EUR</span></div></div><div class="signature-card cocktail-card"><div class="signature-img"><img src="https://image.pollinations.ai/prompt/elegant%20Whisky%20Sour%20on%20a%20bar%20counter%2C%20dark%20moody%20lighting%2C%20cocktail%20photography?width=800&height=600&nologo=true" alt="Whisky Sour" loading="lazy"></div><div class="signature-body"><h4>Whisky Sour</h4><p>Whisky, citron, blanc d'œuf.</p><span class="signature-price">13 EUR</span></div></div></div></div></section>
-<section id="prestations" class="services-section arch-A"><div class="container"><h2 class="section-title reveal">Nos formules</h2><div class="services-grid"><div class="service-card" data-service="Prestation 1" data-price="à partir de 50 EUR"><div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 4h8l-4 8-4-8z"/><path d="M12 12v7"/><path d="M9 19h6"/></svg></div><h3>Prestation 1</h3><p>Service personnalisé.</p><span class="service-price">à partir de 50 EUR</span></div><div class="service-card" data-service="Prestation 2" data-price="sur devis"><div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 4h8l-4 8-4-8z"/><path d="M12 12v7"/><path d="M9 19h6"/></svg></div><h3>Prestation 2</h3><p>Service personnalisé.</p><span class="service-price">sur devis</span></div><div class="service-card" data-service="Prestation 3" data-price="sur devis"><div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 4h8l-4 8-4-8z"/><path d="M12 12v7"/><path d="M9 19h6"/></svg></div><h3>Prestation 3</h3><p>Service personnalisé.</p><span class="service-price">sur devis</span></div></div></div></section>
-<section class="reservation-section arch-A"><div class="container"><h2 class="section-title reveal">Réservez votre créneau</h2>
-<div class="reservation-flow">
-  <div class="reservation-step"><span class="step-num">1</span><h3>Choisissez votre prestation</h3><div class="reservation-choices"><div class="reservation-card" data-service="Prestation 1" data-price="à partir de 50 EUR" tabindex="0"><h4>Prestation 1</h4><p>Service personnalisé.</p><span class="reservation-price">à partir de 50 EUR</span></div><div class="reservation-card" data-service="Prestation 2" data-price="sur devis" tabindex="0"><h4>Prestation 2</h4><p>Service personnalisé.</p><span class="reservation-price">sur devis</span></div><div class="reservation-card" data-service="Prestation 3" data-price="sur devis" tabindex="0"><h4>Prestation 3</h4><p>Service personnalisé.</p><span class="reservation-price">sur devis</span></div></div></div>
-  <div class="reservation-step summary-step" id="reservation-summary"><span class="step-num">2</span><h3>Votre choix</h3><p class="reservation-summary-text">Aucune prestation sélectionnée</p></div>
-  <div class="reservation-step"><span class="step-num">3</span><a href="https://cal.com/leman-nova-0zwvun/rendez-vous-15-minutes" class="cta-primary reservation-confirm" id="reservation-confirm" target="_blank">Confirmer mon créneau</a><p class="reservation-note">Maquette : ce lien mène au créateur du site. À la livraison, il sera branché sur le Google Calendar du client.</p></div>
-</div>
+<section id="prestations" class="services-section arch-A"><div class="container"><h2 class="section-title reveal">Nos formules</h2><div class="services-grid"><div class="service-card" data-service="Prestation 1" data-price="à partir de 50 EUR" tabindex="0"><div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 4h8l-4 8-4-8z"/><path d="M12 12v7"/><path d="M9 19h6"/></svg></div><h3>Prestation 1</h3><p>Service personnalisé.</p><span class="service-price">à partir de 50 EUR</span></div><div class="service-card" data-service="Prestation 2" data-price="sur devis" tabindex="0"><div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 4h8l-4 8-4-8z"/><path d="M12 12v7"/><path d="M9 19h6"/></svg></div><h3>Prestation 2</h3><p>Service personnalisé.</p><span class="service-price">sur devis</span></div><div class="service-card" data-service="Prestation 3" data-price="sur devis" tabindex="0"><div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 4h8l-4 8-4-8z"/><path d="M12 12v7"/><path d="M9 19h6"/></svg></div><h3>Prestation 3</h3><p>Service personnalisé.</p><span class="service-price">sur devis</span></div></div></div></section>
+<section id="reservation" class="reservation-section arch-A"><div class="container"><h2 class="section-title reveal">Réservez votre créneau</h2>
+<p class="reservation-intro">Cliquez sur une prestation pour la sélectionner et prendre rendez-vous.</p>
+<div class="reservation-choices"><div class="reservation-card" data-service="Prestation 1" data-price="à partir de 50 EUR" tabindex="0"><h4>Prestation 1</h4><p>Service personnalisé.</p><span class="reservation-price">à partir de 50 EUR</span></div><div class="reservation-card" data-service="Prestation 2" data-price="sur devis" tabindex="0"><h4>Prestation 2</h4><p>Service personnalisé.</p><span class="reservation-price">sur devis</span></div><div class="reservation-card" data-service="Prestation 3" data-price="sur devis" tabindex="0"><h4>Prestation 3</h4><p>Service personnalisé.</p><span class="reservation-price">sur devis</span></div></div>
 <noscript><a href="https://cal.com/leman-nova-0zwvun/rendez-vous-15-minutes" class="cta-primary" target="_blank">Prendre rendez-vous</a></noscript>
 </div></section>
+<div class="modal-overlay" id="booking-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title"><div class="modal"><button class="modal-close" aria-label="Fermer">&times;</button><h3 id="modal-title">Votre choix</h3><p class="modal-choice" id="modal-choice">Aucune prestation sélectionnée</p><a href="https://cal.com/leman-nova-0zwvun/rendez-vous-15-minutes" class="cta-primary" id="modal-confirm" target="_blank">Confirmer mon créneau</a><p class="reservation-note">Maquette : ce lien mène au créateur du site. À la livraison, il sera branché sur le Google Calendar du client.</p></div></div>
 
 <section id="avis" class="avis-section arch-A"><div class="container"><h2 class="section-title reveal">Avis Google</h2><div class="avis-header reveal"><div class="avis-score">4,7<span>/5</span></div><div class="avis-meta"><div class="avis-stars big">★★★★</div><div class="avis-count"><span class="counter" data-target="128">128</span> avis</div></div></div><div class="avis-grid"><div class="avis-card reveal"><div class="avis-stars">★★★★★</div><p class="avis-text">"Excellent accueil, service parfait et ambiance chaleureuse. Je recommande !"</p><p class="avis-author">— Sophie</p></div><div class="avis-card reveal"><div class="avis-stars">★★★★★</div><p class="avis-text">"Très professionnel, à l'écoute et de bons conseils."</p><p class="avis-author">— Julien</p></div><div class="avis-card reveal"><div class="avis-stars">★★★★☆</div><p class="avis-text">"Superbe expérience, je reviendrai sans hésiter."</p><p class="avis-author">— Emma</p></div></div></div></section>
 <section id="contact" class="infos-section arch-A"><div class="container"><h2 class="section-title reveal">Informations pratiques</h2><div class="infos-grid"><div class="info-card reveal"><div class="info-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div><h3>Adresse</h3><p>15 Rue de la République, Marseille</p></div><div class="info-card reveal"><div class="info-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div><h3>Horaires</h3><pre class="horaires">Lundi: Fermé
@@ -146,14 +155,22 @@ Dimanche: Fermé</pre></div><div class="info-card reveal"><div class="info-icon"
   const observer=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');if(e.target.classList.contains('counter')){const target=parseInt(e.target.dataset.target||'0',10);let cur=0;const step=Math.max(1,Math.floor(target/30));const int=setInterval(()=>{cur+=step;if(cur>=target){cur=target;clearInterval(int)}e.target.textContent=cur},30)}observer.unobserve(e.target)}})},{threshold:0.12});
   document.querySelectorAll('.reveal,.counter').forEach(el=>observer.observe(el));
   document.querySelectorAll('.service-card').forEach(card=>{card.addEventListener('mousemove',e=>{const r=card.getBoundingClientRect();const x=e.clientX-r.left;const y=e.clientY-r.top;const cx=x-r.width/2;const cy=y-r.height/2;card.style.transform='perspective(800px) rotateY('+(cx/25)+'deg) rotateX('+(-cy/25)+'deg) translateY(-8px)'});card.addEventListener('mouseleave',()=>{card.style.transform=''})});
-  const cards=document.querySelectorAll('.reservation-card');
-  const summary=document.getElementById('reservation-summary');
-  const summaryText=summary?summary.querySelector('.reservation-summary-text'):null;
-  const confirm=document.getElementById('reservation-confirm');
-  if(cards.length && confirm){
-    confirm.classList.add('disabled');
-    cards.forEach(card=>{card.addEventListener('click',()=>{cards.forEach(c=>c.classList.remove('selected'));card.classList.add('selected');summary&&summary.classList.add('active');if(summaryText){summaryText.textContent='Votre choix : '+card.dataset.service+' - '+card.dataset.price;}confirm.textContent='Confirmer mon créneau';confirm.classList.remove('disabled');})});
+  const modal=document.getElementById('booking-modal');
+  const modalChoice=document.getElementById('modal-choice');
+  const modalConfirm=document.getElementById('modal-confirm');
+  const modalClose=document.querySelector('.modal-close');
+  function openModal(service, price){
+    if(!modal)return;
+    modalChoice.textContent='Votre choix : '+(service||'Prestation')+' - '+(price||'sur devis');
+    modal.classList.add('active');
   }
+  function closeModal(){if(modal)modal.classList.remove('active');}
+  if(modalClose)modalClose.addEventListener('click',closeModal);
+  if(modal)modal.addEventListener('click',e=>{if(e.target===modal)closeModal()});
+  document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
+  document.querySelectorAll('.service-card, .reservation-card').forEach(card=>{
+    card.addEventListener('click',()=>openModal(card.dataset.service||'', card.dataset.price||''));
+  });
 })();
 </script>
 </body>

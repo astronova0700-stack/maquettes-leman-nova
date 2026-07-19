@@ -7,7 +7,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
 <style>
 
-:root{--primary:#111111;--secondary:#f4f4f4;--accent:#c0392b;--dark:#111111;--light:#ffffff}
+:root{--primary:#0f2027;--secondary:#f4f4f4;--accent:#2c5364;--dark:#0f2027;--light:#ffffff}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:'Inter',system-ui,-apple-system,sans-serif;line-height:1.6;color:var(--dark)}
@@ -19,16 +19,18 @@ a{text-decoration:none;color:inherit}
 .nav-logo{font-weight:800;font-size:1.25rem}
 .nav-links{display:flex;align-items:center;gap:26px}
 .nav-links a{font-weight:500;font-size:.93rem}
-.nav-cta{background:var(--accent);color:#fff!important;padding:11px 24px;border-radius:50px;font-weight:700;transition:transform .2s,box-shadow .2s;white-space:nowrap}
+.nav-cta{background:var(--accent);color:#fff!important;padding:11px 24px;border-radius:50px;font-weight:700;transition:transform .2s,box-shadow .2s;white-space:nowrap;text-shadow:0 1px 2px rgba(0,0,0,.6);border:1px solid rgba(255,255,255,.25)}
 .nav-cta:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(0,0,0,.2)}
-.hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden;padding-top:80px}
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden;padding-top:80px;color:#fff}
 .hero-bg{position:absolute;inset:0;background-size:cover;background-position:center;z-index:-1;will-change:transform}
-.hero-content{position:relative;z-index:2;max-width:800px;padding:20px}
-.hero-title{font-size:clamp(3rem,8vw,6.5rem);font-weight:900;line-height:1;margin-bottom:22px}
-.hero-subtitle{font-size:clamp(1.1rem,2.5vw,1.5rem);margin-bottom:38px;opacity:.95}
+.hero-content{position:relative;z-index:2;max-width:800px;padding:20px;color:#fff}
+.hero-title{font-size:clamp(3rem,8vw,6.5rem);font-weight:900;line-height:1;margin-bottom:22px;color:#fff;text-shadow:0 2px 10px rgba(0,0,0,.4)}
+.hero-subtitle{font-size:clamp(1.1rem,2.5vw,1.5rem);margin-bottom:38px;opacity:.95;color:#fff;text-shadow:0 1px 6px rgba(0,0,0,.4)}
 .hero-ctas{display:flex;gap:18px;justify-content:center;flex-wrap:wrap}
-.cta-primary,.cta-secondary{display:inline-block;padding:16px 34px;border-radius:50px;font-weight:700;transition:transform .2s,box-shadow .2s}
+.cta-primary,.cta-secondary{display:inline-block;padding:16px 34px;border-radius:50px;font-weight:700;transition:transform .2s,box-shadow .2s;color:#fff}
+.cta-primary{background:var(--accent);box-shadow:0 4px 20px rgba(0,0,0,.3)}
 .cta-primary:hover,.cta-secondary:hover{transform:translateY(-3px)}
+.cta-secondary{border:2px solid rgba(255,255,255,.85);background:rgba(255,255,255,.1);backdrop-filter:blur(4px)}
 .pulse{animation:pulse 2.5s infinite}
 @keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(255,255,255,.4)}50%{box-shadow:0 0 0 12px rgba(255,255,255,0)}}
 .section-title{font-size:clamp(2rem,5vw,3rem);font-weight:800;margin-bottom:45px}
@@ -60,6 +62,14 @@ a{text-decoration:none;color:inherit}
 .reservation-confirm{display:inline-block}
 .reservation-confirm.disabled{opacity:.5;pointer-events:none}
 .reservation-note{font-size:.82rem;color:#666;margin-top:12px}
+.reservation-intro{text-align:center;margin-bottom:10px;color:#555}
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.7);display:none;align-items:center;justify-content:center;z-index:2000;padding:20px}
+.modal-overlay.active{display:flex}
+.modal{background:var(--light);padding:38px;border-radius:24px;max-width:460px;width:100%;text-align:center;position:relative;box-shadow:0 25px 80px rgba(0,0,0,.3)}
+.modal-close{position:absolute;top:14px;right:18px;background:none;border:none;font-size:2rem;cursor:pointer;color:#777}
+.modal h3{margin-bottom:18px}
+.modal-choice{font-size:1.2rem;font-weight:700;margin-bottom:24px}
+.modal .cta-primary{display:inline-block}
 .avis-section{background:var(--light)}
 .avis-header{display:flex;align-items:center;gap:30px;margin-bottom:45px;flex-wrap:wrap}
 .avis-score{font-size:4.5rem;font-weight:900;line-height:1;color:var(--primary)}
@@ -75,7 +85,7 @@ a{text-decoration:none;color:inherit}
 .galerie-item{border-radius:16px;overflow:hidden}
 .galerie-item img{width:100%;height:280px;object-fit:cover;transition:transform .4s}
 .galerie-item:hover img{transform:scale(1.05)}
-.infos-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px;margin-bottom:40px}
+.infos-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px;margin-bottom:40px}
 .info-card{background:var(--light);padding:28px;border-radius:18px;text-align:center;box-shadow:0 8px 30px rgba(0,0,0,.06)}
 .info-icon{width:44px;height:44px;margin:0 auto 14px;color:var(--primary)}
 .info-card h3{margin-bottom:10px;font-size:1.05rem}
@@ -104,6 +114,7 @@ a{text-decoration:none;color:inherit}
 .coiffure-tarif tr:nth-child(even){background:rgba(0,0,0,.03)}
 .coiffure-tarif .tarif{font-weight:800;color:var(--primary);white-space:nowrap}
 .cocktail-card .signature-img{height:240px}
+@media(max-width:900px){.infos-grid{grid-template-columns:1fr}}
 @media(max-width:760px){.nav-links a:not(.nav-cta){display:none}.nav-cta{padding:9px 16px;font-size:.8rem}.hero-title{font-size:2.4rem}.avis-header{justify-content:center}.coiffure-tarif th,.coiffure-tarif td{padding:12px 14px;font-size:.9rem}}
 
 h1,h2,h3{font-family:'Playfair Display',sans-serif}
@@ -116,17 +127,15 @@ h1,h2,h3{font-family:'Playfair Display',sans-serif}
 </head>
 <body class="arch-A cat-coiffure">
 <nav id="navbar"><div class="nav-inner"><a href="#accueil" class="nav-logo">ELEXIA</a><div class="nav-links"><a href="#accueil">Accueil</a><a href="#prestations">Prestations</a><a href="#avis">Avis</a><a href="#contact">Contact</a><a href="https://cal.com/leman-nova-0zwvun/rendez-vous-15-minutes" class="nav-cta" target="_blank">Prendre rendez-vous</a></div></div></nav>
-<header id="accueil" class="hero arch-A cat-coiffure"><div class="hero-bg" style="background-image:linear-gradient(135deg,rgba(0,0,0,.6),rgba(0,0,0,.3)),url('https://image.pollinations.ai/prompt/modern%20hair%20salon%20interior%2C%20warm%20ambient%20light%2C%20clean%20design%2C%20stylish%20chairs%2C%20mirrors%2C%20photorealistic%2C%20welcoming%20atmosphere?width=1600&height=900&nologo=true')"></div><div class="hero-content"><h1 class="hero-title"><span class="reveal-text">ELEXIA</span></h1><p class="hero-subtitle reveal-text">Bienvenue chez Elexia, votre salon de coiffure au coeur du 8e arrondissement de Paris, pour un moment de soin et de style sur mesure.</p><div class="hero-ctas"><a href="https://cal.com/leman-nova-0zwvun/rendez-vous-15-minutes" class="cta-primary pulse" target="_blank">Prendre rendez-vous</a><a href="#prestations" class="cta-secondary">Découvrir</a></div></div></header>
-<section id="prestations-detail" class="signature-section arch-A"><div class="container"><h2 class="section-title reveal">Nos Prestations</h2><table class="coiffure-tarif"><thead><tr><th>Prestation</th><th>Description</th><th>Tarif</th></tr></thead><tbody><tr><td>Coupe femme</td><td>Shampoing, coupe sur mesure et brushing soigne pour un resultat adapte a votre morphologie.</td><td class="tarif">a partir de 55 EUR</td></tr><tr><td>Coupe homme</td><td>Shampoing, coupe classique ou tendance avec finitions soignees au rasoir ou aux ciseaux.</td><td class="tarif">a partir de 30 EUR</td></tr><tr><td>Coupe enfant</td><td>Coupe adaptee aux plus jeunes, dans une ambiance calme et bienveillante.</td><td class="tarif">a partir de 20 EUR</td></tr><tr><td>Coloration complete</td><td>Application d'une couleur permanente ou semi-permanente, avec shampoing et soin inclus.</td><td class="tarif">a partir de 80 EUR</td></tr><tr><td>Balayage et meches</td><td>Technique de balayage pour un effet naturel et lumineux, adaptee a tous les types de cheveux.</td><td class="tarif">a partir de 95 EUR</td></tr><tr><td>Lissage bresilien</td><td>Traitement lissant longue duree pour des cheveux disciplines, brillants et faciles a coiffer.</td><td class="tarif">a partir de 180 EUR</td></tr></tbody></table></div></section>
-<section id="prestations" class="services-section arch-A"><div class="container"><h2 class="section-title reveal">Nos formules</h2><div class="services-grid"><div class="service-card" data-service="Coupe et coiffage" data-price="a partir de 45 EUR"><div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="6" cy="6" r="3"/><circle cx="18" cy="18" r="3"/><path d="M6 9l12 9M18 9L6 18"/></svg></div><h3>Coupe et coiffage</h3><p>Shampoing, coupe personnalisee et brushing pour sublimer votre chevelure au quotidien.</p><span class="service-price">a partir de 45 EUR</span></div><div class="service-card" data-service="Coloration et meches" data-price="a partir de 75 EUR"><div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="6" cy="6" r="3"/><circle cx="18" cy="18" r="3"/><path d="M6 9l12 9M18 9L6 18"/></svg></div><h3>Coloration et meches</h3><p>Colorations permanentes, balayages et meches realises avec des produits respectueux de vos cheveux.</p><span class="service-price">a partir de 75 EUR</span></div><div class="service-card" data-service="Soins capillaires" data-price="sur devis"><div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="6" cy="6" r="3"/><circle cx="18" cy="18" r="3"/><path d="M6 9l12 9M18 9L6 18"/></svg></div><h3>Soins capillaires</h3><p>Soins nourrissants, lissages et traitements adaptes a la nature et aux besoins de votre chevelure.</p><span class="service-price">sur devis</span></div></div></div></section>
-<section class="reservation-section arch-A"><div class="container"><h2 class="section-title reveal">Réservez votre créneau</h2>
-<div class="reservation-flow">
-  <div class="reservation-step"><span class="step-num">1</span><h3>Choisissez votre prestation</h3><div class="reservation-choices"><div class="reservation-card" data-service="Coupe et coiffage" data-price="a partir de 45 EUR" tabindex="0"><h4>Coupe et coiffage</h4><p>Shampoing, coupe personnalisee et brushing pour sublimer votre chevelure au quotidien.</p><span class="reservation-price">a partir de 45 EUR</span></div><div class="reservation-card" data-service="Coloration et meches" data-price="a partir de 75 EUR" tabindex="0"><h4>Coloration et meches</h4><p>Colorations permanentes, balayages et meches realises avec des produits respectueux de vos cheveux.</p><span class="reservation-price">a partir de 75 EUR</span></div><div class="reservation-card" data-service="Soins capillaires" data-price="sur devis" tabindex="0"><h4>Soins capillaires</h4><p>Soins nourrissants, lissages et traitements adaptes a la nature et aux besoins de votre chevelure.</p><span class="reservation-price">sur devis</span></div></div></div>
-  <div class="reservation-step summary-step" id="reservation-summary"><span class="step-num">2</span><h3>Votre choix</h3><p class="reservation-summary-text">Aucune prestation sélectionnée</p></div>
-  <div class="reservation-step"><span class="step-num">3</span><a href="https://cal.com/leman-nova-0zwvun/rendez-vous-15-minutes" class="cta-primary reservation-confirm" id="reservation-confirm" target="_blank">Confirmer mon créneau</a><p class="reservation-note">Maquette : ce lien mène au créateur du site. À la livraison, il sera branché sur le Google Calendar du client.</p></div>
-</div>
+<header id="accueil" class="hero arch-A cat-coiffure"><div class="hero-bg" style="background-image:linear-gradient(135deg,#0f2027,#2c5364)"></div><div class="hero-content"><h1 class="hero-title"><span class="reveal-text">ELEXIA</span></h1><p class="hero-subtitle reveal-text">ELEXIA vous accueille au coeur du 8e arrondissement, rue de Ponthieu, pour des soins coiffure adaptés à chaque personnalité.</p><div class="hero-ctas"><a href="https://cal.com/leman-nova-0zwvun/rendez-vous-15-minutes" class="cta-primary pulse" target="_blank">Prendre rendez-vous</a><a href="#prestations" class="cta-secondary">Découvrir</a></div></div></header>
+<section id="prestations-detail" class="signature-section arch-A"><div class="container"><h2 class="section-title reveal">Nos Prestations</h2><table class="coiffure-tarif"><thead><tr><th>Prestation</th><th>Description</th><th>Tarif</th></tr></thead><tbody><tr><td>Coupe femme</td><td>Shampoing, coupe et brushing pour un résultat élégant et structuré.</td><td class="tarif">à partir de 55 EUR</td></tr><tr><td>Coupe homme</td><td>Shampoing, coupe et coiffage pour un rendu propre et moderne.</td><td class="tarif">à partir de 30 EUR</td></tr><tr><td>Coupe enfant</td><td>Coupe douce et adaptée pour les filles et garçons jusqu'à 12 ans.</td><td class="tarif">à partir de 20 EUR</td></tr><tr><td>Balayage et mèches</td><td>Technique de décoloration pour apporter lumière et volume à la chevelure.</td><td class="tarif">à partir de 90 EUR</td></tr><tr><td>Coloration complète</td><td>Application d'une couleur uniforme pour couvrir les blancs ou changer de teinte.</td><td class="tarif">à partir de 65 EUR</td></tr><tr><td>Lissage brésilien</td><td>Traitement lissant longue durée pour discipliner les cheveux frisés ou ondulés.</td><td class="tarif">à partir de 180 EUR</td></tr></tbody></table></div></section>
+<section id="prestations" class="services-section arch-A"><div class="container"><h2 class="section-title reveal">Nos formules</h2><div class="services-grid"><div class="service-card" data-service="Coupe et coiffage" data-price="à partir de 45 EUR" tabindex="0"><div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="6" cy="6" r="3"/><circle cx="18" cy="18" r="3"/><path d="M6 9l12 9M18 9L6 18"/></svg></div><h3>Coupe et coiffage</h3><p>Shampoing, coupe personnalisée et brushing pour un résultat net et soigné.</p><span class="service-price">à partir de 45 EUR</span></div><div class="service-card" data-service="Coloration et mèches" data-price="à partir de 75 EUR" tabindex="0"><div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="6" cy="6" r="3"/><circle cx="18" cy="18" r="3"/><path d="M6 9l12 9M18 9L6 18"/></svg></div><h3>Coloration et mèches</h3><p>Coloration pleine, balayage ou mèches pour révéler votre couleur idéale.</p><span class="service-price">à partir de 75 EUR</span></div><div class="service-card" data-service="Soins et traitements" data-price="sur devis" tabindex="0"><div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="6" cy="6" r="3"/><circle cx="18" cy="18" r="3"/><path d="M6 9l12 9M18 9L6 18"/></svg></div><h3>Soins et traitements</h3><p>Soins kératine, lissage ou traitement reconstituant selon l'état du cheveu.</p><span class="service-price">sur devis</span></div></div></div></section>
+<section id="reservation" class="reservation-section arch-A"><div class="container"><h2 class="section-title reveal">Réservez votre créneau</h2>
+<p class="reservation-intro">Cliquez sur une prestation pour la sélectionner et prendre rendez-vous.</p>
+<div class="reservation-choices"><div class="reservation-card" data-service="Coupe et coiffage" data-price="à partir de 45 EUR" tabindex="0"><h4>Coupe et coiffage</h4><p>Shampoing, coupe personnalisée et brushing pour un résultat net et soigné.</p><span class="reservation-price">à partir de 45 EUR</span></div><div class="reservation-card" data-service="Coloration et mèches" data-price="à partir de 75 EUR" tabindex="0"><h4>Coloration et mèches</h4><p>Coloration pleine, balayage ou mèches pour révéler votre couleur idéale.</p><span class="reservation-price">à partir de 75 EUR</span></div><div class="reservation-card" data-service="Soins et traitements" data-price="sur devis" tabindex="0"><h4>Soins et traitements</h4><p>Soins kératine, lissage ou traitement reconstituant selon l'état du cheveu.</p><span class="reservation-price">sur devis</span></div></div>
 <noscript><a href="https://cal.com/leman-nova-0zwvun/rendez-vous-15-minutes" class="cta-primary" target="_blank">Prendre rendez-vous</a></noscript>
 </div></section>
+<div class="modal-overlay" id="booking-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title"><div class="modal"><button class="modal-close" aria-label="Fermer">&times;</button><h3 id="modal-title">Votre choix</h3><p class="modal-choice" id="modal-choice">Aucune prestation sélectionnée</p><a href="https://cal.com/leman-nova-0zwvun/rendez-vous-15-minutes" class="cta-primary" id="modal-confirm" target="_blank">Confirmer mon créneau</a><p class="reservation-note">Maquette : ce lien mène au créateur du site. À la livraison, il sera branché sur le Google Calendar du client.</p></div></div>
 
 
 <section id="contact" class="infos-section arch-A"><div class="container"><h2 class="section-title reveal">Informations pratiques</h2><div class="infos-grid"><div class="info-card reveal"><div class="info-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div><h3>Adresse</h3><p>49 Rue de Ponthieu, 75008 Paris, France</p></div><div class="info-card reveal"><div class="info-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div><h3>Horaires</h3><pre class="horaires">Lundi: 09h00 - 19h00
@@ -146,14 +155,22 @@ Dimanche: Fermé</pre></div><div class="info-card reveal"><div class="info-icon"
   const observer=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');if(e.target.classList.contains('counter')){const target=parseInt(e.target.dataset.target||'0',10);let cur=0;const step=Math.max(1,Math.floor(target/30));const int=setInterval(()=>{cur+=step;if(cur>=target){cur=target;clearInterval(int)}e.target.textContent=cur},30)}observer.unobserve(e.target)}})},{threshold:0.12});
   document.querySelectorAll('.reveal,.counter').forEach(el=>observer.observe(el));
   document.querySelectorAll('.service-card').forEach(card=>{card.addEventListener('mousemove',e=>{const r=card.getBoundingClientRect();const x=e.clientX-r.left;const y=e.clientY-r.top;const cx=x-r.width/2;const cy=y-r.height/2;card.style.transform='perspective(800px) rotateY('+(cx/25)+'deg) rotateX('+(-cy/25)+'deg) translateY(-8px)'});card.addEventListener('mouseleave',()=>{card.style.transform=''})});
-  const cards=document.querySelectorAll('.reservation-card');
-  const summary=document.getElementById('reservation-summary');
-  const summaryText=summary?summary.querySelector('.reservation-summary-text'):null;
-  const confirm=document.getElementById('reservation-confirm');
-  if(cards.length && confirm){
-    confirm.classList.add('disabled');
-    cards.forEach(card=>{card.addEventListener('click',()=>{cards.forEach(c=>c.classList.remove('selected'));card.classList.add('selected');summary&&summary.classList.add('active');if(summaryText){summaryText.textContent='Votre choix : '+card.dataset.service+' - '+card.dataset.price;}confirm.textContent='Confirmer mon créneau';confirm.classList.remove('disabled');})});
+  const modal=document.getElementById('booking-modal');
+  const modalChoice=document.getElementById('modal-choice');
+  const modalConfirm=document.getElementById('modal-confirm');
+  const modalClose=document.querySelector('.modal-close');
+  function openModal(service, price){
+    if(!modal)return;
+    modalChoice.textContent='Votre choix : '+(service||'Prestation')+' - '+(price||'sur devis');
+    modal.classList.add('active');
   }
+  function closeModal(){if(modal)modal.classList.remove('active');}
+  if(modalClose)modalClose.addEventListener('click',closeModal);
+  if(modal)modal.addEventListener('click',e=>{if(e.target===modal)closeModal()});
+  document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
+  document.querySelectorAll('.service-card, .reservation-card').forEach(card=>{
+    card.addEventListener('click',()=>openModal(card.dataset.service||'', card.dataset.price||''));
+  });
 })();
 </script>
 </body>
