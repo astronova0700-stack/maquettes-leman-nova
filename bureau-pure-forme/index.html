@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bureau Pure Forme - Geneve</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+<style>
+
+:root{--primary:#0f0f0f;--secondary:#1a1a1a;--accent:#c9a227;--dark:#0a0a0a;--light:#f5f5f5}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',system-ui,-apple-system,sans-serif;line-height:1.6;color:var(--dark)}
+img{max-width:100%;display:block}
+a{text-decoration:none;color:inherit}
+.container{width:min(1200px,92vw);margin:0 auto}
+#navbar{position:fixed;top:0;left:0;right:0;z-index:1000;padding:12px 0;background:var(--primary);color:var(--light);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,.1)}
+.nav-inner{display:flex;justify-content:space-between;align-items:center;width:min(1200px,92vw);margin:0 auto}
+.nav-logo{font-weight:800;font-size:1.25rem}
+.nav-links{display:flex;align-items:center;gap:26px}
+.nav-links a{font-weight:500;font-size:.93rem}
+.nav-cta{background:var(--accent);color:#fff!important;padding:11px 24px;border-radius:50px;font-weight:700;transition:transform .2s,box-shadow .2s;white-space:nowrap;text-shadow:0 1px 2px rgba(0,0,0,.6);border:1px solid rgba(255,255,255,.25)}
+.nav-cta:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(0,0,0,.2)}
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden;padding-top:80px;color:#fff}
+.hero-bg{position:absolute;inset:0;background-size:cover;background-position:center;z-index:-1;will-change:transform}
+.hero-content{position:relative;z-index:2;max-width:800px;padding:20px;color:#fff}
+.hero-title{font-size:clamp(3rem,8vw,6.5rem);font-weight:900;line-height:1;margin-bottom:22px;color:#fff;text-shadow:0 2px 10px rgba(0,0,0,.4)}
+.hero-subtitle{font-size:clamp(1.1rem,2.5vw,1.5rem);margin-bottom:38px;opacity:.95;color:#fff;text-shadow:0 1px 6px rgba(0,0,0,.4)}
+.hero-ctas{display:flex;gap:18px;justify-content:center;flex-wrap:wrap}
+.cta-primary,.cta-secondary{display:inline-block;padding:16px 34px;border-radius:50px;font-weight:700;transition:transform .2s,box-shadow .2s;color:#fff}
+.cta-primary{background:var(--accent);box-shadow:0 4px 20px rgba(0,0,0,.3)}
+.cta-primary:hover,.cta-secondary:hover{transform:translateY(-3px)}
+.cta-secondary{border:2px solid rgba(255,255,255,.85);background:rgba(255,255,255,.1);backdrop-filter:blur(4px)}
+.pulse{animation:pulse 2.5s infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(255,255,255,.4)}50%{box-shadow:0 0 0 12px rgba(255,255,255,0)}}
+.section-title{font-size:clamp(2rem,5vw,3rem);font-weight:800;margin-bottom:45px}
+.reveal{opacity:1;transform:none;transition:opacity .8s ease,transform .8s ease}
+.reveal.visible{opacity:1;transform:none}
+.reveal-text{display:inline-block;opacity:1;transform:none;transition:opacity .8s ease,transform .8s ease}
+.services-section,.reservation-section,.avis-section,.galerie-section,.infos-section{padding:90px 20px}
+.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:28px}
+.service-card{background:var(--light);padding:34px 28px;border-radius:20px;transition:transform .3s,box-shadow .3s;cursor:pointer;border:1px solid rgba(0,0,0,.06)}
+.service-card:hover{transform:translateY(-8px);box-shadow:0 20px 50px rgba(0,0,0,.12)}
+.service-icon{width:50px;height:50px;margin-bottom:16px;color:var(--primary)}
+.service-icon svg{width:100%;height:100%}
+.service-card h3{font-size:1.2rem;margin-bottom:8px}
+.service-card p{font-size:.92rem;color:#555;margin-bottom:12px}
+.service-price{font-weight:800;color:var(--primary)}
+.reservation-section{background:var(--secondary)}
+.reservation-flow{display:grid;gap:28px;max-width:900px;margin:0 auto}
+.reservation-step{background:var(--light);padding:30px;border-radius:20px;box-shadow:0 8px 30px rgba(0,0,0,.06)}
+.step-num{display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:50%;background:var(--primary);color:var(--light);font-weight:800;margin-bottom:12px}
+.reservation-choices{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;margin-top:18px}
+.reservation-card{border:2px solid #e5e7eb;border-radius:16px;padding:22px;cursor:pointer;transition:all .2s}
+.reservation-card:hover,.reservation-card.selected{border-color:var(--primary);transform:translateY(-5px);box-shadow:0 12px 30px rgba(0,0,0,.1)}
+.reservation-card h4{font-size:1.05rem;margin-bottom:6px}
+.reservation-card p{font-size:.88rem;color:#666;margin-bottom:10px}
+.reservation-price{font-weight:800;color:var(--primary)}
+.summary-step{opacity:.6;transition:opacity .3s}
+.summary-step.active{opacity:1}
+.reservation-summary-text{font-size:1.15rem;font-weight:700}
+.reservation-confirm{display:inline-block}
+.reservation-confirm.disabled{opacity:.5;pointer-events:none}
+.reservation-note{font-size:.82rem;color:#666;margin-top:12px}
+.reservation-intro{text-align:center;margin-bottom:10px;color:#555}
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.7);display:none;align-items:center;justify-content:center;z-index:2000;padding:20px}
+.modal-overlay.active{display:flex}
+.modal{background:var(--light);padding:38px;border-radius:24px;max-width:460px;width:100%;text-align:center;position:relative;box-shadow:0 25px 80px rgba(0,0,0,.3)}
+.modal-close{position:absolute;top:14px;right:18px;background:none;border:none;font-size:2rem;cursor:pointer;color:#777}
+.modal h3{margin-bottom:18px}
+.modal-choice{font-size:1.2rem;font-weight:700;margin-bottom:24px}
+.modal .cta-primary{display:inline-block}
+.avis-section{background:var(--light)}
+.avis-header{display:flex;align-items:center;gap:30px;margin-bottom:45px;flex-wrap:wrap}
+.avis-score{font-size:4.5rem;font-weight:900;line-height:1;color:var(--primary)}
+.avis-score span{font-size:1.5rem;font-weight:500;opacity:.7}
+.avis-stars{color:#f4c430;letter-spacing:2px}
+.avis-stars.big{font-size:1.8rem}
+.avis-count{font-size:1.1rem;color:#555}
+.avis-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px}
+.avis-card{background:var(--secondary);padding:28px;border-radius:18px}
+.avis-text{font-style:italic;margin:14px 0}
+.avis-author{font-weight:700;color:#555}
+.galerie-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px}
+.galerie-item{border-radius:16px;overflow:hidden}
+.galerie-item img{width:100%;height:280px;object-fit:cover;transition:transform .4s}
+.galerie-item:hover img{transform:scale(1.05)}
+.infos-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px;margin-bottom:40px}
+.info-card{background:var(--light);padding:28px;border-radius:18px;text-align:center;box-shadow:0 8px 30px rgba(0,0,0,.06)}
+.info-icon{width:44px;height:44px;margin:0 auto 14px;color:var(--primary)}
+.info-card h3{margin-bottom:10px;font-size:1.05rem}
+.horaires{white-space:pre-wrap;font-family:inherit;text-align:left;font-size:.92rem;color:#555}
+.tel a{font-weight:800;color:var(--primary)}
+.map-wrapper{border-radius:16px;overflow:hidden;box-shadow:0 10px 40px rgba(0,0,0,.1)}
+.site-footer{background:var(--dark);color:#e5e7eb;text-align:center;padding:50px 20px}
+.site-footer strong{color:#fff}
+.signature-section{padding:90px 20px;background:var(--secondary)}
+.signature-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:28px}
+.signature-card{background:var(--light);border-radius:20px;overflow:hidden;box-shadow:0 10px 40px rgba(0,0,0,.08);transition:transform .3s,box-shadow .3s}
+.signature-card:hover{transform:translateY(-8px);box-shadow:0 20px 50px rgba(0,0,0,.14)}
+.signature-img{height:200px;overflow:hidden}
+.signature-img img{width:100%;height:100%;object-fit:cover}
+.signature-body{padding:24px}
+.signature-body h4{font-size:1.15rem;margin-bottom:8px}
+.signature-body p{font-size:.9rem;color:#555;margin-bottom:12px}
+.signature-price{font-weight:800;color:var(--primary)}
+.signature-cta{text-align:center;margin-top:40px}
+.soin-card{padding:30px}
+/* Template architecture - portfolio immersif */
+.arch-panels{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:24px}
+.arch-panel{position:relative;border-radius:20px;overflow:hidden;height:420px;box-shadow:0 20px 60px rgba(0,0,0,.25);transition:transform .3s}
+.arch-panel:hover{transform:translateY(-6px)}
+.arch-panel-img{position:absolute;inset:0}
+.arch-panel-img img{width:100%;height:100%;object-fit:cover;transition:transform .7s}
+.arch-panel:hover .arch-panel-img img{transform:scale(1.08)}
+.arch-panel-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.78),transparent 65%);display:flex;flex-direction:column;justify-content:flex-end;padding:34px;color:#fff}
+.arch-panel-overlay h4{font-size:1.35rem;margin-bottom:8px;font-weight:700}
+.arch-panel-overlay p{font-size:.93rem;opacity:.9;line-height:1.5}
+.cat-architecture .hero-title{font-family:'Cinzel',serif;font-weight:700;letter-spacing:.04em;text-transform:uppercase}
+.cat-architecture .section-title{font-family:'Cinzel',serif;font-weight:700;letter-spacing:.02em;text-transform:uppercase}
+.cat-architecture .service-price{font-style:italic}
+.soin-card h4{font-size:1.2rem;margin-bottom:10px}
+.soin-meta{margin-top:14px;font-weight:700;color:var(--primary)}
+.coiffure-tarif{width:100%;border-collapse:collapse;background:var(--light);border-radius:16px;overflow:hidden;box-shadow:0 10px 40px rgba(0,0,0,.08)}
+.coiffure-tarif th,.coiffure-tarif td{padding:18px 24px;text-align:left}
+.coiffure-tarif th{background:var(--primary);color:var(--light);font-weight:700}
+.coiffure-tarif tr:nth-child(even){background:rgba(0,0,0,.03)}
+.coiffure-tarif .tarif{font-weight:800;color:var(--primary);white-space:nowrap}
+.cocktail-card .signature-img{height:240px}
+@media(max-width:900px){.infos-grid{grid-template-columns:1fr}}
+@media(max-width:760px){.nav-links a:not(.nav-cta){display:none}.nav-cta{padding:9px 16px;font-size:.8rem}.hero-title{font-size:2.4rem}.avis-header{justify-content:center}.coiffure-tarif th,.coiffure-tarif td{padding:12px 14px;font-size:.9rem}}
+
+h1,h2,h3{font-family:'Cinzel',sans-serif}
+
+.arch-A .hero-content{text-align:center}
+.arch-A .section-title{text-align:center}
+.arch-A .services-section,.arch-A .reservation-section,.arch-A .avis-section,.arch-A .infos-section{text-align:center}
+
+</style>
+</head>
+<body class="arch-A cat-architecture">
+<nav id="navbar"><div class="nav-inner"><a href="#accueil" class="nav-logo">Bureau Pure Forme</a><div class="nav-links"><a href="#accueil">Accueil</a><a href="#prestations">Prestations</a><a href="#galerie">Galerie</a><a href="#avis">Avis</a><a href="#contact">Contact</a><a href="https://cal.com/leman-nova-0zwvun/rendez-vous-15-minutes" class="nav-cta" target="_blank">Prendre rendez-vous</a></div></div></nav>
+<header id="accueil" class="hero arch-A cat-architecture"><div class="hero-bg" style="background-image:linear-gradient(rgba(0,0,0,0.55),rgba(0,0,0,0.55)),url('https://maps.googleapis.com/maps/api/place/photo?maxwidth=1200&photo_reference=AWCwydgvKxmaJM4YEQfCgPfWJZAekpNwtu0JuWHJyuzmegJGj9mWpx22ejK8H3YgJlKsmjfmwKAwthhM5SWJJrXx8Vru7Ateszmh0U1U7aUoQ4iAGqKiz1Tjvsr8oqNR4md58ugk7wvHka-_OZrdwDiumXgv412SELuix0Pn2YmmsyKpi8QDV033r9_AUSLYVPjYLDigeHw08DvQl8B7dmAjOQyzI5Jg1cpQVII8NSBD2OwKeUxkot_q9QPXoG7sciVf-slk55RJazywG7ogOhkU-2bOwgqTvdD6ve7JzxOZIlIbUBN8QzkA3_4_Q7iO9etHPvvyMf8rF_B-41dsfhuQFCNF06wNNFkdsWXyvZbg4PifqBVU_1BkYw7VY6B_ASfogRF6WEeFzg7hHV265oiojIMN3s7N0HKScEQQYr09gVSD5miU&key=AIzaSyBM-CLXoGETNkX3Zv2-ml8_DJKZKfIx0S8')"></div><div class="hero-content"><h1 class="hero-title"><span class="reveal-text">Bureau Pure Forme</span></h1><p class="hero-subtitle reveal-text">Décoration d'intérieur sur mesure à Vernier, pour transformer chaque espace en un lieu qui vous ressemble vraiment.</p><div class="hero-ctas"><a href="https://cal.com/leman-nova-0zwvun/rendez-vous-15-minutes" class="cta-primary pulse" target="_blank">Prendre rendez-vous</a><a href="#prestations" class="cta-secondary">Découvrir</a></div></div></header>
+<section id="projets" class="signature-section arch-section arch-A"><div class="container"><h2 class="section-title reveal">Projets</h2><div class="arch-panels"><div class="arch-panel"><div class="arch-panel-img"><img src="https://image.pollinations.ai/prompt/Appartement%20aux%20Grottes%2C%20Gen%C3%A8ve%2C%20minimalist%20interior%20design%20mood%2C%20warm%20natural%20light%2C%20elegant%20architectural%20photography%2C%20no%20people?width=800&height=600&nologo=true" alt="Appartement aux Grottes, Genève" loading="lazy"></div><div class="arch-panel-overlay"><h4>Appartement aux Grottes, Genève</h4><p>Rénovation d'un trois-pièces années 1930, concilier cachet ancien et confort contemporain.</p></div></div><div class="arch-panel"><div class="arch-panel-img"><img src="https://image.pollinations.ai/prompt/Villa%20%C3%A0%20Cologny%2C%20minimalist%20interior%20design%20mood%2C%20warm%20natural%20light%2C%20elegant%20architectural%20photography%2C%20no%20people?width=800&height=600&nologo=true" alt="Villa à Cologny" loading="lazy"></div><div class="arch-panel-overlay"><h4>Villa à Cologny</h4><p>Aménagement d'un séjour ouvert de 60 m², équilibre entre élégance sobre et vie en famille.</p></div></div><div class="arch-panel"><div class="arch-panel-img"><img src="https://image.pollinations.ai/prompt/Bureau%20professionnel%20%C3%A0%20Vernier%2C%20minimalist%20interior%20design%20mood%2C%20warm%20natural%20light%2C%20elegant%20architectural%20photography%2C%20no%20people?width=800&height=600&nologo=true" alt="Bureau professionnel à Vernier" loading="lazy"></div><div class="arch-panel-overlay"><h4>Bureau professionnel à Vernier</h4><p>Création d'un espace de travail partagé favorisant la concentration et une image soignée.</p></div></div><div class="arch-panel"><div class="arch-panel-img"><img src="https://image.pollinations.ai/prompt/Studio%20%C3%A9tudiant%20aux%20P%C3%A2quis%2C%20minimalist%20interior%20design%20mood%2C%20warm%20natural%20light%2C%20elegant%20architectural%20photography%2C%20no%20people?width=800&height=600&nologo=true" alt="Studio étudiant aux Pâquis" loading="lazy"></div><div class="arch-panel-overlay"><h4>Studio étudiant aux Pâquis</h4><p>Optimisation d'un 25 m² avec rangements intégrés et ambiance lumineuse sans surcharger l'espace.</p></div></div><div class="arch-panel"><div class="arch-panel-img"><img src="https://image.pollinations.ai/prompt/Cuisine%20ouverte%20%C3%A0%20Carouge%2C%20minimalist%20interior%20design%20mood%2C%20warm%20natural%20light%2C%20elegant%20architectural%20photography%2C%20no%20people?width=800&height=600&nologo=true" alt="Cuisine ouverte à Carouge" loading="lazy"></div><div class="arch-panel-overlay"><h4>Cuisine ouverte à Carouge</h4><p>Refonte d'une cuisine intégrée au séjour, choix des matériaux et cohérence avec l'existant.</p></div></div><div class="arch-panel"><div class="arch-panel-img"><img src="https://image.pollinations.ai/prompt/Chambre%20parentale%20%C3%A0%20Meyrin%2C%20minimalist%20interior%20design%20mood%2C%20warm%20natural%20light%2C%20elegant%20architectural%20photography%2C%20no%20people?width=800&height=600&nologo=true" alt="Chambre parentale à Meyrin" loading="lazy"></div><div class="arch-panel-overlay"><h4>Chambre parentale à Meyrin</h4><p>Création d'une atmosphère reposante avec dressing sur mesure et traitement acoustique discret.</p></div></div></div></div></section>
+<section id="prestations" class="services-section arch-A"><div class="container"><h2 class="section-title reveal">Services</h2><div class="services-grid"><div class="service-card" tabindex="0"><div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2l2.4 7.2h7.6l-6 4.8 2.4 7.2-6-4.8-6 4.8 2.4-7.2-6-4.8h7.6z"/></svg></div><h3>Consultation décoration</h3><p>Une séance d'une à deux heures pour orienter vos choix de couleurs, matières et mobilier.</p><span class="service-price">Sur devis</span></div><div class="service-card" tabindex="0"><div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2l2.4 7.2h7.6l-6 4.8 2.4 7.2-6-4.8-6 4.8 2.4-7.2-6-4.8h7.6z"/></svg></div><h3>Conception d'un espace</h3><p>Élaboration d'un projet complet avec plans, sélection de matériaux et mood board détaillé.</p><span class="service-price">Sur devis</span></div><div class="service-card" tabindex="0"><div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2l2.4 7.2h7.6l-6 4.8 2.4 7.2-6-4.8-6 4.8 2.4-7.2-6-4.8h7.6z"/></svg></div><h3>Suivi de chantier et coordination</h3><p>Accompagnement des artisans et contrôle de la réalisation jusqu'à la livraison finale.</p><span class="service-price">Sur devis</span></div></div></div></section>
+<section id="reservation" class="reservation-section arch-A"><div class="container"><h2 class="section-title reveal">Prendre rendez-vous</h2>
+<div class="reservation-flow"><div class="reservation-step active"><span class="step-num">1</span><h3>Appel découverte</h3><p>15 minutes pour échanger sur votre projet, vos contraintes et vos envies.</p></div>
+<div class="reservation-step active"><span class="step-num">2</span><h3>Proposition sur mesure</h3><p>Je vous prépare un devis clair et une première direction créative.</p></div>
+<div class="reservation-step active"><span class="step-num">3</span><a href="https://cal.com/leman-nova-0zwvun/rendez-vous-15-minutes" class="cta-primary pulse" target="_blank">Réserver l'appel découverte</a></div>
+</div>
+<p class="reservation-note">Maquette : ce lien mène au créateur du site. À la livraison, il sera branché sur le calendrier du client.</p>
+</div></section>
+<section id="galerie" class="galerie-section arch-A"><div class="container"><h2 class="section-title reveal">Galerie</h2><div class="galerie-grid"><div class="galerie-item reveal"><img src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=1200&photo_reference=AWCwydgvKxmaJM4YEQfCgPfWJZAekpNwtu0JuWHJyuzmegJGj9mWpx22ejK8H3YgJlKsmjfmwKAwthhM5SWJJrXx8Vru7Ateszmh0U1U7aUoQ4iAGqKiz1Tjvsr8oqNR4md58ugk7wvHka-_OZrdwDiumXgv412SELuix0Pn2YmmsyKpi8QDV033r9_AUSLYVPjYLDigeHw08DvQl8B7dmAjOQyzI5Jg1cpQVII8NSBD2OwKeUxkot_q9QPXoG7sciVf-slk55RJazywG7ogOhkU-2bOwgqTvdD6ve7JzxOZIlIbUBN8QzkA3_4_Q7iO9etHPvvyMf8rF_B-41dsfhuQFCNF06wNNFkdsWXyvZbg4PifqBVU_1BkYw7VY6B_ASfogRF6WEeFzg7hHV265oiojIMN3s7N0HKScEQQYr09gVSD5miU&key=AIzaSyBM-CLXoGETNkX3Zv2-ml8_DJKZKfIx0S8" alt="Photo" loading="lazy"></div><div class="galerie-item reveal"><img src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=1200&photo_reference=AWCwydiqcc-6eevuzkhufdV_z_zPR6F8ztfaOogG0f6VfIbB4zeya7W6DrA45PLadMmnIpw1UBZI1Y95Bq1YDcdrr78qXO73fY159EdwOqq3kHS3NIg5Pxeub9Y45SYNzeTNVvo924Djv1EuB790nxfexKZEEOG4ZoFn9iF-1p6MA61N3lVk0z80gu8EY6pSgZPyPet2KjPviNmqLJ03eMW29vzi6p-8GiC40y-YeaJqoD2kowscw47COmCq43onyuarrSz1ePRrSHi6ZmfyanleBJi3atIMMk92_EdSjB0ot_4JgANgsuPS_g2hsG1sH-xVH3sAer2aduD8WhP8aYsqrE6HrETZY5BbP7t7JVsMfYi_ujpp5ug_Ul9jFPnYRuWnlTh_db3X8we9fz0KbroBruGKy1C6xlQ7VUMZcmyrfPs&key=AIzaSyBM-CLXoGETNkX3Zv2-ml8_DJKZKfIx0S8" alt="Photo" loading="lazy"></div><div class="galerie-item reveal"><img src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=1200&photo_reference=AWCwydjbicAlup7L075hmZ8nyzJt0tx-Fq3VoDoLr1V84wnJeYwRaon2ieUqYJWwKhigkDg6gVwAH4t5bbxWeEM__WJwgHR7cIUj0S6wK5ob4Zs4GnLU2UR6EMjU8wtsNvD7M-fWoQqrfn5kVn8C5t5adYgURfjWme6XD4cZophjbE_oZYIy53ti62Ptu44BO-najXRPce2wclVlfXC7VO4Xnrb3r_cLGibwPCNrQjKr9b2W-F9M8lITFsLviJw-u7T1WXX5XVjtdujid_stpZ9KKZdwIXH2yRNvLp83wEaRYJSQRHfX73qCJRgy9Gclirlghp_03hlDM-lOFBiTeWIdYSQaJM4xOX3R17CSs2VyQnZDTOk8Jud-40y4tbsD0RBzyt1j8ylV-1G88rWK8x7D87p1y4ZKxbsBPQs1iIRwReHxDg&key=AIzaSyBM-CLXoGETNkX3Zv2-ml8_DJKZKfIx0S8" alt="Photo" loading="lazy"></div></div></div></section>
+
+<section id="contact" class="infos-section arch-A"><div class="container"><h2 class="section-title reveal">Informations pratiques</h2><div class="infos-grid"><div class="info-card reveal"><div class="info-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div><h3>Adresse</h3><p>Av. de Châtelaine 97, 1219 Vernier, Switzerland</p></div><div class="info-card reveal"><div class="info-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div><h3>Horaires</h3><pre class="horaires">Lundi: 08h00 - 18h00
+Mardi: 08h00 - 18h00
+Mercredi: 08h00 - 18h00
+Jeudi: 08h00 - 18h00
+Vendredi: 08h00 - 18h00
+Samedi: Fermé
+Dimanche: Fermé</pre></div><div class="info-card reveal"><div class="info-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div><h3>Téléphone</h3><p class="tel"><a href="tel:+41220000000">+41 22 000 00 00</a></p></div></div><div class="map-wrapper reveal"><iframe src="https://www.google.com/maps?q=Av.%20de%20Ch%C3%A2telaine%2097%2C%201219%20Vernier%2C%20Switzerland&z=16&output=embed" width="100%" height="380" style="border:0;border-radius:16px" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div></div></section>
+<footer class="site-footer"><div class="container"><p>Maquette de démonstration réalisée par <strong>Leman Nova</strong></p><p>Bureau Pure Forme — Geneve</p></div></footer>
+
+<script>
+(function(){
+  document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',function(e){if(this.getAttribute('href').length>1){e.preventDefault();const t=document.querySelector(this.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth'})}})});
+  const hero=document.querySelector('.hero');
+  if(hero){window.addEventListener('scroll',function(){const y=window.scrollY;const bg=hero.querySelector('.hero-bg');if(bg)bg.style.transform='translateY('+(y*0.4)+'px)'}});
+  const observer=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');if(e.target.classList.contains('counter')){const target=parseInt(e.target.dataset.target||'0',10);let cur=0;const step=Math.max(1,Math.floor(target/30));const int=setInterval(()=>{cur+=step;if(cur>=target){cur=target;clearInterval(int)}e.target.textContent=cur},30)}observer.unobserve(e.target)}})},{threshold:0.12});
+  document.querySelectorAll('.reveal,.counter').forEach(el=>observer.observe(el));
+  document.querySelectorAll('.service-card').forEach(card=>{card.addEventListener('mousemove',e=>{const r=card.getBoundingClientRect();const x=e.clientX-r.left;const y=e.clientY-r.top;const cx=x-r.width/2;const cy=y-r.height/2;card.style.transform='perspective(800px) rotateY('+(cx/25)+'deg) rotateX('+(-cy/25)+'deg) translateY(-8px)'});card.addEventListener('mouseleave',()=>{card.style.transform=''})});
+  const modal=document.getElementById('booking-modal');
+  const modalChoice=document.getElementById('modal-choice');
+  const modalConfirm=document.getElementById('modal-confirm');
+  const modalClose=document.querySelector('.modal-close');
+  function openModal(service, price){
+    if(!modal)return;
+    modalChoice.textContent='Votre choix : '+(service||'Prestation')+' - '+(price||'sur devis');
+    modal.classList.add('active');
+  }
+  function closeModal(){if(modal)modal.classList.remove('active');}
+  if(modalClose)modalClose.addEventListener('click',closeModal);
+  if(modal)modal.addEventListener('click',e=>{if(e.target===modal)closeModal()});
+  document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
+  document.querySelectorAll('.service-card, .reservation-card').forEach(card=>{
+    card.addEventListener('click',()=>openModal(card.dataset.service||'', card.dataset.price||''));
+  });
+})();
+</script>
+</body>
+</html>
