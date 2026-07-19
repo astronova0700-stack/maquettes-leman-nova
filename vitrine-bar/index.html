@@ -1,32 +1,1798 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" >
-    <link data-mgx-overview="icon" rel="icon" href="assets/extern/mgx-backend-1300249583_chats_logo_5ac7274b22fe4de5b1b42d1e9fb7659e.png" >
-    
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" >
-    <title data-mgx-overview="title">Le Comptoir Noir</title>
-    <meta data-mgx-overview="description" name="description" content="Plongez dans l&#x27;univers envoûtant d&#x27;un bar à cocktails premium, entre élégance nocturne et art du mél" >
-    <meta name="author" content="Atoms" >
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Le Comptoir Noir | Speakeasy Grenoble</title>
+  <meta name="description" content="L'art du cocktail dans l'intimité d'un speakeasy alpin.">
+  <meta name="author" content="Leman Nova">
 
-    <meta data-mgx-overview="og:title" property="og:title" content="Le Comptoir Noir" >
-    <meta data-mgx-overview="og:description" property="og:description" content="Plongez dans l&#x27;univers envoûtant d&#x27;un bar à cocktails premium, entre élégance nocturne et art du mél" >
-    <meta data-mgx-overview="og:image" property="og:image" content="assets/extern/mgx-backend-1300249583_chats_logo_5ac7274b22fe4de5b1b42d1e9fb7659e.png" >
-    <meta property="og:type" content="website" >
+  <meta property="og:title" content="Le Comptoir Noir | Speakeasy Grenoble">
+  <meta property="og:description" content="L'art du cocktail dans l'intimité d'un speakeasy alpin.">
+  <meta property="og:image" content="./assets/extern/logo.png">
+  <meta property="og:type" content="website">
 
-    <meta data-mgx-overview="twitter:title" name="twitter:title" content="Le Comptoir Noir" >
-    <meta data-mgx-overview="twitter:description" name="twitter:description" content="Plongez dans l&#x27;univers envoûtant d&#x27;un bar à cocktails premium, entre élégance nocturne et art du mél" >
-    <meta data-mgx-overview="twitter:image" name="twitter:image" content="assets/extern/mgx-backend-1300249583_chats_logo_5ac7274b22fe4de5b1b42d1e9fb7659e.png" >
-    <script type="module" crossorigin src="assets/index-5_R9Obva.js"></script>
-    <link rel="modulepreload" crossorigin href="assets/ui-vendor-DGvoB4EP.js">
-    <link rel="modulepreload" crossorigin href="assets/utils-vendor-DFZ7zH5D.js">
-    <link rel="modulepreload" crossorigin href="assets/query-vendor-CbfyZnSM.js">
-    <link rel="modulepreload" crossorigin href="assets/router-vendor-B7ToYaqh.js">
-    <link rel="stylesheet" crossorigin href="assets/index-zo-kdt2u.css">
-    <link rel="sitemap" type="application/xml" title="Sitemap" href="sitemap.xml">
-  </head>
+  <meta name="twitter:title" content="Le Comptoir Noir | Speakeasy Grenoble">
+  <meta name="twitter:description" content="L'art du cocktail dans l'intimité d'un speakeasy alpin.">
+  <meta name="twitter:image" content="./assets/extern/logo.png">
 
-  <body>
-    <div id="root"></div>
-  </body>
+  <link rel="icon" href="./assets/extern/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --background: #1a1a1a;
+      --foreground: #ece8df;
+      --card: #1f1f1f;
+      --primary: #c9a96e;
+      --primary-foreground: #141414;
+      --secondary: #292929;
+      --muted: #2e2e2e;
+      --muted-foreground: #9e968a;
+      --accent: #4a9eff;
+      --gold: #c9a96e;
+      --gold-light: #dbca9e;
+      --neon-blue: #4a9eff;
+      --anthracite: #1a1a1a;
+      --anthracite-deep: #0f0f0f;
+      --radius: 0.75rem;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      border-color: rgba(255,255,255,0.1);
+    }
+
+    html {
+      scroll-behavior: smooth;
+      background-color: var(--anthracite-deep);
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: var(--anthracite-deep);
+      color: var(--foreground);
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      line-height: 1.1;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img, video {
+      max-width: 100%;
+      display: block;
+    }
+
+    button {
+      font-family: inherit;
+      cursor: pointer;
+      border: none;
+      background: none;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 80rem;
+      margin-left: auto;
+      margin-right: auto;
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+
+    @media (min-width: 640px) {
+      .container {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .container {
+        padding-left: 2rem;
+        padding-right: 2rem;
+      }
+    }
+
+    /* Utilities */
+    .glass {
+      background: rgba(26, 26, 26, 0.7);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(201, 169, 110, 0.15);
+    }
+
+    .glass-card {
+      background: rgba(30, 30, 30, 0.6);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(201, 169, 110, 0.1);
+      border-radius: var(--radius);
+      transition: border-color 0.5s ease, transform 0.5s ease, box-shadow 0.5s ease;
+    }
+
+    .glass-card:hover {
+      border-color: rgba(201, 169, 110, 0.3);
+    }
+
+    .text-gold { color: var(--gold); }
+    .text-gold-light { color: var(--gold-light); }
+    .bg-gold { background-color: var(--gold); }
+    .border-gold { border-color: var(--gold); }
+
+    .glow-gold {
+      box-shadow: 0 0 20px rgba(201, 169, 110, 0.4), 0 0 40px rgba(201, 169, 110, 0.2);
+    }
+
+    .glow-neon {
+      box-shadow: 0 0 15px rgba(74, 158, 255, 0.3), 0 0 30px rgba(74, 158, 255, 0.15);
+    }
+
+    .text-shadow-gold {
+      text-shadow: 0 0 30px rgba(201, 169, 110, 0.5);
+    }
+
+    .gradient-section {
+      background: linear-gradient(180deg, #0f0f0f 0%, #1a1a1a 50%, #0f0f0f 100%);
+    }
+
+    .gradient-warm {
+      background: linear-gradient(180deg, #141414 0%, #1a1716 50%, #141414 100%);
+    }
+
+    .gradient-cool {
+      background: linear-gradient(180deg, #141414 0%, #171a1f 50%, #141414 100%);
+    }
+
+    .divider-gold {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(201, 169, 110, 0.2), transparent);
+    }
+
+    .divider-blue {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(74, 158, 255, 0.15), transparent);
+    }
+
+    .divider-white {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.05), transparent);
+    }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: var(--anthracite-deep);
+    }
+    ::-webkit-scrollbar-thumb {
+      background: hsl(38, 45%, 40%);
+      border-radius: 3px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: hsl(38, 45%, 50%);
+    }
+
+    /* Animations */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes scaleIn {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    @keyframes slideLeft {
+      from { opacity: 0; transform: translateX(-60px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+    @keyframes slideRight {
+      from { opacity: 0; transform: translateX(60px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+    @keyframes bounceDown {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(6px); }
+    }
+
+    @keyframes modalIn {
+      from { opacity: 0; transform: scale(0.96); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .animate-on-scroll {
+      opacity: 0;
+    }
+
+    .animate-on-scroll.visible {
+      animation-fill-mode: forwards;
+    }
+
+    .fade-up.visible { animation: fadeInUp 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards; }
+    .fade-down.visible { animation: fadeInDown 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards; }
+    .scale-in.visible { animation: scaleIn 0.7s cubic-bezier(0.25, 1, 0.5, 1) forwards; }
+    .slide-left.visible { animation: slideLeft 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards; }
+    .slide-right.visible { animation: slideRight 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards; }
+
+    .delay-1 { animation-delay: 0.1s; }
+    .delay-2 { animation-delay: 0.2s; }
+    .delay-3 { animation-delay: 0.3s; }
+    .delay-4 { animation-delay: 0.4s; }
+    .delay-5 { animation-delay: 0.5s; }
+
+    /* Navbar */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 50;
+      transition: background 0.5s ease, box-shadow 0.5s ease;
+      animation: fadeInDown 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+      background: rgba(0, 0, 0, 0.2);
+      backdrop-filter: blur(4px);
+    }
+
+    .navbar.scrolled {
+      background: rgba(26, 26, 26, 0.7);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(201, 169, 110, 0.15);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    }
+
+    .navbar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 4rem;
+    }
+
+    @media (min-width: 768px) {
+      .navbar-inner { height: 5rem; }
+    }
+
+    .logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--gold-light);
+      letter-spacing: 0.05em;
+    }
+
+    @media (min-width: 768px) {
+      .logo { font-size: 1.5rem; }
+    }
+
+    .nav-desktop {
+      display: none;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    @media (min-width: 768px) {
+      .nav-desktop { display: flex; }
+    }
+
+    .nav-link {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: rgba(255,255,255,0.7);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: color 0.3s ease;
+    }
+
+    .nav-link:hover { color: var(--gold-light); }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.625rem 1.5rem;
+      font-size: 0.875rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border-radius: 9999px;
+      background-color: var(--gold);
+      color: var(--primary-foreground);
+      transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .btn-primary:hover {
+      background-color: hsl(38, 50%, 65%);
+      transform: translateY(-1px);
+    }
+
+    .btn-primary.glow-gold:hover {
+      box-shadow: 0 0 25px rgba(201, 169, 110, 0.5), 0 0 50px rgba(201, 169, 110, 0.25);
+    }
+
+    .menu-toggle {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      padding: 0.5rem;
+    }
+
+    @media (min-width: 768px) {
+      .menu-toggle { display: none; }
+    }
+
+    .menu-toggle span {
+      display: block;
+      width: 1.5rem;
+      height: 2px;
+      background-color: var(--gold-light);
+      transition: transform 0.3s ease, opacity 0.3s ease;
+      transform-origin: center;
+    }
+
+    .menu-toggle.active span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+    .menu-toggle.active span:nth-child(2) { opacity: 0; }
+    .menu-toggle.active span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+    .mobile-menu {
+      display: none;
+      overflow: hidden;
+      background: rgba(26, 26, 26, 0.7);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-top: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .mobile-menu.open {
+      display: block;
+      animation: fadeIn 0.3s ease forwards;
+    }
+
+    .mobile-menu-inner {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+      padding: 1.5rem 1rem;
+    }
+
+    .mobile-menu .nav-link {
+      display: block;
+      padding: 0.75rem 0;
+      font-size: 1rem;
+      color: rgba(255,255,255,0.8);
+    }
+
+    .mobile-menu .btn-primary {
+      margin-top: 0.5rem;
+      text-align: center;
+    }
+
+    /* Hero */
+    .hero {
+      position: relative;
+      height: 70vh;
+      min-height: 450px;
+      width: 100%;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      background: linear-gradient(to bottom right, hsl(20,10%,8%), hsl(30,15%,6%), hsl(0,0%,4%));
+    }
+
+    .hero-video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 1;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.6), rgba(0,0,0,0.4), #0f0f0f),
+                  linear-gradient(to right, rgba(0,0,0,0.3), transparent, rgba(0,0,0,0.3));
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 10;
+      text-align: center;
+      padding: 0 1rem;
+      max-width: 56rem;
+      margin: 0 auto;
+    }
+
+    .hero-subtitle {
+      color: rgba(219, 202, 158, 0.8);
+      font-size: 0.875rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+      font-weight: 500;
+      animation: fadeInUp 1.2s cubic-bezier(0.25, 1, 0.5, 1) 0.3s forwards;
+      opacity: 0;
+    }
+
+    .hero-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3rem;
+      font-weight: 300;
+      color: #fff;
+      text-shadow: 0 0 30px rgba(201, 169, 110, 0.5);
+      line-height: 0.9;
+      margin-bottom: 1.5rem;
+      animation: fadeInUp 1.4s cubic-bezier(0.25, 1, 0.5, 1) 0.5s forwards;
+      opacity: 0;
+    }
+
+    .hero-title span {
+      color: var(--gold-light);
+      font-style: italic;
+    }
+
+    @media (min-width: 640px) {
+      .hero-title { font-size: 3.75rem; }
+    }
+    @media (min-width: 768px) {
+      .hero-title { font-size: 4.5rem; }
+    }
+    @media (min-width: 1024px) {
+      .hero-title { font-size: 6rem; }
+    }
+
+    .hero-text {
+      color: rgba(255,255,255,0.6);
+      font-size: 1rem;
+      font-weight: 300;
+      letter-spacing: 0.05em;
+      max-width: 36rem;
+      margin: 0 auto 2rem;
+      animation: fadeInUp 1s cubic-bezier(0.25, 1, 0.5, 1) 0.9s forwards;
+      opacity: 0;
+    }
+
+    @media (min-width: 768px) {
+      .hero-text { font-size: 1.125rem; }
+    }
+
+    .hero-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: rgba(219, 202, 158, 0.8);
+      font-size: 0.875rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      transition: color 0.3s ease;
+      animation: fadeInUp 0.8s cubic-bezier(0.25, 1, 0.5, 1) 1.3s forwards;
+      opacity: 0;
+    }
+
+    .hero-cta:hover { color: var(--gold-light); }
+
+    .hero-cta span:last-child {
+      display: inline-block;
+      animation: bounceDown 2s ease-in-out infinite;
+    }
+
+    /* Section header */
+    .section-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .section-label {
+      color: rgba(201, 169, 110, 0.6);
+      font-size: 0.75rem;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      margin-bottom: 0.75rem;
+      font-weight: 500;
+    }
+
+    .section-label.blue { color: rgba(74, 158, 255, 0.6); }
+    .section-label.white { color: rgba(255,255,255,0.4); }
+
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.25rem;
+      font-weight: 300;
+      color: #fff;
+      margin-bottom: 1rem;
+    }
+
+    .section-title span {
+      color: var(--gold-light);
+      font-style: italic;
+    }
+
+    @media (min-width: 768px) {
+      .section-title { font-size: 3.75rem; }
+    }
+
+    .section-subtitle {
+      color: rgba(255,255,255,0.4);
+      font-size: 0.875rem;
+      max-width: 28rem;
+      margin: 0 auto;
+      font-weight: 300;
+    }
+
+    section {
+      position: relative;
+      padding: 6rem 0;
+    }
+
+    @media (min-width: 768px) {
+      section { padding: 8rem 0; }
+    }
+
+    /* Cocktails */
+    .cocktails-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      max-width: 56rem;
+      margin: 0 auto;
+    }
+
+    .cocktail-card {
+      cursor: pointer;
+    }
+
+    .cocktail-card-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem;
+    }
+
+    @media (min-width: 640px) {
+      .cocktail-card-inner {
+        flex-direction: row;
+        gap: 1.5rem;
+        padding: 1.5rem;
+      }
+    }
+
+    .cocktail-image {
+      position: relative;
+      width: 100%;
+      height: 12rem;
+      flex-shrink: 0;
+      border-radius: 0.75rem;
+      overflow: hidden;
+    }
+
+    @media (min-width: 640px) {
+      .cocktail-image { width: 8rem; height: 8rem; }
+    }
+
+    .cocktail-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.7s ease;
+    }
+
+    .cocktail-card:hover .cocktail-image img { transform: scale(1.1); }
+
+    .cocktail-image::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.4), transparent);
+    }
+
+    .cocktail-info {
+      flex: 1;
+      text-align: center;
+    }
+
+    @media (min-width: 640px) {
+      .cocktail-info { text-align: left; }
+    }
+
+    .cocktail-header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.25rem;
+      margin-bottom: 0.5rem;
+    }
+
+    @media (min-width: 640px) {
+      .cocktail-header {
+        flex-direction: row;
+        justify-content: space-between;
+        gap: 1rem;
+      }
+    }
+
+    .cocktail-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: #fff;
+      transition: color 0.3s ease;
+    }
+
+    .cocktail-card:hover .cocktail-name { color: var(--gold-light); }
+
+    .cocktail-price {
+      color: var(--gold);
+      font-size: 1.125rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+    }
+
+    .cocktail-desc {
+      color: rgba(255,255,255,0.5);
+      font-size: 0.875rem;
+      line-height: 1.6;
+      font-weight: 300;
+    }
+
+    /* Events */
+    .events-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      max-width: 64rem;
+      margin: 0 auto;
+    }
+
+    @media (min-width: 768px) {
+      .events-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    .event-card {
+      position: relative;
+      padding: 1.5rem;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    @media (min-width: 768px) {
+      .event-card { padding: 2rem; }
+    }
+
+    .event-accent {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 8rem;
+      background: linear-gradient(to bottom, rgba(201, 169, 110, 0.2), transparent);
+      opacity: 0;
+      transition: opacity 0.5s ease;
+    }
+
+    .event-card:hover .event-accent { opacity: 1; }
+
+    .event-icon {
+      font-size: 1.875rem;
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    .event-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 0.25rem;
+      transition: color 0.3s ease;
+    }
+
+    .event-card:hover .event-title { color: var(--gold-light); }
+
+    .event-time {
+      color: rgba(201, 169, 110, 0.7);
+      font-size: 0.875rem;
+      font-weight: 500;
+      margin-bottom: 1rem;
+      letter-spacing: 0.05em;
+    }
+
+    .event-desc {
+      color: rgba(255,255,255,0.45);
+      font-size: 0.875rem;
+      line-height: 1.6;
+      font-weight: 300;
+    }
+
+    /* Reviews */
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.25rem;
+      max-width: 64rem;
+      margin: 0 auto;
+    }
+
+    @media (min-width: 768px) {
+      .reviews-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    .review-card { padding: 1.5rem; }
+
+    .review-card:hover { border-color: rgba(255,255,255,0.1); }
+
+    .review-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 0.75rem;
+    }
+
+    .review-author {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .review-avatar {
+      width: 2.25rem;
+      height: 2.25rem;
+      border-radius: 50%;
+      background: linear-gradient(to bottom right, hsl(38,45%,50%), hsl(38,45%,35%));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 0.875rem;
+      font-weight: 600;
+    }
+
+    .review-name {
+      color: #fff;
+      font-size: 0.875rem;
+      font-weight: 500;
+    }
+
+    .review-date {
+      color: rgba(255,255,255,0.3);
+      font-size: 0.75rem;
+    }
+
+    .stars {
+      display: flex;
+      gap: 0.125rem;
+    }
+
+    .stars svg {
+      width: 1rem;
+      height: 1rem;
+    }
+
+    .star-gold { color: var(--gold); }
+    .star-empty { color: rgba(255,255,255,0.2); }
+
+    .review-text {
+      color: rgba(255,255,255,0.55);
+      font-size: 0.875rem;
+      line-height: 1.6;
+      font-weight: 300;
+    }
+
+    .rating-summary {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      margin-top: 1.5rem;
+    }
+
+    .rating-score {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.875rem;
+      font-weight: 700;
+      color: var(--gold-light);
+    }
+
+    .rating-count {
+      color: rgba(255,255,255,0.4);
+      font-size: 0.875rem;
+    }
+
+    /* Info */
+    .info-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      max-width: 64rem;
+      margin: 0 auto;
+    }
+
+    @media (min-width: 1024px) {
+      .info-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    .info-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .info-card {
+      padding: 1.5rem;
+    }
+
+    .info-card-inner {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+
+    .info-icon {
+      width: 2.5rem;
+      height: 2.5rem;
+      border-radius: 50%;
+      background: rgba(201, 169, 110, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .info-icon svg {
+      width: 1.25rem;
+      height: 1.25rem;
+      color: var(--gold);
+    }
+
+    .info-title {
+      color: #fff;
+      font-size: 0.875rem;
+      font-weight: 500;
+      margin-bottom: 0.25rem;
+    }
+
+    .info-text {
+      color: rgba(255,255,255,0.5);
+      font-size: 0.875rem;
+      font-weight: 300;
+      line-height: 1.5;
+    }
+
+    .info-note {
+      color: rgba(255,255,255,0.3);
+      font-size: 0.75rem;
+      margin-top: 0.25rem;
+    }
+
+    .map-container {
+      border-radius: var(--radius);
+      overflow: hidden;
+      min-height: 350px;
+      height: 100%;
+    }
+
+    .map-container iframe {
+      width: 100%;
+      height: 100%;
+      min-height: 350px;
+      border: 0;
+      filter: invert(90%) hue-rotate(180deg) brightness(0.8) contrast(1.2);
+    }
+
+    /* Footer */
+    footer {
+      position: relative;
+      padding: 3rem 0;
+      border-top: 1px solid rgba(255,255,255,0.05);
+      background: hsl(0,0%,5%);
+    }
+
+    .footer-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+      text-align: center;
+    }
+
+    @media (min-width: 768px) {
+      .footer-inner {
+        flex-direction: row;
+        justify-content: space-between;
+        text-align: left;
+      }
+    }
+
+    .footer-brand {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.25rem;
+      color: var(--gold-light);
+      font-weight: 600;
+      letter-spacing: 0.05em;
+    }
+
+    .footer-tagline {
+      color: rgba(255,255,255,0.3);
+      font-size: 0.75rem;
+      margin-top: 0.25rem;
+      font-weight: 300;
+    }
+
+    .footer-credits {
+      color: rgba(255,255,255,0.2);
+      font-size: 0.75rem;
+      font-weight: 300;
+    }
+
+    .footer-credits a {
+      color: rgba(201, 169, 110, 0.6);
+      transition: color 0.3s ease;
+    }
+
+    .footer-credits a:hover { color: var(--gold-light); }
+
+    .socials {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .socials a {
+      color: rgba(255,255,255,0.4);
+      transition: color 0.3s ease;
+    }
+
+    .socials a:hover { color: var(--gold-light); }
+
+    .socials svg { width: 1.25rem; height: 1.25rem; }
+
+    /* Modal */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      background: rgba(0,0,0,0.8);
+      backdrop-filter: blur(8px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+    }
+
+    .modal-overlay.open {
+      display: flex;
+      animation: fadeIn 0.2s ease forwards;
+    }
+
+    .modal {
+      width: 100%;
+      max-width: 32rem;
+      max-height: 90vh;
+      overflow-y: auto;
+      background: linear-gradient(180deg, #1a1a1a 0%, #141414 100%);
+      border: 1px solid rgba(201, 169, 110, 0.2);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      animation: modalIn 0.3s ease forwards;
+    }
+
+    @media (min-width: 640px) {
+      .modal { padding: 2rem; }
+    }
+
+    .modal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1.5rem;
+    }
+
+    .modal-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.75rem;
+      color: #fff;
+    }
+
+    .modal-title span {
+      color: var(--gold-light);
+      font-style: italic;
+    }
+
+    .modal-close {
+      color: rgba(255,255,255,0.5);
+      transition: color 0.3s ease;
+      padding: 0.25rem;
+    }
+
+    .modal-close:hover { color: var(--gold-light); }
+
+    .modal-close svg { width: 1.5rem; height: 1.5rem; }
+
+    .modal-step { display: none; }
+    .modal-step.active { display: block; }
+
+    .prestation-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .prestation-option {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem;
+      border-radius: var(--radius);
+      border: 1px solid rgba(201, 169, 110, 0.1);
+      background: rgba(30,30,30,0.4);
+      cursor: pointer;
+      transition: border-color 0.3s ease, background 0.3s ease;
+      text-align: left;
+      width: 100%;
+      color: inherit;
+    }
+
+    .prestation-option:hover,
+    .prestation-option:focus {
+      border-color: rgba(201, 169, 110, 0.4);
+      background: rgba(30,30,30,0.7);
+    }
+
+    .prestation-option.selected {
+      border-color: var(--gold);
+      background: rgba(201, 169, 110, 0.1);
+    }
+
+    .prestation-radio {
+      width: 1.25rem;
+      height: 1.25rem;
+      border: 2px solid rgba(201, 169, 110, 0.4);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .prestation-option.selected .prestation-radio {
+      border-color: var(--gold);
+      background: var(--gold);
+    }
+
+    .prestation-radio::after {
+      content: '';
+      width: 0.4rem;
+      height: 0.4rem;
+      border-radius: 50%;
+      background: var(--primary-foreground);
+      opacity: 0;
+    }
+
+    .prestation-option.selected .prestation-radio::after { opacity: 1; }
+
+    .prestation-info { flex: 1; }
+
+    .prestation-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.125rem;
+      color: #fff;
+      font-weight: 600;
+    }
+
+    .prestation-desc {
+      color: rgba(255,255,255,0.5);
+      font-size: 0.75rem;
+      font-weight: 300;
+    }
+
+    .prestation-price {
+      color: var(--gold);
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+
+    .modal-actions {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 1.5rem;
+    }
+
+    .recap-card {
+      background: rgba(30,30,30,0.6);
+      border: 1px solid rgba(201, 169, 110, 0.15);
+      border-radius: var(--radius);
+      padding: 1.25rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .recap-label {
+      color: rgba(255,255,255,0.4);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 0.5rem;
+    }
+
+    .recap-value {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      color: #fff;
+    }
+
+    .recap-value span {
+      color: var(--gold-light);
+      font-style: italic;
+    }
+
+    .recap-detail {
+      color: rgba(255,255,255,0.5);
+      font-size: 0.875rem;
+      margin-top: 0.5rem;
+      font-weight: 300;
+    }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.625rem 1.25rem;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: rgba(255,255,255,0.7);
+      border-radius: 9999px;
+      border: 1px solid rgba(255,255,255,0.1);
+      transition: background 0.3s ease, color 0.3s ease;
+      margin-right: 0.75rem;
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255,255,255,0.05);
+      color: #fff;
+    }
+
+    .no-scroll { overflow: hidden; }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar" id="navbar">
+    <div class="container navbar-inner">
+      <a href="#" class="logo">Le Comptoir Noir</a>
+
+      <div class="nav-desktop">
+        <a href="#cocktails" class="nav-link">Cocktails</a>
+        <a href="#events" class="nav-link">Événements</a>
+        <a href="#reviews" class="nav-link">Avis</a>
+        <a href="#info" class="nav-link">Infos</a>
+        <button class="btn-primary glow-gold" data-open-modal>Réserver</button>
+      </div>
+
+      <button class="menu-toggle" id="menuToggle" aria-label="Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+
+    <div class="mobile-menu" id="mobileMenu">
+      <div class="mobile-menu-inner container">
+        <a href="#cocktails" class="nav-link" data-close-menu>Cocktails</a>
+        <a href="#events" class="nav-link" data-close-menu>Événements</a>
+        <a href="#reviews" class="nav-link" data-close-menu>Avis</a>
+        <a href="#info" class="nav-link" data-close-menu>Infos</a>
+        <button class="btn-primary glow-gold" data-open-modal data-close-menu>Prendre rendez-vous</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <video class="hero-video" autoplay muted loop playsInline poster="./assets/extern/cocktail-old-fashioned-noir.png">
+      <source src="./assets/extern/hero-cocktail-smoke.mp4" type="video/mp4">
+    </video>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <p class="hero-subtitle">Speakeasy · Grenoble</p>
+      <h1 class="hero-title">Le Comptoir<br><span>Noir</span></h1>
+      <p class="hero-text">L'art du cocktail dans l'intimité d'un speakeasy alpin</p>
+      <a href="#cocktails" class="hero-cta">
+        <span>Découvrir</span>
+        <span>↓</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- Cocktails -->
+  <section id="cocktails" class="gradient-warm">
+    <div class="divider-gold"></div>
+    <div class="container">
+      <div class="section-header animate-on-scroll fade-up">
+        <p class="section-label">Nos Créations</p>
+        <h2 class="section-title">La Carte des <span>Cocktails</span></h2>
+        <p class="section-subtitle">Cinq créations signatures, élaborées avec passion par nos bartenders</p>
+      </div>
+
+      <div class="cocktails-grid">
+        <article class="glass-card cocktail-card animate-on-scroll slide-left delay-1" data-open-modal data-prestation="L'Alchimiste" data-desc="Whisky fumé, sirop d'érable noir, bitter à l'orange, zeste caramélisé" data-price="14€">
+          <div class="cocktail-card-inner">
+            <div class="cocktail-image">
+              <img src="./assets/extern/cocktail-old-fashioned-noir.png" alt="L'Alchimiste">
+            </div>
+            <div class="cocktail-info">
+              <div class="cocktail-header">
+                <h3 class="cocktail-name">L'Alchimiste</h3>
+                <span class="cocktail-price">14€</span>
+              </div>
+              <p class="cocktail-desc">Whisky fumé, sirop d'érable noir, bitter à l'orange, zeste caramélisé</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="glass-card cocktail-card animate-on-scroll slide-right delay-2" data-open-modal data-prestation="Violet Mystique" data-desc="Gin artisanal, fleur de pois papillon, tonic maison, brume de lavande" data-price="15€">
+          <div class="cocktail-card-inner">
+            <div class="cocktail-image">
+              <img src="./assets/extern/cocktail-violet-mystique.png" alt="Violet Mystique">
+            </div>
+            <div class="cocktail-info">
+              <div class="cocktail-header">
+                <h3 class="cocktail-name">Violet Mystique</h3>
+                <span class="cocktail-price">15€</span>
+              </div>
+              <p class="cocktail-desc">Gin artisanal, fleur de pois papillon, tonic maison, brume de lavande</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="glass-card cocktail-card animate-on-scroll slide-left delay-3" data-open-modal data-prestation="Jardin Secret" data-desc="Vodka infusée basilic, citron vert pressé, sirop de concombre, eau pétillante" data-price="13€">
+          <div class="cocktail-card-inner">
+            <div class="cocktail-image">
+              <img src="./assets/extern/cocktail-jardin-secret.png" alt="Jardin Secret">
+            </div>
+            <div class="cocktail-info">
+              <div class="cocktail-header">
+                <h3 class="cocktail-name">Jardin Secret</h3>
+                <span class="cocktail-price">13€</span>
+              </div>
+              <p class="cocktail-desc">Vodka infusée basilic, citron vert pressé, sirop de concombre, eau pétillante</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="glass-card cocktail-card animate-on-scroll slide-right delay-4" data-open-modal data-prestation="Rouge Passion" data-desc="Mezcal, liqueur de sang d'orange, grenadine artisanale, piment d'Espelette" data-price="16€">
+          <div class="cocktail-card-inner">
+            <div class="cocktail-image">
+              <img src="./assets/extern/cocktail-rouge-passion.png" alt="Rouge Passion">
+            </div>
+            <div class="cocktail-info">
+              <div class="cocktail-header">
+                <h3 class="cocktail-name">Rouge Passion</h3>
+                <span class="cocktail-price">16€</span>
+              </div>
+              <p class="cocktail-desc">Mezcal, liqueur de sang d'orange, grenadine artisanale, piment d'Espelette</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="glass-card cocktail-card animate-on-scroll slide-left delay-5" data-open-modal data-prestation="Or Noir" data-desc="Champagne brut, liqueur de sureau, feuille d'or, zeste de yuzu" data-price="12€">
+          <div class="cocktail-card-inner">
+            <div class="cocktail-image">
+              <img src="./assets/extern/cocktail-or-noir.png" alt="Or Noir">
+            </div>
+            <div class="cocktail-info">
+              <div class="cocktail-header">
+                <h3 class="cocktail-name">Or Noir</h3>
+                <span class="cocktail-price">12€</span>
+              </div>
+              <p class="cocktail-desc">Champagne brut, liqueur de sureau, feuille d'or, zeste de yuzu</p>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Events -->
+  <section id="events" class="gradient-section">
+    <div class="divider-blue"></div>
+    <div class="container">
+      <div class="section-header animate-on-scroll fade-up">
+        <p class="section-label blue">À Venir</p>
+        <h2 class="section-title">Nos <span>Événements</span></h2>
+      </div>
+
+      <div class="events-grid">
+        <article class="glass-card event-card animate-on-scroll scale-in delay-1" data-open-modal data-prestation="Happy Hour" data-desc="17h – 20h, tous les jours d'ouverture" data-price="Sur place">
+          <div class="event-accent"></div>
+          <div style="position:relative; z-index:10;">
+            <span class="event-icon">🥂</span>
+            <h3 class="event-title">Happy Hour</h3>
+            <p class="event-time">17h – 20h</p>
+            <p class="event-desc">Tous les jours d'ouverture, profitez de nos cocktails signatures à prix doux. L'occasion parfaite de découvrir notre carte.</p>
+          </div>
+        </article>
+
+        <article class="glass-card event-card animate-on-scroll scale-in delay-2" data-open-modal data-prestation="Jeudis Vinyl" data-desc="Chaque jeudi · 20h" data-price="Sur place">
+          <div class="event-accent" style="background: linear-gradient(to bottom, rgba(74,158,255,0.15), transparent);"></div>
+          <div style="position:relative; z-index:10;">
+            <span class="event-icon">🎵</span>
+            <h3 class="event-title">Jeudis Vinyl</h3>
+            <p class="event-time">Chaque jeudi · 20h</p>
+            <p class="event-desc">Notre DJ résident fait tourner les plus belles galettes soul, funk et jazz dans une ambiance feutrée et chaleureuse.</p>
+          </div>
+        </article>
+
+        <article class="glass-card event-card animate-on-scroll scale-in delay-3" data-open-modal data-prestation="Privatisation" data-desc="Sur réservation, jusqu'à 40 personnes" data-price="Sur devis">
+          <div class="event-accent" style="background: linear-gradient(to bottom, rgba(219,202,158,0.15), transparent);"></div>
+          <div style="position:relative; z-index:10;">
+            <span class="event-icon">✨</span>
+            <h3 class="event-title">Privatisation</h3>
+            <p class="event-time">Sur réservation</p>
+            <p class="event-desc">Privatisez Le Comptoir Noir pour vos événements. Anniversaires, soirées d'entreprise, célébrations intimes jusqu'à 40 personnes.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Reviews -->
+  <section id="reviews" class="gradient-cool">
+    <div class="divider-white"></div>
+    <div class="container">
+      <div class="section-header animate-on-scroll fade-up">
+        <p class="section-label white">Avis Google</p>
+        <h2 class="section-title">Ce qu'ils en <span>disent</span></h2>
+        <div class="rating-summary">
+          <span class="rating-score">4.8</span>
+          <div class="stars">
+            <svg class="star-gold" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg class="star-gold" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg class="star-gold" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg class="star-gold" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg class="star-gold" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          </div>
+          <span class="rating-count">/5 · 127 avis</span>
+        </div>
+      </div>
+
+      <div class="reviews-grid">
+        <article class="glass-card review-card animate-on-scroll fade-up delay-1">
+          <div class="review-header">
+            <div class="review-author">
+              <div class="review-avatar">M</div>
+              <div>
+                <p class="review-name">Marie L.</p>
+                <p class="review-date">Il y a 2 semaines</p>
+              </div>
+            </div>
+            <div class="stars">
+              <svg class="star-gold" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="star-gold" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="star-gold" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="star-gold" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="star-gold" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            </div>
+          </div>
+          <p class="review-text">« Un lieu magique caché au cœur de Grenoble. Les cocktails sont des œuvres d'art et l'ambiance est incroyable. Le Violet Mystique est une pure merveille ! »</p>
+        </article>
+
+        <article class="glass-card review-card animate-on-scroll fade-up delay-2">
+          <div class="review-header">
+            <div class="review-author">
+              <div class="review-avatar">T</div>
+              <div>
+                <p class="review-name">Thomas D.</p>
+                <p class="review-date">Il y a 1 mois</p>
+              </div>
+            </div>
+            <div class="stars">
+              <svg class="star-gold" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="star-gold" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="star-gold" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="star-gold" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="star-gold" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            </div>
+          </div>
+          <p class="review-text">« Meilleur bar à cocktails de la ville, sans hésitation. Le cadre est somptueux, les bartenders passionnés. On se croirait dans un film noir des années 20. »</p>
+        </article>
+
+        <article class="glass-card review-card animate-on-scroll fade-up delay-3">
+          <div class="review-header">
+            <div class="review-author">
+              <div class="review-avatar">S</div>
+              <div>
+                <p class="review-name">Sophie M.</p>
+                <p class="review-date">Il y a 3 semaines</p>
+              </div>
+            </div>
+            <div class="stars">
+              <svg class="star-gold" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="star-gold" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="star-gold" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="star-gold" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="star-gold" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            </div>
+          </div>
+          <p class="review-text">« Soirée vinyl exceptionnelle ! La musique, les cocktails, l'atmosphère... tout est parfait. L'Alchimiste est devenu mon cocktail préféré. »</p>
+        </article>
+
+        <article class="glass-card review-card animate-on-scroll fade-up delay-4">
+          <div class="review-header">
+            <div class="review-author">
+              <div class="review-avatar">A</div>
+              <div>
+                <p class="review-name">Antoine R.</p>
+                <p class="review-date">Il y a 1 mois</p>
+              </div>
+            </div>
+            <div class="stars">
+              <svg class="star-gold" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="star-gold" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="star-gold" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="star-gold" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="star-empty" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            </div>
+          </div>
+          <p class="review-text">« Cadre sublime et cocktails inventifs. Le service est attentionné sans être intrusif. Seul bémol : il faut réserver, victime de son succès ! »</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Info -->
+  <section id="info" class="gradient-warm">
+    <div class="divider-gold"></div>
+    <div class="container">
+      <div class="section-header animate-on-scroll fade-up">
+        <p class="section-label">Nous Trouver</p>
+        <h2 class="section-title">Infos <span>Pratiques</span></h2>
+      </div>
+
+      <div class="info-grid animate-on-scroll fade-up delay-1">
+        <div class="info-cards">
+          <div class="glass-card info-card">
+            <div class="info-card-inner">
+              <div class="info-icon">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+              </div>
+              <div>
+                <h3 class="info-title">Adresse</h3>
+                <p class="info-text">12 Rue Brocherie<br>38000 Grenoble, France</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="glass-card info-card">
+            <div class="info-card-inner">
+              <div class="info-icon">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              </div>
+              <div>
+                <h3 class="info-title">Horaires</h3>
+                <p class="info-text">Mercredi – Dimanche<br>17h00 – 2h00</p>
+                <p class="info-note">Fermé lundi & mardi</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="glass-card info-card">
+            <div class="info-card-inner">
+              <div class="info-icon">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+              </div>
+              <div>
+                <h3 class="info-title">Réservation</h3>
+                <p class="info-text">04 76 54 32 10</p>
+                <p class="info-note">Réservation conseillée le week-end</p>
+              </div>
+            </div>
+          </div>
+
+          <button class="btn-primary glow-gold" data-open-modal style="width:100%;">Prendre rendez-vous</button>
+        </div>
+
+        <div class="glass-card map-container">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2816.7!2d5.7245!3d45.1885!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x478af48bd689be6f%3A0x2c!2sRue+Brocherie%2C+38000+Grenoble!5e0!3m2!1sfr!2sfr!4v1700000000000!5m2!1sfr!2sfr"
+            allowfullscreen
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Le Comptoir Noir - Grenoble">
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container footer-inner">
+      <div>
+        <p class="footer-brand">Le Comptoir Noir</p>
+        <p class="footer-tagline">Speakeasy · Grenoble · Depuis 2019</p>
+      </div>
+
+      <div class="socials">
+        <a href="#" aria-label="Instagram">
+          <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+        </a>
+        <a href="#" aria-label="Facebook">
+          <svg fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+        </a>
+      </div>
+
+      <p class="footer-credits">Maquette réalisée par <a href="https://www.lemannova.com" target="_blank" rel="noopener">Leman Nova</a></p>
+    </div>
+  </footer>
+
+  <!-- Reservation Modal -->
+  <div class="modal-overlay" id="reservationModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal">
+      <div class="modal-header">
+        <h2 class="modal-title" id="modalTitle">Réserver votre <span>expérience</span></h2>
+        <button class="modal-close" id="modalClose" aria-label="Fermer">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+
+      <!-- Step 1 -->
+      <div class="modal-step active" id="modalStep1">
+        <p style="color:rgba(255,255,255,0.5); font-size:0.875rem; margin-bottom:1rem; font-weight:300;">Choisissez votre prestation :</p>
+        <div class="prestation-list" role="radiogroup" aria-label="Prestations">
+          <button class="prestation-option" role="radio" aria-checked="false" data-prestation="L'Alchimiste" data-desc="Whisky fumé, sirop d'érable noir, bitter à l'orange" data-price="14€">
+            <span class="prestation-radio"></span>
+            <span class="prestation-info">
+              <span class="prestation-name">L'Alchimiste</span>
+              <span class="prestation-desc">Whisky fumé, sirop d'érable noir, bitter à l'orange</span>
+            </span>
+            <span class="prestation-price">14€</span>
+          </button>
+          <button class="prestation-option" role="radio" aria-checked="false" data-prestation="Violet Mystique" data-desc="Gin artisanal, fleur de pois papillon, tonic maison" data-price="15€">
+            <span class="prestation-radio"></span>
+            <span class="prestation-info">
+              <span class="prestation-name">Violet Mystique</span>
+              <span class="prestation-desc">Gin artisanal, fleur de pois papillon, tonic maison</span>
+            </span>
+            <span class="prestation-price">15€</span>
+          </button>
+          <button class="prestation-option" role="radio" aria-checked="false" data-prestation="Jardin Secret" data-desc="Vodka infusée basilic, citron vert pressé" data-price="13€">
+            <span class="prestation-radio"></span>
+            <span class="prestation-info">
+              <span class="prestation-name">Jardin Secret</span>
+              <span class="prestation-desc">Vodka infusée basilic, citron vert pressé</span>
+            </span>
+            <span class="prestation-price">13€</span>
+          </button>
+          <button class="prestation-option" role="radio" aria-checked="false" data-prestation="Rouge Passion" data-desc="Mezcal, liqueur de sang d'orange, piment d'Espelette" data-price="16€">
+            <span class="prestation-radio"></span>
+            <span class="prestation-info">
+              <span class="prestation-name">Rouge Passion</span>
+              <span class="prestation-desc">Mezcal, liqueur de sang d'orange, piment d'Espelette</span>
+            </span>
+            <span class="prestation-price">16€</span>
+          </button>
+          <button class="prestation-option" role="radio" aria-checked="false" data-prestation="Or Noir" data-desc="Champagne brut, liqueur de sureau, feuille d'or" data-price="12€">
+            <span class="prestation-radio"></span>
+            <span class="prestation-info">
+              <span class="prestation-name">Or Noir</span>
+              <span class="prestation-desc">Champagne brut, liqueur de sureau, feuille d'or</span>
+            </span>
+            <span class="prestation-price">12€</span>
+          </button>
+          <button class="prestation-option" role="radio" aria-checked="false" data-prestation="Happy Hour" data-desc="Cocktails signatures à prix doux, 17h-20h" data-price="Sur place">
+            <span class="prestation-radio"></span>
+            <span class="prestation-info">
+              <span class="prestation-name">Happy Hour</span>
+              <span class="prestation-desc">Cocktails signatures à prix doux, 17h-20h</span>
+            </span>
+            <span class="prestation-price">Sur place</span>
+          </button>
+          <button class="prestation-option" role="radio" aria-checked="false" data-prestation="Jeudis Vinyl" data-desc="Soirée soul, funk et jazz, chaque jeudi 20h" data-price="Sur place">
+            <span class="prestation-radio"></span>
+            <span class="prestation-info">
+              <span class="prestation-name">Jeudis Vinyl</span>
+              <span class="prestation-desc">Soirée soul, funk et jazz, chaque jeudi 20h</span>
+            </span>
+            <span class="prestation-price">Sur place</span>
+          </button>
+          <button class="prestation-option" role="radio" aria-checked="false" data-prestation="Privatisation" data-desc="Anniversaire, soirée d'entreprise, jusqu'à 40 personnes" data-price="Sur devis">
+            <span class="prestation-radio"></span>
+            <span class="prestation-info">
+              <span class="prestation-name">Privatisation</span>
+              <span class="prestation-desc">Anniversaire, soirée d'entreprise, jusqu'à 40 personnes</span>
+            </span>
+            <span class="prestation-price">Sur devis</span>
+          </button>
+        </div>
+        <div class="modal-actions">
+          <button class="btn-primary glow-gold" id="modalNext" disabled>Continuer</button>
+        </div>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="modal-step" id="modalStep2">
+        <div class="recap-card">
+          <p class="recap-label">Votre choix</p>
+          <p class="recap-value" id="recapTitle">—</p>
+          <p class="recap-detail" id="recapDesc">—</p>
+          <p class="recap-detail" id="recapPrice" style="color:var(--gold); margin-top:0.75rem;">—</p>
+        </div>
+        <p style="color:rgba(255,255,255,0.5); font-size:0.875rem; margin-bottom:1.5rem; font-weight:300;">Confirmez votre demande pour être redirigé vers notre agenda en ligne et choisir votre créneau.</p>
+        <div class="modal-actions">
+          <button class="btn-secondary" id="modalBack">Retour</button>
+          <a href="https://cal.com/leman-nova-0zwvun/rendez-vous-15-minutes" target="_blank" rel="noopener" class="btn-primary glow-gold" id="modalConfirm">Confirmer et réserver</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function() {
+      // Navbar scroll effect
+      const navbar = document.getElementById('navbar');
+      window.addEventListener('scroll', function() {
+        navbar.classList.toggle('scrolled', window.scrollY > 50);
+      }, { passive: true });
+
+      // Mobile menu
+      const menuToggle = document.getElementById('menuToggle');
+      const mobileMenu = document.getElementById('mobileMenu');
+      const closeMenuItems = document.querySelectorAll('[data-close-menu]');
+
+      function toggleMenu() {
+        menuToggle.classList.toggle('active');
+        mobileMenu.classList.toggle('open');
+      }
+
+      menuToggle.addEventListener('click', toggleMenu);
+      closeMenuItems.forEach(function(item) {
+        item.addEventListener('click', toggleMenu);
+      });
+
+      // Scroll animations
+      const observers = document.querySelectorAll('.animate-on-scroll');
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1, rootMargin: '-80px 0px -80px 0px' });
+
+      observers.forEach(function(el) { observer.observe(el); });
+
+      // Modal
+      const modal = document.getElementById('reservationModal');
+      const modalClose = document.getElementById('modalClose');
+      const modalNext = document.getElementById('modalNext');
+      const modalBack = document.getElementById('modalBack');
+      const modalConfirm = document.getElementById('modalConfirm');
+      const step1 = document.getElementById('modalStep1');
+      const step2 = document.getElementById('modalStep2');
+      const recapTitle = document.getElementById('recapTitle');
+      const recapDesc = document.getElementById('recapDesc');
+      const recapPrice = document.getElementById('recapPrice');
+      const options = document.querySelectorAll('.prestation-option');
+      let selected = null;
+
+      function openModal(prestation, desc, price) {
+        modal.classList.add('open');
+        document.body.classList.add('no-scroll');
+        step1.classList.add('active');
+        step2.classList.remove('active');
+
+        if (prestation) {
+          options.forEach(function(opt) {
+            opt.classList.remove('selected');
+            opt.setAttribute('aria-checked', 'false');
+            if (opt.dataset.prestation === prestation) {
+              opt.classList.add('selected');
+              opt.setAttribute('aria-checked', 'true');
+              selected = opt;
+            }
+          });
+          modalNext.disabled = false;
+        }
+      }
+
+      function closeModal() {
+        modal.classList.remove('open');
+        document.body.classList.remove('no-scroll');
+      }
+
+      document.querySelectorAll('[data-open-modal]').forEach(function(btn) {
+        btn.addEventListener('click', function(e) {
+          e.preventDefault();
+          openModal(btn.dataset.prestation, btn.dataset.desc, btn.dataset.price);
+        });
+      });
+
+      modalClose.addEventListener('click', closeModal);
+      modal.addEventListener('click', function(e) {
+        if (e.target === modal) closeModal();
+      });
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && modal.classList.contains('open')) closeModal();
+      });
+
+      options.forEach(function(opt) {
+        opt.addEventListener('click', function() {
+          options.forEach(function(o) {
+            o.classList.remove('selected');
+            o.setAttribute('aria-checked', 'false');
+          });
+          opt.classList.add('selected');
+          opt.setAttribute('aria-checked', 'true');
+          selected = opt;
+          modalNext.disabled = false;
+        });
+      });
+
+      modalNext.addEventListener('click', function() {
+        if (!selected) return;
+        recapTitle.textContent = selected.dataset.prestation;
+        recapDesc.textContent = selected.dataset.desc;
+        recapPrice.textContent = selected.dataset.price;
+        step1.classList.remove('active');
+        step2.classList.add('active');
+        modalConfirm.href = 'https://cal.com/leman-nova-0zwvun/rendez-vous-15-minutes?purpose=' + encodeURIComponent(selected.dataset.prestation);
+      });
+
+      modalBack.addEventListener('click', function() {
+        step2.classList.remove('active');
+        step1.classList.add('active');
+      });
+    })();
+  </script>
+</body>
 </html>

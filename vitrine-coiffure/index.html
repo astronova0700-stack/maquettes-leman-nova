@@ -1,32 +1,1541 @@
-<!doctype html>
-<html lang="fr" class="dark">
-  <head>
-    <meta charset="UTF-8" >
-    <link data-mgx-overview="icon" rel="icon" href="assets/extern/commonfile_DefaultAppLogo.png" >
-    
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" >
-    <title data-mgx-overview="title">L&#x27;Atelier du Faubourg</title>
-    <meta data-mgx-overview="description" name="description" content="Salon de coiffure haut de gamme à Lyon. Découvrez un univers luxueux et réservez votre rendez-vous e" >
-    <meta name="author" content="Atoms" >
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="L'Atelier du Faubourg — Salon de coiffure haut de gamme à Lyon. Coupes, colorations, soins et rituels signature." />
+  <meta name="author" content="Leman Nova" />
+  <meta name="theme-color" content="#0a0a0a" />
+  <meta property="og:title" content="L'Atelier du Faubourg — Salon de coiffure haut de gamme Lyon" />
+  <meta property="og:description" content="L'excellence de la coiffure dans un écrin de raffinement." />
+  <meta property="og:image" content="./assets/extern/gallery-salon-interior-dark-gold.png" />
+  <meta property="og:type" content="website" />
+  <link rel="icon" type="image/svg+xml" href="./assets/extern/favicon.svg" />
+  <title>L'Atelier du Faubourg — Salon de coiffure haut de gamme Lyon</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --background: #0a0a0a;
+      --foreground: #e8e4d9;
+      --card: #121212;
+      --muted-foreground: #968f80;
+      --gold: #d4a83d;
+      --gold-light: #e0c17a;
+      --gold-dark: #9e7014;
+      --border: #3d3628;
+      --radius: 0.25rem;
+    }
 
-    <meta data-mgx-overview="og:title" property="og:title" content="L&#x27;Atelier du Faubourg" >
-    <meta data-mgx-overview="og:description" property="og:description" content="Salon de coiffure haut de gamme à Lyon. Découvrez un univers luxueux et réservez votre rendez-vous e" >
-    <meta data-mgx-overview="og:image" property="og:image" content="assets/extern/commonfile_DefaultAppLogo.png" >
-    <meta property="og:type" content="website" >
+    * { box-sizing: border-box; }
 
-    <meta data-mgx-overview="twitter:title" name="twitter:title" content="L&#x27;Atelier du Faubourg" >
-    <meta data-mgx-overview="twitter:description" name="twitter:description" content="Salon de coiffure haut de gamme à Lyon. Découvrez un univers luxueux et réservez votre rendez-vous e" >
-    <meta data-mgx-overview="twitter:image" name="twitter:image" content="assets/extern/commonfile_DefaultAppLogo.png" >
-    <script type="module" crossorigin src="assets/index-ByPMaEOk.js"></script>
-    <link rel="modulepreload" crossorigin href="assets/ui-vendor-DGvoB4EP.js">
-    <link rel="modulepreload" crossorigin href="assets/utils-vendor-DFZ7zH5D.js">
-    <link rel="modulepreload" crossorigin href="assets/query-vendor-CbfyZnSM.js">
-    <link rel="modulepreload" crossorigin href="assets/router-vendor-B7ToYaqh.js">
-    <link rel="stylesheet" crossorigin href="assets/index-BKDXGXaj.css">
-    <link rel="sitemap" type="application/xml" title="Sitemap" href="sitemap.xml">
-  </head>
+    html { scroll-behavior: smooth; }
 
-  <body>
-    <div id="root"></div>
-  </body>
+    body {
+      margin: 0;
+      font-family: 'Montserrat', sans-serif;
+      background: var(--background);
+      color: var(--foreground);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1, h2, h3, h4, h5, h6 { font-family: 'Cormorant', serif; margin: 0; font-weight: 300; }
+
+    a { color: inherit; text-decoration: none; }
+
+    img { max-width: 100%; display: block; }
+
+    .font-serif { font-family: 'Cormorant', serif; }
+    .font-sans { font-family: 'Montserrat', sans-serif; }
+
+    /* Grain overlay */
+    .film-grain::after {
+      content: '';
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.03;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+      animation: grain 0.5s steps(1) infinite;
+    }
+
+    @keyframes grain {
+      0%, 100% { transform: translate(0, 0); }
+      10% { transform: translate(-1%, -1%); }
+      20% { transform: translate(1%, 1%); }
+      30% { transform: translate(-2%, 1%); }
+      40% { transform: translate(1%, -1%); }
+      50% { transform: translate(-1%, 2%); }
+      60% { transform: translate(2%, -1%); }
+      70% { transform: translate(-1%, -2%); }
+      80% { transform: translate(1%, 1%); }
+      90% { transform: translate(-2%, -1%); }
+    }
+
+    /* Shimmer gold */
+    .shimmer-gold {
+      background: linear-gradient(110deg, var(--gold) 0%, #f3d68a 25%, var(--gold) 50%, #9e7e2c 75%, var(--gold) 100%);
+      background-size: 200% 100%;
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: shimmer 4s ease-in-out infinite;
+    }
+
+    @keyframes shimmer {
+      0% { background-position: 200% 0; }
+      100% { background-position: -200% 0; }
+    }
+
+    /* Glow */
+    .glow-gold {
+      box-shadow: 0 0 20px rgba(212, 168, 61, 0.4), 0 0 40px rgba(212, 168, 61, 0.2), 0 0 60px rgba(212, 168, 61, 0.1);
+      animation: glow-pulse 3s ease-in-out infinite;
+    }
+
+    @keyframes glow-pulse {
+      0%, 100% { box-shadow: 0 0 20px rgba(212, 168, 61, 0.4), 0 0 40px rgba(212, 168, 61, 0.2); }
+      50% { box-shadow: 0 0 30px rgba(212, 168, 61, 0.6), 0 0 60px rgba(212, 168, 61, 0.3), 0 0 80px rgba(212, 168, 61, 0.15); }
+    }
+
+    /* Ken Burns */
+    .ken-burns {
+      animation: ken-burns 20s ease-in-out infinite alternate;
+    }
+
+    @keyframes ken-burns {
+      0% { transform: scale(1) translate(0, 0); }
+      100% { transform: scale(1.08) translate(-1%, -1%); }
+    }
+
+    /* Section divider */
+    .section-divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(212, 168, 61, 0.3), transparent);
+    }
+
+    /* Animations scroll */
+    .reveal {
+      opacity: 0;
+      transform: translateY(4rem);
+      transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    .reveal-scale {
+      opacity: 0;
+      transform: scale(0.9);
+      transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .reveal-scale.visible { opacity: 1; transform: scale(1); }
+
+    .reveal-left {
+      opacity: 0;
+      transform: translateX(-4rem);
+      transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .reveal-left.visible { opacity: 1; transform: translateX(0); }
+
+    .reveal-right {
+      opacity: 0;
+      transform: translateX(4rem);
+      transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .reveal-right.visible { opacity: 1; transform: translateX(0); }
+
+    .reveal-fade {
+      opacity: 0;
+      transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .reveal-fade.visible { opacity: 1; }
+
+    /* Navbar */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 50;
+      transition: all 0.7s ease;
+      padding: 1rem 0;
+      background: transparent;
+    }
+
+    nav.scrolled {
+      background: rgba(10, 10, 10, 0.6);
+      backdrop-filter: blur(24px) saturate(1.2);
+      -webkit-backdrop-filter: blur(24px) saturate(1.2);
+      border-bottom: 1px solid rgba(212, 168, 61, 0.25);
+      box-shadow: 0 4px 30px rgba(212, 168, 61, 0.08), inset 0 1px 0 rgba(212, 168, 61, 0.1);
+      padding: 0.5rem 0;
+    }
+
+    .nav-inner {
+      max-width: 80rem;
+      margin: 0 auto;
+      padding: 0 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      font-family: 'Cormorant', serif;
+      font-size: 1.25rem;
+      font-weight: 300;
+      letter-spacing: 0.05em;
+    }
+
+    .nav-links {
+      display: none;
+      align-items: center;
+      gap: 2.5rem;
+    }
+
+    .nav-links a {
+      position: relative;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.25em;
+      color: rgba(232, 228, 217, 0.6);
+      transition: color 0.5s ease;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px; left: 0;
+      width: 0; height: 1px;
+      background: var(--gold);
+      transition: width 0.5s ease;
+    }
+
+    .nav-links a:hover { color: var(--gold); }
+    .nav-links a:hover::after { width: 100%; }
+
+    .btn-gold {
+      display: inline-block;
+      background: var(--gold);
+      color: #000;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      font-weight: 600;
+      padding: 0.75rem 1.5rem;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .btn-gold:hover { background: var(--gold-light); transform: scale(1.05); }
+
+    .hamburger {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0.5rem;
+      z-index: 60;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 1px;
+      background: var(--foreground);
+      transition: all 0.3s ease;
+    }
+
+    .mobile-menu {
+      position: fixed;
+      top: 0; right: -100%;
+      width: 80%;
+      max-width: 320px;
+      height: 100vh;
+      background: rgba(10, 10, 10, 0.95);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border-left: 1px solid rgba(212, 168, 61, 0.2);
+      padding: 6rem 2rem 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      transition: right 0.4s ease;
+      z-index: 55;
+    }
+
+    .mobile-menu.open { right: 0; }
+
+    .mobile-menu a {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--foreground);
+      transition: color 0.3s ease;
+    }
+
+    .mobile-menu a:hover { color: var(--gold); }
+
+    .menu-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.6);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+      z-index: 52;
+    }
+
+    .menu-overlay.open { opacity: 1; pointer-events: auto; }
+
+    /* Hero */
+    .hero {
+      position: relative;
+      height: 100vh;
+      width: 100%;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .hero-media {
+      position: absolute;
+      inset: 0;
+      transform: scale(1.1);
+    }
+
+    .hero-media video, .hero-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.7);
+    }
+
+    .hero-gradient-t {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, var(--background), rgba(0,0,0,0.5), rgba(0,0,0,0.4));
+    }
+
+    .hero-gradient-b {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.6), transparent, var(--background));
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 10;
+      width: 100%;
+      padding: 0 1.5rem;
+    }
+
+    .hero-subtitle {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.5em;
+      color: rgba(212, 168, 61, 0.9);
+      margin-bottom: 2rem;
+      font-weight: 500;
+      opacity: 0;
+      transform: translateY(15px);
+      transition: opacity 1s ease, transform 1s ease;
+    }
+
+    .hero-title {
+      font-size: 3rem;
+      line-height: 1.05;
+      color: #fff;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 1s ease 0.3s, transform 1s ease 0.3s;
+    }
+
+    .hero-title.italic { margin-bottom: 2.5rem; }
+
+    .hero-separator {
+      width: 4rem;
+      height: 1px;
+      background: rgba(212, 168, 61, 0.6);
+      margin: 2rem auto;
+      opacity: 0;
+      transform: scaleX(0);
+      transition: opacity 1s ease 1s, transform 1s ease 1s;
+    }
+
+    .hero-desc {
+      font-size: 0.875rem;
+      font-weight: 300;
+      color: rgba(255, 255, 255, 0.8);
+      max-width: 32rem;
+      margin: 0 auto 2.5rem;
+      line-height: 1.8;
+      letter-spacing: 0.05em;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 1s ease 1.2s, transform 1s ease 1.2s;
+    }
+
+    .hero-cta {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 1s ease 1.5s, transform 1s ease 1.5s;
+    }
+
+    .hero-cta .btn-gold {
+      font-size: 10px;
+      letter-spacing: 0.3em;
+      padding: 1rem 2.5rem;
+    }
+
+    .hero.loaded .hero-subtitle,
+    .hero.loaded .hero-title,
+    .hero.loaded .hero-desc,
+    .hero.loaded .hero-cta { opacity: 1; transform: translateY(0); }
+
+    .hero.loaded .hero-separator { opacity: 1; transform: scaleX(1); }
+
+    .scroll-indicator {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .scroll-indicator span {
+      font-size: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.4em;
+      color: rgba(255,255,255,0.4);
+    }
+
+    .scroll-line {
+      width: 1px;
+      height: 2.5rem;
+      background: linear-gradient(to bottom, rgba(212, 168, 61, 0.5), transparent);
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 0.5; }
+      50% { opacity: 1; }
+    }
+
+    /* Sections */
+    .section {
+      position: relative;
+      padding: 7rem 1.5rem;
+      overflow: hidden;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 5rem;
+    }
+
+    .section-title p {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.4em;
+      color: rgba(212, 168, 61, 0.6);
+      margin-bottom: 1.25rem;
+    }
+
+    .section-title h2 {
+      font-size: 3rem;
+      color: var(--foreground);
+    }
+
+    .title-separator {
+      width: 5rem;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(212, 168, 61, 0.5), transparent);
+      margin: 2rem auto 0;
+    }
+
+    /* Services */
+    .services-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      max-width: 80rem;
+      margin: 0 auto;
+    }
+
+    .service-card {
+      position: relative;
+      border: 1px solid rgba(212, 168, 61, 0.08);
+      background: rgba(18, 18, 18, 0.5);
+      padding: 2rem 1.75rem;
+      text-align: center;
+      overflow: hidden;
+      transition: border-color 0.7s ease, transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+      transform-style: preserve-3d;
+      cursor: pointer;
+    }
+
+    .service-card:hover {
+      border-color: rgba(212, 168, 61, 0.3);
+      transform: perspective(1000px) rotateX(2deg) rotateY(-2deg) scale(1.02);
+    }
+
+    .service-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom right, rgba(212, 168, 61, 0.03), transparent);
+      opacity: 0;
+      transition: opacity 0.7s ease;
+    }
+
+    .service-card:hover::before { opacity: 1; }
+
+    .service-card h3 {
+      font-size: 1.75rem;
+      color: var(--gold);
+      margin-bottom: 2.5rem;
+      position: relative;
+    }
+
+    .service-item { position: relative; margin-bottom: 1.75rem; }
+
+    .service-item-name {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: rgba(232, 228, 217, 0.8);
+      transition: color 0.5s ease;
+    }
+
+    .service-card:hover .service-item-name,
+    .service-item:hover .service-item-name { color: var(--gold); }
+
+    .service-item-price {
+      font-family: 'Cormorant', serif;
+      font-size: 1.5rem;
+      color: rgba(212, 168, 61, 0.8);
+      font-weight: 300;
+      margin-top: 0.25rem;
+      transition: color 0.5s ease;
+    }
+
+    .service-item:hover .service-item-price { color: var(--gold); }
+
+    .service-item-desc {
+      font-size: 11px;
+      color: rgba(232, 228, 217, 0.35);
+      line-height: 1.6;
+      margin-top: 0.375rem;
+    }
+
+    .service-item-line {
+      width: 3rem;
+      height: 1px;
+      background: rgba(212, 168, 61, 0.06);
+      margin: 1.25rem auto 0;
+      transition: background 0.7s ease;
+    }
+
+    .service-item:hover .service-item-line { background: rgba(212, 168, 61, 0.2); }
+
+    /* Gallery */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0.75rem;
+      max-width: 80rem;
+      margin: 0 auto;
+    }
+
+    .gallery-item {
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      aspect-ratio: 3 / 4;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 2s ease;
+    }
+
+    .gallery-item:hover img { transform: scale(1.1); }
+
+    .gallery-item-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.3);
+      transition: background 0.7s ease;
+    }
+
+    .gallery-item:hover .gallery-item-overlay { background: rgba(0,0,0,0.1); }
+
+    .gallery-item-border {
+      position: absolute;
+      inset: 0.75rem;
+      border: 1px solid transparent;
+      transition: border-color 0.7s ease;
+    }
+
+    .gallery-item:hover .gallery-item-border { border-color: rgba(212, 168, 61, 0.2); }
+
+    .gallery-item-corner {
+      position: absolute;
+      width: 1.5rem;
+      height: 1.5rem;
+      border-color: transparent;
+      border-style: solid;
+      transition: border-color 0.7s ease;
+    }
+
+    .gallery-item-corner.tl { top: 0.75rem; left: 0.75rem; border-top-width: 1px; border-left-width: 1px; }
+    .gallery-item-corner.br { bottom: 0.75rem; right: 0.75rem; border-bottom-width: 1px; border-right-width: 1px; }
+
+    .gallery-item:hover .gallery-item-corner { border-color: rgba(212, 168, 61, 0.4); }
+
+    .gallery-item-caption {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 1.25rem;
+      background: linear-gradient(to top, rgba(0,0,0,0.9), rgba(0,0,0,0.4), transparent);
+      text-align: center;
+      transform: translateY(100%);
+      transition: transform 0.7s ease;
+    }
+
+    .gallery-item:hover .gallery-item-caption { transform: translateY(0); }
+
+    .gallery-item-caption p {
+      font-size: 0.75rem;
+      color: rgba(232, 228, 217, 0.8);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin: 0;
+    }
+
+    /* Lightbox */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      background: rgba(0,0,0,0.95);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .lightbox.open { display: flex; opacity: 1; }
+
+    .lightbox img {
+      max-width: 100%;
+      max-height: 85vh;
+      object-fit: contain;
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 1.5rem;
+      right: 1.5rem;
+      background: none;
+      border: none;
+      color: rgba(212, 168, 61, 0.7);
+      font-size: 2rem;
+      font-weight: 300;
+      cursor: pointer;
+      transition: color 0.3s ease;
+    }
+
+    .lightbox-close:hover { color: var(--gold); }
+
+    .lightbox-caption {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 0.75rem;
+      color: rgba(232, 228, 217, 0.5);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      text-align: center;
+    }
+
+    /* Reviews */
+    .reviews-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .reviews-rating {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .stars { display: flex; gap: 2px; }
+
+    .star { width: 14px; height: 14px; fill: var(--gold); }
+
+    .rating-score {
+      font-family: 'Cormorant', serif;
+      font-size: 1.875rem;
+    }
+
+    .rating-source {
+      font-size: 10px;
+      color: rgba(232, 228, 217, 0.4);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .reviews-track {
+      overflow: hidden;
+      width: 100%;
+    }
+
+    .reviews-inner {
+      display: flex;
+      gap: 1.25rem;
+      width: max-content;
+      padding: 0 1.5rem;
+      animation: scroll-reviews 60s linear infinite;
+    }
+
+    .reviews-track:hover .reviews-inner { animation-play-state: paused; }
+
+    @keyframes scroll-reviews {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    .review-card {
+      width: 320px;
+      flex-shrink: 0;
+      border: 1px solid rgba(212, 168, 61, 0.08);
+      background: rgba(18, 18, 18, 0.3);
+      padding: 1.5rem;
+      text-align: center;
+      transition: border-color 0.7s ease;
+    }
+
+    .review-card:hover { border-color: rgba(212, 168, 61, 0.25); }
+
+    .review-text {
+      font-size: 13px;
+      color: rgba(232, 228, 217, 0.6);
+      line-height: 1.6;
+      margin: 1.25rem 0 1.75rem;
+      font-style: italic;
+    }
+
+    .review-name {
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: rgba(232, 228, 217, 0.8);
+    }
+
+    .review-date {
+      font-size: 10px;
+      color: rgba(232, 228, 217, 0.3);
+      margin-top: 0.25rem;
+    }
+
+    /* Info */
+    .info-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 3rem;
+      max-width: 80rem;
+      margin: 0 auto;
+    }
+
+    .info-block {
+      text-align: center;
+    }
+
+    .info-icon {
+      width: 3.5rem;
+      height: 3.5rem;
+      margin: 0 auto 1.75rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(212, 168, 61, 0.2);
+      border-radius: 50%;
+      transition: all 0.7s ease;
+    }
+
+    .info-block:hover .info-icon {
+      border-color: rgba(212, 168, 61, 0.5);
+      background: rgba(212, 168, 61, 0.05);
+    }
+
+    .info-icon svg {
+      width: 1.25rem;
+      height: 1.25rem;
+      color: var(--gold);
+    }
+
+    .info-block h3 {
+      font-size: 1.5rem;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+
+    .info-block p {
+      font-size: 0.875rem;
+      color: rgba(232, 228, 217, 0.5);
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    .info-note {
+      font-size: 11px;
+      color: rgba(232, 228, 217, 0.3);
+      margin-top: 0.75rem;
+    }
+
+    .info-cta {
+      text-align: center;
+      margin-top: 5rem;
+    }
+
+    .info-cta .btn-gold {
+      padding: 1.25rem 3rem;
+      transition: all 0.7s ease;
+    }
+
+    .info-cta .btn-gold:hover { letter-spacing: 0.3em; }
+
+    /* Footer */
+    footer {
+      position: relative;
+      padding: 4rem 1.5rem;
+      background: var(--background);
+      text-align: center;
+    }
+
+    footer h3 {
+      font-size: 1.875rem;
+      margin-bottom: 1.25rem;
+    }
+
+    footer p {
+      font-size: 10px;
+      color: rgba(232, 228, 217, 0.3);
+      letter-spacing: 0.05em;
+      margin: 0.25rem 0;
+    }
+
+    .footer-credit {
+      margin-top: 1.5rem;
+      color: rgba(212, 168, 61, 0.5);
+    }
+
+    /* Modal */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      background: rgba(0,0,0,0.85);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .modal-overlay.open { display: flex; opacity: 1; }
+
+    .modal {
+      background: var(--card);
+      border: 1px solid rgba(212, 168, 61, 0.2);
+      width: 100%;
+      max-width: 480px;
+      padding: 2rem;
+      position: relative;
+      transform: translateY(20px);
+      transition: transform 0.3s ease;
+    }
+
+    .modal-overlay.open .modal { transform: translateY(0); }
+
+    .modal-close {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: none;
+      border: none;
+      color: rgba(232, 228, 217, 0.5);
+      font-size: 1.5rem;
+      cursor: pointer;
+      transition: color 0.3s ease;
+    }
+
+    .modal-close:hover { color: var(--gold); }
+
+    .modal h3 {
+      font-size: 1.75rem;
+      color: var(--foreground);
+      margin-bottom: 0.5rem;
+    }
+
+    .modal-subtitle {
+      font-size: 12px;
+      color: rgba(232, 228, 217, 0.5);
+      margin-bottom: 1.75rem;
+    }
+
+    .modal-services {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .modal-service {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem;
+      border: 1px solid rgba(212, 168, 61, 0.1);
+      background: rgba(10, 10, 10, 0.5);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .modal-service:hover,
+    .modal-service.selected {
+      border-color: rgba(212, 168, 61, 0.4);
+      background: rgba(212, 168, 61, 0.08);
+    }
+
+    .modal-service span { font-size: 13px; }
+    .modal-service .price {
+      font-family: 'Cormorant', serif;
+      font-size: 1.25rem;
+      color: var(--gold);
+    }
+
+    .modal-actions {
+      display: flex;
+      gap: 1rem;
+      justify-content: flex-end;
+    }
+
+    .modal-actions button {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      padding: 0.75rem 1.25rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .modal-actions .btn-secondary {
+      background: transparent;
+      border: 1px solid rgba(212, 168, 61, 0.3);
+      color: var(--foreground);
+    }
+
+    .modal-actions .btn-secondary:hover { border-color: var(--gold); color: var(--gold); }
+
+    .modal-actions .btn-primary {
+      background: var(--gold);
+      border: none;
+      color: #000;
+      font-weight: 600;
+    }
+
+    .modal-actions .btn-primary:hover { background: var(--gold-light); }
+
+    .modal-step { display: none; }
+    .modal-step.active { display: block; }
+
+    .recap-box {
+      background: rgba(10, 10, 10, 0.5);
+      border: 1px solid rgba(212, 168, 61, 0.15);
+      padding: 1.25rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .recap-box p { margin: 0.25rem 0; font-size: 13px; }
+    .recap-box .label { color: rgba(232, 228, 217, 0.5); }
+    .recap-box .value { color: var(--foreground); font-weight: 500; }
+
+    /* Decorative blurs */
+    .blur-gold {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(212, 168, 61, 0.02);
+      filter: blur(64px);
+      pointer-events: none;
+    }
+
+    /* Responsive */
+    @media (min-width: 640px) {
+      .nav-inner { padding: 0 1.5rem; }
+      .nav-logo { font-size: 1.5rem; }
+      .hero-title { font-size: 4.5rem; }
+      .hero-subtitle { font-size: 0.75rem; }
+      .hero-desc { font-size: 1rem; }
+      .section { padding: 9rem 2.5rem; }
+      .section-title h2 { font-size: 3.75rem; }
+      .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+      .service-card { padding: 2.25rem; }
+    }
+
+    @media (min-width: 768px) {
+      .nav-links { display: flex; }
+      .hamburger { display: none; }
+      .services-grid { grid-template-columns: repeat(3, 1fr); }
+      .info-grid { grid-template-columns: repeat(3, 1fr); gap: 4rem; }
+      .hero-title { font-size: 6rem; }
+    }
+
+    @media (min-width: 1024px) {
+      .nav-inner { padding: 0 2rem; }
+      .hero-title { font-size: 8rem; }
+      .section { padding: 9rem 4rem; }
+      .section-title h2 { font-size: 4.5rem; }
+      .gallery-grid { grid-template-columns: repeat(4, 1fr); }
+      .review-card { width: 400px; padding: 2rem; }
+    }
+  </style>
+</head>
+<body class="film-grain">
+  <!-- Navbar -->
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="#accueil" class="nav-logo shimmer-gold">L'Atelier du Faubourg</a>
+      <div class="nav-links">
+        <a href="#services">Services</a>
+        <a href="#galerie">Galerie</a>
+        <a href="#avis">Avis</a>
+        <a href="#infos">Infos</a>
+      </div>
+      <button class="btn-gold open-modal" data-service="">Prendre rendez-vous</button>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile menu -->
+  <div class="menu-overlay" id="menuOverlay"></div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#services" class="mobile-link">Services</a>
+    <a href="#galerie" class="mobile-link">Galerie</a>
+    <a href="#avis" class="mobile-link">Avis</a>
+    <a href="#infos" class="mobile-link">Infos</a>
+    <button class="btn-gold open-modal" data-service="">Prendre rendez-vous</button>
+  </div>
+
+  <!-- Hero -->
+  <section class="hero" id="accueil">
+    <div class="hero-media" id="heroMedia">
+      <video autoplay muted loop playsInline poster="./assets/extern/gallery-salon-interior-dark-gold.png">
+        <source src="./assets/extern/hero-salon-styling-dramatic.mp4" type="video/mp4" />
+      </video>
+    </div>
+    <div class="hero-overlay"></div>
+    <div class="hero-gradient-t"></div>
+    <div class="hero-gradient-b"></div>
+    <div class="hero-content" id="heroContent">
+      <p class="hero-subtitle">Salon de coiffure haut de gamme — Lyon</p>
+      <h1 class="hero-title">L'Atelier</h1>
+      <h1 class="hero-title italic shimmer-gold">du Faubourg</h1>
+      <div class="hero-separator"></div>
+      <p class="hero-desc">L'excellence de la coiffure dans un écrin de raffinement.<br />Chaque geste est une signature.</p>
+      <div class="hero-cta">
+        <a href="#services" class="btn-gold glow-gold">Découvrir nos services</a>
+      </div>
+    </div>
+    <div class="scroll-indicator">
+      <span>Scroll</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section class="section" id="services" style="background: var(--background);">
+    <div class="section-divider" style="position: absolute; top: 0; left: 0; right: 0;"></div>
+    <div class="blur-gold" style="width: 16rem; height: 16rem; top: 5rem; right: 2.5rem;"></div>
+    <div class="blur-gold" style="width: 12rem; height: 12rem; bottom: 5rem; left: 2.5rem;"></div>
+    <div class="section-title reveal">
+      <p>Nos prestations</p>
+      <h2>Services &amp; <span class="italic shimmer-gold">Tarifs</span></h2>
+      <div class="title-separator"></div>
+    </div>
+    <div class="services-grid">
+      <!-- Coupes -->
+      <div class="service-card reveal-scale open-modal-card" data-category="Coupes">
+        <h3>Coupes</h3>
+        <div class="service-item open-modal" data-service="Coupe Femme">
+          <span class="service-item-name">Coupe Femme</span>
+          <span class="service-item-price">48€</span>
+          <p class="service-item-desc">Consultation, shampoing, coupe &amp; coiffage</p>
+          <div class="service-item-line"></div>
+        </div>
+        <div class="service-item open-modal" data-service="Coupe Homme">
+          <span class="service-item-name">Coupe Homme</span>
+          <span class="service-item-price">32€</span>
+          <p class="service-item-desc">Coupe personnalisée &amp; finition</p>
+          <div class="service-item-line"></div>
+        </div>
+        <div class="service-item open-modal" data-service="Coupe Enfant">
+          <span class="service-item-name">Coupe Enfant</span>
+          <span class="service-item-price">22€</span>
+          <p class="service-item-desc">Jusqu'à 12 ans</p>
+          <div class="service-item-line"></div>
+        </div>
+      </div>
+      <!-- Coloration -->
+      <div class="service-card reveal-scale" style="transition-delay: 0.15s;" data-category="Coloration">
+        <h3>Coloration</h3>
+        <div class="service-item open-modal" data-service="Coloration Complète">
+          <span class="service-item-name">Coloration Complète</span>
+          <span class="service-item-price">65€</span>
+          <p class="service-item-desc">Couleur sur-mesure, soin &amp; brillance</p>
+          <div class="service-item-line"></div>
+        </div>
+        <div class="service-item open-modal" data-service="Balayage">
+          <span class="service-item-name">Balayage</span>
+          <span class="service-item-price">85€</span>
+          <p class="service-item-desc">Technique main levée, effet naturel</p>
+          <div class="service-item-line"></div>
+        </div>
+        <div class="service-item open-modal" data-service="Mèches">
+          <span class="service-item-name">Mèches</span>
+          <span class="service-item-price">75€</span>
+          <p class="service-item-desc">Reflets lumineux &amp; dimension</p>
+          <div class="service-item-line"></div>
+        </div>
+      </div>
+      <!-- Soins -->
+      <div class="service-card reveal-scale" style="transition-delay: 0.3s;" data-category="Soins & Rituels">
+        <h3>Soins &amp; Rituels</h3>
+        <div class="service-item open-modal" data-service="Soin Kératine">
+          <span class="service-item-name">Soin Kératine</span>
+          <span class="service-item-price">95€</span>
+          <p class="service-item-desc">Lissage &amp; nutrition intense</p>
+          <div class="service-item-line"></div>
+        </div>
+        <div class="service-item open-modal" data-service="Rituel Signature">
+          <span class="service-item-name">Rituel Signature</span>
+          <span class="service-item-price">120€</span>
+          <p class="service-item-desc">Diagnostic, soin profond &amp; massage</p>
+          <div class="service-item-line"></div>
+        </div>
+        <div class="service-item open-modal" data-service="Brushing">
+          <span class="service-item-name">Brushing</span>
+          <span class="service-item-price">35€</span>
+          <p class="service-item-desc">Mise en forme &amp; volume</p>
+          <div class="service-item-line"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery -->
+  <section class="section" id="galerie" style="background: var(--card);">
+    <div class="section-divider" style="position: absolute; top: 0; left: 0; right: 0;"></div>
+    <div class="section-title reveal">
+      <p>Notre univers</p>
+      <h2>La <span class="italic shimmer-gold">Galerie</span></h2>
+      <div class="title-separator"></div>
+    </div>
+    <div class="gallery-grid">
+      <div class="gallery-item reveal-left" data-index="0">
+        <img src="./assets/extern/gallery-styled-woman-golden-light.png" alt="Coiffure élégante sous lumière dorée" class="ken-burns" />
+        <div class="gallery-item-overlay"></div>
+        <div class="gallery-item-border"></div>
+        <div class="gallery-item-corner tl"></div>
+        <div class="gallery-item-corner br"></div>
+        <div class="gallery-item-caption"><p>Coiffure élégante sous lumière dorée</p></div>
+      </div>
+      <div class="gallery-item reveal-right" data-index="1">
+        <img src="./assets/extern/gallery-balayage-technique-closeup.png" alt="Technique de balayage en gros plan" class="ken-burns" />
+        <div class="gallery-item-overlay"></div>
+        <div class="gallery-item-border"></div>
+        <div class="gallery-item-corner tl"></div>
+        <div class="gallery-item-corner br"></div>
+        <div class="gallery-item-caption"><p>Technique de balayage en gros plan</p></div>
+      </div>
+      <div class="gallery-item reveal-left" data-index="2">
+        <img src="./assets/extern/gallery-salon-interior-dark-gold.png" alt="Intérieur luxueux du salon" class="ken-burns" />
+        <div class="gallery-item-overlay"></div>
+        <div class="gallery-item-border"></div>
+        <div class="gallery-item-corner tl"></div>
+        <div class="gallery-item-corner br"></div>
+        <div class="gallery-item-caption"><p>Intérieur luxueux du salon</p></div>
+      </div>
+      <div class="gallery-item reveal-right" data-index="3">
+        <img src="./assets/extern/gallery-tools-artistic-dark-marble.png" alt="Outils professionnels sur marbre" class="ken-burns" />
+        <div class="gallery-item-overlay"></div>
+        <div class="gallery-item-border"></div>
+        <div class="gallery-item-corner tl"></div>
+        <div class="gallery-item-corner br"></div>
+        <div class="gallery-item-caption"><p>Outils professionnels sur marbre</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox-close" id="lightboxClose">✕</button>
+    <img src="" alt="" id="lightboxImg" />
+    <p class="lightbox-caption" id="lightboxCaption"></p>
+  </div>
+
+  <!-- Reviews -->
+  <section class="section" id="avis" style="background: var(--background); padding-bottom: 6rem;">
+    <div class="section-divider" style="position: absolute; top: 0; left: 0; right: 0;"></div>
+    <div class="reviews-header reveal">
+      <p style="font-size: 10px; text-transform: uppercase; letter-spacing: 0.4em; color: rgba(212,168,61,0.6); margin-bottom: 1.25rem;">Ce qu'elles disent</p>
+      <h2 class="section-title" style="margin-bottom: 2rem; text-align: center;">Avis <span class="italic shimmer-gold">Clients</span></h2>
+      <div class="reviews-rating">
+        <div class="stars">
+          <svg class="star" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
+          <svg class="star" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
+          <svg class="star" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
+          <svg class="star" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
+          <svg class="star" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
+        </div>
+        <span class="rating-score shimmer-gold">4.9</span>
+        <span class="rating-source">/5 sur Google</span>
+      </div>
+    </div>
+    <div class="reviews-track">
+      <div class="reviews-inner" id="reviewsInner">
+        <!-- Reviews duplicated via JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Info -->
+  <section class="section" id="infos" style="background: var(--card);">
+    <div class="section-divider" style="position: absolute; top: 0; left: 0; right: 0;"></div>
+    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 600px; height: 600px; border-radius: 50%; background: rgba(212,168,61,0.015); filter: blur(100px); pointer-events: none;"></div>
+    <div class="section-title reveal">
+      <p>Nous trouver</p>
+      <h2>Informations <span class="italic shimmer-gold">Pratiques</span></h2>
+      <div class="title-separator"></div>
+    </div>
+    <div class="info-grid">
+      <div class="info-block reveal-left">
+        <div class="info-icon">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+        </div>
+        <h3>Adresse</h3>
+        <p>27 Rue du Faubourg Saint-Jean<br />69007 Lyon, France</p>
+        <p class="info-note">Métro Jean Macé — Ligne B</p>
+      </div>
+      <div class="info-block reveal-fade">
+        <div class="info-icon">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+        </div>
+        <h3>Horaires</h3>
+        <p>Mardi — Vendredi : 9h — 19h<br />Samedi : 9h — 18h</p>
+        <p class="info-note">Fermé dimanche &amp; lundi</p>
+      </div>
+      <div class="info-block reveal-right">
+        <div class="info-icon">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
+        </div>
+        <h3>Contact</h3>
+        <p>04 78 62 33 17<br /><span class="info-note" style="margin-top: 0;">contact@atelier-faubourg.fr</span></p>
+      </div>
+    </div>
+    <div class="info-cta reveal-scale" id="rendez-vous">
+      <button class="btn-gold glow-gold open-modal" data-service="">Prendre rendez-vous</button>
+      <p style="font-size: 11px; color: rgba(232,228,217,0.3); margin-top: 1.25rem;">Ou appelez-nous directement au 04 78 62 33 17</p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="section-divider" style="position: absolute; top: 0; left: 0; right: 0;"></div>
+    <h3 class="shimmer-gold">L'Atelier du Faubourg</h3>
+    <p>© 2024 L'Atelier du Faubourg — Tous droits réservés</p>
+    <p>27 Rue du Faubourg Saint-Jean, 69007 Lyon</p>
+    <p class="footer-credit">Maquette réalisée par Leman Nova</p>
+  </footer>
+
+  <!-- Reservation Modal -->
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal">
+      <button class="modal-close" id="modalClose">✕</button>
+      <!-- Step 1 -->
+      <div class="modal-step active" id="modalStep1">
+        <h3>Prendre rendez-vous</h3>
+        <p class="modal-subtitle">Choisissez votre prestation</p>
+        <div class="modal-services" id="modalServices"></div>
+        <div class="modal-actions">
+          <button class="btn-secondary" id="modalCancel">Annuler</button>
+          <button class="btn-primary" id="modalContinue">Continuer</button>
+        </div>
+      </div>
+      <!-- Step 2 -->
+      <div class="modal-step" id="modalStep2">
+        <h3>Confirmer le rendez-vous</h3>
+        <p class="modal-subtitle">Récapitulatif de votre demande</p>
+        <div class="recap-box">
+          <p><span class="label">Prestation :</span> <span class="value" id="recapService">—</span></p>
+          <p><span class="label">Salon :</span> <span class="value">L'Atelier du Faubourg</span></p>
+          <p><span class="label">Adresse :</span> <span class="value">27 Rue du Faubourg Saint-Jean, 69007 Lyon</span></p>
+        </div>
+        <div class="modal-actions">
+          <button class="btn-secondary" id="modalBack">Retour</button>
+          <a href="https://cal.com/leman-nova-0zwvun/rendez-vous-15-minutes" target="_blank" rel="noopener noreferrer" class="btn-primary" id="modalBook" style="text-decoration: none;">Réserver sur Cal.com</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Navbar scroll
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 50);
+    }, { passive: true });
+
+    // Mobile menu
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const menuOverlay = document.getElementById('menuOverlay');
+    const mobileLinks = document.querySelectorAll('.mobile-link');
+
+    function toggleMenu() {
+      const open = mobileMenu.classList.toggle('open');
+      menuOverlay.classList.toggle('open', open);
+    }
+
+    hamburger.addEventListener('click', toggleMenu);
+    menuOverlay.addEventListener('click', toggleMenu);
+    mobileLinks.forEach(link => link.addEventListener('click', toggleMenu));
+
+    // Hero load + parallax
+    const hero = document.querySelector('.hero');
+    const heroMedia = document.getElementById('heroMedia');
+    const heroContent = document.getElementById('heroContent');
+
+    window.addEventListener('load', () => {
+      hero.classList.add('loaded');
+    });
+
+    window.addEventListener('scroll', () => {
+      const scrollY = window.scrollY;
+      if (heroMedia) heroMedia.style.transform = `translateY(${scrollY * 0.3}px) scale(1.1)`;
+      if (heroContent) heroContent.style.opacity = Math.max(0, 1 - scrollY / 700);
+    }, { passive: true });
+
+    // Scroll reveal
+    const revealElements = document.querySelectorAll('.reveal, .reveal-scale, .reveal-left, .reveal-right, .reveal-fade');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    revealElements.forEach(el => observer.observe(el));
+
+    // Gallery lightbox
+    const galleryItems = document.querySelectorAll('.gallery-item');
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightboxImg');
+    const lightboxCaption = document.getElementById('lightboxCaption');
+    const lightboxClose = document.getElementById('lightboxClose');
+
+    const galleryImages = [
+      { src: './assets/extern/gallery-styled-woman-golden-light.png', alt: 'Coiffure élégante sous lumière dorée' },
+      { src: './assets/extern/gallery-balayage-technique-closeup.png', alt: 'Technique de balayage en gros plan' },
+      { src: './assets/extern/gallery-salon-interior-dark-gold.png', alt: 'Intérieur luxueux du salon' },
+      { src: './assets/extern/gallery-tools-artistic-dark-marble.png', alt: 'Outils professionnels sur marbre' }
+    ];
+
+    galleryItems.forEach(item => {
+      item.addEventListener('click', () => {
+        const idx = item.dataset.index;
+        lightboxImg.src = galleryImages[idx].src;
+        lightboxImg.alt = galleryImages[idx].alt;
+        lightboxCaption.textContent = galleryImages[idx].alt;
+        lightbox.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      });
+    });
+
+    function closeLightbox() {
+      lightbox.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    lightboxClose.addEventListener('click', closeLightbox);
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox) closeLightbox();
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && lightbox.classList.contains('open')) closeLightbox();
+    });
+
+    // Reviews carousel
+    const reviewsInner = document.getElementById('reviewsInner');
+    const reviews = [
+      { name: 'Marie-Claire D.', text: 'Un salon d\'exception. L\'équipe est à l\'écoute et le résultat dépasse toujours mes attentes. Mon balayage est absolument parfait.', date: 'Il y a 2 semaines' },
+      { name: 'Sophie L.', text: 'Cadre magnifique, accueil chaleureux et prestations irréprochables. Je ne changerais de salon pour rien au monde.', date: 'Il y a 1 mois' },
+      { name: 'Isabelle M.', text: 'Le rituel signature est une expérience unique. On ressort transformée et apaisée. Un vrai moment de luxe.', date: 'Il y a 3 semaines' },
+      { name: 'Camille R.', text: 'Professionnalisme remarquable. Ma coloration est exactement ce que je voulais, naturelle et lumineuse.', date: 'Il y a 1 semaine' },
+      { name: 'Élise B.', text: 'L\'ambiance est incroyable, on se sent dans un cocon. Le soin kératine a transformé mes cheveux. Merci infiniment.', date: 'Il y a 5 jours' },
+      { name: 'Nathalie P.', text: 'Chaque visite est un moment de pure détente. Les coiffeurs sont de véritables artistes. Résultat toujours sublime.', date: 'Il y a 2 mois' }
+    ];
+
+    const starSvg = '<svg class="star" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>';
+
+    function renderReview(review) {
+      return `
+        <div class="review-card">
+          <div class="stars">${starSvg.repeat(5)}</div>
+          <p class="review-text">"${review.text}"</p>
+          <span class="review-name">${review.name}</span>
+          <p class="review-date">${review.date}</p>
+        </div>
+      `;
+    }
+
+    const reviewsHtml = reviews.map(renderReview).join('');
+    reviewsInner.innerHTML = reviewsHtml + reviewsHtml;
+
+    // Reservation modal
+    const services = [
+      { name: 'Coupe Femme', price: '48€' },
+      { name: 'Coupe Homme', price: '32€' },
+      { name: 'Coupe Enfant', price: '22€' },
+      { name: 'Coloration Complète', price: '65€' },
+      { name: 'Balayage', price: '85€' },
+      { name: 'Mèches', price: '75€' },
+      { name: 'Soin Kératine', price: '95€' },
+      { name: 'Rituel Signature', price: '120€' },
+      { name: 'Brushing', price: '35€' }
+    ];
+
+    const modalOverlay = document.getElementById('modalOverlay');
+    const modalStep1 = document.getElementById('modalStep1');
+    const modalStep2 = document.getElementById('modalStep2');
+    const modalServices = document.getElementById('modalServices');
+    const modalContinue = document.getElementById('modalContinue');
+    const modalBack = document.getElementById('modalBack');
+    const modalCancel = document.getElementById('modalCancel');
+    const modalClose = document.getElementById('modalClose');
+    const recapService = document.getElementById('recapService');
+    const modalBook = document.getElementById('modalBook');
+
+    let selectedService = '';
+
+    modalServices.innerHTML = services.map(s => `
+      <div class="modal-service" data-service="${s.name}" data-price="${s.price}">
+        <span>${s.name}</span>
+        <span class="price">${s.price}</span>
+      </div>
+    `).join('');
+
+    const serviceEls = modalServices.querySelectorAll('.modal-service');
+
+    function selectService(name) {
+      selectedService = name;
+      serviceEls.forEach(el => el.classList.toggle('selected', el.dataset.service === name));
+      modalContinue.disabled = !name;
+      modalContinue.style.opacity = name ? '1' : '0.5';
+    }
+
+    serviceEls.forEach(el => {
+      el.addEventListener('click', () => selectService(el.dataset.service));
+    });
+
+    function openModal(serviceName = '') {
+      modalOverlay.classList.add('open');
+      document.body.style.overflow = 'hidden';
+      modalStep1.classList.add('active');
+      modalStep2.classList.remove('active');
+      selectService(serviceName || '');
+    }
+
+    function closeModal() {
+      modalOverlay.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    document.querySelectorAll('.open-modal').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        openModal(btn.dataset.service || '');
+      });
+    });
+
+    document.querySelectorAll('.open-modal-card').forEach(card => {
+      card.addEventListener('click', (e) => {
+        if (e.target.closest('.open-modal')) return;
+        openModal('');
+      });
+    });
+
+    modalContinue.addEventListener('click', () => {
+      if (!selectedService) return;
+      recapService.textContent = selectedService;
+      const url = new URL('https://cal.com/leman-nova-0zwvun/rendez-vous-15-minutes');
+      url.searchParams.set('service', selectedService);
+      modalBook.href = url.toString();
+      modalStep1.classList.remove('active');
+      modalStep2.classList.add('active');
+    });
+
+    modalBack.addEventListener('click', () => {
+      modalStep2.classList.remove('active');
+      modalStep1.classList.add('active');
+    });
+
+    [modalCancel, modalClose, modalOverlay].forEach(el => {
+      el.addEventListener('click', (e) => {
+        if (el === modalOverlay && e.target !== modalOverlay) return;
+        closeModal();
+      });
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modalOverlay.classList.contains('open')) closeModal();
+    });
+
+    modalContinue.disabled = true;
+    modalContinue.style.opacity = '0.5';
+  </script>
+</body>
 </html>

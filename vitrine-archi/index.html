@@ -1,31 +1,1492 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" >
-    <link data-mgx-overview="icon" rel="icon" href="assets/extern/mgx-backend-1300249583_chats_logo_fdf89afaad3e4f708f2b3f4488a6169a.png" >
-    
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" >
-    <title data-mgx-overview="title">Studio Verger</title>
-    <meta data-mgx-overview="description" name="description" content="Cabinet d&#x27;architecture intérieure genevois alliant esthétique cinématographique et luxe minimaliste." >
-    <meta name="author" content="Atoms" >
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Studio Verger — Architecture d'intérieur Genève</title>
+  <meta name="description" content="Studio Verger — Architecture d'intérieur à Genève. Créer des espaces qui racontent votre histoire.">
+  <meta name="author" content="Leman Nova">
+  <link rel="canonical" href="https://www.lemannova.com/vitrine-archi/">
+  <meta property="og:title" content="Studio Verger — Architecture d'intérieur Genève">
+  <meta property="og:description" content="Créer des espaces qui racontent votre histoire.">
+  <meta property="og:image" content="./assets/extern/archi.jpg">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.lemannova.com/vitrine-archi/">
+  <link rel="icon" href="./assets/extern/archi.jpg" type="image/jpeg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Josefin+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --background: 220 10% 12%;
+      --foreground: 45 30% 90%;
+      --card: 220 10% 15%;
+      --card-foreground: 45 30% 90%;
+      --primary: 43 72% 55%;
+      --primary-foreground: 220 10% 10%;
+      --secondary: 220 8% 20%;
+      --secondary-foreground: 45 20% 85%;
+      --muted: 220 8% 18%;
+      --muted-foreground: 220 5% 55%;
+      --accent: 43 72% 55%;
+      --accent-foreground: 220 10% 10%;
+      --border: 220 8% 22%;
+      --input: 220 8% 22%;
+      --ring: 43 72% 55%;
+      --radius: 0rem;
 
-    <meta data-mgx-overview="og:title" property="og:title" content="Studio Verger" >
-    <meta data-mgx-overview="og:description" property="og:description" content="Cabinet d&#x27;architecture intérieure genevois alliant esthétique cinématographique et luxe minimaliste." >
-    <meta data-mgx-overview="og:image" property="og:image" content="assets/extern/mgx-backend-1300249583_chats_logo_fdf89afaad3e4f708f2b3f4488a6169a.png" >
-    <meta property="og:type" content="website" >
+      --bg: hsl(var(--background));
+      --fg: hsl(var(--foreground));
+      --gold: hsl(var(--primary));
+      --gold-light: hsl(43, 72%, 62%);
+      --anthracite: hsl(220, 10%, 12%);
+      --anthracite-deep: hsl(220, 10%, 8%);
+      --anthracite-light: hsl(220, 10%, 16%);
+      --muted: hsl(var(--muted-foreground));
+      --border-color: hsl(var(--border));
+    }
 
-    <meta data-mgx-overview="twitter:title" name="twitter:title" content="Studio Verger" >
-    <meta data-mgx-overview="twitter:description" name="twitter:description" content="Cabinet d&#x27;architecture intérieure genevois alliant esthétique cinématographique et luxe minimaliste." >
-    <meta data-mgx-overview="twitter:image" name="twitter:image" content="assets/extern/mgx-backend-1300249583_chats_logo_fdf89afaad3e4f708f2b3f4488a6169a.png" >
-    <script type="module" crossorigin src="assets/index-BuhEnv9x.js"></script>
-    <link rel="modulepreload" crossorigin href="assets/router-vendor-Dx9uYVQL.js">
-    <link rel="modulepreload" crossorigin href="assets/ui-vendor-BCqYUbXD.js">
-    <link rel="modulepreload" crossorigin href="assets/utils-vendor-1O0udqyt.js">
-    <link rel="stylesheet" crossorigin href="assets/index-CP03eaeL.css">
-    <link rel="sitemap" type="application/xml" title="Sitemap" href="sitemap.xml">
-  </head>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      border-color: var(--border-color);
+    }
 
-  <body>
-    <div id="root"></div>
-  </body>
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Josefin Sans', sans-serif;
+      background: var(--bg);
+      color: var(--fg);
+      line-height: 1.6;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Cinzel', serif;
+      font-weight: 500;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img, video {
+      max-width: 100%;
+      display: block;
+    }
+
+    button {
+      font-family: inherit;
+      cursor: pointer;
+      border: none;
+      background: none;
+      color: inherit;
+    }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar {
+      width: 4px;
+    }
+    ::-webkit-scrollbar-track {
+      background: var(--anthracite);
+    }
+    ::-webkit-scrollbar-thumb {
+      background: var(--gold);
+      border-radius: 2px;
+    }
+
+    /* Layout helpers */
+    .container {
+      width: 100%;
+      max-width: 1280px;
+      margin-left: auto;
+      margin-right: auto;
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+
+    .section-label {
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      color: var(--gold);
+      opacity: 0.6;
+      display: block;
+      margin-bottom: 1.5rem;
+    }
+
+    .section-title {
+      font-size: clamp(1.75rem, 5vw, 3.75rem);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+    }
+
+    .text-gold { color: var(--gold); }
+    .bg-gold { background-color: var(--gold); }
+    .border-gold { border-color: var(--gold); }
+
+    /* Animations */
+    @keyframes cinematicFade {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(80px) scale(0.95); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    @keyframes scaleReveal {
+      from { opacity: 0; transform: scale(1.05); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+
+    .animate-pulse {
+      animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-scale {
+      opacity: 0;
+      transform: scale(1.05);
+      transition: opacity 1.8s cubic-bezier(0.25, 1, 0.5, 1), transform 1.8s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+
+    .reveal-scale.visible {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    /* Navigation */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 50;
+      transition: background-color 0.7s ease, padding 0.7s ease, backdrop-filter 0.7s ease;
+      padding: 1.5rem 0;
+      background: transparent;
+    }
+
+    .navbar.scrolled {
+      background: hsla(220, 10%, 8%, 0.95);
+      backdrop-filter: blur(6px);
+      padding: 1rem 0;
+    }
+
+    .navbar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      font-family: 'Cinzel', serif;
+      font-size: 1.125rem;
+      letter-spacing: 0.05em;
+      transition: color 0.3s ease;
+    }
+
+    .nav-logo:hover { color: var(--gold); }
+
+    .nav-links {
+      display: none;
+      align-items: center;
+      gap: 2.5rem;
+    }
+
+    .nav-link {
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+      transition: color 0.3s ease;
+    }
+
+    .nav-link:hover { color: var(--gold); }
+
+    .nav-cta {
+      margin-left: 1rem;
+      padding: 0.75rem 1.5rem;
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      transition: background-color 0.5s ease, color 0.5s ease;
+    }
+
+    .nav-cta:hover {
+      background: var(--gold);
+      color: var(--anthracite-deep);
+    }
+
+    .menu-btn {
+      display: block;
+      color: var(--fg);
+      transition: color 0.3s ease;
+    }
+
+    .menu-btn:hover { color: var(--gold); }
+
+    .mobile-menu {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: hsla(220, 10%, 8%, 0.98);
+      backdrop-filter: blur(8px);
+      overflow: hidden;
+      max-height: 0;
+      opacity: 0;
+      transition: max-height 0.5s ease, opacity 0.5s ease;
+    }
+
+    .mobile-menu.open {
+      max-height: 400px;
+      opacity: 1;
+    }
+
+    .mobile-menu-inner {
+      padding: 2rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .mobile-menu .nav-link {
+      display: block;
+      padding: 0.25rem 0;
+    }
+
+    .mobile-menu .nav-cta {
+      margin-left: 0;
+      text-align: center;
+      margin-top: 0.5rem;
+    }
+
+    @media (min-width: 768px) {
+      .nav-links { display: flex; }
+      .menu-btn { display: none; }
+      .mobile-menu { display: none; }
+      .nav-logo { font-size: 1.25rem; }
+    }
+
+    /* Hero */
+    .hero {
+      position: relative;
+      height: 100vh;
+      min-height: 600px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .hero-media {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+
+    .hero-media video,
+    .hero-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: brightness(0.35) contrast(1.1);
+    }
+
+    .hero-overlay-top {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, hsla(220, 10%, 8%, 0.6), transparent, hsla(220, 10%, 8%, 0.9));
+    }
+
+    .hero-overlay-side {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to right, hsla(220, 10%, 8%, 0.3), transparent, hsla(220, 10%, 8%, 0.3));
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 10;
+      text-align: center;
+      padding: 0 1.5rem;
+      max-width: 900px;
+    }
+
+    .hero-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      color: var(--gold);
+      opacity: 0.8;
+      margin-bottom: 1.5rem;
+      animation: cinematicFade 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    .hero-title {
+      font-size: clamp(2.5rem, 8vw, 6rem);
+      line-height: 1;
+      margin-bottom: 2rem;
+      letter-spacing: -0.02em;
+      animation: slideUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    .hero-subtitle {
+      font-size: clamp(1rem, 2vw, 1.25rem);
+      color: var(--fg);
+      opacity: 0.6;
+      font-weight: 300;
+      letter-spacing: 0.03em;
+      max-width: 500px;
+      margin: 0 auto;
+      animation: cinematicFade 1.5s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
+      opacity: 0;
+    }
+
+    .scroll-indicator {
+      position: absolute;
+      bottom: 3rem;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.75rem;
+      color: var(--gold);
+      opacity: 0.5;
+      cursor: pointer;
+    }
+
+    .scroll-indicator span {
+      font-size: 0.6rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+    }
+
+    /* Projects intro */
+    .projects-intro {
+      height: 50vh;
+      min-height: 320px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background: var(--anthracite-deep);
+      padding: 0 1.5rem;
+    }
+
+    /* Project panels */
+    .project-panel {
+      position: relative;
+      height: 100vh;
+      min-height: 500px;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .project-bg {
+      position: absolute;
+      inset: 0;
+      transition: opacity 1s ease, transform 1s ease;
+      opacity: 0.7;
+      transform: scale(1.05);
+    }
+
+    .project-panel.visible .project-bg {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .project-bg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: brightness(0.45) contrast(1.05);
+    }
+
+    .project-gradient-top {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, hsla(220, 10%, 8%, 0.8), hsla(220, 10%, 8%, 0.2), transparent);
+    }
+
+    .project-gradient-left {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to right, hsla(220, 10%, 8%, 0.6), transparent);
+    }
+
+    .project-gradient-right {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to left, hsla(220, 10%, 8%, 0.6), transparent);
+    }
+
+    .project-content {
+      position: relative;
+      z-index: 10;
+      width: 100%;
+      padding: 0 2rem;
+      transition: opacity 1s ease 0.2s, transform 1s ease 0.2s;
+      opacity: 0.7;
+      transform: translateY(1rem);
+    }
+
+    .project-panel.visible .project-content {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (min-width: 768px) {
+      .project-content { padding: 0 4rem; }
+    }
+
+    @media (min-width: 1024px) {
+      .project-content { padding: 0 6rem; }
+    }
+
+    .project-number {
+      font-size: 0.7rem;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      color: var(--gold);
+      opacity: 0.7;
+      display: block;
+      margin-bottom: 1rem;
+    }
+
+    .project-name {
+      font-size: clamp(2rem, 6vw, 4.5rem);
+      line-height: 1;
+      letter-spacing: -0.02em;
+    }
+
+    .project-line {
+      margin-top: 1.5rem;
+      height: 1px;
+      width: 8rem;
+      background: var(--gold);
+      opacity: 0.4;
+    }
+
+    .project-line.right { margin-left: auto; }
+
+    .projects-disclaimer {
+      padding: 2rem 1.5rem;
+      text-align: center;
+      background: var(--anthracite-deep);
+      font-size: 0.7rem;
+      letter-spacing: 0.05em;
+      color: var(--muted);
+      opacity: 0.5;
+      font-style: italic;
+    }
+
+    .text-left { text-align: left; }
+    .text-right { text-align: right; }
+
+    /* Approach */
+    .approach {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 8rem 0;
+      background: linear-gradient(180deg, hsl(220, 10%, 8%) 0%, hsl(220, 10%, 14%) 50%, hsl(220, 10%, 8%) 100%);
+      overflow: hidden;
+    }
+
+    .approach-glow {
+      position: absolute;
+      top: 25%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 600px;
+      height: 600px;
+      border-radius: 50%;
+      background: var(--gold);
+      opacity: 0.03;
+      filter: blur(120px);
+      pointer-events: none;
+    }
+
+    .approach-content {
+      position: relative;
+      z-index: 10;
+    }
+
+    .approach-statement {
+      font-size: clamp(1.5rem, 4vw, 3.5rem);
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      margin-bottom: 3rem;
+    }
+
+    .approach-text {
+      font-size: clamp(1rem, 2vw, 1.25rem);
+      color: var(--fg);
+      opacity: 0.5;
+      font-weight: 300;
+      line-height: 1.7;
+      letter-spacing: 0.03em;
+      max-width: 800px;
+    }
+
+    .approach-quote {
+      margin-top: 6rem;
+      padding-left: 2rem;
+      border-left: 1px solid var(--gold);
+      opacity: 0.3;
+    }
+
+    .approach-quote blockquote {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(1.125rem, 2.5vw, 1.5rem);
+      line-height: 1.6;
+      color: var(--fg);
+      opacity: 0.7;
+      font-style: italic;
+    }
+
+    .approach-quote cite {
+      display: block;
+      margin-top: 1.5rem;
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      opacity: 0.5;
+      font-style: normal;
+    }
+
+    /* Services */
+    .services {
+      position: relative;
+      padding: 8rem 0;
+      background: linear-gradient(180deg, hsl(220, 10%, 8%) 0%, hsl(220, 10%, 12%) 30%, hsl(220, 10%, 12%) 70%, hsl(220, 10%, 8%) 100%);
+      overflow: hidden;
+    }
+
+    .services-glow {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 400px;
+      height: 400px;
+      border-radius: 50%;
+      background: var(--gold);
+      opacity: 0.02;
+      filter: blur(100px);
+      pointer-events: none;
+    }
+
+    .services-header {
+      text-align: center;
+      margin-bottom: 5rem;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+
+    @media (min-width: 768px) {
+      .services-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    .service-card {
+      position: relative;
+      padding: 2rem;
+      border: 1px solid hsla(220, 8%, 22%, 0.3);
+      transition: border-color 0.7s ease;
+      overflow: hidden;
+    }
+
+    @media (min-width: 768px) {
+      .service-card { padding: 3rem; }
+    }
+
+    .service-card:hover {
+      border-color: hsla(43, 72%, 55%, 0.3);
+    }
+
+    .service-card-glow {
+      position: absolute;
+      inset: 0;
+      background: var(--gold);
+      opacity: 0;
+      transition: opacity 0.7s ease;
+      pointer-events: none;
+    }
+
+    .service-card:hover .service-card-glow { opacity: 0.02; }
+
+    .service-icon {
+      color: var(--gold);
+      opacity: 0.6;
+      margin-bottom: 2rem;
+      transition: opacity 0.5s ease;
+    }
+
+    .service-card:hover .service-icon { opacity: 1; }
+
+    .service-title {
+      font-size: clamp(1.25rem, 2.5vw, 1.5rem);
+      margin-bottom: 1rem;
+      letter-spacing: -0.02em;
+    }
+
+    .service-desc {
+      font-size: 0.9rem;
+      color: var(--fg);
+      opacity: 0.5;
+      font-weight: 300;
+      line-height: 1.7;
+      letter-spacing: 0.03em;
+      margin-bottom: 2rem;
+    }
+
+    .service-footer {
+      padding-top: 1.5rem;
+      border-top: 1px solid hsla(220, 8%, 22%, 0.2);
+      font-size: 0.65rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      opacity: 0.5;
+    }
+
+    /* Contact */
+    .contact {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 8rem 0;
+      background: linear-gradient(180deg, hsl(220, 10%, 8%) 0%, hsl(220, 10%, 10%) 50%, hsl(220, 10%, 6%) 100%);
+      overflow: hidden;
+    }
+
+    .contact-glow {
+      position: absolute;
+      top: 33%;
+      left: 25%;
+      width: 500px;
+      height: 500px;
+      border-radius: 50%;
+      background: var(--gold);
+      opacity: 0.02;
+      filter: blur(150px);
+      pointer-events: none;
+    }
+
+    .contact-header {
+      text-align: center;
+      margin-bottom: 5rem;
+    }
+
+    .contact-subtitle {
+      font-size: 1rem;
+      color: var(--fg);
+      opacity: 0.4;
+      font-weight: 300;
+      letter-spacing: 0.03em;
+      max-width: 500px;
+      margin: 1.5rem auto 0;
+    }
+
+    .steps-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    @media (min-width: 768px) {
+      .steps-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    .step-card {
+      position: relative;
+      padding: 2.5rem;
+      border: 1px solid hsla(220, 8%, 22%, 0.3);
+      text-align: left;
+      transition: border-color 0.7s ease;
+      cursor: pointer;
+    }
+
+    .step-card:hover { border-color: hsla(43, 72%, 55%, 0.4); }
+    .step-card.featured { border-color: hsla(43, 72%, 55%, 0.3); }
+    .step-card.featured:hover { border-color: hsla(43, 72%, 55%, 0.6); }
+
+    .step-card-glow {
+      position: absolute;
+      inset: 0;
+      background: var(--gold);
+      opacity: 0;
+      transition: opacity 0.7s ease;
+      pointer-events: none;
+    }
+
+    .step-card:hover .step-card-glow { opacity: 0.02; }
+    .step-card.featured .step-card-glow { opacity: 0.03; }
+
+    .step-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .step-number {
+      font-family: 'Cinzel', serif;
+      font-size: 2.5rem;
+      color: var(--gold);
+      opacity: 0.3;
+      line-height: 1;
+    }
+
+    .step-line {
+      flex: 1;
+      height: 1px;
+      background: var(--gold);
+      opacity: 0.2;
+    }
+
+    .step-icon {
+      color: var(--gold);
+      opacity: 0.6;
+      margin-bottom: 1.5rem;
+    }
+
+    .step-title {
+      font-size: clamp(1.25rem, 2.5vw, 1.5rem);
+      margin-bottom: 1rem;
+      letter-spacing: -0.02em;
+    }
+
+    .step-desc {
+      font-size: 0.85rem;
+      color: var(--fg);
+      opacity: 0.5;
+      font-weight: 300;
+      line-height: 1.7;
+      letter-spacing: 0.03em;
+      margin-bottom: 1.5rem;
+    }
+
+    .step-tag {
+      display: inline-block;
+      font-size: 0.65rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      opacity: 0.4;
+    }
+
+    .contact-cta {
+      margin-top: 4rem;
+      text-align: center;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      padding: 1.25rem 2.5rem;
+      background: var(--gold);
+      color: var(--anthracite-deep);
+      font-size: 0.8rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      font-weight: 600;
+      transition: background-color 0.5s ease;
+      border: 1px solid var(--gold);
+    }
+
+    .btn-primary:hover { background: var(--gold-light); }
+
+    .btn-secondary {
+      display: inline-block;
+      padding: 1rem 2rem;
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      transition: background-color 0.5s ease, color 0.5s ease;
+    }
+
+    .btn-secondary:hover {
+      background: var(--gold);
+      color: var(--anthracite-deep);
+    }
+
+    /* Footer */
+    .footer {
+      padding: 3rem 0;
+      border-top: 1px solid hsla(220, 8%, 22%, 0.2);
+      background: var(--anthracite-deep);
+    }
+
+    .footer-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+      text-align: center;
+    }
+
+    @media (min-width: 768px) {
+      .footer-inner {
+        flex-direction: row;
+        justify-content: space-between;
+        text-align: left;
+      }
+    }
+
+    .footer-brand {
+      font-family: 'Cinzel', serif;
+      font-size: 1.125rem;
+      letter-spacing: 0.05em;
+    }
+
+    .footer-tagline {
+      font-size: 0.7rem;
+      color: var(--muted);
+      margin-top: 0.5rem;
+      letter-spacing: 0.05em;
+    }
+
+    .footer-credits {
+      font-size: 0.7rem;
+      color: var(--muted);
+      opacity: 0.5;
+      letter-spacing: 0.05em;
+    }
+
+    .footer-credits strong {
+      color: var(--gold);
+      opacity: 0.8;
+      font-weight: 500;
+    }
+
+    /* Modal */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      background: hsla(220, 10%, 6%, 0.9);
+      backdrop-filter: blur(8px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.4s ease, visibility 0.4s ease;
+    }
+
+    .modal-overlay.open {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .modal {
+      width: 100%;
+      max-width: 520px;
+      background: var(--anthracite-light);
+      border: 1px solid var(--border-color);
+      padding: 2rem;
+      position: relative;
+      transform: translateY(20px);
+      transition: transform 0.4s ease;
+    }
+
+    .modal-overlay.open .modal {
+      transform: translateY(0);
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      color: var(--muted);
+      transition: color 0.3s ease;
+    }
+
+    .modal-close:hover { color: var(--gold); }
+
+    .modal-title {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .modal-step {
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      opacity: 0.7;
+      margin-bottom: 1.5rem;
+    }
+
+    .modal-options {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .modal-option {
+      display: block;
+      padding: 1rem 1.25rem;
+      border: 1px solid hsla(220, 8%, 22%, 0.5);
+      background: transparent;
+      color: var(--fg);
+      text-align: left;
+      font-size: 0.9rem;
+      transition: border-color 0.3s ease, background-color 0.3s ease;
+    }
+
+    .modal-option:hover,
+    .modal-option.selected {
+      border-color: var(--gold);
+      background: hsla(43, 72%, 55%, 0.05);
+    }
+
+    .modal-option small {
+      display: block;
+      color: var(--muted);
+      font-size: 0.75rem;
+      margin-top: 0.25rem;
+    }
+
+    .modal-actions {
+      display: flex;
+      gap: 1rem;
+      justify-content: flex-end;
+    }
+
+    .modal-actions.center { justify-content: center; }
+
+    .modal-recap {
+      background: var(--anthracite-deep);
+      border: 1px solid var(--border-color);
+      padding: 1.25rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .modal-recap dt {
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.25rem;
+    }
+
+    .modal-recap dd {
+      font-size: 1rem;
+      color: var(--fg);
+      margin-bottom: 1rem;
+    }
+
+    .modal-recap dd:last-child { margin-bottom: 0; }
+
+    .hidden { display: none !important; }
+
+    /* Utility icons */
+    .icon { width: 1.5rem; height: 1.5rem; }
+    .icon-lg { width: 2rem; height: 2rem; }
+    .icon-sm { width: 1.25rem; height: 1.25rem; }
+
+    /* Reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+      .reveal, .reveal-scale, .project-bg, .project-content {
+        opacity: 1 !important;
+        transform: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar" id="navbar">
+    <div class="container navbar-inner">
+      <a href="#" class="nav-logo">Studio Verger</a>
+
+      <div class="nav-links">
+        <a href="#projets" class="nav-link">Projets</a>
+        <a href="#approche" class="nav-link">Approche</a>
+        <a href="#services" class="nav-link">Services</a>
+        <a href="#contact" class="nav-link">Contact</a>
+        <button class="nav-cta" data-open-modal>Prendre rendez-vous</button>
+      </div>
+
+      <button class="menu-btn" id="menuBtn" aria-label="Menu" aria-expanded="false">
+        <svg id="menuIcon" class="icon-lg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        <svg id="closeIcon" class="icon-lg hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </button>
+    </div>
+
+    <div class="mobile-menu" id="mobileMenu">
+      <div class="mobile-menu-inner">
+        <a href="#projets" class="nav-link" data-close-menu>Projets</a>
+        <a href="#approche" class="nav-link" data-close-menu>Approche</a>
+        <a href="#services" class="nav-link" data-close-menu>Services</a>
+        <a href="#contact" class="nav-link" data-close-menu>Contact</a>
+        <button class="nav-cta" data-open-modal data-close-menu>Prendre rendez-vous</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero" id="accueil">
+    <div class="hero-media">
+      <video autoplay muted loop playsInline poster="./assets/extern/archi.jpg">
+        <source src="./assets/extern/archi.mp4" type="video/mp4">
+      </video>
+      <div class="hero-overlay-top"></div>
+      <div class="hero-overlay-side"></div>
+    </div>
+
+    <div class="hero-content">
+      <p class="hero-label">Architecture d'intérieur — Genève</p>
+      <h1 class="hero-title">Studio Verger</h1>
+      <p class="hero-subtitle">Créer des espaces qui racontent votre histoire</p>
+    </div>
+
+    <a href="#projets" class="scroll-indicator animate-pulse" aria-label="Découvrir">
+      <span>Découvrir</span>
+      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+    </a>
+  </section>
+
+  <!-- Projects -->
+  <section id="projets">
+    <div class="projects-intro">
+      <div>
+        <span class="section-label">Portfolio</span>
+        <h2 class="section-title">Nos Projets</h2>
+      </div>
+    </div>
+
+    <div class="project-panel" data-reveal-panel>
+      <div class="project-bg">
+        <img src="./assets/extern/project-appartement-champel.png" alt="Appartement Champel" loading="lazy">
+        <div class="project-gradient-top"></div>
+        <div class="project-gradient-left"></div>
+      </div>
+      <div class="project-content text-left">
+        <span class="project-number">Projet 01</span>
+        <h3 class="project-name">Appartement Champel</h3>
+        <div class="project-line"></div>
+      </div>
+    </div>
+
+    <div class="project-panel" data-reveal-panel>
+      <div class="project-bg">
+        <img src="./assets/extern/project-villa-cologny.png" alt="Villa Cologny" loading="lazy">
+        <div class="project-gradient-top"></div>
+        <div class="project-gradient-right"></div>
+      </div>
+      <div class="project-content text-right">
+        <span class="project-number">Projet 02</span>
+        <h3 class="project-name">Villa Cologny</h3>
+        <div class="project-line right"></div>
+      </div>
+    </div>
+
+    <div class="project-panel" data-reveal-panel>
+      <div class="project-bg">
+        <img src="./assets/extern/project-loft-carouge.png" alt="Loft Carouge" loading="lazy">
+        <div class="project-gradient-top"></div>
+        <div class="project-gradient-left"></div>
+      </div>
+      <div class="project-content text-left">
+        <span class="project-number">Projet 03</span>
+        <h3 class="project-name">Loft Carouge</h3>
+        <div class="project-line"></div>
+      </div>
+    </div>
+
+    <div class="project-panel" data-reveal-panel>
+      <div class="project-bg">
+        <img src="./assets/extern/project-bureau-rive-gauche.png" alt="Bureau Rive Gauche" loading="lazy">
+        <div class="project-gradient-top"></div>
+        <div class="project-gradient-right"></div>
+      </div>
+      <div class="project-content text-right">
+        <span class="project-number">Projet 04</span>
+        <h3 class="project-name">Bureau Rive Gauche</h3>
+        <div class="project-line right"></div>
+      </div>
+    </div>
+
+    <div class="projects-disclaimer">
+      Projets de démonstration — images d'inspiration, non contractuelles
+    </div>
+  </section>
+
+  <!-- Approach -->
+  <section class="approach" id="approche">
+    <div class="approach-glow"></div>
+    <div class="container approach-content">
+      <div class="reveal">
+        <span class="section-label">Notre approche</span>
+      </div>
+
+      <div class="reveal" style="transition-delay: 0.15s;">
+        <h2 class="approach-statement">
+          Chaque espace est une <span class="text-gold">conversation</span> entre la lumière, la matière et ceux qui l'habitent.
+        </h2>
+      </div>
+
+      <div class="reveal" style="transition-delay: 0.3s;">
+        <p class="approach-text">
+          Nous concevons des intérieurs où le béton dialogue avec le bois, où la lumière naturelle sculpte les volumes, où chaque détail participe à une harmonie silencieuse.
+        </p>
+      </div>
+
+      <div class="approach-quote reveal" style="transition-delay: 0.45s;">
+        <blockquote>
+          « L'architecture d'intérieur n'est pas une question de décoration. C'est l'art de créer des émotions à travers l'espace. »
+        </blockquote>
+        <cite>— Philosophie Studio Verger</cite>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section class="services" id="services">
+    <div class="services-glow"></div>
+    <div class="container">
+      <div class="services-header reveal">
+        <span class="section-label">Nos services</span>
+        <h2 class="section-title">Un accompagnement complet</h2>
+      </div>
+
+      <div class="services-grid">
+        <article class="service-card reveal" data-open-modal style="transition-delay: 0.1s;">
+          <div class="service-card-glow"></div>
+          <div class="service-icon">
+            <svg class="icon-lg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon></svg>
+          </div>
+          <h3 class="service-title">Consultation conseil</h3>
+          <p class="service-desc">Un premier regard expert sur votre espace. Nous analysons le potentiel de votre lieu et esquissons les premières directions créatives.</p>
+          <div class="service-footer">Sur devis</div>
+        </article>
+
+        <article class="service-card reveal" data-open-modal style="transition-delay: 0.2s;">
+          <div class="service-card-glow"></div>
+          <div class="service-icon">
+            <svg class="icon-lg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m12 19 7-7 3 3-7 7-3-3z"></path><path d="m18 13-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"></path><path d="m2 2 7.586 7.586"></path><circle cx="11" cy="11" r="2"></circle></svg>
+          </div>
+          <h3 class="service-title">Conception et plans</h3>
+          <p class="service-desc">De l'esquisse au plan détaillé, nous donnons forme à votre vision. Matériaux, couleurs, mobilier — chaque choix est intentionnel.</p>
+          <div class="service-footer">Sur devis</div>
+        </article>
+
+        <article class="service-card reveal" data-open-modal style="transition-delay: 0.3s;">
+          <div class="service-card-glow"></div>
+          <div class="service-icon">
+            <svg class="icon-lg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20a2.4 2.4 0 0 0 2 1a2.4 2.4 0 0 0 2 1c2.4 0 4.6-1.4 7-3.2l-2.6-2.6C7.4 18.1 5.2 20 2 20"></path><path d="m15 13 3.5 3.5"></path><path d="m19.5 8.5-4.5 4.5"></path><path d="M22 5a2.4 2.4 0 0 0-2-1 2.4 2.4 0 0 0-2 1c-1.6 1.3-3.5 3-5 4.5l5 5c1.5-1.5 3.2-3.4 4.5-5a2.4 2.4 0 0 0 1-2 2.4 2.4 0 0 0-1-2.5Z"></path></svg>
+          </div>
+          <h3 class="service-title">Suivi de chantier</h3>
+          <p class="service-desc">Nous accompagnons la réalisation jusqu'au dernier détail. Coordination des artisans, contrôle qualité, respect des délais.</p>
+          <div class="service-footer">Sur devis</div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="contact" id="contact">
+    <div class="contact-glow"></div>
+    <div class="container">
+      <div class="contact-header reveal">
+        <span class="section-label">Commencer</span>
+        <h2 class="section-title">Donnons vie à votre projet</h2>
+        <p class="contact-subtitle">Deux étapes simples pour transformer votre espace</p>
+      </div>
+
+      <div class="steps-grid">
+        <div class="step-card reveal" style="transition-delay: 0.1s;">
+          <div class="step-card-glow"></div>
+          <div class="step-header">
+            <span class="step-number">1</span>
+            <div class="step-line"></div>
+          </div>
+          <div class="step-icon">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+          </div>
+          <h3 class="step-title">Appel découverte</h3>
+          <p class="step-desc">15 minutes pour comprendre votre projet, vos envies et votre espace. Sans engagement.</p>
+          <span class="step-tag">15 min — Gratuit</span>
+        </div>
+
+        <div class="step-card featured reveal" style="transition-delay: 0.2s;">
+          <div class="step-card-glow"></div>
+          <div class="step-header">
+            <span class="step-number">2</span>
+            <div class="step-line"></div>
+          </div>
+          <div class="step-icon">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </div>
+          <h3 class="step-title">Proposition sur mesure</h3>
+          <p class="step-desc">Un programme personnalisé, un calendrier clair et un devis détaillé adapté à votre budget.</p>
+          <span class="step-tag">Sous 48h</span>
+        </div>
+      </div>
+
+      <div class="contact-cta reveal" style="transition-delay: 0.3s;">
+        <button class="btn-primary" data-open-modal>Prendre rendez-vous</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div>
+        <span class="footer-brand">Studio Verger</span>
+        <p class="footer-tagline">Architecture d'intérieur — Genève, Suisse</p>
+      </div>
+      <p class="footer-credits">Maquette réalisée par <strong>Leman Nova</strong> — © 2024 Studio Verger. Tous droits réservés.</p>
+    </div>
+  </footer>
+
+  <!-- Reservation Modal -->
+  <div class="modal-overlay" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal">
+      <button class="modal-close" id="modalClose" aria-label="Fermer">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </button>
+
+      <!-- Step 1 -->
+      <div id="modalStep1">
+        <p class="modal-step">Étape 1 / 2</p>
+        <h3 class="modal-title" id="modalTitle">Choisir une prestation</h3>
+        <p style="font-size: 0.85rem; color: var(--muted); margin-bottom: 1.5rem;">Sélectionnez le service qui correspond à votre projet.</p>
+        <div class="modal-options" role="radiogroup" aria-label="Prestations">
+          <button class="modal-option" data-service="Consultation conseil" data-desc="Un premier regard expert sur votre espace.">
+            Consultation conseil
+            <small>Un premier regard expert sur votre espace.</small>
+          </button>
+          <button class="modal-option" data-service="Conception et plans" data-desc="De l'esquisse au plan détaillé.">
+            Conception et plans
+            <small>De l'esquisse au plan détaillé.</small>
+          </button>
+          <button class="modal-option" data-service="Suivi de chantier" data-desc="Accompagnement jusqu'au dernier détail.">
+            Suivi de chantier
+            <small>Accompagnement jusqu'au dernier détail.</small>
+          </button>
+          <button class="modal-option" data-service="Appel découverte" data-desc="15 min pour faire connaissance.">
+            Appel découverte
+            <small>15 min pour faire connaissance.</small>
+          </button>
+        </div>
+        <div class="modal-actions">
+          <button class="btn-secondary" id="modalCancel1">Annuler</button>
+          <button class="btn-primary" id="modalNext" disabled>Suivant</button>
+        </div>
+      </div>
+
+      <!-- Step 2 -->
+      <div id="modalStep2" class="hidden">
+        <p class="modal-step">Étape 2 / 2</p>
+        <h3 class="modal-title">Récapitulatif</h3>
+        <dl class="modal-recap">
+          <dt>Prestation</dt>
+          <dd id="recapService">—</dd>
+          <dt>Durée</dt>
+          <dd id="recapDuration">15 minutes</dd>
+          <dt>Tarif</dt>
+          <dd id="recapPrice">Gratuit</dd>
+        </dl>
+        <p style="font-size: 0.85rem; color: var(--muted); margin-bottom: 1.5rem;">Vous allez être redirigé vers notre calendrier Cal.com pour choisir un créneau.</p>
+        <div class="modal-actions center">
+          <button class="btn-secondary" id="modalBack">Retour</button>
+          <a href="https://cal.com/leman-nova-0zwvun/rendez-vous-15-minutes" target="_blank" rel="noopener noreferrer" class="btn-primary" id="modalConfirm">Confirmer et réserver</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function() {
+      'use strict';
+
+      // Navbar scroll state
+      const navbar = document.getElementById('navbar');
+      function updateNavbar() {
+        if (window.scrollY > 100) {
+          navbar.classList.add('scrolled');
+        } else {
+          navbar.classList.remove('scrolled');
+        }
+      }
+      window.addEventListener('scroll', updateNavbar, { passive: true });
+      updateNavbar();
+
+      // Mobile menu
+      const menuBtn = document.getElementById('menuBtn');
+      const mobileMenu = document.getElementById('mobileMenu');
+      const menuIcon = document.getElementById('menuIcon');
+      const closeIcon = document.getElementById('closeIcon');
+
+      function toggleMenu() {
+        const open = mobileMenu.classList.toggle('open');
+        menuBtn.setAttribute('aria-expanded', String(open));
+        menuIcon.classList.toggle('hidden', open);
+        closeIcon.classList.toggle('hidden', !open);
+      }
+
+      menuBtn.addEventListener('click', toggleMenu);
+      document.querySelectorAll('[data-close-menu]').forEach(el => {
+        el.addEventListener('click', () => {
+          if (mobileMenu.classList.contains('open')) toggleMenu();
+        });
+      });
+
+      // Scroll reveal (generic)
+      const revealEls = document.querySelectorAll('.reveal');
+      const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1 });
+      revealEls.forEach(el => revealObserver.observe(el));
+
+      // Project panels reveal
+      const panels = document.querySelectorAll('[data-reveal-panel]');
+      const panelObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          } else {
+            entry.target.classList.remove('visible');
+          }
+        });
+      }, { threshold: 0.1 });
+      panels.forEach(panel => panelObserver.observe(panel));
+
+      // Modal
+      const modal = document.getElementById('modal');
+      const modalStep1 = document.getElementById('modalStep1');
+      const modalStep2 = document.getElementById('modalStep2');
+      const modalNext = document.getElementById('modalNext');
+      const modalBack = document.getElementById('modalBack');
+      const modalClose = document.getElementById('modalClose');
+      const modalCancel1 = document.getElementById('modalCancel1');
+      const serviceOptions = document.querySelectorAll('.modal-option');
+      const recapService = document.getElementById('recapService');
+
+      let selectedService = null;
+
+      function openModal(service) {
+        modal.classList.add('open');
+        document.body.style.overflow = 'hidden';
+        modalStep1.classList.remove('hidden');
+        modalStep2.classList.add('hidden');
+        selectedService = null;
+        serviceOptions.forEach(opt => opt.classList.remove('selected'));
+        modalNext.disabled = true;
+        if (service) {
+          const match = Array.from(serviceOptions).find(opt => opt.dataset.service === service);
+          if (match) selectOption(match);
+        }
+      }
+
+      function closeModal() {
+        modal.classList.remove('open');
+        document.body.style.overflow = '';
+      }
+
+      function selectOption(option) {
+        serviceOptions.forEach(opt => opt.classList.remove('selected'));
+        option.classList.add('selected');
+        selectedService = {
+          service: option.dataset.service,
+          desc: option.dataset.desc
+        };
+        modalNext.disabled = false;
+      }
+
+      serviceOptions.forEach(option => {
+        option.addEventListener('click', () => selectOption(option));
+      });
+
+      modalNext.addEventListener('click', () => {
+        if (!selectedService) return;
+        recapService.textContent = selectedService.service;
+        modalStep1.classList.add('hidden');
+        modalStep2.classList.remove('hidden');
+      });
+
+      modalBack.addEventListener('click', () => {
+        modalStep2.classList.add('hidden');
+        modalStep1.classList.remove('hidden');
+      });
+
+      modalClose.addEventListener('click', closeModal);
+      modalCancel1.addEventListener('click', closeModal);
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) closeModal();
+      });
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.classList.contains('open')) closeModal();
+      });
+
+      // Attach modal open to buttons/cards
+      document.querySelectorAll('[data-open-modal]').forEach(trigger => {
+        trigger.addEventListener('click', () => {
+          const service = trigger.querySelector('h3')?.textContent?.trim() || null;
+          openModal(service);
+        });
+      });
+    })();
+  </script>
+</body>
 </html>
