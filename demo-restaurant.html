@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bistro Terroir - Grenoble</title>
+<link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+:root{--terracotta:#d35400;--bois:#4a235a;--creme:#fff8f0;--sable:#f5e6d3}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Poppins',sans-serif;background:var(--creme);color:var(--bois)}
+h1,h2,h3{font-family:'Lora',serif}
+.hero{min-height:100vh;display:flex;align-items:flex-end;padding:60px 8vw;background:linear-gradient(to top,rgba(0,0,0,.7),rgba(0,0,0,.2)),url('https://image.pollinations.ai/prompt/modern%20shop%20interior?width=1600&height=900&nologo=true') center/cover no-repeat;color:#fff}
+.hero-inner{max-width:700px}
+.hero h1{font-size:clamp(3rem,6vw,5.5rem);margin-bottom:18px}
+.hero p{font-size:1.25rem;margin-bottom:30px;font-weight:300}
+.cta{display:inline-block;background:var(--terracotta);color:#fff;padding:16px 36px;border-radius:4px;text-decoration:none;font-weight:600}
+section{padding:80px 8vw;max-width:1200px;margin:0 auto}
+section h2{font-size:2.6rem;margin-bottom:35px;text-align:center;color:var(--terracotta)}
+.note-box{text-align:center;background:var(--sable);padding:30px;border-radius:8px;margin-bottom:45px}
+.note{font-size:2rem;color:var(--terracotta);font-weight:600}
+.services{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:25px}
+.service-card{background:#fff;padding:28px;border-radius:8px;box-shadow:0 5px 20px rgba(0,0,0,.06)}
+.service-card h3{color:var(--terracotta);font-size:1.4rem;margin-bottom:10px}
+.menu-highlight{background:var(--bois);color:#fff;padding:50px 8vw;text-align:center}
+.avis-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:25px}
+.avis-card{background:#fff;padding:28px;border-radius:8px;box-shadow:0 5px 20px rgba(0,0,0,.06)}
+.avis-card .stars{color:var(--terracotta);margin-bottom:10px}
+.galerie{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px}
+.galerie img{width:100%;height:240px;object-fit:cover;border-radius:8px}
+.infos{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:25px;text-align:center}
+.info-item{background:#fff;padding:25px;border-radius:8px}
+.horaires{white-space:pre-wrap;font-family:'Poppins',sans-serif;font-size:.9rem}
+footer{background:var(--bois);color:#e8ddd4;text-align:center;padding:45px 20px}
+@media(max-width:600px){.hero h1{font-size:2.4rem}}
+
+.animate-on-scroll{opacity:1;transform:none;transition:opacity .8s ease,transform .8s ease}
+.animate-on-scroll.animated{opacity:1;transform:none}
+
+</style>
+</head>
+<body>
+<section class="hero"><div class="hero-inner animate-on-scroll">
+<h1>Bistro Terroir</h1>
+<p>Bistro Terroir vous accueille a Grenoble pour une experience unique.</p>
+<a class="cta" href="https://cal.com/leman-nova-0zwvun/rendez-vous-15-minutes">Reserver une table</a>
+</div></section>
+<section>
+<div class="note-box animate-on-scroll">
+<div class="note">4,7/5</div>
+<p>127 avis Google</p>
+</div>
+<h2>Notre carte & nos specialites</h2>
+<div class="services"><div class="service-card animate-on-scroll"><h3>Prestation 1</h3><p>Une expertise sur mesure pour votre projet.</p></div>
+<div class="service-card animate-on-scroll"><h3>Prestation 2</h3><p>Des conseils personnalises et un accompagnement local.</p></div>
+<div class="service-card animate-on-scroll"><h3>Prestation 3</h3><p>Qualite et authenticite au rendez-vous.</p></div></div>
+</section>
+<section><h2>Notre carte & nos specialites</h2><div class="services"><div class="service-card animate-on-scroll"><h3>Prestation 1</h3><p>Une expertise sur mesure pour votre projet.</p></div>
+<div class="service-card animate-on-scroll"><h3>Prestation 2</h3><p>Des conseils personnalises et un accompagnement local.</p></div>
+<div class="service-card animate-on-scroll"><h3>Prestation 3</h3><p>Qualite et authenticite au rendez-vous.</p></div></div></section>
+<section><h2>Ils en parlent</h2>
+<div class="avis-grid"><div class="avis-card animate-on-scroll"><div class="stars">★★★★★</div><p>"Excellent accueil et prestation de qualite. Je recommande !"</p><p><strong>Sophie</strong> — 5/5</p></div>
+<div class="avis-card animate-on-scroll"><div class="stars">★★★★★</div><p>"Superbe experience, equipe au top et tres professionnelle."</p><p><strong>Julien</strong> — 5/5</p></div>
+<div class="avis-card animate-on-scroll"><div class="stars">★★★★☆</div><p>"Tres satisfaite, j'y retournerai sans hesiter."</p><p><strong>Emma</strong> — 4/5</p></div></div>
+</section>
+<section><h2>Galerie</h2><div class="galerie"><img src="https://image.pollinations.ai/prompt/modern%20shop%20interior?width=1600&height=900&nologo=true" alt="Photo" loading="lazy" class="animate-on-scroll"></div></section>
+<section><h2>Infos pratiques</h2>
+<div class="infos">
+<div class="info-item"><h3>Adresse</h3><p>12 Rue de la Paix, Grenoble</p></div>
+<div class="info-item"><h3>Telephone</h3><p>01 23 45 67 89</p></div>
+<div class="info-item"><h3>Horaires</h3><p class="horaires">Lundi: 9h-19h
+Mardi: 9h-19h
+Mercredi: 9h-19h</p></div>
+</div>
+</section>
+
+<footer>Maquette de demonstration realisee par Leman Nova — Bistro Terroir Grenoble</footer>
+<script>
+const obs=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('animated');obs.unobserve(e.target)}})},{threshold:.12});
+document.querySelectorAll('.animate-on-scroll').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
