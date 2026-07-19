@@ -1,271 +1,31 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Studio Verger — Architecture d'intérieur Lyon</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
-<style>
-:root{--bg:#080808;--surface:#101010;--primary:#c9a227;--text:#f0f0f0;--muted:#888888;}
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden}
-h1,h2,h3,h4{font-family:'Cinzel',serif}
-a{text-decoration:none;color:inherit}
-button{font:inherit;border:none;background:none;cursor:pointer;color:inherit}
-.container{width:min(1200px,92vw);margin:0 auto}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" >
+    <link data-mgx-overview="icon" rel="icon" href="assets/extern/mgx-backend-1300249583_chats_logo_fdf89afaad3e4f708f2b3f4488a6169a.png" >
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" >
+    <title data-mgx-overview="title">Studio Verger</title>
+    <meta data-mgx-overview="description" name="description" content="Cabinet d&#x27;architecture intérieure genevois alliant esthétique cinématographique et luxe minimaliste." >
+    <meta name="author" content="Atoms" >
 
-#navbar{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(0,0,0,0.08);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,0.06)}
-.nav-inner{display:flex;justify-content:space-between;align-items:center;width:min(1200px,92vw);margin:0 auto;padding:16px 0}
-.nav-logo{font-family:'Cinzel',serif;font-size:1.4rem;font-weight:700;color:var(--text)}
-.nav-links{display:flex;align-items:center;gap:32px}
-.nav-links a{font-weight:500;font-size:0.92rem;transition:color .3s}
-.nav-links a:hover{color:var(--primary)}
-.nav-cta{background:var(--primary);color:#fff;padding:12px 26px;border-radius:50px;font-weight:700;animation:pulse-glow 2.5s infinite}
-.nav-toggle{display:none;background:none;border:none;color:var(--text);font-size:1.5rem}
-@keyframes pulse-glow{0%,100%{box-shadow:0 0 0 0 rgba(212,160,39,0.4)}50%{box-shadow:0 0 20px 8px rgba(212,160,39,0)}}
+    <meta data-mgx-overview="og:title" property="og:title" content="Studio Verger" >
+    <meta data-mgx-overview="og:description" property="og:description" content="Cabinet d&#x27;architecture intérieure genevois alliant esthétique cinématographique et luxe minimaliste." >
+    <meta data-mgx-overview="og:image" property="og:image" content="assets/extern/mgx-backend-1300249583_chats_logo_fdf89afaad3e4f708f2b3f4488a6169a.png" >
+    <meta property="og:type" content="website" >
 
-.hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden}
-.video-bg{position:absolute;inset:0;z-index:-2}
-.video-bg video{width:100%;height:100%;object-fit:cover}
-.video-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,0.55),rgba(0,0,0,0.75))}
-.hero-content{position:relative;z-index:2;max-width:900px;padding:0 20px;color:#f5f5f5}
-.hero-tag{text-transform:uppercase;letter-spacing:.15em;font-size:.85rem;margin-bottom:20px;opacity:.85}
-.hero-title{font-size:clamp(2.4rem, 7vw, 5rem);line-height:1.05;font-weight:900;margin-bottom:24px;text-shadow:0 4px 30px rgba(0,0,0,.4)}
-.hero-title .char{display:inline-block;opacity:0;transform:translateY(40px);animation:reveal-char .8s forwards;animation-delay:calc(var(--i)*.05s)}
-@keyframes reveal-char{to{opacity:1;transform:translateY(0)}}
-.hero-subtitle{font-size:clamp(1.1rem,2.5vw,1.5rem);max-width:600px;margin:0 auto 40px;opacity:.9}
-.hero-actions{display:flex;gap:20px;justify-content:center;flex-wrap:wrap}
-.btn-primary{display:inline-flex;align-items:center;justify-content:center;background:var(--primary);color:#fff;padding:16px 36px;border-radius:50px;font-weight:700;transition:transform .3s,box-shadow .3s}
-.btn-primary:hover{transform:translateY(-4px);box-shadow:0 15px 40px rgba(212,160,39,.35)}
-.btn-secondary{display:inline-block;border:2px solid rgba(255,255,255,.7);color:#f5f5f5;padding:15px 34px;border-radius:50px;font-weight:600;transition:all .3s;background:rgba(255,255,255,.08)}
-.btn-secondary:hover{background:rgba(255,255,255,.18)}
-.scroll-hint{position:absolute;bottom:30px;left:50%;transform:translateX(-50%)}
-.scroll-hint span{display:block;width:24px;height:40px;border:2px solid rgba(255,255,255,.6);border-radius:12px;position:relative}
-.scroll-hint span::before{content:'';position:absolute;top:6px;left:50%;transform:translateX(-50%);width:4px;height:8px;background:var(--primary);border-radius:2px;animation:scroll-dot 1.8s infinite}
-@keyframes scroll-dot{0%{opacity:1;top:6px}100%{opacity:0;top:22px}}
+    <meta data-mgx-overview="twitter:title" name="twitter:title" content="Studio Verger" >
+    <meta data-mgx-overview="twitter:description" name="twitter:description" content="Cabinet d&#x27;architecture intérieure genevois alliant esthétique cinématographique et luxe minimaliste." >
+    <meta data-mgx-overview="twitter:image" name="twitter:image" content="assets/extern/mgx-backend-1300249583_chats_logo_fdf89afaad3e4f708f2b3f4488a6169a.png" >
+    <script type="module" crossorigin src="assets/index-BuhEnv9x.js"></script>
+    <link rel="modulepreload" crossorigin href="assets/router-vendor-Dx9uYVQL.js">
+    <link rel="modulepreload" crossorigin href="assets/ui-vendor-BCqYUbXD.js">
+    <link rel="modulepreload" crossorigin href="assets/utils-vendor-1O0udqyt.js">
+    <link rel="stylesheet" crossorigin href="assets/index-CP03eaeL.css">
+    <link rel="sitemap" type="application/xml" title="Sitemap" href="sitemap.xml">
+  </head>
 
-.section{padding:110px 20px;background:var(--bg)}
-.section-title{font-size:clamp(2.2rem,5vw,3.5rem);text-align:center;margin-bottom:60px}
-.section-subtitle{text-align:center;margin-top:-40px;margin-bottom:50px;opacity:.7;font-style:italic}
-.cards-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:28px}
-.glass-card{text-align:left;background:rgba(255,255,255,0.06);backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,0.08);border-radius:24px;padding:36px 30px;transition:transform .35s,box-shadow .35s}
-.glass-card:hover{transform:translateY(-10px);box-shadow:0 25px 60px rgba(0,0,0,.12)}
-.prestation-card{width:100%}
-.glass-card h3{font-size:1.4rem;margin-bottom:12px}
-.glass-card p{color:var(--muted);margin-bottom:18px}
-.price{font-size:1.3rem;font-weight:800;color:var(--primary)}
-
-.avis-header{text-align:center;margin-bottom:50px}
-.big-note{font-size:4.5rem;font-weight:900;color:var(--primary);line-height:1}
-.big-note span{font-size:1.5rem;opacity:.7}
-.stars{color:var(--primary);letter-spacing:2px;margin-bottom:14px}
-.avis-card p{font-style:italic;font-size:1.05rem;margin-bottom:14px}
-.author{font-weight:700;opacity:.8}
-
-.infos-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-bottom:50px}
-.info-col{text-align:center}
-.info-col h3{font-size:1.1rem;text-transform:uppercase;letter-spacing:.1em;margin-bottom:14px;opacity:.7}
-.info-col pre{white-space:pre-wrap;font-family:inherit;color:var(--muted)}
-.tel{font-size:1.3rem;font-weight:800;color:var(--primary)}
-.map-wrapper{border-radius:24px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.12);margin-bottom:50px}
-.cta-center{text-align:center}
-.btn-primary.large{padding:18px 44px;font-size:1.1rem}
-
-.plat-grid{grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
-.plat-card{padding:0;overflow:hidden}
-.plat-img{height:200px;overflow:hidden}
-.plat-img img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
-.plat-card:hover .plat-img img{transform:scale(1.08)}
-.plat-body{padding:26px}
-.plat-body h4{font-size:1.25rem;margin-bottom:8px}
-.plat-body p{font-size:.95rem}
-
-.projets-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:24px}
-.projet-panel{position:relative;border-radius:24px;overflow:hidden;height:380px}
-.projet-panel img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
-.projet-panel:hover img{transform:scale(1.06)}
-.projet-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.8),transparent 50%);display:flex;flex-direction:column;justify-content:flex-end;padding:30px;color:#fff}
-.projet-overlay h4{font-size:1.4rem;margin-bottom:6px}
-
-.site-footer{background:var(--surface);text-align:center;padding:60px 20px;border-top:1px solid rgba(255,255,255,.08)}
-.site-footer strong{color:var(--primary)}
-
-.reveal{opacity:1;transform:translateY(0)}
-.reveal.animate{animation:reveal-up .8s ease forwards}
-@keyframes reveal-up{from{opacity:.75;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
-
-/* MODALE */
-.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.75);backdrop-filter:blur(8px);z-index:2000;display:none;align-items:center;justify-content:center;padding:20px}
-.modal-overlay.active{display:flex}
-.modal{position:relative;width:100%;max-width:520px;background:rgba(20,20,20,0.85);backdrop-filter:blur(24px);border:1px solid rgba(255,255,255,.1);border-radius:28px;padding:38px;color:var(--text);box-shadow:0 30px 80px rgba(0,0,0,.35)}
-.modal-close{position:absolute;top:14px;right:20px;background:none;border:none;font-size:2.2rem;color:var(--muted);cursor:pointer;line-height:1}
-.modal h3{font-size:1.5rem;margin-bottom:18px}
-.modal p{color:var(--muted);margin-bottom:22px}
-.modal-options{display:flex;flex-direction:column;gap:12px;margin-bottom:24px}
-.modal-option{display:flex;justify-content:space-between;align-items:center;padding:16px 20px;border-radius:16px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.04);transition:all .2s;text-align:left}
-.modal-option:hover,.modal-option.selected{border-color:var(--primary);background:rgba(212,160,39,.12)}
-.modal-option span:last-child{font-weight:800;color:var(--primary)}
-.modal-step{display:none}
-.modal-step.active{display:block}
-.modal-recap{font-size:1.15rem;font-weight:700;color:var(--text)!important;background:rgba(255,255,255,.06);padding:18px;border-radius:14px;text-align:center}
-
-@media(max-width:900px){
-  .nav-links{display:none;position:absolute;top:70px;left:0;right:0;background:rgba(0,0,0,.95);backdrop-filter:blur(20px);flex-direction:column;align-items:stretch;padding:20px;gap:16px}
-  .nav-links.mobile-open{display:flex}
-  .nav-toggle{display:block}
-  .infos-grid{grid-template-columns:1fr}
-  .hero-title{font-size:clamp(2.4rem,12vw,4rem)}
-  .section{padding:80px 20px}
-}
-@media(max-width:600px){
-  .modal-overlay{padding:0;align-items:flex-end}
-  .modal{max-width:none;border-radius:24px 24px 0 0;padding:28px 22px;min-height:60vh}
-  .modal-close{top:10px;right:14px}
-}
-</style>
-</head>
-<body>
-<nav id="navbar">
-  <div class="nav-inner">
-    <a href="#" class="nav-logo">Studio Verger</a>
-    <div class="nav-links">
-      <a href="#prestations">Prestations</a><a href="#avis">Avis</a><a href="#contact">Contact</a>
-      <button type="button" class="nav-cta" data-open-modal>Prendre rendez-vous</button>
-    </div>
-    <button class="nav-toggle" aria-label="Menu">☰</button>
-  </div>
-</nav>
-<section id="hero" class="hero">
-  <div class="video-bg">
-    <video autoplay muted loop playsinline poster="poster.jpg"><source src="video.mp4" type="video/mp4"></video>
-    <div class="video-overlay"></div>
-  </div>
-  <div class="hero-content">
-    <p class="hero-tag">Architecture d'intérieur — Lyon</p>
-    <h1 class="hero-title"><span class="char" style="--i:0">S</span><span class="char" style="--i:1">t</span><span class="char" style="--i:2">u</span><span class="char" style="--i:3">d</span><span class="char" style="--i:4">i</span><span class="char" style="--i:5">o</span><span class="char" style="--i:6">&nbsp;</span><span class="char" style="--i:7">V</span><span class="char" style="--i:8">e</span><span class="char" style="--i:9">r</span><span class="char" style="--i:10">g</span><span class="char" style="--i:11">e</span><span class="char" style="--i:12">r</span></h1>
-    <p class="hero-subtitle">Créer des intérieurs qui racontent une histoire.</p>
-    <div class="hero-actions">
-      <button type="button" class="btn-primary" data-open-modal>Prendre rendez-vous</button>
-      <a href="#prestations" class="btn-secondary">Découvrir</a>
-    </div>
-  </div>
-  <div class="scroll-hint"><span></span></div>
-</section>
-<section id="prestations" class="section">
-  <div class="container">
-    <h2 class="section-title reveal">Nos prestations</h2>
-    <div class="cards-grid"><button type="button" class="glass-card prestation-card reveal" data-open-modal data-title="Conception" data-price="Sur devis" data-desc="-" style="--i:0">
-  <h3>Conception</h3>
-  <p>Plans, moodboards et direction artistique.</p>
-  <span class="price">Sur devis</span>
-</button><button type="button" class="glass-card prestation-card reveal" data-open-modal data-title="Rénovation" data-price="Sur devis" data-desc="-" style="--i:1">
-  <h3>Rénovation</h3>
-  <p>Suivi complet de chantier.</p>
-  <span class="price">Sur devis</span>
-</button><button type="button" class="glass-card prestation-card reveal" data-open-modal data-title="Aménagement" data-price="Sur devis" data-desc="-" style="--i:2">
-  <h3>Aménagement</h3>
-  <p>Mobilier sur mesure et agencement.</p>
-  <span class="price">Sur devis</span>
-</button><button type="button" class="glass-card prestation-card reveal" data-open-modal data-title="Décoration" data-price="Sur devis" data-desc="-" style="--i:3">
-  <h3>Décoration</h3>
-  <p>Sélection de matériaux et objets.</p>
-  <span class="price">Sur devis</span>
-</button></div>
-  </div>
-</section>
-
-<section id="projets" class="section">
-  <div class="container">
-    <h2 class="section-title reveal">Exemples de projets types</h2>
-    <p class="section-subtitle reveal">Direction créative — images d'inspiration, non contractuelles.</p>
-    <div class="projets-grid"><div class="projet-panel reveal" style="--i:0">
-  <img src="projet-1.jpg" alt="Appartement Tête d'Or" loading="lazy">
-  <div class="projet-overlay"><h4>Appartement Tête d'Or</h4><p>Rénovation contemporaine d'un T4 haussmannien.</p></div>
-</div><div class="projet-panel reveal" style="--i:1">
-  <img src="projet-2.jpg" alt="Maison Confluence" loading="lazy">
-  <div class="projet-overlay"><h4>Maison Confluence</h4><p>Espaces fluides, lumière et matériaux bruts.</p></div>
-</div><div class="projet-panel reveal" style="--i:2">
-  <img src="projet-3.jpg" alt="Showroom Décoration" loading="lazy">
-  <div class="projet-overlay"><h4>Showroom Décoration</h4><p>Parcours client et identité visuelle intégrée.</p></div>
-</div></div>
-  </div>
-</section>
-<section id="avis" class="section">
-  <div class="container">
-    <h2 class="section-title reveal">Ce qu'ils en disent</h2>
-    <div class="avis-header reveal">
-      <div class="big-note">4.9<span>/5</span></div>
-      <p>67 avis Google</p>
-    </div>
-    <div class="cards-grid"><div class="glass-card avis-card reveal" style="--i:0">
-  <div class="stars">★★★★★</div>
-  <p>"Un regard exceptionnel, un projet mené avec beaucoup de finesse."</p>
-  <span class="author">— Camille</span>
-</div><div class="glass-card avis-card reveal" style="--i:1">
-  <div class="stars">★★★★★</div>
-  <p>"Studio à l'écoute, résultat au-delà de nos attentes."</p>
-  <span class="author">— Alexandre</span>
-</div><div class="glass-card avis-card reveal" style="--i:2">
-  <div class="stars">★★★★★</div>
-  <p>"Professionnalisme et créativité. Notre appartement est transformé."</p>
-  <span class="author">— Sarah</span>
-</div></div>
-  </div>
-</section>
-<section id="contact" class="section">
-  <div class="container">
-    <h2 class="section-title reveal">Informations pratiques</h2>
-    <div class="infos-grid">
-      <div class="info-col reveal"><h3>Adresse</h3><p>56 Avenue Foch, 69006 Lyon</p></div>
-      <div class="info-col reveal"><h3>Horaires</h3><pre>Lundi - Vendredi : 9h - 19h
-Samedi : sur rendez-vous
-Dimanche : fermé</pre></div>
-      <div class="info-col reveal"><h3>Téléphone</h3><a href="tel:0472184490" class="tel">04 72 18 44 90</a></div>
-    </div>
-    <div class="map-wrapper reveal"><iframe src="https://www.google.com/maps?q=56%20Avenue%20Foch%2C%2069006%20Lyon&z=16&output=embed" width="100%" height="400" style="border:0;border-radius:20px" allowfullscreen loading="lazy"></iframe></div>
-    <div class="cta-center reveal"><button type="button" class="btn-primary large" data-open-modal>Prendre rendez-vous</button></div>
-  </div>
-</section>
-<footer class="site-footer">
-  <div class="container">
-    <p>Maquette réalisée par <strong>Leman Nova</strong></p>
-    <p>Studio Verger — Lyon</p>
-  </div>
-</footer>
-<div class="modal-overlay" id="booking-modal" aria-hidden="true">
-  <div class="modal">
-    <button type="button" class="modal-close" aria-label="Fermer">×</button>
-    <div class="modal-step active" id="modal-step-archi">
-  <h3>Appel découverte 15 min</h3>
-  <p>Échangeons sur votre projet, vos contraintes et vos envies. Je vous prépare une première direction créative.</p>
-  <a href="https://cal.com/leman-nova-0zwvun/rendez-vous-15-minutes" class="btn-primary large" target="_blank">Confirmer mon créneau</a>
-</div>
-    <noscript><a href="https://cal.com/leman-nova-0zwvun/rendez-vous-15-minutes" class="btn-primary" target="_blank">Prendre rendez-vous</a></noscript>
-  </div>
-</div>
-
-<script>
-(function(){
-  const observer=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('animate');observer.unobserve(e.target)}})},{threshold:0.12});
-  document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
-  document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{const h=a.getAttribute('href');if(h.length>1){e.preventDefault();const t=document.querySelector(h);if(t)t.scrollIntoView({behavior:'smooth'})}})});
-  const toggle=document.querySelector('.nav-toggle');const navLinks=document.querySelector('.nav-links');
-  if(toggle&&navLinks)toggle.addEventListener('click',()=>navLinks.classList.toggle('mobile-open'));
-
-  const modal=document.getElementById('booking-modal');
-  if(!modal)return;
-  const closeModal=()=>{modal.classList.remove('active');modal.setAttribute('aria-hidden','true');};
-  const openModal=()=>{modal.classList.add('active');modal.setAttribute('aria-hidden','false');};
-  document.querySelectorAll('[data-open-modal]').forEach(btn=>{btn.addEventListener('click',openModal)});
-  modal.querySelector('.modal-close').addEventListener('click',closeModal);
-  modal.addEventListener('click',e=>{if(e.target===modal)closeModal()});
-  document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
-
-  /* architecte modale simple */
-})();
-</script>
-
-</body>
+  <body>
+    <div id="root"></div>
+  </body>
 </html>

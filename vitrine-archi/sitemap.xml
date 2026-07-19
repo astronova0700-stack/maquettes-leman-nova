@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="assets/extern/schemas_sitemap_0.9" xmlns:news="assets/extern/schemas_sitemap-news_0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:image="assets/extern/schemas_sitemap-image_1.1" xmlns:video="assets/extern/schemas_sitemap-video_1.1">
+    <url>
+        <loc>
+            https://www.lemannova.com/vitrine-archi/
+        </loc>
+        <lastmod>
+            2026-07-19T19:07:55.098Z
+        </lastmod>
+        <changefreq>
+            daily
+        </changefreq>
+        <priority>
+            1.0
+        </priority>
+    </url>
+    <url>
+        <loc>
+            https://www.lemannova.com/vitrine-archi/
+        </loc>
+        <lastmod>
+            2026-07-19T19:07:55.098Z
+        </lastmod>
+        <changefreq>
+            daily
+        </changefreq>
+        <priority>
+            1.0
+        </priority>
+    </url>
+</urlset>
