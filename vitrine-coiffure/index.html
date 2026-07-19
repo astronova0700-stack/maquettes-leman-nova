@@ -246,18 +246,16 @@ Dimanche : fermé</pre></div>
 
   const modal=document.getElementById('booking-modal');
   if(!modal)return;
-  const closeModal=()=>{modal.classList.remove('active');modal.setAttribute('aria-hidden','true');};
-  const openModal=()=>{modal.classList.add('active');modal.setAttribute('aria-hidden','false');};
-  document.querySelectorAll('[data-open-modal]').forEach(btn=>{btn.addEventListener('click',openModal)});
-  modal.querySelector('.modal-close').addEventListener('click',closeModal);
-  modal.addEventListener('click',e=>{if(e.target===modal)closeModal()});
-  document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
-
-  
   const step1=document.getElementById('modal-step-1');
   const step2=document.getElementById('modal-step-2');
   const recap=document.getElementById('modal-recap');
   const options=modal.querySelectorAll('.modal-option');
+  function resetModal(){
+    if(step1)step1.classList.add('active');
+    if(step2)step2.classList.remove('active');
+    options.forEach(o=>o.classList.remove('selected'));
+    if(recap)recap.textContent='Aucune prestation sélectionnée';
+  }
   function selectOption(btn){
     options.forEach(o=>o.classList.remove('selected'));
     btn.classList.add('selected');
@@ -265,14 +263,24 @@ Dimanche : fermé</pre></div>
     recap.textContent='Votre choix : '+title+' - '+desc+' - '+price;
     step1.classList.remove('active');step2.classList.add('active');
   }
-  options.forEach(o=>o.addEventListener('click',()=>selectOption(o)));
-  // Preselect if triggered from a card
-  document.querySelectorAll('.prestation-card').forEach(card=>{
-    card.addEventListener('click',()=>{
-      const title=card.dataset.title;
-      options.forEach(o=>{if(o.dataset.title===title)selectOption(o)});
+  const closeModal=()=>{modal.classList.remove('active');modal.setAttribute('aria-hidden','true');};
+  const openModal=(preselectTitle=null)=>{
+    resetModal();
+    modal.classList.add('active');modal.setAttribute('aria-hidden','false');
+    if(preselectTitle){
+      options.forEach(o=>{if(o.dataset.title===preselectTitle)selectOption(o)});
+    }
+  };
+  document.querySelectorAll('[data-open-modal]').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      const preselect = btn.classList.contains('prestation-card') ? btn.dataset.title : null;
+      openModal(preselect);
     });
   });
+  modal.querySelector('.modal-close').addEventListener('click',closeModal);
+  modal.addEventListener('click',e=>{if(e.target===modal)closeModal()});
+  document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
+  options.forEach(o=>o.addEventListener('click',()=>selectOption(o)));
   
 })();
 </script>
