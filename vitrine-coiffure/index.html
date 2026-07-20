@@ -11,6 +11,7 @@
   <meta property="og:image" content="./assets/extern/gallery-salon-interior-dark-gold.png" />
   <meta property="og:type" content="website" />
   <link rel="icon" type="image/svg+xml" href="./assets/extern/favicon.svg" />
+  <link rel="preload" as="image" href="./assets/extern/hero-coiffure.jpg" />
   <title>L'Atelier du Faubourg — Salon de coiffure haut de gamme Lyon</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -891,56 +892,83 @@
       border: 1px solid rgba(212, 168, 61, 0.2);
       width: 100%;
       max-width: 480px;
-      padding: 2rem;
+      max-height: 90vh;
+      display: flex;
+      flex-direction: column;
       position: relative;
       transform: translateY(20px);
       transition: transform 0.3s ease;
+      overflow: hidden;
     }
 
     .modal-overlay.open .modal { transform: translateY(0); }
 
+    .modal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.5rem 1.5rem 0.75rem;
+      border-bottom: 1px solid rgba(212, 168, 61, 0.1);
+      flex-shrink: 0;
+    }
+
+    .modal-header h3 {
+      font-size: 1.5rem;
+      color: var(--foreground);
+      margin: 0;
+    }
+
     .modal-close {
-      position: absolute;
-      top: 1rem;
-      right: 1rem;
       background: none;
       border: none;
       color: rgba(232, 228, 217, 0.5);
       font-size: 1.5rem;
+      line-height: 1;
       cursor: pointer;
       transition: color 0.3s ease;
+      padding: 0;
+      margin-left: 1rem;
     }
 
     .modal-close:hover { color: var(--gold); }
 
-    .modal h3 {
-      font-size: 1.75rem;
-      color: var(--foreground);
-      margin-bottom: 0.5rem;
+    .modal-body {
+      flex: 1 1 auto;
+      overflow-y: auto;
+      padding: 1.5rem;
     }
+
+    .modal-footer {
+      flex-shrink: 0;
+      padding: 0 1.5rem 1.5rem;
+      border-top: 1px solid rgba(212, 168, 61, 0.1);
+    }
+
+    .modal-footer .modal-step { padding-top: 1.5rem; }
 
     .modal-subtitle {
       font-size: 12px;
       color: rgba(232, 228, 217, 0.5);
-      margin-bottom: 1.75rem;
+      margin-bottom: 1.25rem;
     }
 
     .modal-services {
       display: flex;
       flex-direction: column;
       gap: 0.75rem;
-      margin-bottom: 1.5rem;
     }
 
     .modal-service {
       display: flex;
       align-items: center;
       justify-content: space-between;
+      gap: 1rem;
       padding: 1rem;
       border: 1px solid rgba(212, 168, 61, 0.1);
       background: rgba(10, 10, 10, 0.5);
       cursor: pointer;
       transition: all 0.3s ease;
+      position: relative;
     }
 
     .modal-service:hover,
@@ -949,11 +977,58 @@
       background: rgba(212, 168, 61, 0.08);
     }
 
-    .modal-service span { font-size: 13px; }
+    .modal-service-info {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      min-width: 0;
+    }
+
+    .modal-service-check {
+      width: 1.25rem;
+      height: 1.25rem;
+      flex-shrink: 0;
+      border: 1px solid rgba(212, 168, 61, 0.3);
+      border-radius: 0.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--card);
+      font-size: 0.75rem;
+      transition: all 0.3s ease;
+    }
+
+    .modal-service.selected .modal-service-check {
+      background: var(--gold);
+      border-color: var(--gold);
+      color: #000;
+    }
+
+    .modal-service-name {
+      font-size: 13px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .modal-service-meta {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      flex-shrink: 0;
+    }
+
+    .modal-service-duration {
+      font-size: 11px;
+      color: rgba(232, 228, 217, 0.45);
+      letter-spacing: 0.05em;
+    }
+
     .modal-service .price {
       font-family: 'Cormorant', serif;
       font-size: 1.25rem;
       color: var(--gold);
+      flex-shrink: 0;
     }
 
     .modal-actions {
@@ -962,13 +1037,16 @@
       justify-content: flex-end;
     }
 
-    .modal-actions button {
+    .modal-actions button,
+    .modal-actions a {
       font-size: 10px;
       text-transform: uppercase;
       letter-spacing: 0.15em;
       padding: 0.75rem 1.25rem;
       cursor: pointer;
       transition: all 0.3s ease;
+      border: none;
+      text-align: center;
     }
 
     .modal-actions .btn-secondary {
@@ -988,6 +1066,11 @@
 
     .modal-actions .btn-primary:hover { background: var(--gold-light); }
 
+    .modal-actions .btn-primary:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
     .modal-step { display: none; }
     .modal-step.active { display: block; }
 
@@ -995,7 +1078,62 @@
       background: rgba(10, 10, 10, 0.5);
       border: 1px solid rgba(212, 168, 61, 0.15);
       padding: 1.25rem;
-      margin-bottom: 1.5rem;
+    }
+
+    .recap-service {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding: 0.5rem 0;
+      border-bottom: 1px solid rgba(212, 168, 61, 0.08);
+    }
+
+    .recap-service:last-of-type { border-bottom: none; }
+
+    .recap-service-name { font-size: 13px; color: var(--foreground); }
+    .recap-service-price {
+      font-family: 'Cormorant', serif;
+      font-size: 1.125rem;
+      color: var(--gold);
+    }
+
+    .recap-total {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(212, 168, 61, 0.25);
+    }
+
+    .recap-total .label { color: rgba(232, 228, 217, 0.7); font-weight: 500; }
+    .recap-total .value { font-family: 'Cormorant', serif; font-size: 1.5rem; color: var(--gold); }
+
+    .recap-duration {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-top: 0.75rem;
+      padding-top: 0.75rem;
+      border-top: 1px solid rgba(212, 168, 61, 0.12);
+    }
+
+    .recap-duration .label { color: rgba(232, 228, 217, 0.5); font-size: 13px; }
+    .recap-duration .value { color: var(--gold-light); font-weight: 500; font-size: 13px; }
+
+    @media (max-width: 639px) {
+      .modal-overlay { padding: 0; align-items: flex-end; }
+      .modal {
+        max-width: 100%;
+        max-height: 92vh;
+        border-radius: 0.5rem 0.5rem 0 0;
+      }
+      .modal-header { padding: 1.25rem 1.25rem 0.75rem; }
+      .modal-body { padding: 1.25rem; }
+      .modal-footer { padding: 0 1.25rem 1.25rem; }
+      .modal-actions { gap: 0.75rem; }
+      .modal-actions button,
+      .modal-actions a { padding: 0.75rem 1rem; flex: 1 1 0; }
     }
 
     .recap-box p { margin: 0.25rem 0; font-size: 13px; }
@@ -1186,7 +1324,7 @@
     </div>
     <div class="gallery-grid">
       <div class="gallery-item reveal-left" data-index="0">
-        <img src="./assets/extern/gallery-styled-woman-golden-light.png" alt="Coiffure élégante sous lumière dorée" class="ken-burns" />
+        <img src="./assets/extern/gallery-styled-woman-golden-light.png" alt="Coiffure élégante sous lumière dorée" class="ken-burns" loading="lazy" width="600" height="800" />
         <div class="gallery-item-overlay"></div>
         <div class="gallery-item-border"></div>
         <div class="gallery-item-corner tl"></div>
@@ -1194,7 +1332,7 @@
         <div class="gallery-item-caption"><p>Coiffure élégante sous lumière dorée</p></div>
       </div>
       <div class="gallery-item reveal-right" data-index="1">
-        <img src="./assets/extern/gallery-balayage-technique-closeup.png" alt="Technique de balayage en gros plan" class="ken-burns" />
+        <img src="./assets/extern/gallery-balayage-technique-closeup.png" alt="Technique de balayage en gros plan" class="ken-burns" loading="lazy" width="600" height="800" />
         <div class="gallery-item-overlay"></div>
         <div class="gallery-item-border"></div>
         <div class="gallery-item-corner tl"></div>
@@ -1202,7 +1340,7 @@
         <div class="gallery-item-caption"><p>Technique de balayage en gros plan</p></div>
       </div>
       <div class="gallery-item reveal-left" data-index="2">
-        <img src="./assets/extern/gallery-salon-interior-dark-gold.png" alt="Intérieur luxueux du salon" class="ken-burns" />
+        <img src="./assets/extern/gallery-salon-interior-dark-gold.png" alt="Intérieur luxueux du salon" class="ken-burns" loading="lazy" width="600" height="800" />
         <div class="gallery-item-overlay"></div>
         <div class="gallery-item-border"></div>
         <div class="gallery-item-corner tl"></div>
@@ -1210,7 +1348,7 @@
         <div class="gallery-item-caption"><p>Intérieur luxueux du salon</p></div>
       </div>
       <div class="gallery-item reveal-right" data-index="3">
-        <img src="./assets/extern/gallery-tools-artistic-dark-marble.png" alt="Outils professionnels sur marbre" class="ken-burns" />
+        <img src="./assets/extern/gallery-tools-artistic-dark-marble.png" alt="Outils professionnels sur marbre" class="ken-burns" loading="lazy" width="600" height="800" />
         <div class="gallery-item-overlay"></div>
         <div class="gallery-item-border"></div>
         <div class="gallery-item-corner tl"></div>
@@ -1303,30 +1441,49 @@
 
   <!-- Reservation Modal -->
   <div class="modal-overlay" id="modalOverlay">
-    <div class="modal">
-      <button class="modal-close" id="modalClose">✕</button>
-      <!-- Step 1 -->
-      <div class="modal-step active" id="modalStep1">
-        <h3>Prendre rendez-vous</h3>
-        <p class="modal-subtitle">Choisissez votre prestation</p>
-        <div class="modal-services" id="modalServices"></div>
-        <div class="modal-actions">
-          <button class="btn-secondary" id="modalCancel">Annuler</button>
-          <button class="btn-primary" id="modalContinue">Continuer</button>
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <div class="modal-header">
+        <h3 id="modalTitle">Prendre rendez-vous</h3>
+        <button class="modal-close" id="modalClose" aria-label="Fermer">✕</button>
+      </div>
+      <div class="modal-body">
+        <!-- Step 1 -->
+        <div class="modal-step active" id="modalStep1">
+          <p class="modal-subtitle">Choisissez vos prestations</p>
+          <div class="modal-services" id="modalServices"></div>
+        </div>
+        <!-- Step 2 -->
+        <div class="modal-step" id="modalStep2">
+          <p class="modal-subtitle">Récapitulatif de votre demande</p>
+          <div class="recap-box">
+            <div id="recapServices"></div>
+            <div class="recap-duration">
+              <span class="label">Durée estimée</span>
+              <span class="value" id="recapDuration">—</span>
+            </div>
+            <div class="recap-total">
+              <span class="label">Total estimé</span>
+              <span class="value" id="recapTotal">—</span>
+            </div>
+            <p style="margin: 1rem 0 0; font-size: 11px; color: rgba(232, 228, 217, 0.4);"><span class="label">Salon :</span> <span class="value">L'Atelier du Faubourg</span></p>
+            <p style="margin: 0.25rem 0 0; font-size: 11px; color: rgba(232, 228, 217, 0.4);"><span class="label">Adresse :</span> <span class="value">27 Rue du Faubourg Saint-Jean, 69007 Lyon</span></p>
+          </div>
         </div>
       </div>
-      <!-- Step 2 -->
-      <div class="modal-step" id="modalStep2">
-        <h3>Confirmer le rendez-vous</h3>
-        <p class="modal-subtitle">Récapitulatif de votre demande</p>
-        <div class="recap-box">
-          <p><span class="label">Prestation :</span> <span class="value" id="recapService">—</span></p>
-          <p><span class="label">Salon :</span> <span class="value">L'Atelier du Faubourg</span></p>
-          <p><span class="label">Adresse :</span> <span class="value">27 Rue du Faubourg Saint-Jean, 69007 Lyon</span></p>
+      <div class="modal-footer">
+        <!-- Step 1 footer -->
+        <div class="modal-step active" id="modalStep1Footer">
+          <div class="modal-actions">
+            <button class="btn-secondary" id="modalCancel">Annuler</button>
+            <button class="btn-primary" id="modalContinue" disabled>Continuer</button>
+          </div>
         </div>
-        <div class="modal-actions">
-          <button class="btn-secondary" id="modalBack">Retour</button>
-          <a href="https://cal.com/leman-nova-0zwvun/rendez-vous-15-minutes" target="_blank" rel="noopener noreferrer" class="btn-primary" id="modalBook" style="text-decoration: none;">Réserver sur Cal.com</a>
+        <!-- Step 2 footer -->
+        <div class="modal-step" id="modalStep2Footer">
+          <div class="modal-actions">
+            <button class="btn-secondary" id="modalBack">Retour</button>
+            <a href="https://cal.com/leman-nova-0zwvun/rendez-vous-15-minutes" target="_blank" rel="noopener noreferrer" class="btn-primary" id="modalBook" style="text-decoration: none;">Réserver sur Cal.com</a>
+          </div>
         </div>
       </div>
     </div>
@@ -1449,56 +1606,103 @@
 
     // Reservation modal
     const services = [
-      { name: 'Coupe Femme', price: '48€' },
-      { name: 'Coupe Homme', price: '32€' },
-      { name: 'Coupe Enfant', price: '22€' },
-      { name: 'Coloration Complète', price: '65€' },
-      { name: 'Balayage', price: '85€' },
-      { name: 'Mèches', price: '75€' },
-      { name: 'Soin Kératine', price: '95€' },
-      { name: 'Rituel Signature', price: '120€' },
-      { name: 'Brushing', price: '35€' }
+      { name: 'Coupe Femme', price: '48€', duration: 45 },
+      { name: 'Coupe Homme', price: '32€', duration: 30 },
+      { name: 'Coupe Enfant', price: '22€', duration: 30 },
+      { name: 'Coloration Complète', price: '65€', duration: 60 },
+      { name: 'Balayage', price: '85€', duration: 90 },
+      { name: 'Mèches', price: '75€', duration: 75 },
+      { name: 'Soin Kératine', price: '95€', duration: 60 },
+      { name: 'Rituel Signature', price: '120€', duration: 90 },
+      { name: 'Brushing', price: '35€', duration: 30 }
     ];
 
     const modalOverlay = document.getElementById('modalOverlay');
     const modalStep1 = document.getElementById('modalStep1');
     const modalStep2 = document.getElementById('modalStep2');
+    const modalStep1Footer = document.getElementById('modalStep1Footer');
+    const modalStep2Footer = document.getElementById('modalStep2Footer');
     const modalServices = document.getElementById('modalServices');
     const modalContinue = document.getElementById('modalContinue');
     const modalBack = document.getElementById('modalBack');
     const modalCancel = document.getElementById('modalCancel');
     const modalClose = document.getElementById('modalClose');
-    const recapService = document.getElementById('recapService');
+    const recapServices = document.getElementById('recapServices');
+    const recapTotal = document.getElementById('recapTotal');
+    const recapDuration = document.getElementById('recapDuration');
     const modalBook = document.getElementById('modalBook');
 
-    let selectedService = '';
+    let selectedServices = new Set();
+
+    function priceToNumber(price) {
+      return parseInt(price.replace('€', ''), 10) || 0;
+    }
+
+    function formatDuration(minutes) {
+      if (minutes < 60) return minutes + ' min';
+      const h = Math.floor(minutes / 60);
+      const m = minutes % 60;
+      return m === 0 ? h + 'h' : h + 'h' + m;
+    }
 
     modalServices.innerHTML = services.map(s => `
-      <div class="modal-service" data-service="${s.name}" data-price="${s.price}">
-        <span>${s.name}</span>
-        <span class="price">${s.price}</span>
+      <div class="modal-service" data-service="${s.name}" data-price="${s.price}" data-duration="${s.duration}" role="checkbox" aria-checked="false" tabindex="0">
+        <div class="modal-service-info">
+          <span class="modal-service-check" aria-hidden="true">✓</span>
+          <span class="modal-service-name">${s.name}</span>
+        </div>
+        <div class="modal-service-meta">
+          <span class="modal-service-duration">${formatDuration(s.duration)}</span>
+          <span class="price">${s.price}</span>
+        </div>
       </div>
     `).join('');
 
     const serviceEls = modalServices.querySelectorAll('.modal-service');
 
-    function selectService(name) {
-      selectedService = name;
-      serviceEls.forEach(el => el.classList.toggle('selected', el.dataset.service === name));
-      modalContinue.disabled = !name;
-      modalContinue.style.opacity = name ? '1' : '0.5';
+    function updateSelection() {
+      serviceEls.forEach(el => {
+        const isSelected = selectedServices.has(el.dataset.service);
+        el.classList.toggle('selected', isSelected);
+        el.setAttribute('aria-checked', isSelected ? 'true' : 'false');
+      });
+      modalContinue.disabled = selectedServices.size === 0;
+      modalContinue.style.opacity = selectedServices.size === 0 ? '0.5' : '1';
+    }
+
+    function toggleService(name) {
+      if (selectedServices.has(name)) selectedServices.delete(name);
+      else selectedServices.add(name);
+      updateSelection();
     }
 
     serviceEls.forEach(el => {
-      el.addEventListener('click', () => selectService(el.dataset.service));
+      el.addEventListener('click', () => toggleService(el.dataset.service));
+      el.addEventListener('keydown', (e) => {
+        if (e.key === ' ' || e.key === 'Enter') {
+          e.preventDefault();
+          toggleService(el.dataset.service);
+        }
+      });
     });
 
-    function openModal(serviceName = '') {
-      modalOverlay.classList.add('open');
-      document.body.style.overflow = 'hidden';
+    function resetModal() {
+      selectedServices.clear();
+      updateSelection();
       modalStep1.classList.add('active');
       modalStep2.classList.remove('active');
-      selectService(serviceName || '');
+      modalStep1Footer.classList.add('active');
+      modalStep2Footer.classList.remove('active');
+    }
+
+    function openModal(serviceName = '') {
+      resetModal();
+      modalOverlay.classList.add('open');
+      document.body.style.overflow = 'hidden';
+      if (serviceName) {
+        selectedServices.add(serviceName);
+        updateSelection();
+      }
     }
 
     function closeModal() {
@@ -1509,6 +1713,7 @@
     document.querySelectorAll('.open-modal').forEach(btn => {
       btn.addEventListener('click', (e) => {
         e.preventDefault();
+        e.stopPropagation();
         openModal(btn.dataset.service || '');
       });
     });
@@ -1521,18 +1726,34 @@
     });
 
     modalContinue.addEventListener('click', () => {
-      if (!selectedService) return;
-      recapService.textContent = selectedService;
+      if (selectedServices.size === 0) return;
+      const selectedList = services.filter(s => selectedServices.has(s.name));
+      const total = selectedList.reduce((sum, s) => sum + priceToNumber(s.price), 0);
+      const totalDuration = selectedList.reduce((sum, s) => sum + (s.duration || 0), 0);
+      recapServices.innerHTML = selectedList.map(s => `
+        <div class="recap-service">
+          <span class="recap-service-name">${s.name}</span>
+          <span class="recap-service-price">${s.price}</span>
+        </div>
+      `).join('');
+      recapTotal.textContent = total + '€';
+      recapDuration.textContent = formatDuration(totalDuration);
       const url = new URL('https://cal.com/leman-nova-0zwvun/rendez-vous-15-minutes');
-      url.searchParams.set('service', selectedService);
+      url.searchParams.set('services', selectedList.map(s => s.name).join(','));
+      url.searchParams.set('duration', String(totalDuration));
+      url.searchParams.set('duree', formatDuration(totalDuration));
       modalBook.href = url.toString();
       modalStep1.classList.remove('active');
       modalStep2.classList.add('active');
+      modalStep1Footer.classList.remove('active');
+      modalStep2Footer.classList.add('active');
     });
 
     modalBack.addEventListener('click', () => {
       modalStep2.classList.remove('active');
       modalStep1.classList.add('active');
+      modalStep1Footer.classList.add('active');
+      modalStep2Footer.classList.remove('active');
     });
 
     [modalCancel, modalClose, modalOverlay].forEach(el => {
@@ -1545,9 +1766,6 @@
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape' && modalOverlay.classList.contains('open')) closeModal();
     });
-
-    modalContinue.disabled = true;
-    modalContinue.style.opacity = '0.5';
   </script>
 </body>
 </html>

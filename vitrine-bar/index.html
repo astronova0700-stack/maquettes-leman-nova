@@ -17,6 +17,7 @@
   <meta name="twitter:image" content="./assets/extern/logo.png">
 
   <link rel="icon" href="./assets/extern/logo.png">
+  <link rel="preload" as="image" href="./assets/extern/cocktail-old-fashioned-noir.png" type="image/png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -1016,23 +1017,22 @@
       width: 100%;
       max-width: 32rem;
       max-height: 90vh;
-      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
       background: linear-gradient(180deg, #1a1a1a 0%, #141414 100%);
       border: 1px solid rgba(201, 169, 110, 0.2);
       border-radius: var(--radius);
-      padding: 1.5rem;
       animation: modalIn 0.3s ease forwards;
-    }
-
-    @media (min-width: 640px) {
-      .modal { padding: 2rem; }
+      overflow: hidden;
     }
 
     .modal-header {
+      flex-shrink: 0;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin-bottom: 1.5rem;
+      padding: 1.25rem 1.5rem;
+      border-bottom: 1px solid rgba(201, 169, 110, 0.1);
     }
 
     .modal-title {
@@ -1056,6 +1056,18 @@
 
     .modal-close svg { width: 1.5rem; height: 1.5rem; }
 
+    .modal-body {
+      flex: 1 1 auto;
+      overflow-y: auto;
+      padding: 1.5rem;
+      min-height: 0;
+    }
+
+    .modal-footer {
+      flex-shrink: 0;
+      padding: 0 1.5rem 1.5rem;
+    }
+
     .modal-step { display: none; }
     .modal-step.active { display: block; }
 
@@ -1067,7 +1079,7 @@
 
     .prestation-option {
       display: flex;
-      align-items: center;
+      align-items: flex-start;
       gap: 1rem;
       padding: 1rem;
       border-radius: var(--radius);
@@ -1086,7 +1098,7 @@
       background: rgba(30,30,30,0.7);
     }
 
-    .prestation-option.selected {
+    .prestation-item.selected .prestation-option {
       border-color: var(--gold);
       background: rgba(201, 169, 110, 0.1);
     }
@@ -1100,9 +1112,10 @@
       align-items: center;
       justify-content: center;
       flex-shrink: 0;
+      margin-top: 0.125rem;
     }
 
-    .prestation-option.selected .prestation-radio {
+    .prestation-item.selected .prestation-radio {
       border-color: var(--gold);
       background: var(--gold);
     }
@@ -1116,7 +1129,7 @@
       opacity: 0;
     }
 
-    .prestation-option.selected .prestation-radio::after { opacity: 1; }
+    .prestation-item.selected .prestation-radio::after { opacity: 1; }
 
     .prestation-info { flex: 1; }
 
@@ -1125,24 +1138,65 @@
       font-size: 1.125rem;
       color: #fff;
       font-weight: 600;
+      display: block;
+      margin-bottom: 0.25rem;
     }
 
     .prestation-desc {
       color: rgba(255,255,255,0.5);
-      font-size: 0.75rem;
+      font-size: 0.875rem;
       font-weight: 300;
     }
 
-    .prestation-price {
-      color: var(--gold);
-      font-weight: 600;
-      font-size: 0.875rem;
+    .prestation-fields {
+      display: none;
+      padding: 1rem 1rem 0 3.25rem;
+    }
+
+    .prestation-item.selected .prestation-fields { display: block; }
+
+    .field-group {
+      margin-bottom: 1rem;
+    }
+
+    .field-group:last-child { margin-bottom: 0; }
+
+    .field-label {
+      display: block;
+      color: rgba(255,255,255,0.6);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 0.5rem;
+    }
+
+    .field-input,
+    .field-select {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      background: rgba(0,0,0,0.3);
+      border: 1px solid rgba(201, 169, 110, 0.2);
+      border-radius: var(--radius);
+      color: #fff;
+      font-family: inherit;
+      font-size: 0.9375rem;
+      outline: none;
+      transition: border-color 0.3s ease;
+    }
+
+    .field-input:focus,
+    .field-select:focus {
+      border-color: var(--gold);
+    }
+
+    .field-select option {
+      background: #1a1a1a;
+      color: #fff;
     }
 
     .modal-actions {
       display: flex;
       justify-content: flex-end;
-      margin-top: 1.5rem;
     }
 
     .recap-card {
@@ -1196,6 +1250,21 @@
     .btn-secondary:hover {
       background: rgba(255,255,255,0.05);
       color: #fff;
+    }
+
+    @media (max-width: 640px) {
+      .modal-overlay { padding: 0; align-items: flex-end; }
+      .modal {
+        max-width: 100%;
+        max-height: none;
+        height: 95vh;
+        border-radius: 1rem 1rem 0 0;
+        border-bottom: 0;
+      }
+      .modal-header { padding: 1.25rem 1.25rem 1rem; }
+      .modal-body { padding: 0 1.25rem 1.25rem; }
+      .modal-footer { padding: 0 1.25rem 1.25rem; }
+      .modal-title { font-size: 1.5rem; }
     }
 
     .no-scroll { overflow: hidden; }
@@ -1266,7 +1335,7 @@
         <article class="glass-card cocktail-card animate-on-scroll slide-left delay-1" data-open-modal data-prestation="L'Alchimiste" data-desc="Whisky fumé, sirop d'érable noir, bitter à l'orange, zeste caramélisé" data-price="14€">
           <div class="cocktail-card-inner">
             <div class="cocktail-image">
-              <img src="./assets/extern/cocktail-old-fashioned-noir.png" alt="L'Alchimiste">
+              <img src="./assets/extern/cocktail-old-fashioned-noir.png" alt="L'Alchimiste" loading="lazy" width="1024" height="1024">
             </div>
             <div class="cocktail-info">
               <div class="cocktail-header">
@@ -1281,7 +1350,7 @@
         <article class="glass-card cocktail-card animate-on-scroll slide-right delay-2" data-open-modal data-prestation="Violet Mystique" data-desc="Gin artisanal, fleur de pois papillon, tonic maison, brume de lavande" data-price="15€">
           <div class="cocktail-card-inner">
             <div class="cocktail-image">
-              <img src="./assets/extern/cocktail-violet-mystique.png" alt="Violet Mystique">
+              <img src="./assets/extern/cocktail-violet-mystique.png" alt="Violet Mystique" loading="lazy" width="1024" height="1024">
             </div>
             <div class="cocktail-info">
               <div class="cocktail-header">
@@ -1296,7 +1365,7 @@
         <article class="glass-card cocktail-card animate-on-scroll slide-left delay-3" data-open-modal data-prestation="Jardin Secret" data-desc="Vodka infusée basilic, citron vert pressé, sirop de concombre, eau pétillante" data-price="13€">
           <div class="cocktail-card-inner">
             <div class="cocktail-image">
-              <img src="./assets/extern/cocktail-jardin-secret.png" alt="Jardin Secret">
+              <img src="./assets/extern/cocktail-jardin-secret.png" alt="Jardin Secret" loading="lazy" width="1024" height="1024">
             </div>
             <div class="cocktail-info">
               <div class="cocktail-header">
@@ -1311,7 +1380,7 @@
         <article class="glass-card cocktail-card animate-on-scroll slide-right delay-4" data-open-modal data-prestation="Rouge Passion" data-desc="Mezcal, liqueur de sang d'orange, grenadine artisanale, piment d'Espelette" data-price="16€">
           <div class="cocktail-card-inner">
             <div class="cocktail-image">
-              <img src="./assets/extern/cocktail-rouge-passion.png" alt="Rouge Passion">
+              <img src="./assets/extern/cocktail-rouge-passion.png" alt="Rouge Passion" loading="lazy" width="1024" height="1024">
             </div>
             <div class="cocktail-info">
               <div class="cocktail-header">
@@ -1326,7 +1395,7 @@
         <article class="glass-card cocktail-card animate-on-scroll slide-left delay-5" data-open-modal data-prestation="Or Noir" data-desc="Champagne brut, liqueur de sureau, feuille d'or, zeste de yuzu" data-price="12€">
           <div class="cocktail-card-inner">
             <div class="cocktail-image">
-              <img src="./assets/extern/cocktail-or-noir.png" alt="Or Noir">
+              <img src="./assets/extern/cocktail-or-noir.png" alt="Or Noir" loading="lazy" width="1024" height="1024">
             </div>
             <div class="cocktail-info">
               <div class="cocktail-header">
@@ -1584,92 +1653,68 @@
         </button>
       </div>
 
-      <!-- Step 1 -->
-      <div class="modal-step active" id="modalStep1">
-        <p style="color:rgba(255,255,255,0.5); font-size:0.875rem; margin-bottom:1rem; font-weight:300;">Choisissez votre prestation :</p>
-        <div class="prestation-list" role="radiogroup" aria-label="Prestations">
-          <button class="prestation-option" role="radio" aria-checked="false" data-prestation="L'Alchimiste" data-desc="Whisky fumé, sirop d'érable noir, bitter à l'orange" data-price="14€">
-            <span class="prestation-radio"></span>
-            <span class="prestation-info">
-              <span class="prestation-name">L'Alchimiste</span>
-              <span class="prestation-desc">Whisky fumé, sirop d'érable noir, bitter à l'orange</span>
-            </span>
-            <span class="prestation-price">14€</span>
-          </button>
-          <button class="prestation-option" role="radio" aria-checked="false" data-prestation="Violet Mystique" data-desc="Gin artisanal, fleur de pois papillon, tonic maison" data-price="15€">
-            <span class="prestation-radio"></span>
-            <span class="prestation-info">
-              <span class="prestation-name">Violet Mystique</span>
-              <span class="prestation-desc">Gin artisanal, fleur de pois papillon, tonic maison</span>
-            </span>
-            <span class="prestation-price">15€</span>
-          </button>
-          <button class="prestation-option" role="radio" aria-checked="false" data-prestation="Jardin Secret" data-desc="Vodka infusée basilic, citron vert pressé" data-price="13€">
-            <span class="prestation-radio"></span>
-            <span class="prestation-info">
-              <span class="prestation-name">Jardin Secret</span>
-              <span class="prestation-desc">Vodka infusée basilic, citron vert pressé</span>
-            </span>
-            <span class="prestation-price">13€</span>
-          </button>
-          <button class="prestation-option" role="radio" aria-checked="false" data-prestation="Rouge Passion" data-desc="Mezcal, liqueur de sang d'orange, piment d'Espelette" data-price="16€">
-            <span class="prestation-radio"></span>
-            <span class="prestation-info">
-              <span class="prestation-name">Rouge Passion</span>
-              <span class="prestation-desc">Mezcal, liqueur de sang d'orange, piment d'Espelette</span>
-            </span>
-            <span class="prestation-price">16€</span>
-          </button>
-          <button class="prestation-option" role="radio" aria-checked="false" data-prestation="Or Noir" data-desc="Champagne brut, liqueur de sureau, feuille d'or" data-price="12€">
-            <span class="prestation-radio"></span>
-            <span class="prestation-info">
-              <span class="prestation-name">Or Noir</span>
-              <span class="prestation-desc">Champagne brut, liqueur de sureau, feuille d'or</span>
-            </span>
-            <span class="prestation-price">12€</span>
-          </button>
-          <button class="prestation-option" role="radio" aria-checked="false" data-prestation="Happy Hour" data-desc="Cocktails signatures à prix doux, 17h-20h" data-price="Sur place">
-            <span class="prestation-radio"></span>
-            <span class="prestation-info">
-              <span class="prestation-name">Happy Hour</span>
-              <span class="prestation-desc">Cocktails signatures à prix doux, 17h-20h</span>
-            </span>
-            <span class="prestation-price">Sur place</span>
-          </button>
-          <button class="prestation-option" role="radio" aria-checked="false" data-prestation="Jeudis Vinyl" data-desc="Soirée soul, funk et jazz, chaque jeudi 20h" data-price="Sur place">
-            <span class="prestation-radio"></span>
-            <span class="prestation-info">
-              <span class="prestation-name">Jeudis Vinyl</span>
-              <span class="prestation-desc">Soirée soul, funk et jazz, chaque jeudi 20h</span>
-            </span>
-            <span class="prestation-price">Sur place</span>
-          </button>
-          <button class="prestation-option" role="radio" aria-checked="false" data-prestation="Privatisation" data-desc="Anniversaire, soirée d'entreprise, jusqu'à 40 personnes" data-price="Sur devis">
-            <span class="prestation-radio"></span>
-            <span class="prestation-info">
-              <span class="prestation-name">Privatisation</span>
-              <span class="prestation-desc">Anniversaire, soirée d'entreprise, jusqu'à 40 personnes</span>
-            </span>
-            <span class="prestation-price">Sur devis</span>
-          </button>
+      <div class="modal-body">
+        <!-- Step 1 -->
+        <div class="modal-step active" id="modalStep1">
+          <p style="color:rgba(255,255,255,0.5); font-size:0.875rem; margin-bottom:1rem; font-weight:300;">Que souhaitez-vous réserver ?</p>
+          <div class="prestation-list" role="radiogroup" aria-label="Type de réservation">
+            <div class="prestation-item" data-type="table">
+              <button class="prestation-option" role="radio" aria-checked="false" tabindex="0">
+                <span class="prestation-radio"></span>
+                <span class="prestation-info">
+                  <span class="prestation-name">Réserver une table</span>
+                  <span class="prestation-desc">Choisissez votre date et le nombre de personnes.</span>
+                </span>
+              </button>
+              <div class="prestation-fields">
+                <div class="field-group">
+                  <label class="field-label" for="reservationDate">Date</label>
+                  <input class="field-input" type="date" id="reservationDate">
+                </div>
+                <div class="field-group">
+                  <label class="field-label" for="reservationGuests">Nombre de personnes</label>
+                  <select class="field-select" id="reservationGuests">
+                    <option value="1">1 personne</option>
+                    <option value="2" selected>2 personnes</option>
+                    <option value="3">3 personnes</option>
+                    <option value="4">4 personnes</option>
+                    <option value="5">5 personnes</option>
+                    <option value="6">6 personnes</option>
+                    <option value="7">7 personnes</option>
+                    <option value="8">8 personnes</option>
+                    <option value="9">9 personnes</option>
+                    <option value="10">10 personnes</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <div class="prestation-item" data-type="private">
+              <button class="prestation-option" role="radio" aria-checked="false" tabindex="0">
+                <span class="prestation-radio"></span>
+                <span class="prestation-info">
+                  <span class="prestation-name">Privatiser / Événement</span>
+                  <span class="prestation-desc">Jusqu'à 40 personnes, sur devis.</span>
+                </span>
+              </button>
+            </div>
+          </div>
         </div>
-        <div class="modal-actions">
-          <button class="btn-primary glow-gold" id="modalNext" disabled>Continuer</button>
+
+        <!-- Step 2 -->
+        <div class="modal-step" id="modalStep2">
+          <div class="recap-card">
+            <p class="recap-label">Votre demande</p>
+            <p class="recap-value" id="recapTitle">—</p>
+            <p class="recap-detail" id="recapDesc">—</p>
+          </div>
+          <p style="color:rgba(255,255,255,0.5); font-size:0.875rem; margin-bottom:0; font-weight:300;">Confirmez pour être redirigé vers notre agenda en ligne et choisir votre créneau.</p>
         </div>
       </div>
 
-      <!-- Step 2 -->
-      <div class="modal-step" id="modalStep2">
-        <div class="recap-card">
-          <p class="recap-label">Votre choix</p>
-          <p class="recap-value" id="recapTitle">—</p>
-          <p class="recap-detail" id="recapDesc">—</p>
-          <p class="recap-detail" id="recapPrice" style="color:var(--gold); margin-top:0.75rem;">—</p>
-        </div>
-        <p style="color:rgba(255,255,255,0.5); font-size:0.875rem; margin-bottom:1.5rem; font-weight:300;">Confirmez votre demande pour être redirigé vers notre agenda en ligne et choisir votre créneau.</p>
-        <div class="modal-actions">
-          <button class="btn-secondary" id="modalBack">Retour</button>
-          <a href="https://cal.com/leman-nova-0zwvun/rendez-vous-15-minutes" target="_blank" rel="noopener" class="btn-primary glow-gold" id="modalConfirm">Confirmer et réserver</a>
+      <div class="modal-footer">
+        <div class="modal-actions" id="modalFooterActions">
+          <button class="btn-primary glow-gold" id="modalNext" disabled>Continuer</button>
         </div>
       </div>
     </div>
@@ -1714,35 +1759,49 @@
       // Modal
       const modal = document.getElementById('reservationModal');
       const modalClose = document.getElementById('modalClose');
-      const modalNext = document.getElementById('modalNext');
-      const modalBack = document.getElementById('modalBack');
-      const modalConfirm = document.getElementById('modalConfirm');
+      const modalFooterActions = document.getElementById('modalFooterActions');
       const step1 = document.getElementById('modalStep1');
       const step2 = document.getElementById('modalStep2');
       const recapTitle = document.getElementById('recapTitle');
       const recapDesc = document.getElementById('recapDesc');
-      const recapPrice = document.getElementById('recapPrice');
       const options = document.querySelectorAll('.prestation-option');
+      const items = document.querySelectorAll('.prestation-item');
+      const reservationDate = document.getElementById('reservationDate');
+      const reservationGuests = document.getElementById('reservationGuests');
       let selected = null;
 
-      function openModal(prestation, desc, price) {
-        modal.classList.add('open');
-        document.body.classList.add('no-scroll');
+      const STEP1_FOOTER = '<button class="btn-primary glow-gold" id="modalNext" disabled>Continuer</button>';
+      const STEP2_FOOTER = '<button class="btn-secondary" id="modalBack">Retour</button><a href="https://cal.com/leman-nova-0zwvun/rendez-vous-15-minutes" target="_blank" rel="noopener" class="btn-primary glow-gold" id="modalConfirm">Confirmer et réserver</a>';
+
+      function setMinDate() {
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);
+        const yyyy = today.getFullYear();
+        const mm = String(today.getMonth() + 1).padStart(2, '0');
+        const dd = String(today.getDate()).padStart(2, '0');
+        reservationDate.min = yyyy + '-' + mm + '-' + dd;
+      }
+
+      function resetModal() {
+        selected = null;
+        items.forEach(function(item) {
+          item.classList.remove('selected');
+          const radio = item.querySelector('[role="radio"]');
+          if (radio) radio.setAttribute('aria-checked', 'false');
+        });
+        reservationDate.value = '';
+        reservationGuests.value = '2';
         step1.classList.add('active');
         step2.classList.remove('active');
+        modalFooterActions.innerHTML = STEP1_FOOTER;
+        bindNextButton();
+        updateNextButton();
+      }
 
-        if (prestation) {
-          options.forEach(function(opt) {
-            opt.classList.remove('selected');
-            opt.setAttribute('aria-checked', 'false');
-            if (opt.dataset.prestation === prestation) {
-              opt.classList.add('selected');
-              opt.setAttribute('aria-checked', 'true');
-              selected = opt;
-            }
-          });
-          modalNext.disabled = false;
-        }
+      function openModal() {
+        resetModal();
+        modal.classList.add('open');
+        document.body.classList.add('no-scroll');
       }
 
       function closeModal() {
@@ -1753,7 +1812,7 @@
       document.querySelectorAll('[data-open-modal]').forEach(function(btn) {
         btn.addEventListener('click', function(e) {
           e.preventDefault();
-          openModal(btn.dataset.prestation, btn.dataset.desc, btn.dataset.price);
+          openModal();
         });
       });
 
@@ -1765,33 +1824,84 @@
         if (e.key === 'Escape' && modal.classList.contains('open')) closeModal();
       });
 
+      function updateNextButton() {
+        const nextBtn = document.getElementById('modalNext');
+        if (!nextBtn) return;
+        nextBtn.disabled = !isFormValid();
+      }
+
+      function isFormValid() {
+        if (!selected) return false;
+        if (selected.dataset.type === 'table') {
+          return reservationDate.value !== '';
+        }
+        return true;
+      }
+
+      function selectOption(opt) {
+        const item = opt.closest('.prestation-item');
+        if (!item) return;
+        items.forEach(function(i) {
+          i.classList.remove('selected');
+          const radio = i.querySelector('[role="radio"]');
+          if (radio) radio.setAttribute('aria-checked', 'false');
+        });
+        item.classList.add('selected');
+        opt.setAttribute('aria-checked', 'true');
+        selected = item;
+        updateNextButton();
+      }
+
       options.forEach(function(opt) {
         opt.addEventListener('click', function() {
-          options.forEach(function(o) {
-            o.classList.remove('selected');
-            o.setAttribute('aria-checked', 'false');
-          });
-          opt.classList.add('selected');
-          opt.setAttribute('aria-checked', 'true');
-          selected = opt;
-          modalNext.disabled = false;
+          selectOption(opt);
         });
       });
 
-      modalNext.addEventListener('click', function() {
-        if (!selected) return;
-        recapTitle.textContent = selected.dataset.prestation;
-        recapDesc.textContent = selected.dataset.desc;
-        recapPrice.textContent = selected.dataset.price;
+      function formatDate(frDate) {
+        const parts = frDate.split('-');
+        return parts[2] + '/' + parts[1] + '/' + parts[0];
+      }
+
+      function goToStep2() {
+        if (!isFormValid()) return;
+        const type = selected.dataset.type;
+        let calUrl = 'https://cal.com/leman-nova-0zwvun/rendez-vous-15-minutes?type=' + encodeURIComponent(type);
+        if (type === 'table') {
+          const guests = reservationGuests.value;
+          const date = reservationDate.value;
+          calUrl += '&date=' + encodeURIComponent(date) + '&guests=' + encodeURIComponent(guests);
+          recapTitle.textContent = 'Table pour ' + guests + ' personne' + (parseInt(guests, 10) > 1 ? 's' : '') + ' le ' + formatDate(date);
+          recapDesc.textContent = 'Réservation de table au Comptoir Noir.';
+        } else {
+          recapTitle.textContent = 'Soirée privatisation — durée à définir';
+          recapDesc.textContent = "Événement privé au Comptoir Noir, jusqu'à 40 personnes, sur devis.";
+        }
         step1.classList.remove('active');
         step2.classList.add('active');
-        modalConfirm.href = 'https://cal.com/leman-nova-0zwvun/rendez-vous-15-minutes?purpose=' + encodeURIComponent(selected.dataset.prestation);
-      });
+        modalFooterActions.innerHTML = STEP2_FOOTER;
+        document.getElementById('modalConfirm').href = calUrl;
+        document.getElementById('modalBack').addEventListener('click', goToStep1);
+      }
 
-      modalBack.addEventListener('click', function() {
+      function goToStep1() {
         step2.classList.remove('active');
         step1.classList.add('active');
-      });
+        modalFooterActions.innerHTML = STEP1_FOOTER;
+        bindNextButton();
+        updateNextButton();
+      }
+
+      function bindNextButton() {
+        const nextBtn = document.getElementById('modalNext');
+        if (nextBtn) nextBtn.addEventListener('click', goToStep2);
+      }
+
+      reservationDate.addEventListener('change', updateNextButton);
+      reservationGuests.addEventListener('change', updateNextButton);
+
+      setMinDate();
+      bindNextButton();
     })();
   </script>
 </body>

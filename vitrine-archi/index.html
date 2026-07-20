@@ -13,6 +13,7 @@
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://www.lemannova.com/vitrine-archi/">
   <link rel="icon" href="./assets/extern/archi.jpg" type="image/jpeg">
+  <link rel="preload" as="image" href="./assets/extern/archi.jpg" type="image/jpeg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Josefin+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -925,9 +926,11 @@
     .modal {
       width: 100%;
       max-width: 520px;
+      max-height: calc(100vh - 3rem);
       background: var(--anthracite-light);
       border: 1px solid var(--border-color);
-      padding: 2rem;
+      display: flex;
+      flex-direction: column;
       position: relative;
       transform: translateY(20px);
       transition: transform 0.4s ease;
@@ -937,12 +940,34 @@
       transform: translateY(0);
     }
 
+    .modal-header {
+      padding: 2rem 2rem 1rem;
+      flex-shrink: 0;
+    }
+
+    .modal-body {
+      padding: 0 2rem;
+      overflow-y: auto;
+      flex: 1 1 auto;
+      min-height: 0;
+      overscroll-behavior: contain;
+    }
+
+    .modal-footer {
+      padding: 1.5rem 2rem 2rem;
+      flex-shrink: 0;
+      display: flex;
+      gap: 1rem;
+      justify-content: flex-end;
+    }
+
     .modal-close {
       position: absolute;
       top: 1rem;
       right: 1rem;
       color: var(--muted);
       transition: color 0.3s ease;
+      z-index: 5;
     }
 
     .modal-close:hover { color: var(--gold); }
@@ -950,6 +975,7 @@
     .modal-title {
       font-size: 1.5rem;
       margin-bottom: 0.5rem;
+      padding-right: 2rem;
     }
 
     .modal-step {
@@ -958,18 +984,24 @@
       text-transform: uppercase;
       color: var(--gold);
       opacity: 0.7;
-      margin-bottom: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .modal-subtitle {
+      font-size: 0.85rem;
+      color: var(--muted);
     }
 
     .modal-options {
       display: flex;
       flex-direction: column;
       gap: 0.75rem;
-      margin-bottom: 1.5rem;
     }
 
     .modal-option {
-      display: block;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
       padding: 1rem 1.25rem;
       border: 1px solid hsla(220, 8%, 22%, 0.5);
       background: transparent;
@@ -977,12 +1009,28 @@
       text-align: left;
       font-size: 0.9rem;
       transition: border-color 0.3s ease, background-color 0.3s ease;
+      cursor: pointer;
     }
 
     .modal-option:hover,
+    .modal-option:has(input:checked),
     .modal-option.selected {
       border-color: var(--gold);
       background: hsla(43, 72%, 55%, 0.05);
+    }
+
+    .modal-option input[type="radio"] {
+      flex-shrink: 0;
+      margin-top: 0.25rem;
+      accent-color: var(--gold);
+      width: 1rem;
+      height: 1rem;
+      cursor: pointer;
+    }
+
+    .modal-option .option-content {
+      display: flex;
+      flex-direction: column;
     }
 
     .modal-option small {
@@ -992,38 +1040,27 @@
       margin-top: 0.25rem;
     }
 
-    .modal-actions {
-      display: flex;
-      gap: 1rem;
-      justify-content: flex-end;
+    .modal-footer .btn-primary.is-disabled {
+      opacity: 0.5;
+      pointer-events: none;
+      cursor: not-allowed;
     }
-
-    .modal-actions.center { justify-content: center; }
-
-    .modal-recap {
-      background: var(--anthracite-deep);
-      border: 1px solid var(--border-color);
-      padding: 1.25rem;
-      margin-bottom: 1.5rem;
-    }
-
-    .modal-recap dt {
-      font-size: 0.65rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 0.25rem;
-    }
-
-    .modal-recap dd {
-      font-size: 1rem;
-      color: var(--fg);
-      margin-bottom: 1rem;
-    }
-
-    .modal-recap dd:last-child { margin-bottom: 0; }
 
     .hidden { display: none !important; }
+
+    @media (max-width: 640px) {
+      .modal-overlay {
+        padding: 0.5rem;
+        align-items: flex-end;
+      }
+      .modal {
+        max-height: calc(100vh - 1rem);
+        max-width: 100%;
+      }
+      .modal-header { padding: 1.5rem 1.5rem 1rem; }
+      .modal-body { padding: 0 1.5rem; }
+      .modal-footer { padding: 1rem 1.5rem 1.5rem; }
+    }
 
     /* Utility icons */
     .icon { width: 1.5rem; height: 1.5rem; }
@@ -1110,7 +1147,7 @@
 
     <div class="project-panel" data-reveal-panel>
       <div class="project-bg">
-        <img src="./assets/extern/project-appartement-champel.png" alt="Appartement Champel" loading="lazy">
+        <img src="./assets/extern/project-appartement-champel.png" alt="Appartement Champel" loading="lazy" width="1920" height="1080">
         <div class="project-gradient-top"></div>
         <div class="project-gradient-left"></div>
       </div>
@@ -1123,7 +1160,7 @@
 
     <div class="project-panel" data-reveal-panel>
       <div class="project-bg">
-        <img src="./assets/extern/project-villa-cologny.png" alt="Villa Cologny" loading="lazy">
+        <img src="./assets/extern/project-villa-cologny.png" alt="Villa Cologny" loading="lazy" width="1920" height="1080">
         <div class="project-gradient-top"></div>
         <div class="project-gradient-right"></div>
       </div>
@@ -1136,7 +1173,7 @@
 
     <div class="project-panel" data-reveal-panel>
       <div class="project-bg">
-        <img src="./assets/extern/project-loft-carouge.png" alt="Loft Carouge" loading="lazy">
+        <img src="./assets/extern/project-loft-carouge.png" alt="Loft Carouge" loading="lazy" width="1920" height="1080">
         <div class="project-gradient-top"></div>
         <div class="project-gradient-left"></div>
       </div>
@@ -1149,7 +1186,7 @@
 
     <div class="project-panel" data-reveal-panel>
       <div class="project-bg">
-        <img src="./assets/extern/project-bureau-rive-gauche.png" alt="Bureau Rive Gauche" loading="lazy">
+        <img src="./assets/extern/project-bureau-rive-gauche.png" alt="Bureau Rive Gauche" loading="lazy" width="1920" height="1080">
         <div class="project-gradient-top"></div>
         <div class="project-gradient-right"></div>
       </div>
@@ -1296,57 +1333,53 @@
 
   <!-- Reservation Modal -->
   <div class="modal-overlay" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-    <div class="modal">
+    <div class="modal" role="document">
       <button class="modal-close" id="modalClose" aria-label="Fermer">
         <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
       </button>
 
-      <!-- Step 1 -->
-      <div id="modalStep1">
-        <p class="modal-step">Étape 1 / 2</p>
-        <h3 class="modal-title" id="modalTitle">Choisir une prestation</h3>
-        <p style="font-size: 0.85rem; color: var(--muted); margin-bottom: 1.5rem;">Sélectionnez le service qui correspond à votre projet.</p>
-        <div class="modal-options" role="radiogroup" aria-label="Prestations">
-          <button class="modal-option" data-service="Consultation conseil" data-desc="Un premier regard expert sur votre espace.">
-            Consultation conseil
-            <small>Un premier regard expert sur votre espace.</small>
-          </button>
-          <button class="modal-option" data-service="Conception et plans" data-desc="De l'esquisse au plan détaillé.">
-            Conception et plans
-            <small>De l'esquisse au plan détaillé.</small>
-          </button>
-          <button class="modal-option" data-service="Suivi de chantier" data-desc="Accompagnement jusqu'au dernier détail.">
-            Suivi de chantier
-            <small>Accompagnement jusqu'au dernier détail.</small>
-          </button>
-          <button class="modal-option" data-service="Appel découverte" data-desc="15 min pour faire connaissance.">
-            Appel découverte
-            <small>15 min pour faire connaissance.</small>
-          </button>
-        </div>
-        <div class="modal-actions">
-          <button class="btn-secondary" id="modalCancel1">Annuler</button>
-          <button class="btn-primary" id="modalNext" disabled>Suivant</button>
+      <div class="modal-header">
+        <p class="modal-step">Appel découverte</p>
+        <h3 class="modal-title" id="modalTitle">Choisir le sujet de l'appel</h3>
+        <p class="modal-subtitle">Durée : 15 minutes — pour échanger sur votre projet, sans engagement.</p>
+      </div>
+
+      <div class="modal-body">
+        <div class="modal-options" role="radiogroup" aria-label="Sujet de l'appel découverte">
+          <label class="modal-option">
+            <input type="radio" name="service" value="Consultation conseil" data-desc="Un premier regard expert sur votre espace.">
+            <span class="option-content">
+              <span class="option-title">Consultation conseil</span>
+              <small>Un premier regard expert sur votre espace.</small>
+            </span>
+          </label>
+          <label class="modal-option">
+            <input type="radio" name="service" value="Conception et plans" data-desc="De l'esquisse au plan détaillé.">
+            <span class="option-content">
+              <span class="option-title">Conception et plans</span>
+              <small>De l'esquisse au plan détaillé.</small>
+            </span>
+          </label>
+          <label class="modal-option">
+            <input type="radio" name="service" value="Suivi de chantier" data-desc="Accompagnement jusqu'au dernier détail.">
+            <span class="option-content">
+              <span class="option-title">Suivi de chantier</span>
+              <small>Accompagnement jusqu'au dernier détail.</small>
+            </span>
+          </label>
+          <label class="modal-option">
+            <input type="radio" name="service" value="Appel découverte" data-desc="15 min pour faire connaissance.">
+            <span class="option-content">
+              <span class="option-title">Appel découverte</span>
+              <small>15 min pour faire connaissance.</small>
+            </span>
+          </label>
         </div>
       </div>
 
-      <!-- Step 2 -->
-      <div id="modalStep2" class="hidden">
-        <p class="modal-step">Étape 2 / 2</p>
-        <h3 class="modal-title">Récapitulatif</h3>
-        <dl class="modal-recap">
-          <dt>Prestation</dt>
-          <dd id="recapService">—</dd>
-          <dt>Durée</dt>
-          <dd id="recapDuration">15 minutes</dd>
-          <dt>Tarif</dt>
-          <dd id="recapPrice">Gratuit</dd>
-        </dl>
-        <p style="font-size: 0.85rem; color: var(--muted); margin-bottom: 1.5rem;">Vous allez être redirigé vers notre calendrier Cal.com pour choisir un créneau.</p>
-        <div class="modal-actions center">
-          <button class="btn-secondary" id="modalBack">Retour</button>
-          <a href="https://cal.com/leman-nova-0zwvun/rendez-vous-15-minutes" target="_blank" rel="noopener noreferrer" class="btn-primary" id="modalConfirm">Confirmer et réserver</a>
-        </div>
+      <div class="modal-footer">
+        <button class="btn-secondary" id="modalCancel">Annuler</button>
+        <a href="https://cal.com/leman-nova-0zwvun/rendez-vous-15-minutes?duration=15" target="_blank" rel="noopener noreferrer" class="btn-primary is-disabled" id="modalConfirm" aria-disabled="true">Confirmer mon appel découverte</a>
       </div>
     </div>
   </div>
@@ -1414,28 +1447,40 @@
 
       // Modal
       const modal = document.getElementById('modal');
-      const modalStep1 = document.getElementById('modalStep1');
-      const modalStep2 = document.getElementById('modalStep2');
-      const modalNext = document.getElementById('modalNext');
-      const modalBack = document.getElementById('modalBack');
       const modalClose = document.getElementById('modalClose');
-      const modalCancel1 = document.getElementById('modalCancel1');
+      const modalCancel = document.getElementById('modalCancel');
+      const modalConfirm = document.getElementById('modalConfirm');
       const serviceOptions = document.querySelectorAll('.modal-option');
-      const recapService = document.getElementById('recapService');
+      const serviceInputs = document.querySelectorAll('input[name="service"]');
 
-      let selectedService = null;
+      function updateConfirmState() {
+        const selected = document.querySelector('input[name="service"]:checked');
+        if (selected) {
+          modalConfirm.classList.remove('is-disabled');
+          modalConfirm.setAttribute('aria-disabled', 'false');
+        } else {
+          modalConfirm.classList.add('is-disabled');
+          modalConfirm.setAttribute('aria-disabled', 'true');
+        }
+      }
+
+      function resetModal() {
+        serviceInputs.forEach(input => { input.checked = false; });
+        serviceOptions.forEach(opt => opt.classList.remove('selected'));
+        updateConfirmState();
+      }
 
       function openModal(service) {
         modal.classList.add('open');
         document.body.style.overflow = 'hidden';
-        modalStep1.classList.remove('hidden');
-        modalStep2.classList.add('hidden');
-        selectedService = null;
-        serviceOptions.forEach(opt => opt.classList.remove('selected'));
-        modalNext.disabled = true;
+        resetModal();
         if (service) {
-          const match = Array.from(serviceOptions).find(opt => opt.dataset.service === service);
-          if (match) selectOption(match);
+          const match = Array.from(serviceInputs).find(input => input.value === service);
+          if (match) {
+            match.checked = true;
+            match.closest('.modal-option').classList.add('selected');
+            updateConfirmState();
+          }
         }
       }
 
@@ -1444,34 +1489,23 @@
         document.body.style.overflow = '';
       }
 
-      function selectOption(option) {
-        serviceOptions.forEach(opt => opt.classList.remove('selected'));
-        option.classList.add('selected');
-        selectedService = {
-          service: option.dataset.service,
-          desc: option.dataset.desc
-        };
-        modalNext.disabled = false;
-      }
-
-      serviceOptions.forEach(option => {
-        option.addEventListener('click', () => selectOption(option));
-      });
-
-      modalNext.addEventListener('click', () => {
-        if (!selectedService) return;
-        recapService.textContent = selectedService.service;
-        modalStep1.classList.add('hidden');
-        modalStep2.classList.remove('hidden');
-      });
-
-      modalBack.addEventListener('click', () => {
-        modalStep2.classList.add('hidden');
-        modalStep1.classList.remove('hidden');
+      serviceInputs.forEach(input => {
+        input.addEventListener('change', () => {
+          serviceOptions.forEach(opt => opt.classList.remove('selected'));
+          if (input.checked) {
+            input.closest('.modal-option').classList.add('selected');
+          }
+          updateConfirmState();
+        });
       });
 
       modalClose.addEventListener('click', closeModal);
-      modalCancel1.addEventListener('click', closeModal);
+      modalCancel.addEventListener('click', closeModal);
+      modalConfirm.addEventListener('click', (e) => {
+        if (modalConfirm.classList.contains('is-disabled')) {
+          e.preventDefault();
+        }
+      });
       modal.addEventListener('click', (e) => {
         if (e.target === modal) closeModal();
       });

@@ -13,6 +13,7 @@
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://www.lemannova.com/vitrine-institut/">
   <link rel="icon" type="image/png" href="./assets/extern/logo-maison-eclat.png">
+  <link rel="preload" as="video" href="./assets/extern/institut.mp4" type="video/mp4">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -1134,10 +1135,12 @@
       width: 100%;
       max-width: 520px;
       max-height: 90vh;
-      overflow-y: auto;
       box-shadow: 0 25px 80px -12px rgba(0,0,0,0.25);
       transform: scale(0.95) translateY(20px);
       transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
     }
 
     .modal-overlay.open .modal {
@@ -1150,6 +1153,7 @@
       justify-content: space-between;
       padding: 1.5rem;
       border-bottom: 1px solid var(--border);
+      flex-shrink: 0;
     }
 
     .modal-header h3 {
@@ -1175,7 +1179,16 @@
     }
 
     .modal-body {
+      flex: 1 1 auto;
+      overflow-y: auto;
       padding: 1.5rem;
+    }
+
+    .modal-footer {
+      flex-shrink: 0;
+      padding: 1rem 1.5rem;
+      border-top: 1px solid var(--border);
+      background: var(--background);
     }
 
     .modal-step {
@@ -1201,6 +1214,11 @@
       text-align: left;
       transition: all 0.3s ease;
       font-family: 'Raleway', sans-serif;
+      position: relative;
+    }
+
+    .service-option:last-child {
+      margin-bottom: 0;
     }
 
     .service-option:hover {
@@ -1213,10 +1231,10 @@
       background: hsl(145 25% 38% / 0.06);
     }
 
-    .service-option .radio {
+    .service-option .checkbox {
       width: 1.25rem;
       height: 1.25rem;
-      border-radius: 50%;
+      border-radius: 0.375rem;
       border: 2px solid var(--border);
       flex-shrink: 0;
       display: flex;
@@ -1225,17 +1243,18 @@
       transition: all 0.3s ease;
     }
 
-    .service-option.selected .radio {
+    .service-option.selected .checkbox {
       border-color: var(--primary);
       background: var(--primary);
     }
 
-    .service-option.selected .radio::after {
+    .service-option.selected .checkbox::after {
       content: '';
       width: 0.375rem;
-      height: 0.375rem;
-      border-radius: 50%;
-      background: white;
+      height: 0.625rem;
+      border: solid white;
+      border-width: 0 2px 2px 0;
+      transform: rotate(45deg) translateY(-1px);
     }
 
     .service-option .info {
@@ -1258,13 +1277,14 @@
       font-size: 1.25rem;
       font-weight: 600;
       color: var(--primary);
+      text-align: right;
     }
 
     .modal-actions {
       display: flex;
       justify-content: flex-end;
       gap: 0.75rem;
-      margin-top: 1.5rem;
+      width: 100%;
     }
 
     .recap-box {
@@ -1279,20 +1299,74 @@
       text-transform: uppercase;
       letter-spacing: 0.1em;
       color: var(--muted-foreground);
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.75rem;
     }
 
-    .recap-box .value {
-      font-size: 1.125rem;
-      font-weight: 600;
+    .recap-services {
+      list-style: none;
+      margin-bottom: 1rem;
+    }
+
+    .recap-services li {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.5rem 0;
+      border-bottom: 1px solid hsl(35 20% 88% / 0.5);
+      font-size: 0.9375rem;
+    }
+
+    .recap-services li:last-child {
+      border-bottom: none;
+    }
+
+    .recap-services .service-name {
       color: var(--foreground);
+      font-weight: 500;
     }
 
-    .recap-box .value.secondary {
-      font-size: 1rem;
-      font-weight: 400;
+    .recap-services .service-meta {
       color: var(--muted-foreground);
-      margin-top: 0.25rem;
+      font-size: 0.8125rem;
+    }
+
+    .recap-total {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 0.75rem;
+      border-top: 1px solid var(--border);
+      font-weight: 600;
+      font-size: 1.125rem;
+    }
+
+    .recap-total .total-label {
+      color: var(--muted-foreground);
+      font-size: 0.875rem;
+      font-weight: 500;
+    }
+
+    .recap-duration {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 0.75rem;
+      margin-top: 0.75rem;
+      border-top: 1px dashed hsl(35 20% 88% / 0.7);
+      font-weight: 600;
+      font-size: 1rem;
+      color: var(--primary);
+    }
+
+    .recap-duration .duration-label {
+      color: var(--muted-foreground);
+      font-size: 0.875rem;
+      font-weight: 500;
+    }
+
+    .recap-empty {
+      color: var(--muted-foreground);
+      font-style: italic;
     }
 
     .cal-link {
@@ -1314,6 +1388,30 @@
       background: hsl(145 25% 32%);
       transform: translateY(-2px);
       box-shadow: 0 10px 30px hsl(145 25% 38% / 0.3);
+    }
+
+    @media (max-width: 640px) {
+      .modal-overlay {
+        padding: 0.5rem;
+        align-items: flex-end;
+      }
+
+      .modal {
+        max-height: calc(100vh - 1rem);
+        border-radius: 1.25rem;
+      }
+
+      .modal-header {
+        padding: 1.25rem;
+      }
+
+      .modal-body {
+        padding: 1.25rem;
+      }
+
+      .modal-footer {
+        padding: 0.875rem 1.25rem;
+      }
     }
 
     .sr-only {
@@ -1344,7 +1442,7 @@
     <div class="container">
       <div class="nav-inner">
         <a href="#" class="logo">
-          <img src="./assets/extern/logo-maison-eclat.png" alt="Maison Éclat">
+          <img src="./assets/extern/logo-maison-eclat.png" alt="Maison Éclat" width="1024" height="1024" loading="lazy">
           <span>Maison Éclat</span>
         </a>
         <div class="desktop-nav">
@@ -1413,7 +1511,7 @@
       <div class="treatments-list">
         <article class="treatment-card reveal open-modal" data-service="Soin visage éclat">
           <div class="treatment-image">
-            <img src="./assets/extern/spa-treatment-room.png" alt="Soin visage éclat">
+            <img src="./assets/extern/spa-treatment-room.png" width="1536" height="1024" loading="lazy" alt="Soin visage éclat">
             <div class="gradient-overlay"></div>
             <div class="price-badge">75€</div>
           </div>
@@ -1432,7 +1530,7 @@
 
         <article class="treatment-card reverse reveal open-modal" data-service="Massage californien">
           <div class="treatment-image">
-            <img src="./assets/extern/spa-massage-ambiance.png" alt="Massage californien">
+            <img src="./assets/extern/spa-massage-ambiance.png" width="1536" height="1024" loading="lazy" alt="Massage californien">
             <div class="gradient-overlay"></div>
             <div class="price-badge">80€</div>
           </div>
@@ -1451,7 +1549,7 @@
 
         <article class="treatment-card reveal open-modal" data-service="Épilation">
           <div class="treatment-image">
-            <img src="./assets/extern/spa-products-arrangement.png" alt="Épilation">
+            <img src="./assets/extern/spa-products-arrangement.png" width="1536" height="1024" loading="lazy" alt="Épilation">
             <div class="gradient-overlay"></div>
             <div class="price-badge">dès 18€</div>
           </div>
@@ -1470,7 +1568,7 @@
 
         <article class="treatment-card reverse reveal open-modal" data-service="Manucure">
           <div class="treatment-image">
-            <img src="./assets/extern/spa-products-arrangement.png" alt="Manucure">
+            <img src="./assets/extern/spa-products-arrangement.png" width="1536" height="1024" loading="lazy" alt="Manucure">
             <div class="gradient-overlay"></div>
             <div class="price-badge">45€</div>
           </div>
@@ -1489,7 +1587,7 @@
 
         <article class="treatment-card reveal open-modal" data-service="Rituel détente">
           <div class="treatment-image">
-            <img src="./assets/extern/spa-treatment-room.png" alt="Rituel détente">
+            <img src="./assets/extern/spa-treatment-room.png" width="1536" height="1024" loading="lazy" alt="Rituel détente">
             <div class="gradient-overlay"></div>
             <div class="price-badge">110€</div>
           </div>
@@ -1719,7 +1817,7 @@
     <div class="container">
       <div class="footer-inner">
         <div class="footer-brand">
-          <img src="./assets/extern/logo-maison-eclat.png" alt="Maison Éclat">
+          <img src="./assets/extern/logo-maison-eclat.png" alt="Maison Éclat" width="1024" height="1024" loading="lazy">
           <span>Maison Éclat</span>
         </div>
         <nav class="footer-links" aria-label="Footer">
@@ -1741,7 +1839,7 @@
 
   <!-- Booking Modal -->
   <div class="modal-overlay" id="booking-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
-    <div class="modal">
+    <div class="modal" role="document">
       <div class="modal-header">
         <h3 id="modal-title">Réserver un soin</h3>
         <button class="modal-close" id="modal-close" aria-label="Fermer">
@@ -1750,58 +1848,58 @@
       </div>
       <div class="modal-body">
         <div class="modal-step active" id="step-1">
-          <p style="color:var(--muted-foreground);margin-bottom:1.25rem;">Choisissez la prestation que vous souhaitez réserver :</p>
-          <div id="service-options">
-            <button class="service-option" data-value="Soin visage éclat" data-price="75€" data-duration="60 min">
-              <span class="radio"></span>
+          <p style="color:var(--muted-foreground);margin-bottom:1.25rem;">Choisissez une ou plusieurs prestations que vous souhaitez réserver :</p>
+          <div id="service-options" role="group" aria-label="Prestations disponibles">
+            <button class="service-option" type="button" data-value="Soin visage éclat" data-price="75€" data-duration="60 min" data-duration-minutes="60" role="checkbox" aria-checked="false">
+              <span class="checkbox" aria-hidden="true"></span>
               <span class="info">
                 <span class="name">Soin visage éclat</span>
                 <span class="meta">60 min · soin lumineux</span>
               </span>
               <span class="price">75€</span>
             </button>
-            <button class="service-option" data-value="Massage californien" data-price="80€" data-duration="60 min">
-              <span class="radio"></span>
+            <button class="service-option" type="button" data-value="Massage californien" data-price="80€" data-duration="60 min" data-duration-minutes="60" role="checkbox" aria-checked="false">
+              <span class="checkbox" aria-hidden="true"></span>
               <span class="info">
                 <span class="name">Massage californien</span>
                 <span class="meta">60 min · relaxation profonde</span>
               </span>
               <span class="price">80€</span>
             </button>
-            <button class="service-option" data-value="Épilation" data-price="dès 18€" data-duration="Variable">
-              <span class="radio"></span>
+            <button class="service-option" type="button" data-value="Épilation" data-price="dès 18€" data-duration="30 min" data-duration-minutes="30" role="checkbox" aria-checked="false">
+              <span class="checkbox" aria-hidden="true"></span>
               <span class="info">
                 <span class="name">Épilation</span>
                 <span class="meta">Variable · cire tiède</span>
               </span>
               <span class="price">dès 18€</span>
             </button>
-            <button class="service-option" data-value="Manucure" data-price="45€" data-duration="45 min">
-              <span class="radio"></span>
+            <button class="service-option" type="button" data-value="Manucure" data-price="45€" data-duration="45 min" data-duration-minutes="45" role="checkbox" aria-checked="false">
+              <span class="checkbox" aria-hidden="true"></span>
               <span class="info">
                 <span class="name">Manucure</span>
                 <span class="meta">45 min · soin complet mains</span>
               </span>
               <span class="price">45€</span>
             </button>
-            <button class="service-option" data-value="Rituel détente" data-price="110€" data-duration="90 min">
-              <span class="radio"></span>
+            <button class="service-option" type="button" data-value="Rituel détente" data-price="110€" data-duration="90 min" data-duration-minutes="90" role="checkbox" aria-checked="false">
+              <span class="checkbox" aria-hidden="true"></span>
               <span class="info">
                 <span class="name">Rituel détente</span>
                 <span class="meta">90 min · voyage sensoriel</span>
               </span>
               <span class="price">110€</span>
             </button>
-            <button class="service-option" data-value="Formule Découverte" data-price="95€" data-duration="~1h">
-              <span class="radio"></span>
+            <button class="service-option" type="button" data-value="Formule Découverte" data-price="95€" data-duration="60 min" data-duration-minutes="60" role="checkbox" aria-checked="false">
+              <span class="checkbox" aria-hidden="true"></span>
               <span class="info">
                 <span class="name">Formule Découverte</span>
                 <span class="meta">~1h · initiation bien-être</span>
               </span>
               <span class="price">95€</span>
             </button>
-            <button class="service-option" data-value="Formule Absolue" data-price="180€" data-duration="~2h30">
-              <span class="radio"></span>
+            <button class="service-option" type="button" data-value="Formule Absolue" data-price="180€" data-duration="150 min" data-duration-minutes="150" role="checkbox" aria-checked="false">
+              <span class="checkbox" aria-hidden="true"></span>
               <span class="info">
                 <span class="name">Formule Absolue</span>
                 <span class="meta">~2h30 · expérience signature</span>
@@ -1809,22 +1907,33 @@
               <span class="price">180€</span>
             </button>
           </div>
-          <div class="modal-actions">
-            <button class="btn-secondary" id="btn-cancel-1">Annuler</button>
-            <button class="btn-primary" id="btn-next" disabled>Suivant</button>
-          </div>
         </div>
         <div class="modal-step" id="step-2">
           <div class="recap-box">
-            <div class="label">Prestation choisie</div>
-            <div class="value" id="recap-service">—</div>
-            <div class="value secondary" id="recap-details">—</div>
+            <div class="label">Prestations choisies</div>
+            <ul class="recap-services" id="recap-services">
+              <li class="recap-empty">Aucune prestation sélectionnée</li>
+            </ul>
+            <div class="recap-total">
+              <span class="total-label">Total estimé</span>
+              <span id="recap-total">—</span>
+            </div>
+            <div class="recap-duration">
+              <span class="duration-label">Durée estimée</span>
+              <span id="recap-duration">—</span>
+            </div>
           </div>
           <p style="color:var(--muted-foreground);margin-bottom:1.5rem;line-height:1.7;">Cliquez ci-dessous pour finaliser votre rendez-vous via notre agenda en ligne sécurisé. Vous pourrez choisir le jour et l'heure qui vous conviennent.</p>
           <a href="https://cal.com/leman-nova-0zwvun/rendez-vous-15-minutes" target="_blank" rel="noopener noreferrer" class="cal-link">Prendre rendez-vous en ligne</a>
-          <div class="modal-actions">
-            <button class="btn-secondary" id="btn-back">Retour</button>
-          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <div class="modal-actions" id="modal-actions-step-1">
+          <button class="btn-secondary" id="btn-cancel-1">Annuler</button>
+          <button class="btn-primary" id="btn-next" disabled>Suivant</button>
+        </div>
+        <div class="modal-actions" id="modal-actions-step-2" style="display:none;">
+          <button class="btn-secondary" id="btn-back">Retour</button>
         </div>
       </div>
     </div>
@@ -1921,34 +2030,83 @@
       const modalClose = document.getElementById('modal-close');
       const step1 = document.getElementById('step-1');
       const step2 = document.getElementById('step-2');
+      const actionsStep1 = document.getElementById('modal-actions-step-1');
+      const actionsStep2 = document.getElementById('modal-actions-step-2');
       const btnNext = document.getElementById('btn-next');
       const btnBack = document.getElementById('btn-back');
       const btnCancel1 = document.getElementById('btn-cancel-1');
       const serviceOptions = document.querySelectorAll('.service-option');
-      const recapService = document.getElementById('recap-service');
-      const recapDetails = document.getElementById('recap-details');
+      const recapServices = document.getElementById('recap-services');
+      const recapTotal = document.getElementById('recap-total');
+      const recapDuration = document.getElementById('recap-duration');
       const calLink = document.querySelector('.cal-link');
 
-      let selectedService = null;
-      let selectedPrice = '';
-      let selectedDuration = '';
+      let selectedServices = [];
+
+      function parsePrice(priceStr) {
+        if (/dès|variable|sur devis/i.test(priceStr)) return null;
+        var cleaned = priceStr.replace(/\s/g, '').replace(/,/g, '.').replace(/[^\d.]/g, '');
+        return cleaned ? parseFloat(cleaned) : null;
+      }
+
+      function escapeHtml(text) {
+        return text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+      }
+
+      function updateNextButton() {
+        btnNext.disabled = selectedServices.length === 0;
+      }
+
+      function toggleOption(opt) {
+        var value = opt.dataset.value;
+        var exists = false;
+        for (var i = 0; i < selectedServices.length; i++) {
+          if (selectedServices[i].value === value) {
+            exists = true;
+            break;
+          }
+        }
+        if (exists) {
+          selectedServices = selectedServices.filter(function(s) { return s.value !== value; });
+          opt.classList.remove('selected');
+          opt.setAttribute('aria-checked', 'false');
+        } else {
+          selectedServices.push({
+            value: value,
+            price: opt.dataset.price,
+            duration: opt.dataset.duration,
+            durationMinutes: parseInt(opt.dataset.durationMinutes, 10) || 0
+          });
+          opt.classList.add('selected');
+          opt.setAttribute('aria-checked', 'true');
+        }
+        updateNextButton();
+      }
+
+      function clearSelection() {
+        selectedServices = [];
+        serviceOptions.forEach(function(opt) {
+          opt.classList.remove('selected');
+          opt.setAttribute('aria-checked', 'false');
+        });
+        updateNextButton();
+      }
+
+      function preselectService(serviceName) {
+        serviceOptions.forEach(function(opt) {
+          if (opt.dataset.value === serviceName) {
+            toggleOption(opt);
+          }
+        });
+      }
 
       function openModal(serviceName) {
+        clearSelection();
+        showStep(1);
         modal.classList.add('open');
         document.body.style.overflow = 'hidden';
-        showStep(1);
-        selectedService = null;
-        selectedPrice = '';
-        selectedDuration = '';
-        serviceOptions.forEach(function(opt) { opt.classList.remove('selected'); });
-        btnNext.disabled = true;
         if (serviceName) {
-          serviceOptions.forEach(function(opt) {
-            if (opt.dataset.value === serviceName) {
-              opt.classList.add('selected');
-              selectOption(opt);
-            }
-          });
+          preselectService(serviceName);
         }
       }
 
@@ -1961,32 +2119,63 @@
         if (n === 1) {
           step1.classList.add('active');
           step2.classList.remove('active');
+          if (actionsStep1) actionsStep1.style.display = 'flex';
+          if (actionsStep2) actionsStep2.style.display = 'none';
         } else {
           step1.classList.remove('active');
           step2.classList.add('active');
+          if (actionsStep1) actionsStep1.style.display = 'none';
+          if (actionsStep2) actionsStep2.style.display = 'flex';
+          buildRecap();
         }
       }
 
-      function selectOption(opt) {
-        selectedService = opt.dataset.value;
-        selectedPrice = opt.dataset.price;
-        selectedDuration = opt.dataset.duration;
-        btnNext.disabled = false;
+      function formatDuration(minutes) {
+        var h = Math.floor(minutes / 60);
+        var m = minutes % 60;
+        if (m === 0) return h + 'h00';
+        return h + 'h' + (m < 10 ? '0' + m : m);
+      }
+
+      function buildRecap() {
+        recapServices.innerHTML = '';
+        var total = 0;
+        var hasNumeric = false;
+        var totalMinutes = 0;
+        if (selectedServices.length === 0) {
+          recapServices.innerHTML = '<li class="recap-empty">Aucune prestation sélectionnée</li>';
+          recapTotal.textContent = '—';
+          if (recapDuration) recapDuration.textContent = '—';
+          calLink.href = 'https://cal.com/leman-nova-0zwvun/rendez-vous-15-minutes';
+          return;
+        }
+        selectedServices.forEach(function(s) {
+          var priceNum = parsePrice(s.price);
+          var priceDisplay = priceNum !== null ? priceNum.toFixed(0) + '€' : escapeHtml(s.price);
+          var li = document.createElement('li');
+          li.innerHTML = '<span class="service-name">' + escapeHtml(s.value) + '<br><span class="service-meta">' + escapeHtml(s.duration) + '</span></span><span class="service-meta">' + priceDisplay + '</span>';
+          recapServices.appendChild(li);
+          if (priceNum !== null) {
+            total += priceNum;
+            hasNumeric = true;
+          }
+          totalMinutes += s.durationMinutes || 0;
+        });
+        recapTotal.textContent = hasNumeric ? total.toFixed(0) + '€' : 'Sur devis';
+        if (recapDuration) recapDuration.textContent = formatDuration(totalMinutes);
+        var serviceNames = selectedServices.map(function(s) { return s.value; }).join(',');
+        calLink.href = 'https://cal.com/leman-nova-0zwvun/rendez-vous-15-minutes?services=' + encodeURIComponent(serviceNames) + '&duration=' + encodeURIComponent(String(totalMinutes));
       }
 
       serviceOptions.forEach(function(opt) {
         opt.addEventListener('click', function() {
-          serviceOptions.forEach(function(o) { o.classList.remove('selected'); });
-          opt.classList.add('selected');
-          selectOption(opt);
+          toggleOption(opt);
         });
       });
 
       btnNext.addEventListener('click', function() {
-        if (!selectedService) return;
-        recapService.textContent = selectedService;
-        recapDetails.textContent = selectedDuration + ' · ' + selectedPrice;
-        calLink.href = 'https://cal.com/leman-nova-0zwvun/rendez-vous-15-minutes?subject=' + encodeURIComponent('Rendez-vous Maison Éclat — ' + selectedService);
+        if (selectedServices.length === 0) return;
+        buildRecap();
         showStep(2);
       });
 
