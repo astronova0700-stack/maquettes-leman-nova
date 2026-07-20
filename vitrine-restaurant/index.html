@@ -1101,176 +1101,22 @@
       min-height: 80px;
     }
 
-    .modal-step {
-      display: none;
-    }
-
-    .modal-step.active {
-      display: block;
-      animation: fadeIn 0.3s ease;
-    }
-
-    .selection-help {
-      color: rgba(245, 240, 232, 0.45);
-      font-size: 0.8125rem;
-      margin-top: 0.5rem;
-      font-style: italic;
-    }
-
-    .selection-category {
-      margin-bottom: 1rem;
-    }
-
-    .selection-category-title {
-      font-size: 0.8125rem;
-      font-weight: 600;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      color: var(--primary);
-      margin-bottom: 0.5rem;
-    }
-
-    .selection-grid {
+    .form-row {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 0.5rem;
+      gap: 0 1rem;
     }
 
     @media (min-width: 420px) {
-      .selection-grid {
-        grid-template-columns: repeat(2, 1fr);
+      .form-row {
+        grid-template-columns: 1fr 1fr;
       }
     }
 
-    .selection-card {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      padding: 0.75rem;
-      border-radius: var(--radius);
-      border: 1px solid var(--border-subtle);
-      background: rgba(0, 0, 0, 0.2);
-      cursor: pointer;
-      transition: all 0.2s ease;
-      text-align: left;
-    }
-
-    .selection-card:hover {
-      border-color: rgba(212, 160, 57, 0.25);
-      background: rgba(212, 160, 57, 0.05);
-    }
-
-    .selection-card.selected {
-      border-color: var(--primary);
-      background: rgba(212, 160, 57, 0.12);
-      box-shadow: 0 0 0 1px var(--primary);
-    }
-
-    .selection-card .check {
-      width: 1.25rem;
-      height: 1.25rem;
-      border-radius: 0.25rem;
-      border: 1px solid rgba(245, 240, 232, 0.3);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      transition: all 0.2s ease;
-    }
-
-    .selection-card.selected .check {
-      background: var(--primary);
-      border-color: var(--primary);
-    }
-
-    .selection-card .check svg {
-      width: 14px;
-      height: 14px;
-      color: var(--bg);
-      opacity: 0;
-      transform: scale(0.8);
-      transition: all 0.2s ease;
-    }
-
-    .selection-card.selected .check svg {
-      opacity: 1;
-      transform: scale(1);
-    }
-
-    .selection-info {
-      flex: 1;
-      min-width: 0;
-    }
-
-    .selection-info .name {
-      display: block;
-      font-size: 0.9375rem;
-      font-weight: 500;
-      color: var(--fg);
-      line-height: 1.3;
-    }
-
-    .selection-info .price {
-      display: block;
-      font-size: 0.8125rem;
-      color: var(--primary);
-      margin-top: 0.125rem;
-    }
-
-    .recap-section {
-      margin-bottom: 1rem;
-    }
-
-    .recap-row {
-      display: flex;
-      justify-content: space-between;
-      gap: 1rem;
-      padding: 0.75rem 0;
-      border-bottom: 1px solid var(--border-subtle);
-      font-size: 0.9375rem;
-    }
-
-    .recap-row span:first-child {
-      color: rgba(245, 240, 232, 0.6);
-      flex-shrink: 0;
-    }
-
-    .recap-row span:last-child {
-      color: var(--fg);
-      font-weight: 500;
-      text-align: right;
-    }
-
-    .recap-row.recap-total {
-      border-bottom: none;
-      border-top: 1px solid var(--border-glow);
-      margin-top: 0.5rem;
-      padding-top: 1rem;
-    }
-
-    .recap-row.recap-total span:last-child {
-      color: var(--primary);
-      font-weight: 700;
-      font-size: 1.125rem;
-    }
-
-    .recap-choices {
-      display: flex;
-      flex-direction: column;
-      gap: 0.25rem;
-      text-align: right;
-    }
-
-    .recap-choices .choice {
-      display: flex;
-      justify-content: flex-end;
-      gap: 0.5rem;
-      flex-wrap: wrap;
-    }
-
-    .recap-empty {
-      color: rgba(245, 240, 232, 0.4);
-      font-style: italic;
+    .form-group input:invalid:not(:placeholder-shown),
+    .form-group select:invalid,
+    .form-group textarea:invalid:not(:placeholder-shown) {
+      border-color: rgba(220, 80, 60, 0.6);
     }
 
     /* Animations */
@@ -1766,67 +1612,77 @@
       <div class="modal-header">
         <div>
           <h3 id="modalTitle">Réserver une table</h3>
-          <p id="modalSubtitle">Choisissez vos plats et menus</p>
+          <p id="modalSubtitle">Réservez votre table en quelques clics</p>
         </div>
         <button class="modal-close" id="modalClose" aria-label="Fermer la modale">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
         </button>
       </div>
 
-      <div class="modal-body">
-        <div class="modal-step active" id="step1">
+      <form class="modal-body" id="reservationForm" novalidate>
+        <div class="form-row">
           <div class="form-group">
-            <label>Sélectionnez vos plats et menus</label>
-            <div id="selectionGrid"></div>
-            <p class="selection-help">Cliquez sur les cartes pour sélectionner plusieurs choix.</p>
+            <label for="resDate">Date *</label>
+            <input type="date" id="resDate" required>
           </div>
 
           <div class="form-group">
-            <label for="guestName">Nom et prénom</label>
-            <input type="text" id="guestName" placeholder="Votre nom" required>
-          </div>
-
-          <div class="form-group">
-            <label for="guestPhone">Téléphone</label>
-            <input type="tel" id="guestPhone" placeholder="03 80 65 43 21" required>
-          </div>
-
-          <div class="form-group">
-            <label for="guestCount">Nombre de couverts</label>
-            <input type="number" id="guestCount" min="1" max="20" value="2" required>
+            <label for="resTime">Heure *</label>
+            <select id="resTime" required>
+              <option value="" disabled selected>Choisir un créneau</option>
+              <option value="12h00">12h00</option>
+              <option value="12h30">12h30</option>
+              <option value="13h00">13h00</option>
+              <option value="19h00">19h00</option>
+              <option value="19h30">19h30</option>
+              <option value="20h00">20h00</option>
+              <option value="20h30">20h30</option>
+              <option value="21h00">21h00</option>
+            </select>
           </div>
         </div>
 
-        <div class="modal-step" id="step2">
-          <h3>Récapitulatif</h3>
-          <p>Vérifiez votre demande avant de choisir votre créneau.</p>
-
-          <div class="recap-section">
-            <div class="recap-row">
-              <span>Choix</span>
-              <span id="recapPrestation"><span class="recap-empty">Aucun choix</span></span>
-            </div>
-            <div class="recap-row recap-total">
-              <span>Total estimé</span>
-              <span id="recapTotal">—</span>
-            </div>
-            <div class="recap-row">
-              <span>Durée estimée sur place</span>
-              <span id="recapDuration">—</span>
-            </div>
-            <div class="recap-row"><span>Nom</span><span id="recapName">—</span></div>
-            <div class="recap-row"><span>Téléphone</span><span id="recapPhone">—</span></div>
-            <div class="recap-row"><span>Couverts</span><span id="recapCount">—</span></div>
-          </div>
-
-          <div class="form-group" style="margin-top:1.5rem;">
-            <label for="notes">Commentaires (optionnel)</label>
-            <textarea id="notes" placeholder="Allergies, occasion particulière..."></textarea>
-          </div>
+        <div class="form-group">
+          <label for="resGuests">Nombre de couverts *</label>
+          <select id="resGuests" required>
+            <option value="1">1 couvert</option>
+            <option value="2" selected>2 couverts</option>
+            <option value="3">3 couverts</option>
+            <option value="4">4 couverts</option>
+            <option value="5">5 couverts</option>
+            <option value="6">6 couverts</option>
+            <option value="7">7 couverts</option>
+            <option value="8">8 couverts</option>
+            <option value="9">9 couverts</option>
+            <option value="10">10 couverts</option>
+          </select>
         </div>
+
+        <div class="form-group">
+          <label for="resName">Nom et prénom *</label>
+          <input type="text" id="resName" placeholder="Votre nom" required>
+        </div>
+
+        <div class="form-group">
+          <label for="resPhone">Téléphone *</label>
+          <input type="tel" id="resPhone" placeholder="03 80 65 43 21" required>
+        </div>
+
+        <div class="form-group">
+          <label for="resEmail">Email *</label>
+          <input type="email" id="resEmail" placeholder="votre@email.com" required>
+        </div>
+
+        <div class="form-group">
+          <label for="resMessage">Message / occasion (optionnel)</label>
+          <textarea id="resMessage" placeholder="Anniversaire, allergies, demande particulière..."></textarea>
+        </div>
+      </form>
+
+      <div class="modal-footer" id="modalFooter">
+        <button class="btn-outline" type="button" data-close-modal>Annuler</button>
+        <button class="btn-primary" type="button" id="confirmReservation">Confirmer ma réservation</button>
       </div>
-
-      <div class="modal-footer" id="modalFooter"></div>
     </div>
   </div>
 
@@ -1896,221 +1752,66 @@
       });
 
       // Modal
-      const menuItems = [
-        { id: 'foie-gras-poele', name: 'Foie Gras Poêlé', price: 14, category: 'Entrées', duration: 15 },
-        { id: 'burrata-cremeuse', name: 'Burrata Crémeuse', price: 12, category: 'Entrées', duration: 15 },
-        { id: 'tartare-saumon', name: 'Tartare de Saumon', price: 9, category: 'Entrées', duration: 15 },
-        { id: 'magret-canard', name: 'Magret de Canard', price: 26, category: 'Plats', duration: 30 },
-        { id: 'bar-croute', name: 'Bar en Croûte', price: 28, category: 'Plats', duration: 30 },
-        { id: 'filet-boeuf', name: 'Filet de Bœuf', price: 19, category: 'Plats', duration: 30 },
-        { id: 'fondant-chocolat', name: 'Fondant au Chocolat', price: 11, category: 'Desserts', duration: 15 },
-        { id: 'creme-brulee', name: 'Crème Brûlée', price: 9, category: 'Desserts', duration: 15 },
-        { id: 'menu-jour', name: 'Menu du Jour', price: 19, category: 'Menus', duration: 60 },
-        { id: 'menu-degustation', name: 'Menu Dégustation', price: 45, category: 'Menus', duration: 120 }
-      ];
-
-      const categoriesOrder = ['Entrées', 'Plats', 'Desserts', 'Menus'];
       const modal = document.getElementById('reservationModal');
-      const step1 = document.getElementById('step1');
-      const step2 = document.getElementById('step2');
-      const modalTitle = document.getElementById('modalTitle');
-      const modalSubtitle = document.getElementById('modalSubtitle');
-      const modalFooter = document.getElementById('modalFooter');
-      const selectionGrid = document.getElementById('selectionGrid');
-      const guestName = document.getElementById('guestName');
-      const guestPhone = document.getElementById('guestPhone');
-      const guestCount = document.getElementById('guestCount');
-      const notes = document.getElementById('notes');
+      const reservationForm = document.getElementById('reservationForm');
+      const resDate = document.getElementById('resDate');
+      const resTime = document.getElementById('resTime');
+      const resGuests = document.getElementById('resGuests');
+      const resName = document.getElementById('resName');
+      const resPhone = document.getElementById('resPhone');
+      const resEmail = document.getElementById('resEmail');
+      const resMessage = document.getElementById('resMessage');
+      const confirmBtn = document.getElementById('confirmReservation');
 
-      let selectedItems = [];
-      let currentStep = 1;
-
-      function renderSelectionGrid() {
-        selectionGrid.innerHTML = '';
-
-        categoriesOrder.forEach(function (category) {
-          const items = menuItems.filter(function (item) { return item.category === category; });
-          if (!items.length) return;
-
-          const categoryEl = document.createElement('div');
-          categoryEl.className = 'selection-category';
-
-          const title = document.createElement('div');
-          title.className = 'selection-category-title';
-          title.textContent = category;
-          categoryEl.appendChild(title);
-
-          const grid = document.createElement('div');
-          grid.className = 'selection-grid';
-
-          items.forEach(function (item) {
-            const card = document.createElement('button');
-            card.type = 'button';
-            card.className = 'selection-card';
-            card.setAttribute('data-id', item.id);
-            card.setAttribute('aria-pressed', 'false');
-            card.innerHTML =
-              '<span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>' +
-              '<span class="selection-info">' +
-                '<span class="name">' + escapeHtml(item.name) + '</span>' +
-                '<span class="price">' + item.price + '€</span>' +
-              '</span>';
-
-            card.addEventListener('click', function () {
-              toggleSelection(item.id);
-            });
-
-            grid.appendChild(card);
-          });
-
-          categoryEl.appendChild(grid);
-          selectionGrid.appendChild(categoryEl);
-        });
+      function setMinDate() {
+        const today = new Date();
+        const yyyy = today.getFullYear();
+        const mm = String(today.getMonth() + 1).padStart(2, '0');
+        const dd = String(today.getDate()).padStart(2, '0');
+        resDate.min = yyyy + '-' + mm + '-' + dd;
       }
 
-      function escapeHtml(text) {
-        return text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+      function resetForm() {
+        reservationForm.reset();
+        resGuests.value = '2';
       }
 
-      function toggleSelection(id) {
-        const idx = selectedItems.indexOf(id);
-        if (idx > -1) {
-          selectedItems.splice(idx, 1);
-        } else {
-          selectedItems.push(id);
-        }
-        updateSelectionUI();
+      function getFirstInvalidField() {
+        if (!resDate.value.trim()) return resDate;
+        if (!resTime.value.trim()) return resTime;
+        if (!resGuests.value.trim()) return resGuests;
+        if (!resName.value.trim()) return resName;
+        if (!resPhone.value.trim()) return resPhone;
+        if (!resEmail.value.trim()) return resEmail;
+        return null;
       }
 
-      function updateSelectionUI() {
-        selectionGrid.querySelectorAll('.selection-card').forEach(function (card) {
-          const id = card.getAttribute('data-id');
-          const selected = selectedItems.indexOf(id) > -1;
-          card.classList.toggle('selected', selected);
-          card.setAttribute('aria-pressed', String(selected));
-        });
+      function validateEmail(email) {
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
       }
 
-      function getSelectedDetails() {
-        return selectedItems.map(function (id) {
-          return menuItems.find(function (item) { return item.id === id; });
-        }).filter(Boolean);
-      }
-
-      function formatCurrency(value) {
-        return value.toLocaleString('fr-FR') + '€';
-      }
-
-      function formatDuration(minutes) {
-        const h = Math.floor(minutes / 60);
-        const m = minutes % 60;
-        return h + 'h' + (m < 10 ? '0' : '') + m;
-      }
-
-      function updateFooter() {
-        modalFooter.innerHTML = '';
-        if (currentStep === 1) {
-          modalFooter.innerHTML =
-            '<button class="btn-outline" data-close-modal>Annuler</button>' +
-            '<button class="btn-primary" id="toStep2">Continuer</button>';
-        } else {
-          modalFooter.innerHTML =
-            '<button class="btn-outline" id="backStep1">Retour</button>' +
-            '<a class="btn-primary" id="calLink" href="https://cal.com/leman-nova-0zwvun/rendez-vous-15-minutes" target="_blank" rel="noopener noreferrer">Confirmer</a>';
-        }
-        bindFooterEvents();
-      }
-
-      function bindFooterEvents() {
-        const closeBtn = modalFooter.querySelector('[data-close-modal]');
-        if (closeBtn) closeBtn.addEventListener('click', closeModal);
-
-        const toStep2Btn = modalFooter.querySelector('#toStep2');
-        if (toStep2Btn) toStep2Btn.addEventListener('click', goToStep2);
-
-        const backBtn = modalFooter.querySelector('#backStep1');
-        if (backBtn) backBtn.addEventListener('click', goToStep1);
-      }
-
-      function goToStep1() {
-        currentStep = 1;
-        step2.classList.remove('active');
-        step1.classList.add('active');
-        modalTitle.textContent = 'Réserver une table';
-        modalSubtitle.textContent = 'Choisissez vos plats et menus';
-        updateFooter();
-      }
-
-      function goToStep2() {
-        if (!guestName.value.trim() || !guestPhone.value.trim()) {
-          alert('Veuillez renseigner votre nom et votre téléphone.');
-          return;
-        }
-
-        const selected = getSelectedDetails();
-        const total = selected.reduce(function (sum, item) { return sum + item.price; }, 0);
-        const totalDuration = selected.reduce(function (sum, item) { return sum + (item.duration || 0); }, 0);
-
-        const recapPrestation = document.getElementById('recapPrestation');
-        if (selected.length) {
-          recapPrestation.innerHTML = '<span class="recap-choices">' +
-            selected.map(function (item) {
-              return '<span class="choice">' + escapeHtml(item.name) + ' <span style="color:var(--primary);">' + item.price + '€</span></span>';
-            }).join('') +
-          '</span>';
-        } else {
-          recapPrestation.innerHTML = '<span class="recap-empty">Aucun choix</span>';
-        }
-
-        document.getElementById('recapTotal').textContent = selected.length ? formatCurrency(total) : '—';
-        document.getElementById('recapDuration').textContent = selected.length ? formatDuration(totalDuration) : '—';
-        document.getElementById('recapName').textContent = guestName.value.trim();
-        document.getElementById('recapPhone').textContent = guestPhone.value.trim();
-        document.getElementById('recapCount').textContent = guestCount.value;
-
+      function buildCalUrl() {
         const baseUrl = 'https://cal.com/leman-nova-0zwvun/rendez-vous-15-minutes';
         const params = new URLSearchParams();
-        params.set('name', guestName.value.trim());
-        params.set('phone', guestPhone.value.trim());
-        params.set('guests', guestCount.value);
-        if (selected.length) {
-          params.set('services', selected.map(function (item) { return item.name; }).join(','));
-          params.set('duration', String(totalDuration));
+        params.set('type', 'table');
+        params.set('date', resDate.value.trim());
+        params.set('time', resTime.value.trim());
+        params.set('guests', resGuests.value.trim());
+        params.set('name', resName.value.trim());
+        params.set('phone', resPhone.value.trim());
+        params.set('email', resEmail.value.trim());
+        if (resMessage.value.trim()) {
+          params.set('message', resMessage.value.trim());
         }
-        if (notes.value.trim()) params.set('notes', notes.value.trim());
-
-        const calLink = document.getElementById('calLink');
-        calLink.href = baseUrl + '?' + params.toString();
-
-        currentStep = 2;
-        step1.classList.remove('active');
-        step2.classList.add('active');
-        modalTitle.textContent = 'Récapitulatif';
-        modalSubtitle.textContent = 'Vérifiez votre demande';
-        updateFooter();
+        return baseUrl + '?' + params.toString();
       }
 
-      function openModal(selectedPrestation) {
-        selectedItems = [];
-        guestName.value = '';
-        guestPhone.value = '';
-        guestCount.value = '2';
-        notes.value = '';
-        goToStep1();
-
-        if (selectedPrestation) {
-          const match = menuItems.find(function (item) {
-            return item.name === selectedPrestation || selectedPrestation.indexOf(item.name) > -1;
-          });
-          if (match) {
-            selectedItems = [match.id];
-          }
-        }
-
-        updateSelectionUI();
+      function openModal() {
+        resetForm();
+        setMinDate();
         modal.classList.add('open');
         document.body.classList.add('no-scroll');
-        guestName.focus();
+        resDate.focus();
       }
 
       function closeModal() {
@@ -2121,11 +1822,15 @@
       document.querySelectorAll('[data-open-modal]').forEach(function (trigger) {
         trigger.addEventListener('click', function (e) {
           e.preventDefault();
-          openModal(trigger.getAttribute('data-prestation'));
+          openModal();
         });
       });
 
       document.getElementById('modalClose').addEventListener('click', closeModal);
+
+      document.querySelectorAll('[data-close-modal]').forEach(function (btn) {
+        btn.addEventListener('click', closeModal);
+      });
 
       modal.addEventListener('click', function (e) {
         if (e.target === modal) closeModal();
@@ -2137,8 +1842,25 @@
         }
       });
 
-      renderSelectionGrid();
-      updateFooter();
+      confirmBtn.addEventListener('click', function () {
+        const firstInvalid = getFirstInvalidField();
+        if (firstInvalid) {
+          firstInvalid.focus();
+          firstInvalid.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          return;
+        }
+
+        if (!validateEmail(resEmail.value.trim())) {
+          resEmail.focus();
+          alert('Veuillez saisir une adresse email valide.');
+          return;
+        }
+
+        window.open(buildCalUrl(), '_blank', 'noopener,noreferrer');
+        closeModal();
+      });
+
+      setMinDate();
     })();
   </script>
 </body>

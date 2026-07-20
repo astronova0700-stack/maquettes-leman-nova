@@ -1267,6 +1267,60 @@
       .modal-title { font-size: 1.5rem; }
     }
 
+    .modal-intro {
+      color: rgba(255,255,255,0.5);
+      font-size: 0.875rem;
+      margin-bottom: 1rem;
+      font-weight: 300;
+    }
+
+    .choice-form { display: none; }
+    .choice-form.active { display: block; }
+
+    .phone-notice {
+      background: rgba(201, 169, 110, 0.08);
+      border: 1px solid rgba(201, 169, 110, 0.2);
+      border-radius: var(--radius);
+      padding: 1.25rem;
+      text-align: center;
+    }
+
+    .phone-notice p {
+      color: rgba(255,255,255,0.6);
+      font-size: 0.9375rem;
+      font-weight: 300;
+      line-height: 1.6;
+      margin-bottom: 0.75rem;
+    }
+
+    .phone-notice a {
+      display: inline-block;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--gold-light);
+      transition: color 0.3s ease, text-shadow 0.3s ease;
+    }
+
+    .phone-notice a:hover {
+      color: var(--gold);
+      text-shadow: 0 0 20px rgba(201, 169, 110, 0.4);
+    }
+
+    .modal-actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary.disabled,
+    .btn-primary[disabled] {
+      opacity: 0.5;
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+
     .no-scroll { overflow: hidden; }
   </style>
 </head>
@@ -1656,45 +1710,34 @@
       <div class="modal-body">
         <!-- Step 1 -->
         <div class="modal-step active" id="modalStep1">
-          <p style="color:rgba(255,255,255,0.5); font-size:0.875rem; margin-bottom:1rem; font-weight:300;">Que souhaitez-vous réserver ?</p>
+          <p class="modal-intro">Que souhaitez-vous réserver ?</p>
           <div class="prestation-list" role="radiogroup" aria-label="Type de réservation">
-            <div class="prestation-item" data-type="table">
+            <div class="prestation-item" data-choice="table">
               <button class="prestation-option" role="radio" aria-checked="false" tabindex="0">
                 <span class="prestation-radio"></span>
                 <span class="prestation-info">
                   <span class="prestation-name">Réserver une table</span>
-                  <span class="prestation-desc">Choisissez votre date et le nombre de personnes.</span>
+                  <span class="prestation-desc">Pour 1 à 10 personnes, au cœur du speakeasy.</span>
                 </span>
               </button>
-              <div class="prestation-fields">
-                <div class="field-group">
-                  <label class="field-label" for="reservationDate">Date</label>
-                  <input class="field-input" type="date" id="reservationDate">
-                </div>
-                <div class="field-group">
-                  <label class="field-label" for="reservationGuests">Nombre de personnes</label>
-                  <select class="field-select" id="reservationGuests">
-                    <option value="1">1 personne</option>
-                    <option value="2" selected>2 personnes</option>
-                    <option value="3">3 personnes</option>
-                    <option value="4">4 personnes</option>
-                    <option value="5">5 personnes</option>
-                    <option value="6">6 personnes</option>
-                    <option value="7">7 personnes</option>
-                    <option value="8">8 personnes</option>
-                    <option value="9">9 personnes</option>
-                    <option value="10">10 personnes</option>
-                  </select>
-                </div>
-              </div>
             </div>
 
-            <div class="prestation-item" data-type="private">
+            <div class="prestation-item" data-choice="event">
               <button class="prestation-option" role="radio" aria-checked="false" tabindex="0">
                 <span class="prestation-radio"></span>
                 <span class="prestation-info">
-                  <span class="prestation-name">Privatiser / Événement</span>
-                  <span class="prestation-desc">Jusqu'à 40 personnes, sur devis.</span>
+                  <span class="prestation-name">Table pour un événement</span>
+                  <span class="prestation-desc">Anniversaire, afterwork ou autre, jusqu'à 40 personnes.</span>
+                </span>
+              </button>
+            </div>
+
+            <div class="prestation-item" data-choice="private">
+              <button class="prestation-option" role="radio" aria-checked="false" tabindex="0">
+                <span class="prestation-radio"></span>
+                <span class="prestation-info">
+                  <span class="prestation-name">Privatiser tout le bar</span>
+                  <span class="prestation-desc">Prenez contact par téléphone pour organiser votre soirée.</span>
                 </span>
               </button>
             </div>
@@ -1703,12 +1746,108 @@
 
         <!-- Step 2 -->
         <div class="modal-step" id="modalStep2">
-          <div class="recap-card">
-            <p class="recap-label">Votre demande</p>
-            <p class="recap-value" id="recapTitle">—</p>
-            <p class="recap-detail" id="recapDesc">—</p>
+          <!-- Table -->
+          <div class="choice-form" data-form="table">
+            <p class="modal-intro">Votre réservation de table</p>
+            <div class="field-group">
+              <label class="field-label" for="tableDate">Date</label>
+              <input class="field-input" type="date" id="tableDate">
+            </div>
+            <div class="field-group">
+              <label class="field-label" for="tableTime">Heure</label>
+              <input class="field-input" type="time" id="tableTime">
+            </div>
+            <div class="field-group">
+              <label class="field-label" for="tableGuests">Nombre de personnes</label>
+              <select class="field-select" id="tableGuests">
+                <option value="1">1 personne</option>
+                <option value="2" selected>2 personnes</option>
+                <option value="3">3 personnes</option>
+                <option value="4">4 personnes</option>
+                <option value="5">5 personnes</option>
+                <option value="6">6 personnes</option>
+                <option value="7">7 personnes</option>
+                <option value="8">8 personnes</option>
+                <option value="9">9 personnes</option>
+                <option value="10">10 personnes</option>
+              </select>
+            </div>
           </div>
-          <p style="color:rgba(255,255,255,0.5); font-size:0.875rem; margin-bottom:0; font-weight:300;">Confirmez pour être redirigé vers notre agenda en ligne et choisir votre créneau.</p>
+
+          <!-- Event -->
+          <div class="choice-form" data-form="event">
+            <p class="modal-intro">Votre événement au Comptoir Noir</p>
+            <div class="field-group">
+              <label class="field-label" for="eventType">Type d'événement</label>
+              <select class="field-select" id="eventType">
+                <option value="Anniversaire">Anniversaire</option>
+                <option value="Afterwork">Afterwork</option>
+                <option value="Autre">Autre</option>
+              </select>
+            </div>
+            <div class="field-group">
+              <label class="field-label" for="eventDate">Date</label>
+              <input class="field-input" type="date" id="eventDate">
+            </div>
+            <div class="field-group">
+              <label class="field-label" for="eventTime">Heure</label>
+              <input class="field-input" type="time" id="eventTime">
+            </div>
+            <div class="field-group">
+              <label class="field-label" for="eventGuests">Nombre de personnes</label>
+              <select class="field-select" id="eventGuests">
+                <option value="1">1 personne</option>
+                <option value="2">2 personnes</option>
+                <option value="3">3 personnes</option>
+                <option value="4">4 personnes</option>
+                <option value="5">5 personnes</option>
+                <option value="6">6 personnes</option>
+                <option value="7">7 personnes</option>
+                <option value="8">8 personnes</option>
+                <option value="9">9 personnes</option>
+                <option value="10">10 personnes</option>
+                <option value="11">11 personnes</option>
+                <option value="12">12 personnes</option>
+                <option value="13">13 personnes</option>
+                <option value="14">14 personnes</option>
+                <option value="15">15 personnes</option>
+                <option value="16">16 personnes</option>
+                <option value="17">17 personnes</option>
+                <option value="18">18 personnes</option>
+                <option value="19">19 personnes</option>
+                <option value="20">20 personnes</option>
+                <option value="21">21 personnes</option>
+                <option value="22">22 personnes</option>
+                <option value="23">23 personnes</option>
+                <option value="24">24 personnes</option>
+                <option value="25">25 personnes</option>
+                <option value="26">26 personnes</option>
+                <option value="27">27 personnes</option>
+                <option value="28">28 personnes</option>
+                <option value="29">29 personnes</option>
+                <option value="30">30 personnes</option>
+                <option value="31">31 personnes</option>
+                <option value="32">32 personnes</option>
+                <option value="33">33 personnes</option>
+                <option value="34">34 personnes</option>
+                <option value="35">35 personnes</option>
+                <option value="36">36 personnes</option>
+                <option value="37">37 personnes</option>
+                <option value="38">38 personnes</option>
+                <option value="39">39 personnes</option>
+                <option value="40" selected>40 personnes</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Private -->
+          <div class="choice-form" data-form="private">
+            <p class="modal-intro">Privatisation complète</p>
+            <div class="phone-notice">
+              <p>La privatisation complète s'organise d'abord par téléphone :</p>
+              <a href="tel:0476000000">04 76 00 00 00</a>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -1762,35 +1901,50 @@
       const modalFooterActions = document.getElementById('modalFooterActions');
       const step1 = document.getElementById('modalStep1');
       const step2 = document.getElementById('modalStep2');
-      const recapTitle = document.getElementById('recapTitle');
-      const recapDesc = document.getElementById('recapDesc');
       const options = document.querySelectorAll('.prestation-option');
       const items = document.querySelectorAll('.prestation-item');
-      const reservationDate = document.getElementById('reservationDate');
-      const reservationGuests = document.getElementById('reservationGuests');
-      let selected = null;
+      const choiceForms = document.querySelectorAll('.choice-form');
+      const tableDate = document.getElementById('tableDate');
+      const tableTime = document.getElementById('tableTime');
+      const tableGuests = document.getElementById('tableGuests');
+      const eventType = document.getElementById('eventType');
+      const eventDate = document.getElementById('eventDate');
+      const eventTime = document.getElementById('eventTime');
+      const eventGuests = document.getElementById('eventGuests');
+      const BASE_CAL_URL = 'https://cal.com/leman-nova-0zwvun/rendez-vous-15-minutes';
+      let selectedChoice = null;
 
       const STEP1_FOOTER = '<button class="btn-primary glow-gold" id="modalNext" disabled>Continuer</button>';
-      const STEP2_FOOTER = '<button class="btn-secondary" id="modalBack">Retour</button><a href="https://cal.com/leman-nova-0zwvun/rendez-vous-15-minutes" target="_blank" rel="noopener" class="btn-primary glow-gold" id="modalConfirm">Confirmer et réserver</a>';
+      const STEP2_TABLE_FOOTER = '<button class="btn-secondary" id="modalBack">Retour</button><a href="' + BASE_CAL_URL + '" target="_blank" rel="noopener" class="btn-primary glow-gold" id="modalConfirm">Confirmer ma réservation</a>';
+      const STEP2_EVENT_FOOTER = '<button class="btn-secondary" id="modalBack">Retour</button><a href="' + BASE_CAL_URL + '" target="_blank" rel="noopener" class="btn-primary glow-gold" id="modalConfirm">Demander un devis événement</a>';
+      const STEP2_PRIVATE_FOOTER = '<button class="btn-secondary" id="modalBack">Retour</button><button class="btn-primary glow-gold" id="modalCloseChoice">Fermer</button>';
 
-      function setMinDate() {
+      function setMinDates() {
         const today = new Date();
         today.setHours(0, 0, 0, 0);
         const yyyy = today.getFullYear();
         const mm = String(today.getMonth() + 1).padStart(2, '0');
         const dd = String(today.getDate()).padStart(2, '0');
-        reservationDate.min = yyyy + '-' + mm + '-' + dd;
+        const minDate = yyyy + '-' + mm + '-' + dd;
+        if (tableDate) tableDate.min = minDate;
+        if (eventDate) eventDate.min = minDate;
       }
 
       function resetModal() {
-        selected = null;
+        selectedChoice = null;
         items.forEach(function(item) {
           item.classList.remove('selected');
           const radio = item.querySelector('[role="radio"]');
           if (radio) radio.setAttribute('aria-checked', 'false');
         });
-        reservationDate.value = '';
-        reservationGuests.value = '2';
+        choiceForms.forEach(function(form) { form.classList.remove('active'); });
+        if (tableDate) tableDate.value = '';
+        if (tableTime) tableTime.value = '';
+        if (tableGuests) tableGuests.value = '2';
+        if (eventType) eventType.value = 'Anniversaire';
+        if (eventDate) eventDate.value = '';
+        if (eventTime) eventTime.value = '';
+        if (eventGuests) eventGuests.value = '40';
         step1.classList.add('active');
         step2.classList.remove('active');
         modalFooterActions.innerHTML = STEP1_FOOTER;
@@ -1824,18 +1978,28 @@
         if (e.key === 'Escape' && modal.classList.contains('open')) closeModal();
       });
 
-      function updateNextButton() {
-        const nextBtn = document.getElementById('modalNext');
-        if (!nextBtn) return;
-        nextBtn.disabled = !isFormValid();
+      function formatTimeHhMm(value) {
+        return value ? value.replace(':', 'h') : '';
       }
 
-      function isFormValid() {
-        if (!selected) return false;
-        if (selected.dataset.type === 'table') {
-          return reservationDate.value !== '';
+      function isStep2Valid() {
+        if (selectedChoice === 'table') {
+          return tableDate.value !== '' && tableTime.value !== '';
         }
-        return true;
+        if (selectedChoice === 'event') {
+          return eventDate.value !== '' && eventTime.value !== '';
+        }
+        if (selectedChoice === 'private') {
+          return true;
+        }
+        return false;
+      }
+
+      function updateNextButton() {
+        const nextBtn = document.getElementById('modalNext');
+        const confirmBtn = document.getElementById('modalConfirm');
+        if (nextBtn) nextBtn.disabled = selectedChoice === null;
+        if (confirmBtn) confirmBtn.classList.toggle('disabled', !isStep2Valid());
       }
 
       function selectOption(opt) {
@@ -1848,7 +2012,7 @@
         });
         item.classList.add('selected');
         opt.setAttribute('aria-checked', 'true');
-        selected = item;
+        selectedChoice = item.dataset.choice;
         updateNextButton();
       }
 
@@ -1858,49 +2022,90 @@
         });
       });
 
-      function formatDate(frDate) {
-        const parts = frDate.split('-');
-        return parts[2] + '/' + parts[1] + '/' + parts[0];
+      function buildTableUrl() {
+        const params = new URLSearchParams();
+        params.set('type', 'table');
+        params.set('date', tableDate.value);
+        params.set('time', formatTimeHhMm(tableTime.value));
+        params.set('guests', tableGuests.value);
+        return BASE_CAL_URL + '?' + params.toString();
       }
 
-      function goToStep2() {
-        if (!isFormValid()) return;
-        const type = selected.dataset.type;
-        let calUrl = 'https://cal.com/leman-nova-0zwvun/rendez-vous-15-minutes?type=' + encodeURIComponent(type);
-        if (type === 'table') {
-          const guests = reservationGuests.value;
-          const date = reservationDate.value;
-          calUrl += '&date=' + encodeURIComponent(date) + '&guests=' + encodeURIComponent(guests);
-          recapTitle.textContent = 'Table pour ' + guests + ' personne' + (parseInt(guests, 10) > 1 ? 's' : '') + ' le ' + formatDate(date);
-          recapDesc.textContent = 'Réservation de table au Comptoir Noir.';
-        } else {
-          recapTitle.textContent = 'Soirée privatisation — durée à définir';
-          recapDesc.textContent = "Événement privé au Comptoir Noir, jusqu'à 40 personnes, sur devis.";
-        }
+      function buildEventUrl() {
+        const params = new URLSearchParams();
+        params.set('type', 'event');
+        params.set('eventType', eventType.value);
+        params.set('date', eventDate.value);
+        params.set('time', formatTimeHhMm(eventTime.value));
+        params.set('guests', eventGuests.value);
+        return BASE_CAL_URL + '?' + params.toString();
+      }
+
+      function showStep2() {
+        if (!selectedChoice) return;
         step1.classList.remove('active');
         step2.classList.add('active');
-        modalFooterActions.innerHTML = STEP2_FOOTER;
-        document.getElementById('modalConfirm').href = calUrl;
-        document.getElementById('modalBack').addEventListener('click', goToStep1);
+        choiceForms.forEach(function(form) {
+          form.classList.toggle('active', form.dataset.form === selectedChoice);
+        });
+
+        if (selectedChoice === 'table') {
+          modalFooterActions.innerHTML = STEP2_TABLE_FOOTER;
+        } else if (selectedChoice === 'event') {
+          modalFooterActions.innerHTML = STEP2_EVENT_FOOTER;
+        } else {
+          modalFooterActions.innerHTML = STEP2_PRIVATE_FOOTER;
+        }
+
+        bindStep2Buttons();
+        updateConfirmButton();
       }
 
       function goToStep1() {
         step2.classList.remove('active');
         step1.classList.add('active');
+        choiceForms.forEach(function(form) { form.classList.remove('active'); });
         modalFooterActions.innerHTML = STEP1_FOOTER;
         bindNextButton();
         updateNextButton();
       }
 
-      function bindNextButton() {
-        const nextBtn = document.getElementById('modalNext');
-        if (nextBtn) nextBtn.addEventListener('click', goToStep2);
+      function updateConfirmButton() {
+        const confirmBtn = document.getElementById('modalConfirm');
+        if (!confirmBtn) return;
+        if (selectedChoice === 'table') {
+          confirmBtn.href = isStep2Valid() ? buildTableUrl() : 'javascript:void(0);';
+        } else if (selectedChoice === 'event') {
+          confirmBtn.href = isStep2Valid() ? buildEventUrl() : 'javascript:void(0);';
+        }
+        confirmBtn.style.pointerEvents = isStep2Valid() ? '' : 'none';
+        confirmBtn.style.opacity = isStep2Valid() ? '' : '0.5';
       }
 
-      reservationDate.addEventListener('change', updateNextButton);
-      reservationGuests.addEventListener('change', updateNextButton);
+      function bindNextButton() {
+        const nextBtn = document.getElementById('modalNext');
+        if (nextBtn) nextBtn.addEventListener('click', showStep2);
+      }
 
-      setMinDate();
+      function bindStep2Buttons() {
+        const backBtn = document.getElementById('modalBack');
+        const closeChoiceBtn = document.getElementById('modalCloseChoice');
+        const confirmBtn = document.getElementById('modalConfirm');
+        if (backBtn) backBtn.addEventListener('click', goToStep1);
+        if (closeChoiceBtn) closeChoiceBtn.addEventListener('click', closeModal);
+        if (confirmBtn) {
+          confirmBtn.addEventListener('click', function(e) {
+            if (!isStep2Valid()) e.preventDefault();
+          });
+        }
+      }
+
+      [tableDate, tableTime, tableGuests, eventType, eventDate, eventTime, eventGuests].forEach(function(field) {
+        if (field) field.addEventListener('input', updateConfirmButton);
+        if (field) field.addEventListener('change', updateConfirmButton);
+      });
+
+      setMinDates();
       bindNextButton();
     })();
   </script>
