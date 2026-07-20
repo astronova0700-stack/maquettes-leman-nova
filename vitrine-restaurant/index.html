@@ -5,18 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>La Table du Marché — Restaurant Bistronomique à Dijon</title>
   <meta name="description" content="Une cuisine d'auteur inspirée par les saisons et les producteurs locaux de Bourgogne. Réservez votre table à La Table du Marché, Dijon.">
-  <meta name="author" content="Leman Nova">
   <meta name="robots" content="index, follow">
 
   <meta property="og:title" content="La Table du Marché — Restaurant Bistronomique à Dijon">
   <meta property="og:description" content="Cuisine d'auteur, produits locaux de Bourgogne, menus du jour et dégustation.">
   <meta property="og:type" content="website">
-  <meta property="og:image" content="./assets/extern/hero-kitchen-flames-cinematic.png">
+  <meta property="og:image" content="./assets/extern/hero-kitchen-flames-cinematic.webp">
   <meta property="og:url" content="https://www.lemannova.com/vitrine-restaurant/">
 
-  <link rel="icon" type="image/png" href="./assets/extern/logo.png">
+  <link rel="icon" type="image/png" href="./assets/extern/logo.webp">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="image" href="./assets/extern/hero-kitchen-flames-cinematic.webp">
   <link href="https://fonts.googleapis.com/css2?family=Karla:wght@300;400;500;600;700&family=Playfair+Display+SC:wght@400;700&display=swap" rel="stylesheet">
 
   <style>
@@ -53,6 +53,10 @@
       -moz-osx-font-smoothing: grayscale;
     }
 
+    body.no-scroll {
+      overflow: hidden;
+    }
+
     h1, h2, h3, h4, h5, h6 {
       font-family: 'Playfair Display SC', serif;
       font-weight: 400;
@@ -60,6 +64,7 @@
 
     img, video {
       max-width: 100%;
+      height: auto;
       display: block;
     }
 
@@ -966,38 +971,97 @@
 
     .modal {
       width: 100%;
-      max-width: 480px;
+      max-width: 520px;
       max-height: 90vh;
-      overflow-y: auto;
-      padding: 2rem;
+      display: flex;
+      flex-direction: column;
       position: relative;
+      overflow: hidden;
+    }
+
+    .modal-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 1.5rem 1.5rem 0.75rem;
+      border-bottom: 1px solid var(--border-subtle);
+      flex-shrink: 0;
+    }
+
+    .modal-header h3 {
+      font-size: 1.375rem;
+      color: var(--fg);
+      margin-bottom: 0.25rem;
+      padding-right: 2.5rem;
+    }
+
+    .modal-header p {
+      color: rgba(245, 240, 232, 0.6);
+      font-size: 0.875rem;
+      margin-bottom: 0;
     }
 
     .modal-close {
-      position: absolute;
-      top: 1rem;
-      right: 1rem;
+      flex-shrink: 0;
       background: none;
       border: none;
       color: rgba(245, 240, 232, 0.6);
       cursor: pointer;
       transition: color 0.2s;
+      margin-top: 0.125rem;
     }
 
     .modal-close:hover {
       color: var(--primary);
     }
 
-    .modal h3 {
-      font-size: 1.5rem;
-      color: var(--fg);
-      margin-bottom: 0.5rem;
+    .modal-body {
+      flex: 1;
+      overflow-y: auto;
+      padding: 1.25rem 1.5rem;
+      -webkit-overflow-scrolling: touch;
     }
 
-    .modal p {
-      color: rgba(245, 240, 232, 0.6);
-      font-size: 0.875rem;
-      margin-bottom: 1.5rem;
+    .modal-footer {
+      display: flex;
+      gap: 0.75rem;
+      padding: 0.75rem 1.5rem 1.5rem;
+      border-top: 1px solid var(--border-subtle);
+      flex-shrink: 0;
+    }
+
+    .modal-footer .btn-primary,
+    .modal-footer .btn-outline {
+      flex: 1;
+    }
+
+    @media (max-width: 640px) {
+      .modal-overlay {
+        padding: 0.5rem;
+        align-items: flex-end;
+      }
+
+      .modal {
+        max-height: calc(100vh - 1rem);
+        border-radius: var(--radius);
+      }
+
+      .modal-header {
+        padding: 1.25rem 1.25rem 0.75rem;
+      }
+
+      .modal-header h3 {
+        font-size: 1.25rem;
+      }
+
+      .modal-body {
+        padding: 1rem 1.25rem;
+      }
+
+      .modal-footer {
+        padding: 0.75rem 1.25rem 1.25rem;
+      }
     }
 
     .form-group {
@@ -1036,41 +1100,22 @@
       min-height: 80px;
     }
 
-    .modal-step {
-      display: none;
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0 1rem;
     }
 
-    .modal-step.active {
-      display: block;
-      animation: fadeIn 0.3s ease;
+    @media (min-width: 420px) {
+      .form-row {
+        grid-template-columns: 1fr 1fr;
+      }
     }
 
-    .modal-actions {
-      display: flex;
-      gap: 0.75rem;
-      margin-top: 1.5rem;
-    }
-
-    .modal-actions .btn-primary,
-    .modal-actions .btn-outline {
-      flex: 1;
-    }
-
-    .recap-row {
-      display: flex;
-      justify-content: space-between;
-      padding: 0.75rem 0;
-      border-bottom: 1px solid var(--border-subtle);
-      font-size: 0.9375rem;
-    }
-
-    .recap-row span:first-child {
-      color: rgba(245, 240, 232, 0.6);
-    }
-
-    .recap-row span:last-child {
-      color: var(--fg);
-      font-weight: 500;
+    .form-group input:invalid:not(:placeholder-shown),
+    .form-group select:invalid,
+    .form-group textarea:invalid:not(:placeholder-shown) {
+      border-color: rgba(220, 80, 60, 0.6);
     }
 
     /* Animations */
@@ -1181,9 +1226,9 @@
   <!-- Hero -->
   <section class="hero" id="accueil">
     <div class="hero-bg" id="heroBg">
-      <video autoplay muted loop playsinline poster="./assets/extern/hero-kitchen-flames-cinematic.png">
+      <video autoplay muted loop playsinline poster="./assets/extern/hero-kitchen-flames-cinematic.webp">
         <source src="./assets/extern/hero-kitchen-cinematic.mp4" type="video/mp4">
-        <img src="./assets/extern/hero-kitchen-flames-cinematic.png" alt="Cuisine gastronomique">
+        <img src="./assets/extern/hero-kitchen-flames-cinematic.webp" alt="Cuisine gastronomique" width="1536" height="1024">
       </video>
     </div>
     <div class="hero-overlay"></div>
@@ -1210,7 +1255,7 @@
   <!-- Carte / Menus -->
   <section class="section" id="carte">
     <div class="section-bg">
-      <img src="./assets/extern/restaurant-interior-ambiance.png" alt="">
+      <img src="./assets/extern/restaurant-interior-ambiance.webp" alt="" width="1536" height="1024" loading="lazy">
     </div>
     <div class="section-content container">
       <div class="section-title reveal">
@@ -1224,7 +1269,7 @@
       <div class="grid-3">
         <article class="glass-card dish-card reveal" data-open-modal data-prestation="Foie Gras Poêlé">
           <div class="dish-image">
-            <img src="./assets/extern/starter-foie-gras-figue.png" alt="Foie Gras Poêlé">
+            <img src="./assets/extern/starter-foie-gras-figue.webp" alt="Foie Gras Poêlé" width="1024" height="1024" loading="lazy">
             <span class="dish-price">14€</span>
           </div>
           <div class="dish-body">
@@ -1235,7 +1280,7 @@
 
         <article class="glass-card dish-card reveal stagger-1" data-open-modal data-prestation="Burrata Crémeuse">
           <div class="dish-image">
-            <img src="./assets/extern/starter-burrata-tomates.png" alt="Burrata Crémeuse">
+            <img src="./assets/extern/starter-burrata-tomates.webp" alt="Burrata Crémeuse" width="1024" height="1024" loading="lazy">
             <span class="dish-price">12€</span>
           </div>
           <div class="dish-body">
@@ -1246,7 +1291,7 @@
 
         <article class="glass-card dish-card reveal stagger-2" data-open-modal data-prestation="Tartare de Saumon">
           <div class="dish-image">
-            <img src="./assets/extern/starter-tartare-saumon.png" alt="Tartare de Saumon">
+            <img src="./assets/extern/starter-tartare-saumon.webp" alt="Tartare de Saumon" width="1024" height="1024" loading="lazy">
             <span class="dish-price">9€</span>
           </div>
           <div class="dish-body">
@@ -1261,7 +1306,7 @@
       <div class="grid-3">
         <article class="glass-card dish-card reveal" data-open-modal data-prestation="Magret de Canard">
           <div class="dish-image">
-            <img src="./assets/extern/main-magret-canard.png" alt="Magret de Canard">
+            <img src="./assets/extern/main-magret-canard.webp" alt="Magret de Canard" width="1024" height="1024" loading="lazy">
             <span class="dish-price">26€</span>
           </div>
           <div class="dish-body">
@@ -1272,7 +1317,7 @@
 
         <article class="glass-card dish-card reveal stagger-1" data-open-modal data-prestation="Bar en Croûte">
           <div class="dish-image">
-            <img src="./assets/extern/main-bar-beurre-blanc.png" alt="Bar en Croûte">
+            <img src="./assets/extern/main-bar-beurre-blanc.webp" alt="Bar en Croûte" width="1024" height="1024" loading="lazy">
             <span class="dish-price">28€</span>
           </div>
           <div class="dish-body">
@@ -1283,7 +1328,7 @@
 
         <article class="glass-card dish-card reveal stagger-2" data-open-modal data-prestation="Filet de Bœuf">
           <div class="dish-image">
-            <img src="./assets/extern/main-filet-boeuf-truffe.png" alt="Filet de Bœuf">
+            <img src="./assets/extern/main-filet-boeuf-truffe.webp" alt="Filet de Bœuf" width="1024" height="1024" loading="lazy">
             <span class="dish-price">19€</span>
           </div>
           <div class="dish-body">
@@ -1298,7 +1343,7 @@
       <div class="grid-2" style="max-width: 42rem; margin: 0 auto;">
         <article class="glass-card dish-card reveal" data-open-modal data-prestation="Fondant au Chocolat">
           <div class="dish-image">
-            <img src="./assets/extern/dessert-fondant-chocolat.png" alt="Fondant au Chocolat">
+            <img src="./assets/extern/dessert-fondant-chocolat.webp" alt="Fondant au Chocolat" width="1024" height="1024" loading="lazy">
             <span class="dish-price">11€</span>
           </div>
           <div class="dish-body">
@@ -1309,7 +1354,7 @@
 
         <article class="glass-card dish-card reveal stagger-1" data-open-modal data-prestation="Crème Brûlée">
           <div class="dish-image">
-            <img src="./assets/extern/dessert-creme-brulee.png" alt="Crème Brûlée">
+            <img src="./assets/extern/dessert-creme-brulee.webp" alt="Crème Brûlée" width="1024" height="1024" loading="lazy">
             <span class="dish-price">9€</span>
           </div>
           <div class="dish-body">
@@ -1563,78 +1608,79 @@
   <!-- Reservation Modal -->
   <div class="modal-overlay" id="reservationModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
     <div class="glass-card modal">
-      <button class="modal-close" id="modalClose" aria-label="Fermer">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-      </button>
+      <div class="modal-header">
+        <div>
+          <h3 id="modalTitle">Réserver une table</h3>
+          <p id="modalSubtitle">Réservez votre table en quelques clics</p>
+        </div>
+        <button class="modal-close" id="modalClose" aria-label="Fermer la modale">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+      </div>
 
-      <div class="modal-step active" id="step1">
-        <h3 id="modalTitle">Réserver une table</h3>
-        <p>Choisissez votre prestation, puis sélectionnez un créneau.</p>
+      <form class="modal-body" id="reservationForm" novalidate>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="resDate">Date *</label>
+            <input type="date" id="resDate" required>
+          </div>
+
+          <div class="form-group">
+            <label for="resTime">Heure *</label>
+            <select id="resTime" required>
+              <option value="" disabled selected>Choisir un créneau</option>
+              <option value="12h00">12h00</option>
+              <option value="12h30">12h30</option>
+              <option value="13h00">13h00</option>
+              <option value="19h00">19h00</option>
+              <option value="19h30">19h30</option>
+              <option value="20h00">20h00</option>
+              <option value="20h30">20h30</option>
+              <option value="21h00">21h00</option>
+            </select>
+          </div>
+        </div>
 
         <div class="form-group">
-          <label for="prestation">Prestation</label>
-          <select id="prestation">
-            <optgroup label="Entrées">
-              <option value="Foie Gras Poêlé — 14€">Foie Gras Poêlé — 14€</option>
-              <option value="Burrata Crémeuse — 12€">Burrata Crémeuse — 12€</option>
-              <option value="Tartare de Saumon — 9€">Tartare de Saumon — 9€</option>
-            </optgroup>
-            <optgroup label="Plats">
-              <option value="Magret de Canard — 26€">Magret de Canard — 26€</option>
-              <option value="Bar en Croûte — 28€">Bar en Croûte — 28€</option>
-              <option value="Filet de Bœuf — 19€">Filet de Bœuf — 19€</option>
-            </optgroup>
-            <optgroup label="Desserts">
-              <option value="Fondant au Chocolat — 11€">Fondant au Chocolat — 11€</option>
-              <option value="Crème Brûlée — 9€">Crème Brûlée — 9€</option>
-            </optgroup>
-            <optgroup label="Menus">
-              <option value="Menu du Jour — 19€" selected>Menu du Jour — 19€</option>
-              <option value="Menu Dégustation — 45€">Menu Dégustation — 45€</option>
-            </optgroup>
-            <option value="Autre / Sur place">Autre / Sur place</option>
+          <label for="resGuests">Nombre de couverts *</label>
+          <select id="resGuests" required>
+            <option value="1">1 couvert</option>
+            <option value="2" selected>2 couverts</option>
+            <option value="3">3 couverts</option>
+            <option value="4">4 couverts</option>
+            <option value="5">5 couverts</option>
+            <option value="6">6 couverts</option>
+            <option value="7">7 couverts</option>
+            <option value="8">8 couverts</option>
+            <option value="9">9 couverts</option>
+            <option value="10">10 couverts</option>
           </select>
         </div>
 
         <div class="form-group">
-          <label for="guestName">Nom et prénom</label>
-          <input type="text" id="guestName" placeholder="Votre nom" required>
+          <label for="resName">Nom et prénom *</label>
+          <input type="text" id="resName" placeholder="Votre nom" required>
         </div>
 
         <div class="form-group">
-          <label for="guestPhone">Téléphone</label>
-          <input type="tel" id="guestPhone" placeholder="03 80 65 43 21" required>
+          <label for="resPhone">Téléphone *</label>
+          <input type="tel" id="resPhone" placeholder="03 80 65 43 21" required>
         </div>
 
         <div class="form-group">
-          <label for="guestCount">Nombre de couverts</label>
-          <input type="number" id="guestCount" min="1" max="20" value="2" required>
+          <label for="resEmail">Email *</label>
+          <input type="email" id="resEmail" placeholder="votre@email.com" required>
         </div>
 
-        <div class="modal-actions">
-          <button class="btn-outline" data-close-modal>Annuler</button>
-          <button class="btn-primary" id="toStep2">Continuer</button>
+        <div class="form-group">
+          <label for="resMessage">Message / occasion (optionnel)</label>
+          <textarea id="resMessage" placeholder="Anniversaire, allergies, demande particulière..."></textarea>
         </div>
-      </div>
+      </form>
 
-      <div class="modal-step" id="step2">
-        <h3>Récapitulatif</h3>
-        <p>Vérifiez votre demande avant de choisir votre créneau.</p>
-
-        <div class="recap-row"><span>Prestation</span><span id="recapPrestation">—</span></div>
-        <div class="recap-row"><span>Nom</span><span id="recapName">—</span></div>
-        <div class="recap-row"><span>Téléphone</span><span id="recapPhone">—</span></div>
-        <div class="recap-row"><span>Couverts</span><span id="recapCount">—</span></div>
-
-        <div class="form-group" style="margin-top:1.5rem;">
-          <label for="notes">Commentaires (optionnel)</label>
-          <textarea id="notes" placeholder="Allergies, occasion particulière..."></textarea>
-        </div>
-
-        <div class="modal-actions">
-          <button class="btn-outline" id="backStep1">Retour</button>
-          <a class="btn-primary" id="calLink" href="https://cal.com/leman-nova-0zwvun/rendez-vous-15-minutes" target="_blank" rel="noopener noreferrer">Choisir un créneau</a>
-        </div>
+      <div class="modal-footer" id="modalFooter">
+        <button class="btn-outline" type="button" data-close-modal>Annuler</button>
+        <button class="btn-primary" type="button" id="confirmReservation">Confirmer ma réservation</button>
       </div>
     </div>
   </div>
@@ -1662,6 +1708,7 @@
         menuIcon.style.display = open ? 'none' : 'block';
         closeIcon.style.display = open ? 'block' : 'none';
         mobileToggle.setAttribute('aria-expanded', String(open));
+        mobileToggle.setAttribute('aria-label', open ? 'Fermer le menu' : 'Ouvrir le menu');
       }
 
       mobileToggle.addEventListener('click', function () {
@@ -1705,50 +1752,82 @@
 
       // Modal
       const modal = document.getElementById('reservationModal');
-      const step1 = document.getElementById('step1');
-      const step2 = document.getElementById('step2');
-      const prestation = document.getElementById('prestation');
-      const guestName = document.getElementById('guestName');
-      const guestPhone = document.getElementById('guestPhone');
-      const guestCount = document.getElementById('guestCount');
-      const notes = document.getElementById('notes');
-      const calLink = document.getElementById('calLink');
+      const reservationForm = document.getElementById('reservationForm');
+      const resDate = document.getElementById('resDate');
+      const resTime = document.getElementById('resTime');
+      const resGuests = document.getElementById('resGuests');
+      const resName = document.getElementById('resName');
+      const resPhone = document.getElementById('resPhone');
+      const resEmail = document.getElementById('resEmail');
+      const resMessage = document.getElementById('resMessage');
+      const confirmBtn = document.getElementById('confirmReservation');
 
-      function openModal(selectedPrestation) {
-        modal.classList.add('open');
-        document.body.style.overflow = 'hidden';
-        step1.classList.add('active');
-        step2.classList.remove('active');
-        if (selectedPrestation) {
-          // Try to match an option text containing the dish/menu name
-          let matched = false;
-          for (let i = 0; i < prestation.options.length; i++) {
-            if (prestation.options[i].text.includes(selectedPrestation)) {
-              prestation.selectedIndex = i;
-              matched = true;
-              break;
-            }
-          }
-          if (!matched) {
-            prestation.value = 'Autre / Sur place';
-          }
+      function setMinDate() {
+        const today = new Date();
+        const yyyy = today.getFullYear();
+        const mm = String(today.getMonth() + 1).padStart(2, '0');
+        const dd = String(today.getDate()).padStart(2, '0');
+        resDate.min = yyyy + '-' + mm + '-' + dd;
+      }
+
+      function resetForm() {
+        reservationForm.reset();
+        resGuests.value = '2';
+      }
+
+      function getFirstInvalidField() {
+        if (!resDate.value.trim()) return resDate;
+        if (!resTime.value.trim()) return resTime;
+        if (!resGuests.value.trim()) return resGuests;
+        if (!resName.value.trim()) return resName;
+        if (!resPhone.value.trim()) return resPhone;
+        if (!resEmail.value.trim()) return resEmail;
+        return null;
+      }
+
+      function validateEmail(email) {
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+      }
+
+      function buildCalUrl() {
+        const baseUrl = 'https://cal.com/leman-nova-0zwvun/rendez-vous-15-minutes';
+        const params = new URLSearchParams();
+        params.set('type', 'table');
+        params.set('date', resDate.value.trim());
+        params.set('time', resTime.value.trim());
+        params.set('guests', resGuests.value.trim());
+        params.set('name', resName.value.trim());
+        params.set('phone', resPhone.value.trim());
+        params.set('email', resEmail.value.trim());
+        if (resMessage.value.trim()) {
+          params.set('message', resMessage.value.trim());
         }
-        guestName.focus();
+        return baseUrl + '?' + params.toString();
+      }
+
+      function openModal() {
+        resetForm();
+        setMinDate();
+        modal.classList.add('open');
+        document.body.classList.add('no-scroll');
+        resDate.focus();
       }
 
       function closeModal() {
         modal.classList.remove('open');
-        document.body.style.overflow = '';
+        document.body.classList.remove('no-scroll');
       }
 
       document.querySelectorAll('[data-open-modal]').forEach(function (trigger) {
         trigger.addEventListener('click', function (e) {
           e.preventDefault();
-          openModal(trigger.getAttribute('data-prestation'));
+          openModal();
         });
       });
 
-      document.querySelectorAll('[data-close-modal], #modalClose').forEach(function (btn) {
+      document.getElementById('modalClose').addEventListener('click', closeModal);
+
+      document.querySelectorAll('[data-close-modal]').forEach(function (btn) {
         btn.addEventListener('click', closeModal);
       });
 
@@ -1762,33 +1841,25 @@
         }
       });
 
-      document.getElementById('toStep2').addEventListener('click', function () {
-        if (!guestName.value.trim() || !guestPhone.value.trim()) {
-          alert('Veuillez renseigner votre nom et votre téléphone.');
+      confirmBtn.addEventListener('click', function () {
+        const firstInvalid = getFirstInvalidField();
+        if (firstInvalid) {
+          firstInvalid.focus();
+          firstInvalid.scrollIntoView({ behavior: 'smooth', block: 'center' });
           return;
         }
-        document.getElementById('recapPrestation').textContent = prestation.value;
-        document.getElementById('recapName').textContent = guestName.value.trim();
-        document.getElementById('recapPhone').textContent = guestPhone.value.trim();
-        document.getElementById('recapCount').textContent = guestCount.value;
 
-        const baseUrl = 'https://cal.com/leman-nova-0zwvun/rendez-vous-15-minutes';
-        const params = new URLSearchParams();
-        params.set('name', guestName.value.trim());
-        params.set('phone', guestPhone.value.trim());
-        params.set('guests', guestCount.value);
-        params.set('prestation', prestation.value);
-        if (notes.value.trim()) params.set('notes', notes.value.trim());
-        calLink.href = baseUrl + '?' + params.toString();
+        if (!validateEmail(resEmail.value.trim())) {
+          resEmail.focus();
+          alert('Veuillez saisir une adresse email valide.');
+          return;
+        }
 
-        step1.classList.remove('active');
-        step2.classList.add('active');
+        window.open(buildCalUrl(), '_blank', 'noopener,noreferrer');
+        closeModal();
       });
 
-      document.getElementById('backStep1').addEventListener('click', function () {
-        step2.classList.remove('active');
-        step1.classList.add('active');
-      });
+      setMinDate();
     })();
   </script>
 </body>
